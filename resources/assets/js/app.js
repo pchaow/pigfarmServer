@@ -10,6 +10,13 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 /**
+ Vue HighCharts
+ **/
+
+import VueHighcharts from 'vue-highcharts';
+Vue.use(VueHighcharts);
+
+/**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
@@ -31,6 +38,11 @@ Vue.component(
     'passport-personal-access-tokens',
     require('./components/passport/PersonalAccessTokens.vue')
 );
+
+Vue.component(
+    'example-chart-1',
+    require("./components/example-charts/chart1.vue")
+)
 
 const app = new Vue({
     el: '#app'
