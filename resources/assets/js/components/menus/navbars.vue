@@ -4,7 +4,8 @@
             <a class="navbar-brand" href="#">
                 สระบุรีฟาร์ม
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -21,19 +22,16 @@
                     <li><a class="nav-link" href="#">Login</a></li>
                     <li><a class="nav-link" href="#">Register</a></li>
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             UserName <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" v-on:click="logout">
                                 Logout
                             </a>
 
-                            <form id="logout-form" action="#" method="POST" style="display: none;">
-                            </form>
                         </div>
                     </li>
                 </ul>
@@ -44,8 +42,15 @@
 
 <script>
     export default {
+        methods: {
+            logout: function () {
+                let self = this
+                localStorage.accessToken = null;
+                self.$router.push('/login')
+            }
+        },
         mounted() {
-            console.log('Component mounted.')
+            console.log('Navbar mounted.')
         }
     }
 </script>

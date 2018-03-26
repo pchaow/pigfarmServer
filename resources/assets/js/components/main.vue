@@ -28,18 +28,12 @@
         require('./ExampleComponent.vue')
     )
 
-    let router = new VueRouter({
-        routes: [
-            {path: '/', component: require('./example-charts/chart1')},
-        ]
-    });
 
     import navbars from './menus/navbars.vue'
     import menus from './menus/menus.vue'
 
 
     export default {
-        router,
         components: {
             navbars, menus
         },

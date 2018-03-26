@@ -5,10 +5,11 @@
             <div class="card-body">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">หน้าหลัก</a>
+                        <router-link class="nav-link" to="/home/">Home</router-link>
+
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">รายงานประสิทธิภาพ</a>
+                        <router-link  class="nav-link" to="/home/chart1">Chart1</router-link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">ค้นหาสุกร</a>
