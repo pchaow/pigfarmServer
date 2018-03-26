@@ -4,28 +4,11 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-header">Menu</div>
-                    <div class="card-body">
-                        <ul class="nav nav-pills flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">หน้าหลัก</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">รายงานประสิทธิภาพ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">ค้นหาสุกร</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#">Disabled</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-9">
+
+            @component('menus.menus')
+            @endcomponent
+
+            <div class="col">
                 <example-chart-1></example-chart-1>
                 <example-component></example-component>
 

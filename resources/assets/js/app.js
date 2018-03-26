@@ -9,10 +9,12 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- Vue HighCharts
- **/
+// Vue Router
 
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
+// Vue Highcharts
 import VueHighcharts from 'vue-highcharts';
 Vue.use(VueHighcharts);
 
@@ -44,6 +46,15 @@ Vue.component(
     require("./components/example-charts/chart1.vue")
 )
 
+
+const router = new VueRouter({
+    routes: [
+        { path: '/', component: require('./components/main.vue') },
+    ]
+});
+
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router,
 });
