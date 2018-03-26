@@ -15,7 +15,7 @@
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Raleway', sans-serif;
+                /*font-family: 'Raleway', sans-serif;*/
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
@@ -71,8 +71,8 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">{{__("Login")}}</a>
+                        <a href="{{ route('register') }}">{{__("Register")}}</a>
                     @endauth
                 </div>
             @endif
@@ -83,7 +83,9 @@
                 </div>
 
                 <div>
-                    <a href="{{route('login')}}" class="btn btn-primary btn-lg">เข้าสู่ระบบ</a>
+                    <a href="{{route('login')}}" class="btn btn-primary btn-lg">
+                        {{__("Sign in")}}
+                    </a>
                 </div>
             </div>
         </div>
