@@ -45,7 +45,8 @@
         methods: {
             logout: function () {
                 let self = this
-                localStorage.accessToken = null;
+                localStorage.removeItem("accessToken");
+                localStorage.removeItem("user");
                 self.$router.push('/login')
             }
         },

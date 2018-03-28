@@ -6,30 +6,8 @@ Vue.use(Router)
 
 
 export function createRouter() {
-    return new Router({
-        beforeEach: function (to, from, next) {
-            console.log("FULLPATH", to.fullPath);
+    let router = new Router({
 
-            if (to.fullPath !== "/login") {
-
-                if (localStorage.accessToken != null) {
-                    axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.accessToken
-                }
-
-                axios.get('/api/user').then(response => {
-
-                    if (to.fullPath == "/") {
-                        router.push("/home")
-                    }
-
-                    next();
-                }).catch(error => {
-                    router.push('/login');
-                })
-            } else {
-                next();
-            }
-        },
         routes: [
             {
                 path: '/login',
@@ -50,20 +28,40 @@ export function createRouter() {
                 ]
             },
             {
-                path: '/admin',
+                path: '/admin/role',
                 component: require('./components/admin.vue'),
                 children: [
                     {
-                        path: 'user',
-                        component: require('./components/admin/user/index')
+                        path: '',
+                        component: require('./components/admin/role/index'),
                     },
                     {
-                        path: 'role',
-                        component: require('./components/admin/role/index')
+                        path: 'add',
+                        component: require('./components/admin/role/add'),
                     },
                 ]
             },
-
         ]
     })
+
+    router.beforeEach((to, from, next) => {
+        console.log(to.fullPath)
+        if (to.fullPath !== "/login") {
+
+            axios.get('/api/user').then(response => {
+
+                if (to.fullPath == "/") {
+                    router.push("/home")
+                }
+
+                next();
+            }).catch(error => {
+                router.push('/login');
+            })
+        } else {
+            next();
+        }
+    },)
+
+    return router;
 }
