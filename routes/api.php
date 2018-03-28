@@ -23,8 +23,12 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::post('/auth/logout', Auth\LoginController::class . "@logout");
 
-    Route::get('/roles',function(){
-       return \App\Models\Role::all();
+    Route::get('/roles', function () {
+        return \App\Models\Role::all();
+    });
+
+    Route::get('/users', function () {
+        return \App\Models\User::all();
     });
 });
 

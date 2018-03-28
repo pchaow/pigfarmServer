@@ -28,6 +28,20 @@ export function createRouter() {
                 ]
             },
             {
+                path: '/admin/user',
+                component: require('./components/admin.vue'),
+                children: [
+                    {
+                        path: '',
+                        component: require('./components/admin/user/index'),
+                    },
+                    {
+                        path: 'add',
+                        component: require('./components/admin/user/add'),
+                    },
+                ]
+            },
+            {
                 path: '/admin/role',
                 component: require('./components/admin.vue'),
                 children: [
