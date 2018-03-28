@@ -25,34 +25,6 @@ import { createRouter } from './router'
 const router = createRouter()
 
 
-
-
-router.beforeEach((to, from, next) => {
-    console.log("FULLPATH", to.fullPath);
-
-    if (to.fullPath !== "/login") {
-
-        if (localStorage.accessToken != null) {
-            axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.accessToken
-        }
-
-        axios.get('/api/user').then(response => {
-
-            if (to.fullPath == "/") {
-                router.push("/home")
-            }
-
-            next();
-        }).catch(error => {
-            router.push('/login');
-        })
-    } else {
-        next();
-    }
-})
-
-
-
 const app = new Vue({
     el: '#app',
     router,

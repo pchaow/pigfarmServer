@@ -27,10 +27,14 @@
             <div class="card-body">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">การจัดการผู้ใช้</a>
+                        <router-link  class="nav-link" to="/admin/user" exact-active-class="active">
+                            การจัดการผู้ใช้
+                        </router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">การจัดการสิทธิ์</a>
+                        <router-link  class="nav-link" to="/admin/role" exact-active-class="active">
+                            การจัดการสิทธิ์
+                        </router-link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">ข้อมูลพื้นฐานระบบ</a>
