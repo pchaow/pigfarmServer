@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Services\RoleService;
+use App\Interfaces\Services\IRoleService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+        \App::bind(IRoleService::class, RoleService::class);
+
     }
 }

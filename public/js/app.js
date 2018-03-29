@@ -27667,6 +27667,25 @@ module.exports = Component.exports
 
 /***/ }),
 /* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    getAll: function getAll() {
+        return axios.get("/api/users");
+    },
+    getById: function getById(id) {
+        return axios.get("/api/users/" + id);
+    },
+    getCurrentUser: function getCurrentUser() {
+        return axios.get('/api/user').then(function (r) {
+            localStorage.user = JSON.stringify(r.data);
+        });
+    }
+});
+
+/***/ }),
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -27713,7 +27732,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -27760,25 +27779,11 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    getAll: function getAll() {
-        return axios.get("/api/roles");
-    },
-    getById: function getById(id) {
-        return axios.get("/api/roles/" + id);
-    }
-});
-
-/***/ }),
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(21);
-module.exports = __webpack_require__(86);
+module.exports = __webpack_require__(87);
 
 
 /***/ }),
@@ -50633,7 +50638,7 @@ function createRouter() {
             }]
         }, {
             path: '/admin/user',
-            component: __webpack_require__(18),
+            component: __webpack_require__(19),
             children: [{
                 path: '',
                 component: __webpack_require__(74)
@@ -50643,13 +50648,13 @@ function createRouter() {
             }]
         }, {
             path: '/admin/role',
-            component: __webpack_require__(18),
+            component: __webpack_require__(19),
             children: [{
                 path: '',
                 component: __webpack_require__(80)
             }, {
                 path: 'add',
-                component: __webpack_require__(83)
+                component: __webpack_require__(84)
             }]
         }]
     });
@@ -51407,7 +51412,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menus_navbars_vue__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menus_navbars_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__menus_navbars_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menus_menus_vue__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menus_menus_vue__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menus_menus_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__menus_menus_vue__);
 //
 //
@@ -51510,7 +51515,7 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(17);
 //
 //
 //
@@ -52181,7 +52186,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menus_navbars_vue__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menus_navbars_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__menus_navbars_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menus_menus_vue__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menus_menus_vue__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menus_menus_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__menus_menus_vue__);
 //
 //
@@ -52314,7 +52319,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(17);
 //
 //
 //
@@ -52590,7 +52595,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(81)
 /* template */
-var __vue_template__ = __webpack_require__(82)
+var __vue_template__ = __webpack_require__(83)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52634,7 +52639,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_RoleService__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_RoleService__ = __webpack_require__(82);
+//
+//
 //
 //
 //
@@ -52683,15 +52690,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            roles: []
+            roles: [],
+            paginate: null,
+            form: {
+                keyword: null
+            }
         };
     },
 
     methods: {
         load: function load() {
             var self = this;
-            __WEBPACK_IMPORTED_MODULE_0__services_RoleService__["a" /* default */].getAll().then(function (r) {
-                self.roles = r.data;
+            __WEBPACK_IMPORTED_MODULE_0__services_RoleService__["a" /* default */].getPaginate(self.form).then(function (r) {
+                self.roles = r.data.data;
+                self.paginate = r.data;
             });
         }
     },
@@ -52703,6 +52715,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 82 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    getRoles: function getRoles() {
+        return axios.get("/api/roles");
+    },
+    getPaginate: function getPaginate(form) {
+        return axios.get("/api/roles", {
+            params: form
+        });
+    },
+    getById: function getById(id) {
+        return axios.get("/api/roles/" + id);
+    },
+    store: function store(form) {},
+    update: function update(form, id) {},
+    destroy: function destroy(id) {}
+});
+
+/***/ }),
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -52718,7 +52752,7 @@ var render = function() {
       _c("div", { staticClass: "row mb-3" }, [
         _c(
           "div",
-          { staticClass: "col" },
+          { staticClass: "col-lg" },
           [
             _c(
               "router-link",
@@ -52732,11 +52766,49 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "col-lg" }, [
+          _c("div", { staticClass: "float-lg-right float-sm-left" }, [
+            _c("div", { staticClass: "input-group mb-3" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.keyword,
+                    expression: "form.keyword"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "ค้นหา" },
+                domProps: { value: _vm.form.keyword },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "keyword", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group-append" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary ",
+                    attrs: { type: "button" },
+                    on: { click: _vm.load }
+                  },
+                  [_vm._v("ค้นหา")]
+                )
+              ])
+            ])
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c("table", { staticClass: "table table-hover table-striped" }, [
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "tbody",
@@ -52753,29 +52825,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c("div", { staticClass: "float-right" }, [
-        _c("form", { staticClass: "form-inline" }, [
-          _c("label", { staticClass: "sr-only" }, [_vm._v("ค้นหา")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control mb-2 mr-sm-2",
-            attrs: { type: "text", placeholder: "ค้นหา" }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary mb-2", attrs: { type: "button" } },
-            [_vm._v("ค้นหา")]
-          )
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -52799,15 +52848,15 @@ if (false) {
 }
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(84)
+var __vue_script__ = __webpack_require__(85)
 /* template */
-var __vue_template__ = __webpack_require__(85)
+var __vue_template__ = __webpack_require__(86)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52846,7 +52895,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52869,7 +52918,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -52902,32 +52951,10 @@ if (false) {
 }
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 87 */,
-/* 88 */,
-/* 89 */,
-/* 90 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    getAll: function getAll() {
-        return axios.get("/api/users");
-    },
-    getById: function getById(id) {
-        return axios.get("/api/users/" + id);
-    },
-    getCurrentUser: function getCurrentUser() {
-        return axios.get('/api/user').then(function (r) {
-            localStorage.user = JSON.stringify(r.data);
-        });
-    }
-});
 
 /***/ })
 /******/ ]);

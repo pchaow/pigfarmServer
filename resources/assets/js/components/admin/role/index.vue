@@ -6,17 +6,19 @@
 
         <div class="card-body">
             <div class="row mb-3">
-                <div class="col">
+                <div class="col-lg">
                     <router-link to="/admin/role/add" class="btn btn-primary">เพิ่มสิทธิ์</router-link>
                 </div>
-                <div class="col">
-                    <div class="float-right">
-                        <form class="form-inline">
-                            <label class="sr-only">ค้นหา</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2"
+                <div class="col-lg">
+                    <div class="float-lg-right float-sm-left">
+
+                        <div class="input-group mb-3">
+                            <input v-model="form.keyword" type="text" class="form-control"
                                    placeholder="ค้นหา">
-                            <button type="button" class="btn btn-primary mb-2">ค้นหา</button>
-                        </form>
+                            <div class="input-group-append">
+                                <button v-on:click="load" type="button" class="btn btn-primary ">ค้นหา</button>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -46,15 +48,20 @@
     export default {
         data() {
             return {
-                roles: []
+                roles: [],
+                paginate: null,
+                form: {
+                    keyword: null,
+                }
             }
         },
         methods: {
             load: function () {
                 let self = this
-                RoleService.getAll()
+                RoleService.getPaginate(self.form)
                     .then(function (r) {
-                        self.roles = r.data
+                        self.roles = r.data.data
+                        self.paginate = r.data
                     })
             }
         },
