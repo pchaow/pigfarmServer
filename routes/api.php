@@ -24,9 +24,6 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('/auth/logout', Auth\LoginController::class . "@logout");
 
     Route::resource('/roles', Admin\RoleController::class);
-
-    Route::get('/users', function () {
-        return \App\Models\User::all();
-    });
+    Route::resource('/users', Admin\UserController::class);
 });
 

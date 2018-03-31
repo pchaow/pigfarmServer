@@ -6,18 +6,18 @@
 
         <div class="card-body">
             <div class="row mb-3">
-                <div class="col-lg">
-                    <router-link to="/admin/role/add" class="btn btn-primary">เพิ่มสิทธิ์</router-link>
-                </div>
+                <div class="col-lg"></div>
                 <div class="col-lg">
                     <div class="float-lg-right float-sm-left">
 
                         <div class="input-group mb-3">
-                            <input v-model="form.keyword" type="text" class="form-control"
-                                   placeholder="ค้นหา">
-                            <div class="input-group-append">
-                                <button v-on:click="load" type="button" class="btn btn-primary ">ค้นหา</button>
-                            </div>
+                            <form class="form form-inline" v-on:submit.default="load">
+                                <input v-model="form.keyword" type="text" class="form-control"
+                                       placeholder="ค้นหา">
+                                <div class="input-group-append">
+                                    <button v-on:click="load" type="button" class="btn btn-primary ">ค้นหา</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
 
@@ -65,9 +65,12 @@
                     })
             }
         },
+        created() {
+            this.load()
+        },
         mounted() {
             console.log('Role Home Component mounted.')
-            this.load()
+
         }
     }
 </script>

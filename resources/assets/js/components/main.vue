@@ -9,6 +9,7 @@
                         <menus></menus>
                     </div>
                     <div class="col justify-content-center">
+                        <pulse-loader></pulse-loader>
                         <router-view></router-view>
                     </div>
                 </div>
@@ -20,14 +21,6 @@
 </template>
 
 <script>
-
-    import VueRouter from 'vue-router'
-
-    Vue.component(
-        'example',
-        require('./ExampleComponent.vue')
-    )
-
 
     import navbars from './menus/navbars.vue'
     import menus from './menus/menus.vue'

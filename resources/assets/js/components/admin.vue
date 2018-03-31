@@ -21,8 +21,6 @@
 
 <script>
 
-    import VueRouter from 'vue-router'
-
     import navbars from './menus/navbars.vue'
     import menus from './menus/menus.vue'
 

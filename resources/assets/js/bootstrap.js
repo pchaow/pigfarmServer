@@ -37,7 +37,7 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-if (localStorage.accessToken != null) {
+if (localStorage.key('accessToken') != null) {
     axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.accessToken
 }
 

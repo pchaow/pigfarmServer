@@ -9,59 +9,39 @@
 namespace App\Http\Services;
 
 
-use App\Interfaces\Services\IRoleService;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
-class RoleService implements IRoleService
+class RoleService extends BaseService
 {
 
-    private $searchColumns = [
+    protected $searchColumns = [
         'name' => 'like',
         'display_name' => 'like',
         'description' => 'like'
     ];
 
-    private function bindQuerySearchColumns($query, $keyword)
-    {
-        if ($keyword == '') {
-            return $query;
-        }
-        foreach ($this->searchColumns as $key => $opts) {
-            if ($opts == "like") {
-                $query->orWhere($key, $opts, "%$keyword%");
-            }
-            $query->orWhere($key, $opts, $keyword);
-        }
-
-        return $query;
-    }
-
-    function getRolesQuery(Request $request)
+    function getQuery(Request $request)
     {
         $query = Role::query();
 
         if ($request->has('keyword')) {
             $keyword = $request->get('keyword');
-
             $query = $this->bindQuerySearchColumns($query, $keyword);
-
-
         }
-
         return $query;
     }
 
 
     public function getRoles(Request $request)
     {
-        $query = $this->getRolesQuery($request);
+        $query = $this->getQuery($request);
         return $query->get();
     }
 
     public function getPaginate(Request $request)
     {
-        $query = $this->getRolesQuery($request);
+        $query = $this->getQuery($request);
         return $query->paginate();
     }
 

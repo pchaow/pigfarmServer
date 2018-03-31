@@ -2,28 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Services\RoleService;
-use App\Interfaces\Services\IRoleService;
-use App\Models\Role;
+use App\Http\Requests\UserRequest;
+use App\Http\Services\UserService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 /**
- * Class RoleController
+ * Class UserController
  * @package App\Http\Controllers\Admin
  */
-class RoleController extends Controller
+class UserController extends Controller
 {
-    private $roleService;
 
 
     /**
-     * RoleController constructor.
-     * @param RoleService $roleService
+     * UserController constructor.
+     * @param UserService $userService
      */
-    public function __construct(RoleService $roleService)
+    public function __construct(UserService $userService)
     {
-        $this->roleService = $roleService;
+        $this->userService = $userService;
     }
 
 
@@ -34,8 +32,9 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->roleService->getPaginate($request);
+        return $this->userService->getPaginate($request);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -43,10 +42,10 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $role = $this->roleService->store($request);
-        return $role;
+        return $this->userService->store($request);
+
     }
 
     /**
@@ -57,7 +56,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        return $this->roleService->getRole($id);
+        return $this->userService->getUser($id);
     }
 
 
@@ -70,9 +69,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /** @var Role $role */
-        $role = $this->roleService->update($request, $id);
-        return $role;
+        return $this->userService->update($request, $id);
     }
 
     /**
@@ -83,7 +80,6 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        $role = $this->roleService->destroy($id);
-        return $role;
+        return $this->userService->destroy($id);
     }
 }
