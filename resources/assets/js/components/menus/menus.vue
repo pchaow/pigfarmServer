@@ -5,11 +5,11 @@
             <div class="card-body">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/home/" exact-active-class="active">Home</router-link>
+                        <router-link class="nav-link" to="/home/" active-class="active" exact>Home</router-link>
 
                     </li>
                     <li class="nav-item">
-                        <router-link  class="nav-link" to="/home/chart1" exact-active-class="active">Chart1</router-link>
+                        <router-link class="nav-link" to="/home/chart1" active-class="active" exact="">Chart1</router-link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">ค้นหาสุกร</a>
@@ -27,12 +27,12 @@
             <div class="card-body">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <router-link  class="nav-link" to="/admin/user" exact-active-class="active">
+                        <router-link class="nav-link" to="/admin/user" active-class="active">
                             การจัดการผู้ใช้
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link  class="nav-link" to="/admin/role" exact-active-class="active">
+                        <router-link class="nav-link" to="/admin/role" active-class="active">
                             การจัดการสิทธิ์
                         </router-link>
                     </li>

@@ -43,7 +43,7 @@
 
 <script>
 
-    import RoleService from "../../services/RoleService"
+    import RoleService from "../../../services/RoleService"
 
     export default {
         data() {

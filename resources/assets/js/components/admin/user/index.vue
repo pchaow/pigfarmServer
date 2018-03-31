@@ -7,7 +7,7 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col">
-                    <router-link to="/admin/role/add" class="btn btn-primary">เพิ่มผู้ใช้</router-link>
+                    <router-link to="/admin/user/add" class="btn btn-primary">เพิ่มผู้ใช้</router-link>
                 </div>
                 <div class="col-lg">
                     <div class="float-lg-right float-sm-left">
@@ -61,7 +61,7 @@
 
 <script>
 
-    import UserService from "../../services/UserService"
+    import UserService from "../../../services/RoleService"
 
     export default {
         data() {

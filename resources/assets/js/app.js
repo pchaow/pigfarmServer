@@ -11,6 +11,7 @@ window.Vue = require('vue');
 
 // Vue Highcharts
 import VueHighcharts from 'vue-highcharts';
+
 Vue.use(VueHighcharts);
 
 // Vue Spinner
@@ -23,13 +24,19 @@ Vue.component('pulse-loader', require('vue-spinner/src/PulseLoader.vue'));
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 // Vue Router
-import { createRouter } from './router'
+import {createRouter} from './router'
 
 const router = createRouter()
+
+
+import Spinner from 'vue-simple-spinner'
 
 
 const app = new Vue({
     el: '#app',
     router,
+    components: {
+        Spinner
+    }
 
 });

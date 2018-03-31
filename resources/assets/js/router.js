@@ -23,13 +23,13 @@ export function createRouter() {
                     },
                     {
                         path: 'chart1',
-                        component: require('./components/ExampleComponent')
+                        component: require('./components/example-charts/chart1')
                     },
                 ]
             },
             {
                 path: '/admin/user',
-                component: require('./components/admin.vue'),
+                component: require('./components/main.vue'),
                 children: [
                     {
                         path: '',
@@ -43,7 +43,7 @@ export function createRouter() {
             },
             {
                 path: '/admin/role',
-                component: require('./components/admin.vue'),
+                component: require('./components/main.vue'),
                 children: [
                     {
                         path: '',
