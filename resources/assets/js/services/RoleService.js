@@ -1,7 +1,7 @@
 export default {
 
     getRoles() {
-        return axios.get("/api/roles")
+        return axios.get("/api/roles?paginate=false")
     },
     getPaginate(form) {
         return axios.get("/api/roles", {

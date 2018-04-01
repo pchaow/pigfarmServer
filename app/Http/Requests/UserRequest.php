@@ -3,7 +3,12 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class UserRequest
+ * @package App\Http\Requests
+ */
 class UserRequest extends FormRequest
 {
     /**
@@ -13,7 +18,24 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
+        $user = \Auth::user();
+
+        if ($this->isMethod("POST")) {
+            return $user->can('create-users');
+
+        }
+
+        if ($this->isMethod("DELETE")) {
+            if ($this->get('id') == $user->id) {
+                return false;
+            } else {
+                return $user->can('delete-users');
+            }
+        }
+
+
         return false;
+
     }
 
     /**

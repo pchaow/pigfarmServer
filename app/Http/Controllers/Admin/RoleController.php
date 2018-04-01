@@ -34,6 +34,9 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
+        if ($request->has('paginate') && $request->get('paginate')== 'false') {
+            return $this->roleService->getRoles($request);
+        }
         return $this->roleService->getPaginate($request);
     }
 

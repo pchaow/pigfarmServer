@@ -8,8 +8,6 @@
 
 namespace App\Http\Services;
 
-use App\Http\Requests\UserRequest;
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -55,10 +53,15 @@ class UserService extends BaseService
 
     public function store(Request $request)
     {
+
         $user = new User();
         $user->fill($request->all());
-        $user->password = Hash::make($request->get('password'));
+        $user->password = \Hash::make($request->get('password'));
         $user->save();
+
+        $roles = $request->get('roles');
+        $ids = array_pluck($roles, 'id');
+        $user->roles()->sync(($ids));
 
         return $user;
     }

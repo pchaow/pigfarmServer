@@ -48,7 +48,7 @@
                     <td>
                         <div class="btn-group">
                             <button class="btn">แก้ไข</button>
-                            <button class="btn btn-danger">ลบ</button>
+                            <button v-on:click="destroy(item)" class="btn btn-danger">ลบ</button>
 
                         </div>
                     </td>
@@ -82,6 +82,16 @@
                         self.paginate = r.data
                         self.users = r.data.data
                     })
+            },
+            destroy: function (item) {
+                UserService.destroy(item.id)
+                    .then((r) => {
+                        this.load();
+                    })
+                    .catch((e) => {
+                        // TODO : Show error message
+                    })
+
             }
         },
         mounted() {
