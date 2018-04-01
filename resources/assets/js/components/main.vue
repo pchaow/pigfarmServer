@@ -1,7 +1,6 @@
 <template>
     <div>
         <navbars></navbars>
-
         <main class="py-4">
             <div class="container">
                 <div class="row">
@@ -9,6 +8,8 @@
                         <menus></menus>
                     </div>
                     <div class="col justify-content-center">
+                        <loading :active.sync="spinnerVisible"></loading>
+                        <alert></alert>
                         <router-view></router-view>
                     </div>
                 </div>
@@ -20,14 +21,18 @@
 </template>
 
 <script>
+    import Loading from 'vue-loading-overlay';
+    import 'vue-loading-overlay/dist/vue-loading.min.css';
 
     import navbars from './menus/navbars.vue'
     import menus from './menus/menus.vue'
     import {eventHub} from '../eventhub'
 
+    import alert from './alert'
+
     export default {
         components: {
-            navbars, menus,
+            navbars, menus, Loading, alert
 
         },
         data() {

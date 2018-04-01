@@ -61,7 +61,7 @@
 
 <script>
 
-    import UserService from "../../../services/RoleService"
+    import UserService from "../../../services/UserService"
 
     export default {
         data() {

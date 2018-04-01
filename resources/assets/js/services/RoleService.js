@@ -1,23 +1,23 @@
 export default {
 
     getRoles() {
-        return axios.get("/api/users")
+        return axios.get("/api/roles")
     },
     getPaginate(form) {
-        return axios.get("/api/users", {
+        return axios.get("/api/roles", {
             params: form
         })
     },
     getById(id) {
-        return axios.get("/api/users/" + id)
+        return axios.get("/api/roles/" + id)
     },
     store(form) {
-        return axios.post('/api/users')
+
     },
     update(form, id) {
-        return axios.put('/api/users/' + id)
+
     },
     destroy(id) {
-        return axios.delete('/api/users/' + id)
+
     }
 }

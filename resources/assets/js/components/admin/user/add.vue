@@ -1,6 +1,6 @@
 <template>
     <div class="card card-default mb-3">
-        <div class="card-header">Example Component</div>
+        <div class="card-header">ผู้ใช้ใหม่</div>
 
         <div class="card-body">
             I'm an example component.
