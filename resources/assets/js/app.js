@@ -28,15 +28,10 @@ import {createRouter} from './router'
 
 const router = createRouter()
 
-
-import Spinner from 'vue-simple-spinner'
-
-
 const app = new Vue({
     el: '#app',
     router,
     components: {
-        Spinner
     }
 
 });

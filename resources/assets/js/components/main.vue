@@ -9,8 +9,7 @@
                         <menus></menus>
                     </div>
                     <div class="col justify-content-center">
-                        <pulse-loader :loading="spinnerVisible"></pulse-loader>
-                        <router-view v-bind:hidden="spinnerVisible"></router-view>
+                        <router-view></router-view>
                     </div>
                 </div>
             </div>
@@ -28,7 +27,8 @@
 
     export default {
         components: {
-            navbars, menus
+            navbars, menus,
+
         },
         data() {
             return {

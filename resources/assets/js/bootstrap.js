@@ -35,6 +35,7 @@ window.axios.interceptors.request.use(
         return Promise.reject(error);
     }
 );
+
 window.axios.interceptors.response.use(
     response => {
         eventHub.$emit('after-response');
