@@ -43,6 +43,11 @@
                         </div>
                     </div>
 
+                    <role-checkbox
+                            v-bind:value="form.roles"
+                            @change="updateRoles"
+                    ></role-checkbox>
+
                 </fieldset>
                 <button type="submit" class="btn btn-primary">Submit</button>
 
@@ -55,7 +60,12 @@
     import RoleService from "../../../services/RoleService";
     import UserService from "../../../services/UserService";
 
+    import RoleCheckbox from "../role/checkbox";
+
     export default {
+        components: {
+            RoleCheckbox
+        },
         data() {
             return {
                 roles: [],
@@ -66,6 +76,10 @@
 
         },
         methods: {
+            updateRoles: function ($event, $target) {
+                console.log($event)
+                console.log($target)
+            },
             load: function () {
                 let self = this
                 RoleService.getRoles()

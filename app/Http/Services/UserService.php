@@ -84,17 +84,13 @@ class UserService extends BaseService
 
     public function destroy($id)
     {
-
         /** @var User $user */
         $user = User::find($id);
         if (!$user) {
             return abort(404, "User not found");
         }
-
         $user->delete();
         return [true];
-
-
     }
 
 
