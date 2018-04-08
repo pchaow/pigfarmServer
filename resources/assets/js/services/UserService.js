@@ -1,6 +1,6 @@
 export default {
 
-    getRoles() {
+    getUsers() {
         return axios.get("/api/users")
     },
     getPaginate(form) {
@@ -8,8 +8,10 @@ export default {
             params: form
         })
     },
-    getById(id) {
-        return axios.get("/api/users/" + id)
+    getById(id,form) {
+        return axios.get("/api/users/" + id, {
+            params: form
+        })
     },
     store(form) {
         return axios.post("/api/users", form)
@@ -23,8 +25,14 @@ export default {
         return axios.delete('/api/users/' + id)
     },
     getCurrentUser() {
-        return axios.get('/api/user').then((r) => {
-            localStorage.user = JSON.stringify(r.data)
-        })
+        if (localStorage.key('user')) {
+            return localStorage.user
+        } else {
+            return axios.get('/api/user').then((r) => {
+                localStorage.user = JSON.stringify(r.data)
+            })
+        }
+
+
     }
 }

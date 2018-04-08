@@ -46,9 +46,14 @@ class UserService extends BaseService
         return $query->paginate();
     }
 
-    public function getUser($id)
+    public function getUser(Request $request,$id)
     {
-        return User::find($id);
+        $with = $request->get('with');
+        $query = User::query();
+        $query->with($with);
+        $query->where('id',$id);
+        $user = $query->first();
+        return $user;
     }
 
     public function store(Request $request)
@@ -78,6 +83,10 @@ class UserService extends BaseService
             $user->password = Hash::make($request->get('password'));
         }
         $user->save();
+
+        $roles = $request->get('roles');
+        $ids = array_pluck($roles, 'id');
+        $user->roles()->sync(($ids));
 
         return $user;
     }

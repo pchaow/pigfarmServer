@@ -1,5 +1,5 @@
 <template>
-    <div class="card card-default mb-3">
+    <div class="card card-default mb-3" v-if="form">
         <div class="card-header">ผู้ใช้ใหม่</div>
 
         <div class="card-body">
@@ -34,7 +34,7 @@
                     <legend>สิทธิ์การใช้งาน</legend>
 
                     <role-checkbox
-                            v-bind:value="form.roles"
+                            :value="form.roles"
                             @change="updateRoles"
                     ></role-checkbox>
 
@@ -59,9 +59,7 @@
         data() {
             return {
                 roles: [],
-                form: {
-                    roles: []
-                },
+                form: null,
             }
 
         },
@@ -69,18 +67,22 @@
             updateRoles: function ($event) {
                 let roles = this.form.roles
                 let i = roles.indexOf($event)
-                if( i == -1 ){
+                if (i == -1) {
                     roles.push($event)
-                }else {
-                    roles.splice(i,1);
+                } else {
+                    roles.splice(i, 1);
                 }
             },
             load: function () {
                 let self = this
+                UserService.getById(self.$route.params.id, {with: ['roles']})
+                    .then((r) => {
+                        self.form = r.data
+                    })
             },
             save: function () {
                 let self = this
-                UserService.store(this.form)
+                UserService.update(this.form, self.$route.params.id)
                     .then((r) => {
                         self.$router.push("/admin/user")
                     })
@@ -93,7 +95,6 @@
             this.load();
         },
         mounted() {
-            console.log('Example Component mounted.')
         }
     }
 </script>

@@ -47,7 +47,7 @@
                     </th>
                     <td>
                         <div class="btn-group">
-                            <button class="btn">แก้ไข</button>
+                            <router-link :to="{ name: 'user-edit', params: { id: item.id }}" class="btn btn-light">แก้ไข</router-link>
                             <button v-on:click="destroy(item)" class="btn btn-danger">ลบ</button>
 
                         </div>

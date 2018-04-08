@@ -39,6 +39,11 @@ export function createRouter() {
                         path: 'add',
                         component: require('./components/admin/user/add'),
                     },
+                    {
+                        path: ':id/edit',
+                        name: 'user-edit',
+                        component: require('./components/admin/user/edit'),
+                    },
                 ]
             },
             {
