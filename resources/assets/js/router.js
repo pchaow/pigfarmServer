@@ -4,15 +4,16 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+import route_login from "./routes/login";
+import route_admin_user from "./routes/users";
+import route_admin_role from "./routes/roles";
+
 
 export function createRouter() {
     let router = new Router({
 
         routes: [
-            {
-                path: '/login',
-                component: require("./components/auth/login.vue"),
-            },
+            route_login,
             {
                 path: '/home',
                 component: require('./components/main.vue'),
@@ -27,39 +28,9 @@ export function createRouter() {
                     },
                 ]
             },
-            {
-                path: '/admin/user',
-                component: require('./components/main.vue'),
-                children: [
-                    {
-                        path: '',
-                        component: require('./components/admin/user/index'),
-                    },
-                    {
-                        path: 'add',
-                        component: require('./components/admin/user/add'),
-                    },
-                    {
-                        path: ':id/edit',
-                        name: 'user-edit',
-                        component: require('./components/admin/user/edit'),
-                    },
-                ]
-            },
-            {
-                path: '/admin/role',
-                component: require('./components/main.vue'),
-                children: [
-                    {
-                        path: '',
-                        component: require('./components/admin/role/index'),
-                    },
-                    {
-                        path: 'add',
-                        component: require('./components/admin/role/add'),
-                    },
-                ]
-            },
+            route_admin_user,
+            route_admin_role,
+
         ]
     })
 

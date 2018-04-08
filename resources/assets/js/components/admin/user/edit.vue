@@ -65,16 +65,16 @@
         },
         methods: {
             updateRoles: function ($event) {
-                let roles = this.form.roles
-                let i = roles.indexOf($event)
-                if (i == -1) {
+                let roles = this.form.roles;
+                let i = roles.indexOf($event);
+                if (i === -1) {
                     roles.push($event)
                 } else {
                     roles.splice(i, 1);
                 }
             },
             load: function () {
-                let self = this
+                let self = this;
                 UserService.getById(self.$route.params.id, {with: ['roles']})
                     .then((r) => {
                         self.form = r.data
