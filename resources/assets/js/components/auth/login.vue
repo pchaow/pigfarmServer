@@ -1,6 +1,7 @@
 <template>
     <div class="flex-center position-ref full-height">
         <div class="content">
+            <loading :active.sync="spinnerVisible"></loading>
             <div class="title m-b-md">
                 สระบุรีฟาร์ม
             </div>
@@ -73,19 +74,36 @@
 </style>
 <script>
 
+    import Loading from 'vue-loading-overlay';
+    import 'vue-loading-overlay/dist/vue-loading.min.css';
+
 
     export default {
+        components: {
+            Loading,
+        },
         data() {
             return {
                 form: {
                     email: "",
                     password: "",
-                }
+                },
+                spinnerVisible: false,
+
             }
         },
         methods: {
+            showSpinner() {
+                console.log('show spinner');
+                this.spinnerVisible = true;
+            },
+            hideSpinner() {
+                console.log('hide spinner');
+                this.spinnerVisible = false;
+            },
             login: function () {
                 let self = this
+                this.showSpinner();
                 axios.defaults.headers.common['Authorization'] = null;
 
                 axios.post("/api/auth/login", {
@@ -100,10 +118,12 @@
                         axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.accessToken;
 
                         self.$router.push("/home")
+                        self.hideSpinner();
 
                     })
                     .catch((error) => {
                         console.log(error)
+                        self.hideSpinner();
                     })
             }
         },
