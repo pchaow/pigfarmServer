@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "highcharts": "^6.0.7",
+        "notifyjs-browser": "^0.4.2",
         "npm": "^5.8.0",
         "vue-highcharts": "0.0.10",
         "vue-loading-overlay": "^2.0.4",

@@ -1,3 +1,5 @@
+import AlertService from '../services/AlertService';
+
 export default {
 
     getUsers() {
@@ -8,7 +10,7 @@ export default {
             params: form
         })
     },
-    getById(id,form) {
+    getById(id, form) {
         return axios.get("/api/users/" + id, {
             params: form
         })
@@ -18,7 +20,12 @@ export default {
     },
     update(form, id) {
 
-        return axios.put("/api/users/" + id, form)
+        let req = axios.put("/api/users/" + id, form)
+        req.then(res => {
+            AlertService.createNotify("User id:" + res.data.id + " has been updated", "success")
+        });
+
+        return req;
 
     },
     destroy(id) {

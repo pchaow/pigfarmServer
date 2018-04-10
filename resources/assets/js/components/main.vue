@@ -9,7 +9,6 @@
                     </div>
                     <div class="col justify-content-center">
                         <loading :active.sync="spinnerVisible"></loading>
-                        <alert></alert>
                         <router-view></router-view>
                     </div>
                 </div>
@@ -25,8 +24,6 @@
     import navbars from './menus/navbars.vue'
     import menus from './menus/menus.vue'
     import {eventHub} from '../eventhub'
-
-    import alert from './alert'
 
     export default {
         components: {
