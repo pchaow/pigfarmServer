@@ -14,10 +14,6 @@ import VueHighcharts from 'vue-highcharts';
 
 Vue.use(VueHighcharts);
 
-// Vue Spinner
-Vue.component('pulse-loader', require('vue-spinner/src/PulseLoader.vue'));
-
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

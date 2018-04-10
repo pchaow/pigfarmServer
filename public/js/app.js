@@ -25938,9 +25938,6 @@ window.Vue = __webpack_require__(4);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_highcharts__["a" /* default */]);
 
-// Vue Spinner
-Vue.component('pulse-loader', __webpack_require__(55));
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -48757,97 +48754,9 @@ function clone(obj) {
 
 
 /***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(56)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(59)
-/* template */
-var __vue_template__ = __webpack_require__(60)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "node_modules\\vue-spinner\\src\\PulseLoader.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1eefd234", Component.options)
-  } else {
-    hotAPI.reload("data-v-1eefd234", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(57);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(5)("aeeb03a6", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1eefd234\",\"scoped\":false,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./PulseLoader.vue", function() {
-     var newContent = require("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1eefd234\",\"scoped\":false,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./PulseLoader.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*.v-spinner\n{\n    margin: 100px auto;\n    text-align: center;\n}\n*/\n@-webkit-keyframes v-pulseStretchDelay\n{\n0%,\n    80%\n    {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n        -webkit-opacity: 1;             \n                opacity: 1;\n}\n45%\n    {\n        -webkit-transform: scale(0.1);\n                transform: scale(0.1);\n        -webkit-opacity: 0.7;             \n                opacity: 0.7;\n}\n}\n@keyframes v-pulseStretchDelay\n{\n0%,\n    80%\n    {\n        -webkit-transform: scale(1);\n                transform: scale(1);\n        -webkit-opacity: 1;             \n                opacity: 1;\n}\n45%\n    {\n        -webkit-transform: scale(0.1);\n                transform: scale(0.1);\n        -webkit-opacity: 0.7;             \n                opacity: 0.7;\n}\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 55 */,
+/* 56 */,
+/* 57 */,
 /* 58 */
 /***/ (function(module, exports) {
 
@@ -48881,123 +48790,8 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 59 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-  name: 'PulseLoader',
-
-  props: {
-    loading: {
-      type: Boolean,
-      default: true
-    },
-    color: {
-      type: String,
-      default: '#5dc596'
-    },
-    size: {
-      type: String,
-      default: '15px'
-    },
-    margin: {
-      type: String,
-      default: '2px'
-    },
-    radius: {
-      type: String,
-      default: '100%'
-    }
-  },
-  data: function data() {
-    return {
-      spinnerStyle: {
-        backgroundColor: this.color,
-        width: this.size,
-        height: this.size,
-        margin: this.margin,
-        borderRadius: this.radius,
-        display: 'inline-block',
-        animationName: 'v-pulseStretchDelay',
-        animationDuration: '0.75s',
-        animationIterationCount: 'infinite',
-        animationTimingFunction: 'cubic-bezier(.2,.68,.18,1.08)',
-        animationFillMode: 'both'
-      },
-      spinnerDelay1: {
-        animationDelay: '0.12s'
-      },
-      spinnerDelay2: {
-        animationDelay: '0.24s'
-      },
-      spinnerDelay3: {
-        animationDelay: '0.36s'
-      }
-    };
-  }
-});
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.loading,
-          expression: "loading"
-        }
-      ],
-      staticClass: "v-spinner"
-    },
-    [
-      _c("div", {
-        staticClass: "v-pulse v-pulse1",
-        style: [_vm.spinnerStyle, _vm.spinnerDelay1]
-      }),
-      _c("div", {
-        staticClass: "v-pulse v-pulse2",
-        style: [_vm.spinnerStyle, _vm.spinnerDelay2]
-      }),
-      _c("div", {
-        staticClass: "v-pulse v-pulse3",
-        style: [_vm.spinnerStyle, _vm.spinnerDelay3]
-      })
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1eefd234", module.exports)
-  }
-}
-
-/***/ }),
+/* 59 */,
+/* 60 */,
 /* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -52577,8 +52371,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__eventhub__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__alert__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__alert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__alert__);
-//
-//
 //
 //
 //

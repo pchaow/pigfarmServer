@@ -47,7 +47,6 @@
 </template>
 
 <script>
-    import RoleService from "../../../services/RoleService";
     import UserService from "../../../services/UserService";
 
     import RoleCheckbox from "../role/checkbox";
