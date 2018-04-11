@@ -111,7 +111,7 @@
                     password: self.form.password,
                 })
                     .then((response) => {
-                        console.log(response)
+                        console.log(response.data)
                         localStorage.user = JSON.stringify(response.data)
                         localStorage.accessToken = response.data.accessToken
 
