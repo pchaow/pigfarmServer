@@ -1,6 +1,6 @@
 <template>
-    <div class="card card-default mb-3" v-if="form">
-        <div class="card-header">แก้ไขผู้ใช้</div>
+    <div class="card card-default mb-3">
+        <div class="card-header">ผู้ใช้ใหม่</div>
 
         <div class="card-body">
             <form v-on:submit.default="save">
@@ -34,7 +34,7 @@
                     <legend>สิทธิ์การใช้งาน</legend>
 
                     <role-checkbox
-                            :value="form.roles"
+                            v-bind:value="form.roles"
                             @change="updateRoles"
                     ></role-checkbox>
 
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+    import RoleService from "../../../services/RoleService";
     import UserService from "../../../services/UserService";
 
     import RoleCheckbox from "../role/checkbox";
@@ -58,30 +59,28 @@
         data() {
             return {
                 roles: [],
-                form: null,
+                form: {
+                    roles: []
+                },
             }
 
         },
         methods: {
             updateRoles: function ($event) {
-                let roles = this.form.roles;
-                let i = roles.indexOf($event);
-                if (i === -1) {
+                let roles = this.form.roles
+                let i = roles.indexOf($event)
+                if( i == -1 ){
                     roles.push($event)
-                } else {
-                    roles.splice(i, 1);
+                }else {
+                    roles.splice(i,1);
                 }
             },
             load: function () {
-                let self = this;
-                UserService.getById(self.$route.params.id, {with: ['roles']})
-                    .then((r) => {
-                        self.form = r.data
-                    })
+                let self = this
             },
             save: function () {
                 let self = this
-                UserService.update(this.form, self.$route.params.id)
+                UserService.store(this.form)
                     .then((r) => {
                         self.$router.push("/admin/user")
                     })
@@ -94,6 +93,7 @@
             this.load();
         },
         mounted() {
+            console.log('Example Component mounted.')
         }
     }
 </script>

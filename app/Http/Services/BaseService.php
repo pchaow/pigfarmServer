@@ -15,15 +15,18 @@ class BaseService
 
     function bindQuerySearchColumns($query, $keyword)
     {
-        if ($keyword == '') {
-            return $query;
-        }
-        foreach ($this->searchColumns as $key => $opts) {
-            if ($opts == "like") {
-                $query->orWhere($key, $opts, "%$keyword%");
+        $query->where(function ($query) use ($keyword) {
+
+            if ($keyword == '') {
+                return $query;
             }
-            $query->orWhere($key, $opts, $keyword);
-        }
+            foreach ($this->searchColumns as $key => $opts) {
+                if ($opts == "like") {
+                    $query->orWhere($key, $opts, "%$keyword%");
+                }
+                $query->orWhere($key, $opts, $keyword);
+            }
+        });
 
         return $query;
     }

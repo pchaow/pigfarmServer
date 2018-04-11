@@ -1,0 +1,97 @@
+<template>
+    <div class="card card-default mb-3">
+        <div class="card-header">
+            Choice Lists
+        </div>
+
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col">
+                </div>
+                <div class="col-lg">
+                    <div class="float-lg-right float-sm-left">
+                        <form class="form form-inline" v-on:submit.default="load">
+
+                            <div class="input-group mb-3">
+                                <input v-model="form.keyword" type="text" class="form-control"
+                                       placeholder="ค้นหา">
+                                <div class="input-group-append">
+                                    <button v-on:click="load" type="button" class="btn btn-primary ">ค้นหา</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <table class="table table-hover table-striped">
+                <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Display Name</th>
+                    <th>Description</th>
+                    <th>การกระทำ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in choices">
+                    <td>{{item.name}}</td>
+                    <td>{{item.display_name}}</td>
+                    <td>{{item.description}}</td>
+                    <td>
+                        <div class="btn-group">
+                            <router-link :to="{ name: 'choice-edit', params: { id: item.id }}" class="btn btn-light">
+                                แก้ไข
+                            </router-link>
+                            <button v-on:click="destroy(item)" class="btn btn-danger">ลบ</button>
+
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
+
+<script>
+
+    import ChoiceService from "../../../services/ChoiceService"
+
+    export default {
+        data() {
+            return {
+                choices: [],
+                paginate: null,
+                form: {
+                    keyword: null,
+                    parent_id: null,
+                }
+            }
+        },
+        methods: {
+            load: function () {
+                let self = this
+                ChoiceService.getPaginate(self.form)
+                    .then(function (r) {
+                        self.paginate = r.data
+                        self.choices = r.data.data
+                    })
+            },
+            destroy: function (item) {
+                ChoiceService.destroy(item.id)
+                    .then((r) => {
+                        this.load();
+                    })
+                    .catch((e) => {
+                        // TODO : Show error message
+                    })
+
+            }
+        },
+        mounted() {
+            console.log('Role Home Component mounted.')
+            this.load()
+        }
+    }
+</script>
