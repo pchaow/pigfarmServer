@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Choice extends Model
 {
-    protected $fillable = ['name', 'display_name', 'description', 'parent_id', 'children_fields'];
+    protected $fillable = ['name', 'display_name', 'description', 'parent_id', 'children_fields', 'children_values'];
 
     protected $casts = [
-        'children_fields' => 'array',
+        'children_fields' => 'json',
+        'children_values' => 'json',
     ];
 
     public function children()

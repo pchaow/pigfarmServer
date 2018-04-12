@@ -3,7 +3,7 @@
         <div class="card card-default mb-3" v-if="form">
             <div class="card-header">
                 แก้ไขตัวเลือก
-                <span v-if="form.parent">{{form.parent.name}} \ </span>
+                <span v-if="parent">{{parent.name}} \ </span>
                 {{form.name}}
             </div>
 
@@ -26,11 +26,34 @@
                             <input v-model="form.description" type="text" class="form-control"
                                    placeholder="Enter Description">
                         </div>
+
+
+                        <template v-if="parent">
+                            <template v-for="(value,key) in parent.children_fields">
+                                <div class="form-group">
+                                    <label>{{value.display_name}}</label>
+                                    <input v-if="value.type == 'text'" v-model="form.children_values[key]" type="text"
+                                           class="form-control"
+                                           placeholder="Placeholder">
+                                    <input v-if="value.type == 'number'" v-model="form.children_values[key]" type="number"
+                                           class="form-control"
+                                           placeholder="Placeholder">
+
+                                    <choice-select @change="updateField($event,key)" :type="value"
+                                                   :value="form.children_values[key]"></choice-select>
+
+                                </div>
+                            </template>
+                        </template>
+
                         <div class="form-group">
                             <label>Children Field</label>
-                            <textarea class="form-control" v-model="form.children_fields"></textarea>
+                            <textarea rows="10" class="form-control" v-model="form.children_fields"></textarea>
                         </div>
                     </fieldset>
+
+
+
 
                     <button type="submit" class="btn btn-primary">Submit</button>
 
@@ -81,6 +104,10 @@
                         <th>Name</th>
                         <th>Display Name</th>
                         <th>Description</th>
+                        <template v-for="(value,key) in children_fields">
+                            <th v-if="value.showInTable">{{value.display_name}}</th>
+                        </template>
+
                         <th>การกระทำ</th>
                     </tr>
                     </thead>
@@ -89,6 +116,9 @@
                         <td>{{item.name}}</td>
                         <td>{{item.display_name}}</td>
                         <td>{{item.description}}</td>
+                        <template v-for="(value,key) in children_fields">
+                            <th v-if="value.showInTable">{{item.children_values[key].display_name}}</th>
+                        </template>
                         <td>
                             <div class="btn-group">
                                 <router-link
@@ -112,11 +142,16 @@
 
 <script>
     import ChoiceService from "../../../services/ChoiceService";
+    import ChoiceSelect from "../choice/choiceSelect";
 
     export default {
-        components: {},
+        components: {
+            ChoiceSelect
+        },
         data() {
             return {
+                children_fields: [],
+                parent: null,
                 form: {
                     children: [],
                 },
@@ -130,11 +165,23 @@
             }
         },
         methods: {
+            updateField: function ($event, key) {
+                console.log($event, key);
+                this.form.children_values[key] = $event;
+            },
             load: function () {
                 let self = this;
                 ChoiceService.getById(self.$route.params.id)
                     .then((r) => {
-                        self.form = r.data
+                        let data = r.data;
+                        self.form = data;
+                        self.parent = data.parent;
+                        self.children_fields = JSON.parse(data.children_fields);
+                        if (self.parent) {
+                            self.parent.children_fields = (JSON).parse(self.parent.children_fields)
+                            //self.form.children_values = JSON.parse(self.form.children_values);
+                        }
+
                     })
             },
             save: function () {

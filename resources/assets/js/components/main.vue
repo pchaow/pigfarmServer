@@ -37,11 +37,9 @@
         },
         methods: {
             showSpinner() {
-                console.log('show spinner');
                 this.spinnerVisible = true;
             },
             hideSpinner() {
-                console.log('hide spinner');
                 this.spinnerVisible = false;
             }
         },

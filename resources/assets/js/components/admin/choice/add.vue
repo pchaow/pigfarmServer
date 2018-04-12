@@ -26,9 +26,27 @@
                         <input v-model="form.description" type="text" class="form-control"
                                placeholder="Enter Description">
                     </div>
+
+                    <template v-for="(value,key) in parent.children_fields">
+                        <div class="form-group">
+                            <label>{{value.display_name}}</label>
+
+                            <input v-if="value.type == 'text'" v-model="form.children_values[key]" type="text"
+                                   class="form-control"
+                                   placeholder="Placeholder">
+                            <input v-if="value.type == 'number'" v-model="form.children_values[key]" type="number"
+                                   class="form-control"
+                                   placeholder="Placeholder">
+
+                            <choice-select @change="updateField($event,key)" :type="value"></choice-select>
+
+                        </div>
+                    </template>
+
+
                     <div class="form-group">
                         <label>Children Field</label>
-                        <textarea class="form-control" v-model="form.children_fields"></textarea>
+                        <textarea rows="10" class="form-control" v-model="form.children_fields"></textarea>
                     </div>
 
 
@@ -57,9 +75,10 @@
 <script>
 
     import ChoiceService from "../../../services/ChoiceService"
+    import ChoiceSelect from "./choiceSelect";
 
     export default {
-        components: {},
+        components: {ChoiceSelect},
         data() {
             let self = this;
             let parent_id = self.$route.params.id;
@@ -70,18 +89,24 @@
                 form: {
                     parent_id: parent_id,
                     children: [],
+                    children_values: {},
                 },
             }
 
         },
         methods: {
 
+            updateField: function ($event, key) {
+                console.log($event, key);
+                this.form.children_values[key] = $event;
+            },
             load: function () {
                 let self = this
                 if (self.$route.params.id) {
                     ChoiceService.getById(self.$route.params.id, {})
                         .then((r) => {
                             self.parent = r.data;
+                            self.parent.children_fields = JSON.parse(self.parent.children_fields)
                             self.isLoaded = true;
                         })
                 } else {

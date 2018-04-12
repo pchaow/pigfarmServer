@@ -15,6 +15,11 @@ export default {
             params: form
         })
     },
+    getByName(name, form) {
+        return axios.get("/api/choices/" + name, {
+            params: form
+        })
+    },
     store(form) {
         return axios.post("/api/choices", form)
     },

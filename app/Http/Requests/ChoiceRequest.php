@@ -33,7 +33,8 @@ class ChoiceRequest extends FormRequest
     public function rules()
     {
         $rules = [];
-        $item = $this->get('id');
+        $id = $this->get('id');
+        $name = $this->get('name');
 
         switch ($this->method()) {
             case "POST" :
@@ -47,7 +48,7 @@ class ChoiceRequest extends FormRequest
             case "PUT" :
             case "PATCH" :
                 $rules = [
-                    'name' => "required|string|max:20|unique:choies,$item",
+                    'name' => "required|string|max:20|unique:choices,name,$id",
                     'display_name' => 'required|string|max:255',
                     'description' => 'string',
                     'children_fields' => 'json|nullable',

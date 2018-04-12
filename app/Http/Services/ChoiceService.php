@@ -62,7 +62,14 @@ class ChoiceService extends BaseService
             $query->with($with);
         }
 
-        $query->where('id', $id);
+
+        if (is_numeric($id)) {
+            $query->where('id', $id);
+        } else {
+            $query->where('name', $id);
+        }
+
+
         $choice = $query->first();
         $choice->children;
         $choice->parent;
@@ -75,6 +82,7 @@ class ChoiceService extends BaseService
 
         $choice = new Choice();
         $choice->fill($request->all());
+        $choice->name = strtoupper($choice->name);
         $choice->save();
         return $choice;
     }
@@ -87,6 +95,8 @@ class ChoiceService extends BaseService
         }
 
         $choice->fill($request->all());
+        $choice->name = strtoupper($choice->name);
+
         $choice->save();
 
         return $choice;
