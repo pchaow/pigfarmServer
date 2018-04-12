@@ -1,88 +1,103 @@
 <template>
-    <div class="card card-default mb-3">
-        <div class="card-header">ผู้ใช้ใหม่</div>
+    <div class="card card-default mb-3" v-if="isLoaded">
+        <div class="card-header">
+
+            <span v-if="parent">เพิ่มข้อมูลย่อย -{{parent.name}} - {{parent.display_name}}</span>
+            <span v-else>เพิ่มข้อมูลพื้นฐาน</span>
+        </div>
 
         <div class="card-body">
             <form v-on:submit.default="save">
                 <fieldset>
-                    <legend>ข้อมูลพื้นฐาน</legend>
+                    <legend>รายละเอียด</legend>
+                    <input type="hidden" v-model="form.parent_id"/>
                     <div class="form-group">
-                        <label>ชื่อ-นามสกุล</label>
-                        <input v-model="form.name" type="text" class="form-control" placeholder="Enter your name">
+                        <label>Name</label>
+                        <input v-model="form.name" type="text" class="form-control"
+                               placeholder="Choice's name must be unique">
                     </div>
                     <div class="form-group">
-                        <label>ชื่อผู้ใช้</label>
-                        <input v-model="form.username" type="text" class="form-control" placeholder="Enter Username">
+                        <label>Display Name</label>
+                        <input v-model="form.display_name" type="text" class="form-control"
+                               placeholder="Enter Display Name">
                     </div>
                     <div class="form-group">
-                        <label>อีเมล์</label>
-                        <input v-model="form.email" type="email" class="form-control" placeholder="Enter email">
+                        <label>Description</label>
+                        <input v-model="form.description" type="text" class="form-control"
+                               placeholder="Enter Description">
                     </div>
                     <div class="form-group">
-                        <label>รหัสผ่าน</label>
-                        <input v-model="form.password" type="password" class="form-control" placeholder="Password">
+                        <label>Children Field</label>
+                        <textarea class="form-control" v-model="form.children_fields"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label>ยืนยันรหัสผ่าน </label>
-                        <input v-model="form.password_confirmation" type="password" class="form-control"
-                               placeholder="Password Confirmation">
-                    </div>
+
 
                 </fieldset>
 
-                <fieldset>
-                    <legend>สิทธิ์การใช้งาน</legend>
-
-                    <role-checkbox
-                            v-bind:value="form.roles"
-                            @change="updateRoles"
-                    ></role-checkbox>
-
-                </fieldset>
                 <button type="submit" class="btn btn-primary">Submit</button>
 
+                <router-link v-if="form.parent_id"
+                             :key="$route.fullPath"
+                             :to="{ name: 'choice-edit', params: { id: form.parent_id }}"
+                             class="btn btn-light">
+                    ยกเลิก
+                </router-link>
+
+                <router-link v-else
+                             :key="$route.fullPath"
+                             :to="{ name: 'choice-home'}"
+                             class="btn btn-light">
+                    ยกเลิก
+                </router-link>
             </form>
         </div>
     </div>
 </template>
 
 <script>
-    import RoleService from "../../../services/RoleService";
-    import UserService from "../../../services/UserService";
 
-    import RoleCheckbox from "../role/checkbox";
+    import ChoiceService from "../../../services/ChoiceService"
 
     export default {
-        components: {
-            RoleCheckbox
-        },
+        components: {},
         data() {
+            let self = this;
+            let parent_id = self.$route.params.id;
+
             return {
-                roles: [],
+                isLoaded: false,
+                parent: null,
                 form: {
-                    roles: []
+                    parent_id: parent_id,
+                    children: [],
                 },
             }
 
         },
         methods: {
-            updateRoles: function ($event) {
-                let roles = this.form.roles
-                let i = roles.indexOf($event)
-                if( i == -1 ){
-                    roles.push($event)
-                }else {
-                    roles.splice(i,1);
-                }
-            },
+
             load: function () {
                 let self = this
+                if (self.$route.params.id) {
+                    ChoiceService.getById(self.$route.params.id, {})
+                        .then((r) => {
+                            self.parent = r.data;
+                            self.isLoaded = true;
+                        })
+                } else {
+                    self.isLoaded = true;
+                }
             },
             save: function () {
                 let self = this
-                UserService.store(this.form)
+                ChoiceService.store(self.form)
                     .then((r) => {
-                        self.$router.push("/admin/user")
+                        if (self.form.parent_id) {
+                            self.$router.push({name: "choice-edit", params: {id: self.form.parent_id}})
+                        } else {
+                            self.$router.push({name: "choice-home"})
+                        }
+
                     })
                     .catch((e) => {
                         // TODO : handle errors
@@ -93,7 +108,6 @@
             this.load();
         },
         mounted() {
-            console.log('Example Component mounted.')
         }
     }
 </script>

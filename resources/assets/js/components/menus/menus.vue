@@ -37,7 +37,9 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">ข้อมูลพื้นฐานระบบ</a>
+                        <router-link class="nav-link" to="/admin/choice" active-class="active">
+                            ข้อมูลพื้นฐานระบบ
+                        </router-link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">ข้อมูลพื้นฐานฟาร์ม</a>

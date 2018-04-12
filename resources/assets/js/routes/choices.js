@@ -19,9 +19,10 @@ export default {
             component: require('../components/admin/choice/edit'),
         },
         {
-            path: ':parent/:id/edit',
-            name: 'choice-children-edit',
-            component: require('../components/admin/choice/edit'),
-        }
+            path: ':id/add',
+            name: 'choice-children-add',
+            component: require('../components/admin/choice/add'),
+        },
+
     ]
 }

@@ -1,12 +1,17 @@
 <template>
     <div class="card card-default mb-3">
         <div class="card-header">
-            Choice Lists
+            รายการข้อมูลพื้นฐานและตัวเลือก
         </div>
 
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col">
+                    <router-link
+                            :to="{ name: 'choice-add'}"
+                            class="btn btn-primary">
+                        เพิ่มรายการ
+                    </router-link>
                 </div>
                 <div class="col-lg">
                     <div class="float-lg-right float-sm-left">
