@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChoiceRequest;
 use App\Http\Services\ChoiceService;
 use Illuminate\Http\Request;
 
+/**
+ * Class ChoiceController
+ * @package App\Http\Controllers\Admin
+ */
 class ChoiceController extends Controller
 {
     /**
@@ -18,59 +23,53 @@ class ChoiceController extends Controller
 
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param ChoiceRequest $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function index(Request $request)
+    public function index(ChoiceRequest $request)
     {
         return $this->choiceService->getPaginate($request);
     }
 
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param ChoiceRequest $request
+     * @return \App\Models\Choice
      */
-    public function store(Request $request)
+    public function store(ChoiceRequest $request)
     {
         return $this->choiceService->store($request);
     }
 
+
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param ChoiceRequest $request
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Model|null|object|static
      */
-    public function show(Request $request, $id)
+    public function show(ChoiceRequest $request, $id)
     {
         return $this->choiceService->getChoice($request, $id);
     }
 
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param ChoiceRequest $request
+     * @param $id
      */
-    public function update(Request $request, $id)
+    public function update(ChoiceRequest $request, $id)
     {
         return $this->choiceService->update($request, $id);
 
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param ChoiceRequest $request
+     * @param $id
+     * @return array|void
      */
-    public function destroy($id)
+    public function destroy(ChoiceRequest $request, $id)
     {
         return $this->choiceService->destroy($id);
 
