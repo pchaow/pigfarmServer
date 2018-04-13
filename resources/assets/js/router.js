@@ -37,7 +37,6 @@ export function createRouter() {
     })
 
     router.beforeEach((to, from, next) => {
-        console.log(to.fullPath)
         if (to.fullPath !== "/login") {
 
             axios.get('/api/user').then(response => {

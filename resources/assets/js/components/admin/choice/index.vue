@@ -95,7 +95,6 @@
             }
         },
         mounted() {
-            console.log('Role Home Component mounted.')
             this.load()
         }
     }

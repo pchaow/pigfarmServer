@@ -61,8 +61,6 @@
         },
         mounted() {
             this.load();
-            console.log('type', this.type)
-            console.log('value', this.value)
         },
     }
 </script>

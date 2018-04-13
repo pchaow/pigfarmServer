@@ -48923,7 +48923,6 @@ function createRouter() {
     });
 
     router.beforeEach(function (to, from, next) {
-        console.log(to.fullPath);
         if (to.fullPath !== "/login") {
 
             axios.get('/api/user').then(function (response) {
@@ -55596,7 +55595,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
-        console.log('Role Home Component mounted.');
         this.load();
     }
 });
@@ -57196,7 +57194,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57270,8 +57268,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {},
     mounted: function mounted() {
         this.load();
-        console.log('type', this.type);
-        console.log('value', this.value);
     }
 });
 
