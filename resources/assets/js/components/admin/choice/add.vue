@@ -118,7 +118,7 @@
                 ChoiceService.store(self.form)
                     .then((r) => {
                         if (self.form.parent_id) {
-                            self.$router.push({name: "choice-edit", params: {id: self.form.parent_id}})
+                            self.$router.push({name: "choice-view", params: {id: self.form.parent_id}})
                         } else {
                             self.$router.push({name: "choice-home"})
                         }

@@ -55499,6 +55499,10 @@ if (false) {
         name: 'choice-edit',
         component: __webpack_require__(111)
     }, {
+        path: '/:id/view',
+        name: 'choice-view',
+        component: __webpack_require__(118)
+    }, {
         path: '/:id/add',
         name: 'choice-children-add',
         component: __webpack_require__(25)
@@ -55559,6 +55563,9 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__ = __webpack_require__(7);
+//
+//
+//
 //
 //
 //
@@ -55777,6 +55784,21 @@ var render = function() {
                     _c(
                       "router-link",
                       {
+                        staticClass: "btn btn-info",
+                        attrs: {
+                          to: { name: "choice-view", params: { id: item.id } }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            รายละเอียด\n                        "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
                         staticClass: "btn btn-light",
                         attrs: {
                           to: { name: "choice-edit", params: { id: item.id } }
@@ -55966,7 +55988,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var self = this;
             __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].store(self.form).then(function (r) {
                 if (self.form.parent_id) {
-                    self.$router.push({ name: "choice-edit", params: { id: self.form.parent_id } });
+                    self.$router.push({ name: "choice-view", params: { id: self.form.parent_id } });
                 } else {
                     self.$router.push({ name: "choice-home" });
                 }
@@ -56627,68 +56649,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -57044,7 +57004,7 @@ var render = function() {
                         staticClass: "btn btn-light",
                         attrs: {
                           to: {
-                            name: "choice-edit",
+                            name: "choice-view",
                             params: { id: _vm.form.parent.id }
                           }
                         }
@@ -57065,150 +57025,10 @@ var render = function() {
             )
           ])
         ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div", { staticClass: "card card-default mb-3" }, [
-      _c("div", { staticClass: "card-header" }, [
-        _vm._v("\n            ตัวเลือกย่อย\n        ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("div", { staticClass: "row mb-3" }, [
-          _c(
-            "div",
-            { staticClass: "col" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: {
-                    to: {
-                      name: "choice-children-add",
-                      params: { id: _vm.form.id }
-                    }
-                  }
-                },
-                [
-                  _vm._v(
-                    "\n                        เพิ่มรายการย่อย\n                    "
-                  )
-                ]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(0)
-        ]),
-        _vm._v(" "),
-        _c("table", { staticClass: "table table-hover table-striped" }, [
-          _c("thead", { staticClass: "thead-light" }, [
-            _c(
-              "tr",
-              [
-                _c("th", [_vm._v("Name")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Display Name")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Description")]),
-                _vm._v(" "),
-                _vm._l(_vm.children_fields, function(value, key) {
-                  return [
-                    value.showInTable
-                      ? _c("th", [_vm._v(_vm._s(value.display_name))])
-                      : _vm._e()
-                  ]
-                }),
-                _vm._v(" "),
-                _c("th", [_vm._v("การกระทำ")])
-              ],
-              2
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.form.children, function(item) {
-              return _c(
-                "tr",
-                [
-                  _c("td", [_vm._v(_vm._s(item.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(item.display_name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(item.description))]),
-                  _vm._v(" "),
-                  _vm._l(_vm.children_fields, function(value, key) {
-                    return [
-                      value.showInTable
-                        ? _c("th", [
-                            _vm._v(_vm._s(item.values[key].display_name))
-                          ])
-                        : _vm._e()
-                    ]
-                  }),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "div",
-                      { staticClass: "btn-group" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            key: _vm.$route.fullPath,
-                            staticClass: "btn btn-light",
-                            attrs: {
-                              to: {
-                                name: "choice-edit",
-                                params: { parent: _vm.form.id, id: item.id }
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                แก้ไข\n                            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger",
-                            on: {
-                              click: function($event) {
-                                _vm.destroy(item)
-                              }
-                            }
-                          },
-                          [_vm._v("ลบ")]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                2
-              )
-            })
-          )
-        ])
-      ])
-    ])
+      : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg" }, [
-      _c("div", { staticClass: "float-lg-right float-sm-left" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -57342,6 +57162,430 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 117 */,
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(119)
+/* template */
+var __vue_template__ = __webpack_require__(120)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\admin\\choice\\view.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6e20c72c", Component.options)
+  } else {
+    hotAPI.reload("data-v-6e20c72c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 119 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        ChoiceSelect: __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect___default.a
+    },
+    data: function data() {
+        return {
+            children_fields: [],
+            parent: null,
+            form: {
+                children: []
+            }
+        };
+    },
+
+    watch: {
+        '$route': function $route(to, from) {
+            // Whatever you need to change route
+            this.load();
+        }
+    },
+    methods: {
+        updateField: function updateField($event, key) {
+            console.log($event, key);
+            this.form.values[key] = $event;
+        },
+        load: function load() {
+            var self = this;
+            __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].getById(self.$route.params.id).then(function (r) {
+                var data = r.data;
+                self.form = data;
+                self.parent = data.parent;
+                self.children_fields = JSON.parse(data.children_fields);
+                if (self.parent) {
+                    self.parent.children_fields = JSON.parse(self.parent.children_fields);
+                    //self.form.values = JSON.parse(self.form.values);
+                }
+            });
+        },
+        destroy: function destroy(item) {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].destroy(item.id).then(function (r) {
+                _this.load();
+            }).catch(function (e) {
+                // TODO : Show error message
+            });
+        }
+    },
+    created: function created() {},
+    mounted: function mounted() {
+        this.load();
+    }
+});
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.form
+      ? _c("div", { staticClass: "card card-default mb-3" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n            รายละเอียดตัวเลือก\n            "),
+            _vm.parent
+              ? _c("span", [_vm._v(_vm._s(_vm.parent.name) + " \\ ")])
+              : _vm._e(),
+            _vm._v("\n            " + _vm._s(_vm.form.name) + "\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", [
+              _vm._v("ชื่อตัวเลือก (unique) : " + _vm._s(_vm.form.name))
+            ]),
+            _vm._v(" "),
+            _c("h5", [_vm._v("ชื่อแสดง : " + _vm._s(_vm.form.display_name))]),
+            _vm._v(" "),
+            _c("h5", [_vm._v("รายละเอียด : " + _vm._s(_vm.form.description))])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "card card-default mb-3" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _vm._v("\n            ตัวเลือกย่อย\n        ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "row mb-3" }, [
+          _c(
+            "div",
+            { staticClass: "col" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: {
+                    to: {
+                      name: "choice-children-add",
+                      params: { id: _vm.form.id }
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        เพิ่มรายการย่อย\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm.form.parent
+                ? _c(
+                    "router-link",
+                    {
+                      key: _vm.$route.fullPath,
+                      staticClass: "btn btn-light",
+                      attrs: {
+                        to: {
+                          name: "choice-view",
+                          params: { id: _vm.form.parent.id }
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        ย้อนกลับ\n                    "
+                      )
+                    ]
+                  )
+                : _c(
+                    "router-link",
+                    {
+                      key: _vm.$route.fullPath,
+                      staticClass: "btn btn-light",
+                      attrs: { to: { name: "choice-home" } }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        ย้อนกลับ\n                    "
+                      )
+                    ]
+                  )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._m(0)
+        ]),
+        _vm._v(" "),
+        _c("table", { staticClass: "table table-hover table-striped" }, [
+          _c("thead", { staticClass: "thead-light" }, [
+            _c(
+              "tr",
+              [
+                _c("th", [_vm._v("Name")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Display Name")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Description")]),
+                _vm._v(" "),
+                _vm._l(_vm.children_fields, function(value, key) {
+                  return [
+                    value.showInTable
+                      ? _c("th", [_vm._v(_vm._s(value.display_name))])
+                      : _vm._e()
+                  ]
+                }),
+                _vm._v(" "),
+                _c("th", [_vm._v("การกระทำ")])
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.form.children, function(item) {
+              return _c(
+                "tr",
+                [
+                  _c("td", [_vm._v(_vm._s(item.name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.display_name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.description))]),
+                  _vm._v(" "),
+                  _vm._l(_vm.children_fields, function(value, key) {
+                    return [
+                      value.showInTable
+                        ? _c("th", [
+                            _vm._v(_vm._s(item.values[key].display_name))
+                          ])
+                        : _vm._e()
+                    ]
+                  }),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "div",
+                      { staticClass: "btn-group" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            key: _vm.$route.fullPath,
+                            staticClass: "btn btn-light",
+                            attrs: {
+                              to: {
+                                name: "choice-edit",
+                                params: { parent: _vm.form.id, id: item.id }
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                แก้ไข\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            on: {
+                              click: function($event) {
+                                _vm.destroy(item)
+                              }
+                            }
+                          },
+                          [_vm._v("ลบ")]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                2
+              )
+            })
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg" }, [
+      _c("div", { staticClass: "float-lg-right float-sm-left" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6e20c72c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

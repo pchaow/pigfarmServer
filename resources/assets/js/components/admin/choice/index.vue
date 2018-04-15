@@ -45,6 +45,9 @@
                     <td>{{item.description}}</td>
                     <td>
                         <div class="btn-group">
+                            <router-link :to="{ name: 'choice-view', params: { id: item.id }}" class="btn btn-info">
+                                รายละเอียด
+                            </router-link>
                             <router-link :to="{ name: 'choice-edit', params: { id: item.id }}" class="btn btn-light">
                                 แก้ไข
                             </router-link>

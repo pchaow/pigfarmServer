@@ -1,7 +1,7 @@
 export default {
     path: '/admin/choice',
     component: require('../components/main.vue'),
-    canReuse : false,
+    canReuse: false,
     children: [
         {
             path: '',
@@ -17,6 +17,11 @@ export default {
             path: '/:id/edit',
             name: 'choice-edit',
             component: require('../components/admin/choice/edit'),
+        },
+        {
+            path: '/:id/view',
+            name: 'choice-view',
+            component: require('../components/admin/choice/view'),
         },
         {
             path: '/:id/add',

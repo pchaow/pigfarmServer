@@ -59,7 +59,7 @@
 
                     <router-link v-if="form.parent"
                                  :key="$route.fullPath"
-                                 :to="{ name: 'choice-edit', params: { id: form.parent.id }}"
+                                 :to="{ name: 'choice-view', params: { id: form.parent.id }}"
                                  class="btn btn-light">
                         ยกเลิก
                     </router-link>
@@ -75,68 +75,6 @@
                 </form>
             </div>
         </div>
-
-
-        <div class="card card-default mb-3">
-            <div class="card-header">
-                ตัวเลือกย่อย
-            </div>
-
-            <div class="card-body">
-                <div class="row mb-3">
-                    <div class="col">
-                        <router-link
-                                :to="{ name: 'choice-children-add',params : {id :form.id}}"
-                                class="btn btn-primary">
-                            เพิ่มรายการย่อย
-                        </router-link>
-                    </div>
-                    <div class="col-lg">
-                        <div class="float-lg-right float-sm-left">
-
-                        </div>
-
-                    </div>
-                </div>
-                <table class="table table-hover table-striped">
-                    <thead class="thead-light">
-                    <tr>
-                        <th>Name</th>
-                        <th>Display Name</th>
-                        <th>Description</th>
-                        <template v-for="(value,key) in children_fields">
-                            <th v-if="value.showInTable">{{value.display_name}}</th>
-                        </template>
-
-                        <th>การกระทำ</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="item in form.children">
-                        <td>{{item.name}}</td>
-                        <td>{{item.display_name}}</td>
-                        <td>{{item.description}}</td>
-                        <template v-for="(value,key) in children_fields">
-                            <th v-if="value.showInTable">{{item.values[key].display_name}}</th>
-                        </template>
-                        <td>
-                            <div class="btn-group">
-                                <router-link
-                                        :key="$route.fullPath"
-                                        :to="{ name: 'choice-edit', params: { parent : form.id,id: item.id }}"
-                                        class="btn btn-light">
-                                    แก้ไข
-                                </router-link>
-                                <button v-on:click="destroy(item)" class="btn btn-danger">ลบ</button>
-
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
     </div>
 </template>
 
