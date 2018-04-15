@@ -39,16 +39,25 @@ export function createRouter() {
     router.beforeEach((to, from, next) => {
         if (to.fullPath !== "/login") {
 
-            axios.get('/api/user').then(response => {
-
+            if (localStorage.key('user')) {
                 if (to.fullPath == "/") {
                     router.push("/home")
                 }
-
                 next();
-            }).catch(error => {
+            } else {
                 router.push('/login');
-            })
+            }
+
+            // axios.get('/api/user').then(response => {
+            //
+            //     if (to.fullPath == "/") {
+            //         router.push("/home")
+            //     }
+            //
+            //     next();
+            // }).catch(error => {
+            //     router.push('/login');
+            // })
         } else {
             next();
         }

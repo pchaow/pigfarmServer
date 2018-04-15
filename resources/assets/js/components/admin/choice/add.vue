@@ -26,15 +26,15 @@
                         <input v-model="form.description" type="text" class="form-control"
                                placeholder="Enter Description">
                     </div>
-
+                    <template v-if="parent">
                     <template v-for="(value,key) in parent.children_fields">
                         <div class="form-group">
                             <label>{{value.display_name}}</label>
 
-                            <input v-if="value.type == 'text'" v-model="form.children_values[key]" type="text"
+                            <input v-if="value.type == 'text'" v-model="form.values[key]" type="text"
                                    class="form-control"
                                    placeholder="Placeholder">
-                            <input v-if="value.type == 'number'" v-model="form.children_values[key]" type="number"
+                            <input v-if="value.type == 'number'" v-model="form.values[key]" type="number"
                                    class="form-control"
                                    placeholder="Placeholder">
 
@@ -42,9 +42,9 @@
 
                         </div>
                     </template>
+                    </template>
 
-
-                    <div class="form-group">
+                    <div class="form-group" >
                         <label>Children Field</label>
                         <textarea rows="10" class="form-control" v-model="form.children_fields"></textarea>
                     </div>
@@ -89,7 +89,7 @@
                 form: {
                     parent_id: parent_id,
                     children: [],
-                    children_values: {},
+                    values: {},
                 },
             }
 
@@ -98,7 +98,7 @@
 
             updateField: function ($event, key) {
                 console.log($event, key);
-                this.form.children_values[key] = $event;
+                this.form.values[key] = $event;
             },
             load: function () {
                 let self = this

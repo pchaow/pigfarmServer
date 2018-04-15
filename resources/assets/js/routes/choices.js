@@ -14,12 +14,12 @@ export default {
             component: require('../components/admin/choice/add'),
         },
         {
-            path: ':id/edit',
+            path: '/:id/edit',
             name: 'choice-edit',
             component: require('../components/admin/choice/edit'),
         },
         {
-            path: ':id/add',
+            path: '/:id/add',
             name: 'choice-children-add',
             component: require('../components/admin/choice/add'),
         },

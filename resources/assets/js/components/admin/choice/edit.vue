@@ -32,15 +32,15 @@
                             <template v-for="(value,key) in parent.children_fields">
                                 <div class="form-group">
                                     <label>{{value.display_name}}</label>
-                                    <input v-if="value.type == 'text'" v-model="form.children_values[key]" type="text"
+                                    <input v-if="value.type == 'text'" v-model="form.values[key]" type="text"
                                            class="form-control"
                                            placeholder="Placeholder">
-                                    <input v-if="value.type == 'number'" v-model="form.children_values[key]" type="number"
+                                    <input v-if="value.type == 'number'" v-model="form.values[key]" type="number"
                                            class="form-control"
                                            placeholder="Placeholder">
 
                                     <choice-select @change="updateField($event,key)" :type="value"
-                                                   :value="form.children_values[key]"></choice-select>
+                                                   :value="form.values[key]"></choice-select>
 
                                 </div>
                             </template>
@@ -117,7 +117,7 @@
                         <td>{{item.display_name}}</td>
                         <td>{{item.description}}</td>
                         <template v-for="(value,key) in children_fields">
-                            <th v-if="value.showInTable">{{item.children_values[key].display_name}}</th>
+                            <th v-if="value.showInTable">{{item.values[key].display_name}}</th>
                         </template>
                         <td>
                             <div class="btn-group">
@@ -167,7 +167,7 @@
         methods: {
             updateField: function ($event, key) {
                 console.log($event, key);
-                this.form.children_values[key] = $event;
+                this.form.values[key] = $event;
             },
             load: function () {
                 let self = this;
@@ -179,7 +179,7 @@
                         self.children_fields = JSON.parse(data.children_fields);
                         if (self.parent) {
                             self.parent.children_fields = (JSON).parse(self.parent.children_fields)
-                            //self.form.children_values = JSON.parse(self.form.children_values);
+                            //self.form.values = JSON.parse(self.form.values);
                         }
 
                     })
