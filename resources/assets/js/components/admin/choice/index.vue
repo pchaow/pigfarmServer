@@ -32,9 +32,9 @@
             <table class="table table-hover table-striped">
                 <thead class="thead-light">
                 <tr>
-                    <th>Name</th>
-                    <th>Display Name</th>
-                    <th>Description</th>
+                    <th>ชื่อตัวเลือก (Unique)</th>
+                    <th>ขื่อแสดง</th>
+                    <th>รายละเอียด</th>
                     <th>การกระทำ</th>
                 </tr>
                 </thead>

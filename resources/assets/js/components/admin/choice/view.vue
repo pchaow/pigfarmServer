@@ -8,9 +8,25 @@
             </div>
 
             <div class="card-body">
-                <h5>ชื่อตัวเลือก (unique) : {{form.name}}</h5>
-                <h5>ชื่อแสดง : {{form.display_name}}</h5>
-                <h5>รายละเอียด : {{form.description}}</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+
+                        <tbody>
+                        <tr>
+                            <th class="w-25">ชื่อตัวเลือก (Unique)</th>
+                            <td>{{form.name}}</td>
+                        </tr>
+                        <tr>
+                            <th>ชื่อแสดง</th>
+                            <td>{{form.display_name}}</td>
+                        </tr>
+                        <tr>
+                            <th>รายละเอียด</th>
+                            <td>{{form.description}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -53,9 +69,9 @@
                 <table class="table table-hover table-striped">
                     <thead class="thead-light">
                     <tr>
-                        <th>Name</th>
-                        <th>Display Name</th>
-                        <th>Description</th>
+                        <th>ชื่อตัวเลือก (Unique)</th>
+                        <th>ชื่อแสดง</th>
+                        <th>รายละเอียด</th>
                         <template v-for="(value,key) in children_fields">
                             <th v-if="value.showInTable">{{value.display_name}}</th>
                         </template>

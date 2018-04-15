@@ -55841,11 +55841,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", { staticClass: "thead-light" }, [
       _c("tr", [
-        _c("th", [_vm._v("Name")]),
+        _c("th", [_vm._v("ชื่อตัวเลือก (Unique)")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Display Name")]),
+        _c("th", [_vm._v("ขื่อแสดง")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Description")]),
+        _c("th", [_vm._v("รายละเอียด")]),
         _vm._v(" "),
         _c("th", [_vm._v("การกระทำ")])
       ])
@@ -56253,7 +56253,7 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("Name")]),
+                    _c("label", [_vm._v("ชื่อตัวเลือก (Unique)")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -56282,7 +56282,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("Display Name")]),
+                    _c("label", [_vm._v("ชื่อแสดง")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -56315,7 +56315,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("Description")]),
+                    _c("label", [_vm._v("รายละเอียด")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -56480,7 +56480,7 @@ var render = function() {
                       staticClass: "btn btn-light",
                       attrs: {
                         to: {
-                          name: "choice-edit",
+                          name: "choice-view",
                           params: { id: _vm.form.parent_id }
                         }
                       }
@@ -57314,6 +57314,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -57392,13 +57408,31 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("h5", [
-              _vm._v("ชื่อตัวเลือก (unique) : " + _vm._s(_vm.form.name))
-            ]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("ชื่อแสดง : " + _vm._s(_vm.form.display_name))]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("รายละเอียด : " + _vm._s(_vm.form.description))])
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-striped" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("th", { staticClass: "w-25" }, [
+                      _vm._v("ชื่อตัวเลือก (Unique)")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(_vm.form.name))])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", [_vm._v("ชื่อแสดง")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(_vm.form.display_name))])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("th", [_vm._v("รายละเอียด")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(_vm.form.description))])
+                  ])
+                ])
+              ])
+            ])
           ])
         ])
       : _vm._e(),
@@ -57476,11 +57510,11 @@ var render = function() {
             _c(
               "tr",
               [
-                _c("th", [_vm._v("Name")]),
+                _c("th", [_vm._v("ชื่อตัวเลือก (Unique)")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Display Name")]),
+                _c("th", [_vm._v("ชื่อแสดง")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Description")]),
+                _c("th", [_vm._v("รายละเอียด")]),
                 _vm._v(" "),
                 _vm._l(_vm.children_fields, function(value, key) {
                   return [

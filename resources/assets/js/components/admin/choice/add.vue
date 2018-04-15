@@ -12,17 +12,17 @@
                     <legend>รายละเอียด</legend>
                     <input type="hidden" v-model="form.parent_id"/>
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>ชื่อตัวเลือก (Unique)</label>
                         <input v-model="form.name" type="text" class="form-control"
                                placeholder="Choice's name must be unique">
                     </div>
                     <div class="form-group">
-                        <label>Display Name</label>
+                        <label>ชื่อแสดง</label>
                         <input v-model="form.display_name" type="text" class="form-control"
                                placeholder="Enter Display Name">
                     </div>
                     <div class="form-group">
-                        <label>Description</label>
+                        <label>รายละเอียด</label>
                         <input v-model="form.description" type="text" class="form-control"
                                placeholder="Enter Description">
                     </div>
@@ -56,7 +56,7 @@
 
                 <router-link v-if="form.parent_id"
                              :key="$route.fullPath"
-                             :to="{ name: 'choice-edit', params: { id: form.parent_id }}"
+                             :to="{ name: 'choice-view', params: { id: form.parent_id }}"
                              class="btn btn-light">
                     ยกเลิก
                 </router-link>
