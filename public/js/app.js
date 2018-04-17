@@ -53978,6 +53978,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -54032,10 +54034,10 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "row mb-3" }, [
+      _c("div", { staticClass: "d-flex" }, [
         _c(
           "div",
-          { staticClass: "col" },
+          { staticClass: "mr-auto" },
           [
             _c(
               "router-link",
@@ -54049,136 +54051,140 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg" }, [
-          _c("div", { staticClass: "float-lg-right float-sm-left" }, [
-            _c(
-              "form",
-              {
-                staticClass: "form form-inline",
-                on: {
-                  submit: function($event) {
-                    if (
-                      !("button" in $event) &&
-                      _vm._k(
-                        $event.keyCode,
-                        "default",
-                        undefined,
-                        $event.key,
-                        undefined
-                      )
-                    ) {
-                      return null
-                    }
-                    return _vm.load($event)
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "input-group mb-3" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.keyword,
-                        expression: "form.keyword"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "ค้นหา" },
-                    domProps: { value: _vm.form.keyword },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "keyword", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group-append" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary ",
-                        attrs: { type: "button" },
-                        on: { click: _vm.load }
-                      },
-                      [_vm._v("ค้นหา")]
+        _c("div", { staticClass: "justify-content-end" }, [
+          _c(
+            "form",
+            {
+              staticClass: "form form-inline",
+              on: {
+                submit: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k(
+                      $event.keyCode,
+                      "default",
+                      undefined,
+                      $event.key,
+                      undefined
                     )
-                  ])
+                  ) {
+                    return null
+                  }
+                  return _vm.load($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "input-group mb-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.keyword,
+                      expression: "form.keyword"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "ค้นหา" },
+                  domProps: { value: _vm.form.keyword },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "keyword", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group-append" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-info ",
+                      attrs: { type: "button" },
+                      on: { click: _vm.load }
+                    },
+                    [_vm._v("ค้นหา")]
+                  )
                 ])
-              ]
-            )
-          ])
+              ])
+            ]
+          )
         ])
       ]),
       _vm._v(" "),
-      _c("table", { staticClass: "table table-hover table-striped" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.users, function(item) {
-            return _c("tr", [
-              _c("td", [_vm._v(_vm._s(item.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.username))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.email))]),
-              _vm._v(" "),
-              _c(
-                "th",
-                [
-                  _vm._l(item.roles, function(role) {
-                    return [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(role.name) +
-                          "\n                    "
-                      )
-                    ]
-                  })
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _c("td", [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("table", { staticClass: "table table-hover table-striped" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.users, function(item) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(item.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.username))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.email))]),
+                _vm._v(" "),
                 _c(
-                  "div",
-                  { staticClass: "btn-group" },
+                  "th",
                   [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-light",
-                        attrs: {
-                          to: { name: "user-edit", params: { id: item.id } }
-                        }
-                      },
-                      [_vm._v("แก้ไข")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger",
-                        on: {
-                          click: function($event) {
-                            _vm.destroy(item)
-                          }
-                        }
-                      },
-                      [_vm._v("ลบ")]
-                    )
+                    _vm._l(item.roles, function(role) {
+                      return [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(role.name) +
+                            "\n                        "
+                        )
+                      ]
+                    })
                   ],
-                  1
-                )
+                  2
+                ),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "div",
+                    { staticClass: "btn-group" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn btn-light",
+                          attrs: {
+                            to: { name: "user-edit", params: { id: item.id } }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                แก้ไข\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function($event) {
+                              _vm.destroy(item)
+                            }
+                          }
+                        },
+                        [_vm._v("ลบ")]
+                      )
+                    ],
+                    1
+                  )
+                ])
               ])
-            ])
-          })
-        )
+            })
+          )
+        ])
       ])
     ])
   ])
@@ -55216,9 +55222,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 
@@ -55265,71 +55268,67 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "row mb-3" }, [
-        _c("div", { staticClass: "col-lg" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg" }, [
-          _c("div", { staticClass: "float-lg-right float-sm-left" }, [
-            _c("div", { staticClass: "input-group mb-3" }, [
-              _c(
-                "form",
-                {
-                  staticClass: "form form-inline",
+      _c("div", { staticClass: "d-flex justify-content-end" }, [
+        _c("div", { staticClass: "justify-content-end" }, [
+          _c("div", { staticClass: "input-group mb-3" }, [
+            _c(
+              "form",
+              {
+                staticClass: "form form-inline",
+                on: {
+                  submit: function($event) {
+                    if (
+                      !("button" in $event) &&
+                      _vm._k(
+                        $event.keyCode,
+                        "default",
+                        undefined,
+                        $event.key,
+                        undefined
+                      )
+                    ) {
+                      return null
+                    }
+                    return _vm.load($event)
+                  }
+                }
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.keyword,
+                      expression: "form.keyword"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "ค้นหา" },
+                  domProps: { value: _vm.form.keyword },
                   on: {
-                    submit: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k(
-                          $event.keyCode,
-                          "default",
-                          undefined,
-                          $event.key,
-                          undefined
-                        )
-                      ) {
-                        return null
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
-                      return _vm.load($event)
+                      _vm.$set(_vm.form, "keyword", $event.target.value)
                     }
                   }
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.keyword,
-                        expression: "form.keyword"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "ค้นหา" },
-                    domProps: { value: _vm.form.keyword },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "keyword", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group-append" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary ",
-                        attrs: { type: "button" },
-                        on: { click: _vm.load }
-                      },
-                      [_vm._v("ค้นหา")]
-                    )
-                  ])
-                ]
-              )
-            ])
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group-append" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-info ",
+                      attrs: { type: "button" },
+                      on: { click: _vm.load }
+                    },
+                    [_vm._v("ค้นหา")]
+                  )
+                ])
+              ]
+            )
           ])
         ])
       ]),
@@ -55680,10 +55679,10 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "row mb-3" }, [
+      _c("div", { staticClass: "d-flex" }, [
         _c(
           "div",
-          { staticClass: "col" },
+          { staticClass: "mr-auto" },
           [
             _c(
               "router-link",
@@ -55697,7 +55696,7 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg" }, [
+        _c("div", {}, [
           _c("div", { staticClass: "float-lg-right float-sm-left" }, [
             _c(
               "form",
@@ -55749,7 +55748,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-primary ",
+                        staticClass: "btn btn-info ",
                         attrs: { type: "button" },
                         on: { click: _vm.load }
                       },

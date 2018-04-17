@@ -5,23 +5,20 @@
         </div>
 
         <div class="card-body">
-            <div class="row mb-3">
-                <div class="col-lg"></div>
-                <div class="col-lg">
-                    <div class="float-lg-right float-sm-left">
+            <div class="d-flex justify-content-end">
 
-                        <div class="input-group mb-3">
-                            <form class="form form-inline" v-on:submit.default="load">
-                                <input v-model="form.keyword" type="text" class="form-control"
-                                       placeholder="ค้นหา">
-                                <div class="input-group-append">
-                                    <button v-on:click="load" type="button" class="btn btn-primary ">ค้นหา</button>
-                                </div>
-                            </form>
-                        </div>
+                <div class="justify-content-end">
+                    <div class="input-group mb-3">
+                        <form class="form form-inline" v-on:submit.default="load">
+                            <input v-model="form.keyword" type="text" class="form-control"
+                                   placeholder="ค้นหา">
+                            <div class="input-group-append">
+                                <button v-on:click="load" type="button" class="btn btn-info ">ค้นหา</button>
+                            </div>
+                        </form>
                     </div>
-
                 </div>
+
             </div>
             <table class="table table-hover table-striped">
                 <thead class="thead-light">
