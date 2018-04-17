@@ -85,7 +85,10 @@
                         <td>{{item.display_name}}</td>
                         <td>{{item.description}}</td>
                         <template v-for="(value,key) in children_fields">
-                            <th v-if="value.showInTable">{{item.values[key].display_name}}</th>
+                            <th v-if="value.showInTable">
+                                <template v-if="value.type=='ref'">{{item.values[key].display_name}}</template>
+                                <template v-else>{{item.values[key]}}</template>
+                            </th>
                         </template>
                         <td>
                             <div class="btn-group">
@@ -144,11 +147,7 @@
                         let data = r.data;
                         self.form = data;
                         self.parent = data.parent;
-                        self.children_fields = JSON.parse(data.children_fields);
-                        if (self.parent) {
-                            self.parent.children_fields = (JSON).parse(self.parent.children_fields)
-                            //self.form.values = JSON.parse(self.form.values);
-                        }
+                        self.children_fields = data.children_fields;
 
                     })
             },

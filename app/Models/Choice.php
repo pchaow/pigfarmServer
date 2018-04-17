@@ -9,8 +9,8 @@ class Choice extends Model
     protected $fillable = ['name', 'display_name', 'description', 'parent_id', 'children_fields', 'values'];
 
     protected $casts = [
-        'children_fields' => 'json',
-        'values' => 'json',
+        'children_fields' => 'object',
+        'values' => 'array',
     ];
 
     public function children()
@@ -22,4 +22,6 @@ class Choice extends Model
     {
         return $this->belongsTo(Choice::class, 'parent_id');
     }
+
+
 }

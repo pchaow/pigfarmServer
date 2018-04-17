@@ -69,11 +69,10 @@ class ChoiceService extends BaseService
             $query->where('name', $id);
         }
 
-
         $choice = $query->first();
         $choice->children;
+        //$choice->children_fields = json_decode($choice->children_fields);
         $choice->parent;
-
         return $choice;
     }
 

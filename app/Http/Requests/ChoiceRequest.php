@@ -42,7 +42,7 @@ class ChoiceRequest extends FormRequest
                     'name' => 'required|string|max:20|unique:choices',
                     'display_name' => 'required|string|max:255',
                     'description' => 'string',
-                    'children_fields' => 'json|nullable',
+                    'children_fields' => 'nullable',
                 ];
                 break;
             case "PUT" :
@@ -51,7 +51,7 @@ class ChoiceRequest extends FormRequest
                     'name' => "required|string|max:20|unique:choices,name,$id",
                     'display_name' => 'required|string|max:255',
                     'description' => 'string',
-                    'children_fields' => 'json|nullable',
+                    'children_fields' => 'nullable',
                 ];
                 break;
             case "DELETE" :

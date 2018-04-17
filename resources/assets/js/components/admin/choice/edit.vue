@@ -6,7 +6,6 @@
                 <span v-if="parent">{{parent.name}} \ </span>
                 {{form.name}}
             </div>
-
             <div class="card-body">
                 <form v-on:submit.default="save">
                     <fieldset>
@@ -39,22 +38,72 @@
                                            class="form-control"
                                            placeholder="Placeholder">
 
-                                    <choice-select @change="updateField($event,key)" :type="value"
+                                    <choice-select v-if="value.type == 'ref'" @change="updateField($event,key)"
+                                                   :type="value"
                                                    :value="form.values[key]"></choice-select>
-
                                 </div>
                             </template>
                         </template>
 
                         <div class="form-group">
                             <label>Children Field</label>
-                            <textarea rows="10" class="form-control" v-model="form.children_fields"></textarea>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Key</th>
+                                    <th>Display Name</th>
+                                    <th>Type</th>
+                                    <th>To</th>
+                                    <th>Show in Table</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="(value,key) in form.children_fields">
+                                    <td>{{key}}</td>
+                                    <td>{{value.display_name}}</td>
+                                    <td>{{value.type}}</td>
+                                    <td>{{value.to}}</td>
+                                    <td>{{value.showInTable}}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" @click="removeChildren(key)" class="btn btn-danger">
+                                                ลบ
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input v-model="children_forms.key" class="form-control" type="text"/></td>
+                                    <td><input v-model="children_forms.display_name" class="form-control" type="text"/>
+                                    </td>
+                                    <td style="width:100px;">
+                                        <select v-model="children_forms.type" class="form-control">
+                                            <option disabled value="">Please select one</option>
+                                            <option selected>text</option>
+                                            <option>number</option>
+                                            <option>ref</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input v-model="children_forms.to" class="form-control" type="text"/>
+                                    </td>
+                                    <td>
+                                        <input v-model="children_forms.showInTable" class="form-control" type="text"/>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary" @click="addChildrenFields">
+                                                เพิ่ม
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </fieldset>
-
-
-
-
                     <button type="submit" class="btn btn-primary">Submit</button>
 
                     <router-link v-if="form.parent"
@@ -70,8 +119,6 @@
                                  class="btn btn-light">
                         ยกเลิก
                     </router-link>
-
-
                 </form>
             </div>
         </div>
@@ -90,8 +137,12 @@
             return {
                 children_fields: [],
                 parent: null,
+                children_forms: {
+                    type: 'text'
+                },
                 form: {
                     children: [],
+                    children_fields: null,
                 },
             }
 
@@ -100,9 +151,28 @@
             '$route'(to, from) {
                 // Whatever you need to change route
                 this.load();
-            }
+            },
         },
         methods: {
+            removeChildren: function (key) {
+                Vue.delete(this.form.children_fields, key)
+                console.log(key);
+                console.log(this.form.children_fields)
+            },
+            addChildrenFields: function () {
+
+                let cf = this.form.children_fields;
+                let form = this.children_forms;
+                console.log(form);
+                cf[form.key] = {
+                    display_name: form.display_name,
+                    type: form.type,
+                    to: form.to,
+                    showInTable: form.showInTable,
+                }
+
+                this.children_forms = {}
+            },
             updateField: function ($event, key) {
                 console.log($event, key);
                 this.form.values[key] = $event;
@@ -113,12 +183,8 @@
                     .then((r) => {
                         let data = r.data;
                         self.form = data;
+
                         self.parent = data.parent;
-                        self.children_fields = JSON.parse(data.children_fields);
-                        if (self.parent) {
-                            self.parent.children_fields = (JSON).parse(self.parent.children_fields)
-                            //self.form.values = JSON.parse(self.form.values);
-                        }
 
                     })
             },
@@ -126,7 +192,12 @@
                 let self = this
                 ChoiceService.update(this.form, self.$route.params.id)
                     .then((r) => {
-                        self.$router.back();
+
+                        if (self.form.parent_id) {
+                            self.$router.push({name: "choice-view", params: {id: self.form.parent_id}})
+                        } else {
+                            self.$router.push({name: "choice-home"})
+                        }
                     })
                     .catch((e) => {
                         // TODO : handle errors
