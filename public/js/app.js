@@ -48984,17 +48984,6 @@ function createRouter() {
             } else {
                 router.push('/login');
             }
-
-            // axios.get('/api/user').then(response => {
-            //
-            //     if (to.fullPath == "/") {
-            //         router.push("/home")
-            //     }
-            //
-            //     next();
-            // }).catch(error => {
-            //     router.push('/login');
-            // })
         } else {
             next();
         }
@@ -53827,7 +53816,7 @@ var render = function() {
       _c("main", { staticClass: "py-4" }, [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-3 mb-3" }, [_c("menus")], 1),
+            _c("div", { staticClass: "col-lg-3 mb-3" }, [_c("menus")], 1),
             _vm._v(" "),
             _c(
               "div",
@@ -54032,10 +54021,10 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "row mb-3" }, [
+      _c("div", { staticClass: "d-flex" }, [
         _c(
           "div",
-          { staticClass: "col" },
+          { staticClass: "mr-auto" },
           [
             _c(
               "router-link",
@@ -54049,136 +54038,140 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg" }, [
-          _c("div", { staticClass: "float-lg-right float-sm-left" }, [
-            _c(
-              "form",
-              {
-                staticClass: "form form-inline",
-                on: {
-                  submit: function($event) {
-                    if (
-                      !("button" in $event) &&
-                      _vm._k(
-                        $event.keyCode,
-                        "default",
-                        undefined,
-                        $event.key,
-                        undefined
-                      )
-                    ) {
-                      return null
-                    }
-                    return _vm.load($event)
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "input-group mb-3" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.keyword,
-                        expression: "form.keyword"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "ค้นหา" },
-                    domProps: { value: _vm.form.keyword },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "keyword", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group-append" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary ",
-                        attrs: { type: "button" },
-                        on: { click: _vm.load }
-                      },
-                      [_vm._v("ค้นหา")]
+        _c("div", { staticClass: "justify-content-end ml-auto" }, [
+          _c(
+            "form",
+            {
+              staticClass: "form form-inline",
+              on: {
+                submit: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k(
+                      $event.keyCode,
+                      "default",
+                      undefined,
+                      $event.key,
+                      undefined
                     )
-                  ])
+                  ) {
+                    return null
+                  }
+                  return _vm.load($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "input-group mb-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.keyword,
+                      expression: "form.keyword"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "ค้นหา" },
+                  domProps: { value: _vm.form.keyword },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "keyword", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group-append" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-info ",
+                      attrs: { type: "button" },
+                      on: { click: _vm.load }
+                    },
+                    [_vm._v("ค้นหา")]
+                  )
                 ])
-              ]
-            )
-          ])
+              ])
+            ]
+          )
         ])
       ]),
       _vm._v(" "),
-      _c("table", { staticClass: "table table-hover table-striped" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.users, function(item) {
-            return _c("tr", [
-              _c("td", [_vm._v(_vm._s(item.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.username))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(item.email))]),
-              _vm._v(" "),
-              _c(
-                "th",
-                [
-                  _vm._l(item.roles, function(role) {
-                    return [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(role.name) +
-                          "\n                    "
-                      )
-                    ]
-                  })
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _c("td", [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("table", { staticClass: "table table-hover table-striped" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.users, function(item) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(item.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.username))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(item.email))]),
+                _vm._v(" "),
                 _c(
-                  "div",
-                  { staticClass: "btn-group" },
+                  "th",
                   [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-light",
-                        attrs: {
-                          to: { name: "user-edit", params: { id: item.id } }
-                        }
-                      },
-                      [_vm._v("แก้ไข")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger",
-                        on: {
-                          click: function($event) {
-                            _vm.destroy(item)
-                          }
-                        }
-                      },
-                      [_vm._v("ลบ")]
-                    )
+                    _vm._l(item.roles, function(role) {
+                      return [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(role.name) +
+                            "\n                        "
+                        )
+                      ]
+                    })
                   ],
-                  1
-                )
+                  2
+                ),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "div",
+                    { staticClass: "btn-group" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "btn btn-light",
+                          attrs: {
+                            to: { name: "user-edit", params: { id: item.id } }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                แก้ไข\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function($event) {
+                              _vm.destroy(item)
+                            }
+                          }
+                        },
+                        [_vm._v("ลบ")]
+                      )
+                    ],
+                    1
+                  )
+                ])
               ])
-            ])
-          })
-        )
+            })
+          )
+        ])
       ])
     ])
   ])
@@ -55217,8 +55210,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -55265,72 +55256,68 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "row mb-3" }, [
-        _c("div", { staticClass: "col-lg" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg" }, [
-          _c("div", { staticClass: "float-lg-right float-sm-left" }, [
-            _c("div", { staticClass: "input-group mb-3" }, [
-              _c(
-                "form",
-                {
-                  staticClass: "form form-inline",
+      _c("div", { staticClass: "d-flex" }, [
+        _c("div", { staticClass: "justify-content-end ml-auto" }, [
+          _c(
+            "form",
+            {
+              staticClass: "form form-inline",
+              on: {
+                submit: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k(
+                      $event.keyCode,
+                      "default",
+                      undefined,
+                      $event.key,
+                      undefined
+                    )
+                  ) {
+                    return null
+                  }
+                  return _vm.load($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "input-group mb-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.keyword,
+                      expression: "form.keyword"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "ค้นหา" },
+                  domProps: { value: _vm.form.keyword },
                   on: {
-                    submit: function($event) {
-                      if (
-                        !("button" in $event) &&
-                        _vm._k(
-                          $event.keyCode,
-                          "default",
-                          undefined,
-                          $event.key,
-                          undefined
-                        )
-                      ) {
-                        return null
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
-                      return _vm.load($event)
+                      _vm.$set(_vm.form, "keyword", $event.target.value)
                     }
                   }
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.keyword,
-                        expression: "form.keyword"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "ค้นหา" },
-                    domProps: { value: _vm.form.keyword },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "keyword", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group-append" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary ",
-                        attrs: { type: "button" },
-                        on: { click: _vm.load }
-                      },
-                      [_vm._v("ค้นหา")]
-                    )
-                  ])
-                ]
-              )
-            ])
-          ])
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group-append" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-info ",
+                      attrs: { type: "button" },
+                      on: { click: _vm.load }
+                    },
+                    [_vm._v("ค้นหา")]
+                  )
+                ])
+              ])
+            ]
+          )
         ])
       ]),
       _vm._v(" "),
@@ -55680,10 +55667,10 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "row mb-3" }, [
+      _c("div", { staticClass: "d-flex" }, [
         _c(
           "div",
-          { staticClass: "col" },
+          { staticClass: "mr-auto" },
           [
             _c(
               "router-link",
@@ -55697,7 +55684,7 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg" }, [
+        _c("div", {}, [
           _c("div", { staticClass: "float-lg-right float-sm-left" }, [
             _c(
               "form",
@@ -55749,7 +55736,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-primary ",
+                        staticClass: "btn btn-info ",
                         attrs: { type: "button" },
                         on: { click: _vm.load }
                       },
@@ -55944,6 +55931,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -55959,15 +56001,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             isLoaded: false,
             parent: null,
             form: {
-                parent_id: parent_id,
+                parent_name: parent_id,
                 children: [],
                 values: {}
+            },
+            children_forms: {
+                type: 'text'
             }
+
         };
     },
 
     methods: {
 
+        addChildrenFields: function addChildrenFields() {
+
+            var cf = this.form.children_fields;
+            var form = this.children_forms;
+            console.log(form);
+            cf[form.key] = {
+                display_name: form.display_name,
+                type: form.type,
+                to: form.to,
+                showInTable: form.showInTable
+            };
+
+            this.children_forms = {};
+        },
         updateField: function updateField($event, key) {
             console.log($event, key);
             this.form.values[key] = $event;
@@ -55977,7 +56037,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (self.$route.params.id) {
                 __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].getById(self.$route.params.id, {}).then(function (r) {
                     self.parent = r.data;
-                    self.parent.children_fields = JSON.parse(self.parent.children_fields);
+                    self.form.parent_name = self.parent.name;
                     self.isLoaded = true;
                 });
             } else {
@@ -55987,8 +56047,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         save: function save() {
             var self = this;
             __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].store(self.form).then(function (r) {
-                if (self.form.parent_id) {
-                    self.$router.push({ name: "choice-view", params: { id: self.form.parent_id } });
+                if (self.parent.id) {
+                    self.$router.push({ name: "choice-view", params: { id: self.parent.id } });
                 } else {
                     self.$router.push({ name: "choice-home" });
                 }
@@ -56194,7 +56254,7 @@ var render = function() {
           _vm.parent
             ? _c("span", [
                 _vm._v(
-                  "เพิ่มข้อมูลย่อย -" +
+                  "เพิ่มข้อมูลย่อย - " +
                     _vm._s(_vm.parent.name) +
                     " - " +
                     _vm._s(_vm.parent.display_name)
@@ -56399,7 +56459,7 @@ var render = function() {
                                       staticClass: "form-control",
                                       attrs: {
                                         type: "number",
-                                        placeholder: "Placeholder"
+                                        placeholder: value.display_name
                                       },
                                       domProps: { value: _vm.form.values[key] },
                                       on: {
@@ -56417,14 +56477,16 @@ var render = function() {
                                     })
                                   : _vm._e(),
                                 _vm._v(" "),
-                                _c("choice-select", {
-                                  attrs: { type: value },
-                                  on: {
-                                    change: function($event) {
-                                      _vm.updateField($event, key)
-                                    }
-                                  }
-                                })
+                                value.type == "ref"
+                                  ? _c("choice-select", {
+                                      attrs: { type: value },
+                                      on: {
+                                        change: function($event) {
+                                          _vm.updateField($event, key)
+                                        }
+                                      }
+                                    })
+                                  : _vm._e()
                               ],
                               1
                             )
@@ -56436,31 +56498,244 @@ var render = function() {
                   _c("div", { staticClass: "form-group" }, [
                     _c("label", [_vm._v("Children Field")]),
                     _vm._v(" "),
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.children_fields,
-                          expression: "form.children_fields"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { rows: "10" },
-                      domProps: { value: _vm.form.children_fields },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.form,
-                            "children_fields",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
+                    _c("table", { staticClass: "table table-bordered" }, [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        [
+                          _vm._l(_vm.form.children_fields, function(
+                            value,
+                            key
+                          ) {
+                            return _c("tr", [
+                              _c("td", [_vm._v(_vm._s(key))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(value.display_name))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(value.type))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(value.to))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(value.showInTable))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("div", { staticClass: "btn-group" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.removeChildren(key)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                        ลบ\n                                    "
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ])
+                            ])
+                          }),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.children_forms.key,
+                                    expression: "children_forms.key"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text" },
+                                domProps: { value: _vm.children_forms.key },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.children_forms,
+                                      "key",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.children_forms.display_name,
+                                    expression: "children_forms.display_name"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text" },
+                                domProps: {
+                                  value: _vm.children_forms.display_name
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.children_forms,
+                                      "display_name",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticStyle: { width: "100px" } }, [
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.children_forms.type,
+                                      expression: "children_forms.type"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.children_forms,
+                                        "type",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "option",
+                                    { attrs: { disabled: "", value: "" } },
+                                    [_vm._v("Please select one")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { selected: "" } }, [
+                                    _vm._v("text")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("number")]),
+                                  _vm._v(" "),
+                                  _c("option", [_vm._v("ref")])
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.children_forms.to,
+                                    expression: "children_forms.to"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text" },
+                                domProps: { value: _vm.children_forms.to },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.children_forms,
+                                      "to",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.children_forms.showInTable,
+                                    expression: "children_forms.showInTable"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text" },
+                                domProps: {
+                                  value: _vm.children_forms.showInTable
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.children_forms,
+                                      "showInTable",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("div", { staticClass: "btn-group" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-primary",
+                                    attrs: { type: "button" },
+                                    on: { click: _vm.addChildrenFields }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                        เพิ่ม\n                                    "
+                                    )
+                                  ]
+                                )
+                              ])
+                            ])
+                          ])
+                        ],
+                        2
+                      )
+                    ])
                   ])
                 ],
                 2
@@ -56472,7 +56747,7 @@ var render = function() {
                 [_vm._v("Submit")]
               ),
               _vm._v(" "),
-              _vm.form.parent_id
+              _vm.parent.id
                 ? _c(
                     "router-link",
                     {
@@ -56481,7 +56756,7 @@ var render = function() {
                       attrs: {
                         to: {
                           name: "choice-view",
-                          params: { id: _vm.form.parent_id }
+                          params: { id: _vm.parent.id }
                         }
                       }
                     },
@@ -56503,7 +56778,28 @@ var render = function() {
       ])
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Key")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Display Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("To")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Show in Table")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -56761,8 +57057,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var self = this;
             __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].update(this.form, self.$route.params.id).then(function (r) {
 
-                if (self.form.parent_id) {
-                    self.$router.push({ name: "choice-view", params: { id: self.form.parent_id } });
+                if (self.parent) {
+                    self.$router.push({ name: "choice-view", params: { id: self.parent.id } });
                 } else {
                     self.$router.push({ name: "choice-home" });
                 }
@@ -57514,6 +57810,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -57617,179 +57923,217 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "card card-default mb-3" }, [
-      _c("div", { staticClass: "card-header" }, [
-        _vm._v("\n            ตัวเลือกย่อย\n        ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("div", { staticClass: "row mb-3" }, [
-          _c(
-            "div",
-            { staticClass: "col" },
-            [
+    _vm.form
+      ? _c("div", { staticClass: "card card-default mb-3" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n            ตัวเลือกย่อย\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "row mb-3" }, [
               _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: {
-                    to: {
-                      name: "choice-children-add",
-                      params: { id: _vm.form.id }
-                    }
-                  }
-                },
+                "div",
+                { staticClass: "col" },
                 [
-                  _vm._v(
-                    "\n                        เพิ่มรายการย่อย\n                    "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _vm.form.parent
-                ? _c(
+                  _c(
                     "router-link",
                     {
-                      key: _vm.$route.fullPath,
-                      staticClass: "btn btn-light",
+                      staticClass: "btn btn-primary",
                       attrs: {
                         to: {
-                          name: "choice-view",
-                          params: { id: _vm.form.parent.id }
+                          name: "choice-children-add",
+                          params: { id: _vm.form.id }
                         }
                       }
                     },
                     [
                       _vm._v(
-                        "\n                        ย้อนกลับ\n                    "
+                        "\n                        เพิ่มรายการย่อย\n                    "
                       )
                     ]
-                  )
-                : _c(
-                    "router-link",
-                    {
-                      key: _vm.$route.fullPath,
-                      staticClass: "btn btn-light",
-                      attrs: { to: { name: "choice-home" } }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        ย้อนกลับ\n                    "
-                      )
-                    ]
-                  )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(0)
-        ]),
-        _vm._v(" "),
-        _c("table", { staticClass: "table table-hover table-striped" }, [
-          _c("thead", { staticClass: "thead-light" }, [
-            _c(
-              "tr",
-              [
-                _c("th", [_vm._v("ชื่อตัวเลือก (Unique)")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("ชื่อแสดง")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("รายละเอียด")]),
-                _vm._v(" "),
-                _vm._l(_vm.children_fields, function(value, key) {
-                  return [
-                    value.showInTable
-                      ? _c("th", [_vm._v(_vm._s(value.display_name))])
-                      : _vm._e()
-                  ]
-                }),
-                _vm._v(" "),
-                _c("th", [_vm._v("การกระทำ")])
-              ],
-              2
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.form.children, function(item) {
-              return _c(
-                "tr",
-                [
-                  _c("td", [_vm._v(_vm._s(item.name))]),
+                  ),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(item.display_name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(item.description))]),
-                  _vm._v(" "),
-                  _vm._l(_vm.children_fields, function(value, key) {
-                    return [
-                      value.showInTable
-                        ? _c(
-                            "th",
-                            [
-                              value.type == "ref"
-                                ? [
-                                    _vm._v(
-                                      _vm._s(item.values[key].display_name)
-                                    )
-                                  ]
-                                : [_vm._v(_vm._s(item.values[key]))]
-                            ],
-                            2
+                  _vm.form.parent
+                    ? _c(
+                        "router-link",
+                        {
+                          key: _vm.$route.fullPath,
+                          staticClass: "btn btn-light",
+                          attrs: {
+                            to: {
+                              name: "choice-view",
+                              params: { id: _vm.form.parent.id }
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        ย้อนกลับ\n                    "
                           )
-                        : _vm._e()
-                    ]
-                  }),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "div",
-                      { staticClass: "btn-group" },
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            key: _vm.$route.fullPath,
-                            staticClass: "btn btn-light",
-                            attrs: {
-                              to: {
-                                name: "choice-edit",
-                                params: { parent: _vm.form.id, id: item.id }
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                แก้ไข\n                            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger",
-                            on: {
-                              click: function($event) {
-                                _vm.destroy(item)
-                              }
-                            }
-                          },
-                          [_vm._v("ลบ")]
-                        )
-                      ],
-                      1
-                    )
-                  ])
+                        ]
+                      )
+                    : _c(
+                        "router-link",
+                        {
+                          key: _vm.$route.fullPath,
+                          staticClass: "btn btn-light",
+                          attrs: { to: { name: "choice-home" } }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        ย้อนกลับ\n                    "
+                          )
+                        ]
+                      )
                 ],
-                2
-              )
-            })
-          )
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(0)
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-hover table-striped" }, [
+                _c("thead", { staticClass: "thead-light" }, [
+                  _c(
+                    "tr",
+                    [
+                      _c("th", [_vm._v("ชื่อตัวเลือก (Unique)")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("ชื่อแสดง")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("รายละเอียด")]),
+                      _vm._v(" "),
+                      _vm._l(_vm.children_fields, function(value, key) {
+                        return [
+                          value.showInTable
+                            ? _c("th", [_vm._v(_vm._s(value.display_name))])
+                            : _vm._e()
+                        ]
+                      }),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("การกระทำ")])
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.form.children, function(item) {
+                    return _c(
+                      "tr",
+                      [
+                        _c("td", [_vm._v(_vm._s(item.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.display_name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.description))]),
+                        _vm._v(" "),
+                        _vm._l(_vm.children_fields, function(value, key) {
+                          return [
+                            value.showInTable
+                              ? _c(
+                                  "th",
+                                  [
+                                    value.type == "ref"
+                                      ? [
+                                          _vm._v(
+                                            _vm._s(
+                                              item.values[key].display_name
+                                            )
+                                          )
+                                        ]
+                                      : [
+                                          item.values &&
+                                          item.values.hasOwnProperty(key)
+                                            ? [
+                                                _vm._v(
+                                                  "\n                                        " +
+                                                    _vm._s(item.values[key]) +
+                                                    "\n                                    "
+                                                )
+                                              ]
+                                            : _vm._e()
+                                        ]
+                                  ],
+                                  2
+                                )
+                              : _vm._e()
+                          ]
+                        }),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "div",
+                            { staticClass: "btn-group" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "btn btn-info",
+                                  attrs: {
+                                    to: {
+                                      name: "choice-view",
+                                      params: { id: item.id }
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    รายละเอียด\n                                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "router-link",
+                                {
+                                  key: _vm.$route.fullPath,
+                                  staticClass: "btn btn-light",
+                                  attrs: {
+                                    to: {
+                                      name: "choice-edit",
+                                      params: {
+                                        parent: _vm.form.id,
+                                        id: item.id
+                                      }
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    แก้ไข\n                                "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.destroy(item)
+                                    }
+                                  }
+                                },
+                                [_vm._v("ลบ")]
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      ],
+                      2
+                    )
+                  })
+                )
+              ])
+            ])
+          ])
         ])
-      ])
-    ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
