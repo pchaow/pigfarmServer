@@ -41,7 +41,7 @@ class ChoiceRequest extends FormRequest
                 $rules = [
                     'name' => 'required|string|max:20|unique:choices',
                     'display_name' => 'required|string|max:255',
-                    'description' => 'string',
+                    'description' => 'string|nullable',
                     'children_fields' => 'nullable',
                 ];
                 break;
@@ -50,7 +50,7 @@ class ChoiceRequest extends FormRequest
                 $rules = [
                     'name' => "required|string|max:20|unique:choices,name,$id",
                     'display_name' => 'required|string|max:255',
-                    'description' => 'string',
+                    'description' => 'string|nullable',
                     'children_fields' => 'nullable',
                 ];
                 break;

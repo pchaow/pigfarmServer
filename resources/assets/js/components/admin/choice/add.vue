@@ -2,7 +2,7 @@
     <div class="card card-default mb-3" v-if="isLoaded">
         <div class="card-header">
 
-            <span v-if="parent">เพิ่มข้อมูลย่อย -{{parent.name}} - {{parent.display_name}}</span>
+            <span v-if="parent">เพิ่มข้อมูลย่อย - {{parent.name}} - {{parent.display_name}}</span>
             <span v-else>เพิ่มข้อมูลพื้นฐาน</span>
         </div>
 
@@ -27,26 +27,81 @@
                                placeholder="Enter Description">
                     </div>
                     <template v-if="parent">
-                    <template v-for="(value,key) in parent.children_fields">
-                        <div class="form-group">
-                            <label>{{value.display_name}}</label>
+                        <template v-for="(value,key) in parent.children_fields">
+                            <div class="form-group">
+                                <label>{{value.display_name}}</label>
 
-                            <input v-if="value.type == 'text'" v-model="form.values[key]" type="text"
-                                   class="form-control"
-                                   placeholder="Placeholder">
-                            <input v-if="value.type == 'number'" v-model="form.values[key]" type="number"
-                                   class="form-control"
-                                   placeholder="Placeholder">
+                                <input v-if="value.type == 'text'" v-model="form.values[key]" type="text"
+                                       class="form-control"
+                                       placeholder="Placeholder">
+                                <input v-if="value.type == 'number'" v-model="form.values[key]" type="number"
+                                       class="form-control"
+                                       :placeholder="value.display_name">
 
-                            <choice-select @change="updateField($event,key)" :type="value"></choice-select>
+                                <choice-select v-if="value.type =='ref'" @change="updateField($event,key)"
+                                               :type="value"></choice-select>
 
-                        </div>
+                            </div>
+                        </template>
                     </template>
-                    </template>
 
-                    <div class="form-group" >
+                    <div class="form-group">
                         <label>Children Field</label>
-                        <textarea rows="10" class="form-control" v-model="form.children_fields"></textarea>
+
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Display Name</th>
+                                <th>Type</th>
+                                <th>To</th>
+                                <th>Show in Table</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(value,key) in form.children_fields">
+                                <td>{{key}}</td>
+                                <td>{{value.display_name}}</td>
+                                <td>{{value.type}}</td>
+                                <td>{{value.to}}</td>
+                                <td>{{value.showInTable}}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" @click="removeChildren(key)" class="btn btn-danger">
+                                            ลบ
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input v-model="children_forms.key" class="form-control" type="text"/></td>
+                                <td><input v-model="children_forms.display_name" class="form-control" type="text"/>
+                                </td>
+                                <td style="width:100px;">
+                                    <select v-model="children_forms.type" class="form-control">
+                                        <option disabled value="">Please select one</option>
+                                        <option selected>text</option>
+                                        <option>number</option>
+                                        <option>ref</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input v-model="children_forms.to" class="form-control" type="text"/>
+                                </td>
+                                <td>
+                                    <input v-model="children_forms.showInTable" class="form-control" type="text"/>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary" @click="addChildrenFields">
+                                            เพิ่ม
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
 
 
@@ -54,9 +109,9 @@
 
                 <button type="submit" class="btn btn-primary">Submit</button>
 
-                <router-link v-if="form.parent_id"
+                <router-link v-if="parent.id"
                              :key="$route.fullPath"
-                             :to="{ name: 'choice-view', params: { id: form.parent_id }}"
+                             :to="{ name: 'choice-view', params: { id: parent.id }}"
                              class="btn btn-light">
                     ยกเลิก
                 </router-link>
@@ -87,15 +142,33 @@
                 isLoaded: false,
                 parent: null,
                 form: {
-                    parent_id: parent_id,
+                    parent_name: parent_id,
                     children: [],
                     values: {},
                 },
+                children_forms: {
+                    type: 'text'
+                },
+
             }
 
         },
         methods: {
 
+            addChildrenFields: function () {
+
+                let cf = this.form.children_fields;
+                let form = this.children_forms;
+                console.log(form);
+                cf[form.key] = {
+                    display_name: form.display_name,
+                    type: form.type,
+                    to: form.to,
+                    showInTable: form.showInTable,
+                }
+
+                this.children_forms = {}
+            },
             updateField: function ($event, key) {
                 console.log($event, key);
                 this.form.values[key] = $event;
@@ -106,7 +179,7 @@
                     ChoiceService.getById(self.$route.params.id, {})
                         .then((r) => {
                             self.parent = r.data;
-                            self.parent.children_fields = JSON.parse(self.parent.children_fields)
+                            self.form.parent_name = self.parent.name
                             self.isLoaded = true;
                         })
                 } else {
@@ -117,8 +190,8 @@
                 let self = this
                 ChoiceService.store(self.form)
                     .then((r) => {
-                        if (self.form.parent_id) {
-                            self.$router.push({name: "choice-view", params: {id: self.form.parent_id}})
+                        if (self.parent.id) {
+                            self.$router.push({name: "choice-view", params: {id: self.parent.id}})
                         } else {
                             self.$router.push({name: "choice-home"})
                         }

@@ -25,10 +25,10 @@ class ChoiceService extends BaseService
     {
         $query = Choice::query();
 
-        if ($request->has('parent_id')) {
-            $query->where('parent_id', $request->get('parent_id'));
+        if ($request->has('parent_name')) {
+            $query->where('parent_name', $request->get('parent_name'));
         } else {
-            $query->whereNull('parent_id');
+            $query->whereNull('parent_name');
         }
 
         if ($request->has('keyword')) {

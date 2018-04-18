@@ -5,15 +5,15 @@
         </div>
 
         <div class="card-body">
-            <div class="row mb-3">
-                <div class="col">
+            <div class="d-flex">
+                <div class="mr-auto">
                     <router-link
                             :to="{ name: 'choice-add'}"
                             class="btn btn-primary">
                         เพิ่มรายการ
                     </router-link>
                 </div>
-                <div class="col-lg">
+                <div class="">
                     <div class="float-lg-right float-sm-left">
                         <form class="form form-inline" v-on:submit.default="load">
 
@@ -21,7 +21,7 @@
                                 <input v-model="form.keyword" type="text" class="form-control"
                                        placeholder="ค้นหา">
                                 <div class="input-group-append">
-                                    <button v-on:click="load" type="button" class="btn btn-primary ">ค้นหา</button>
+                                    <button v-on:click="load" type="button" class="btn btn-info ">ค้นหา</button>
                                 </div>
                             </div>
                         </form>

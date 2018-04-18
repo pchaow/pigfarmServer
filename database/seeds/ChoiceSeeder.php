@@ -10,28 +10,65 @@ class ChoiceSeeder extends Seeder
      *
      * @return void
      */
+
+    private $choiceHeader = [
+        'id' => 'int',
+        'parent_name' => 'int',
+        'name' => 'string',
+        'display_name' => 'string',
+        'description' => 'string',
+        'children_fields' => 'json',
+        'values' => 'json',
+    ];
+
     public function run()
     {
-        $unitType = new Choice();
-        $unitType->name = strtoupper('unittype');
-        $unitType->display_name = "Unit Type";
-        $unitType->description = "Type of units";
+        Choice::truncate();
 
-        $unitType->save();
+        $filename = storage_path("database/choice.xlsx");
+        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+        $spreadsheet = $reader->load($filename);
 
-        $pigHouse = new Choice();
-        $pigHouse->name = strtoupper("unittype_stable");
-        $pigHouse->display_name = "Pig Stable";
-        $pigHouse->description = "โรงเลี้ยง";
+        $sheet1 = $spreadsheet->getActiveSheet();
 
-        $unitType->children()->save($pigHouse);
+        $i = 0;
 
-        $pigHouse = new Choice();
-        $pigHouse->name = strtoupper("unittype_delivery");
-        $pigHouse->display_name = "Pig Delivered House";
-        $pigHouse->description = "โรงคลอด";
+        $header = [];
 
-        $unitType->children()->save($pigHouse);
+        $choicesArray = [];
+
+        foreach ($sheet1->getRowIterator() as $row) {
+            $i++;
+            $cellIterator = $row->getCellIterator();
+
+            if ($i == 1) {
+                foreach ($cellIterator as $cell) {
+                    $header[] = $cell;
+                }
+            } else {
+                $j = 0;
+                $newChoice = new Choice();
+                foreach ($cellIterator as $cell) {
+                    $attrib = $header["$j"];
+                    $value = $cell->getValue();
+                    switch ($this->choiceHeader["$attrib"]) {
+                        case 'json' :
+                            $value = json_decode($value, true);
+                            if ($value == null) {
+                                $value = new stdClass();
+                            }
+                            break;
+                        default :
+                            $value = $value;
+                    }
+                    $newChoice->$attrib = $value;
+                    $j++;
+                }
+                $newChoice->save();
+            }
+
+        }
+
 
     }
 }
