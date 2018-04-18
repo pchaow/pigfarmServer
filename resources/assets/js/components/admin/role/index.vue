@@ -5,20 +5,21 @@
         </div>
 
         <div class="card-body">
-            <div class="d-flex justify-content-end">
+            <div class="d-flex">
 
-                <div class="justify-content-end">
-                    <div class="input-group mb-3">
-                        <form class="form form-inline" v-on:submit.default="load">
+                <div class="justify-content-end ml-auto">
+                    <form class="form form-inline" v-on:submit.default="load">
+                        <div class="input-group mb-3">
+
                             <input v-model="form.keyword" type="text" class="form-control"
                                    placeholder="ค้นหา">
                             <div class="input-group-append">
                                 <button v-on:click="load" type="button" class="btn btn-info ">ค้นหา</button>
                             </div>
-                        </form>
-                    </div>
-                </div>
 
+                        </div>
+                    </form>
+                </div>
             </div>
             <table class="table table-hover table-striped">
                 <thead class="thead-light">

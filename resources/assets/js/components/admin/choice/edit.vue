@@ -193,8 +193,8 @@
                 ChoiceService.update(this.form, self.$route.params.id)
                     .then((r) => {
 
-                        if (self.form.parent_id) {
-                            self.$router.push({name: "choice-view", params: {id: self.form.parent_id}})
+                        if (self.parent) {
+                            self.$router.push({name: "choice-view", params: {id: self.parent.id}})
                         } else {
                             self.$router.push({name: "choice-home"})
                         }

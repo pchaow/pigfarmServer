@@ -4,7 +4,7 @@
         <main class="py-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 mb-3">
+                    <div class="col-lg-3 mb-3">
                         <menus></menus>
                     </div>
                     <div class="col justify-content-center">

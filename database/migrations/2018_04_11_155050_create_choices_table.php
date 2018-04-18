@@ -15,11 +15,12 @@ class CreateChoicesTable extends Migration
     {
         Schema::create('choices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('parent_id')->nullable();
+            $table->string('parent_name')->nullable();
             $table->string('name')->unique();
             $table->string('display_name');
             $table->text('description')->nullable();
             $table->json('children_fields')->nullable();
+            $table->json('values')->nullable();
             $table->timestamps();
         });
     }

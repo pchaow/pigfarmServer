@@ -8,11 +8,9 @@
             <div class="d-flex">
                 <div class="mr-auto">
                     <router-link to="/admin/user/add" class="btn btn-primary">เพิ่มผู้ใช้</router-link>
-
                 </div>
-                <div class="justify-content-end">
+                <div class="justify-content-end ml-auto">
                     <form class="form form-inline" v-on:submit.default="load">
-
                         <div class="input-group mb-3">
                             <input v-model="form.keyword" type="text" class="form-control"
                                    placeholder="ค้นหา">
