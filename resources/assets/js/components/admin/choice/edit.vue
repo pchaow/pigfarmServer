@@ -143,6 +143,7 @@
                 form: {
                     children: [],
                     children_fields: null,
+                    values: {},
                 },
             }
 
@@ -183,13 +184,16 @@
                     .then((r) => {
                         let data = r.data;
                         self.form = data;
-
+                        if (this.form.values.length === 0) {
+                            this.form.values = {};
+                        }
                         self.parent = data.parent;
 
                     })
             },
             save: function () {
                 let self = this
+
                 ChoiceService.update(this.form, self.$route.params.id)
                     .then((r) => {
 
