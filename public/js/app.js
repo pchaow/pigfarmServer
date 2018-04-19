@@ -55986,7 +55986,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -56250,7 +56249,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.isLoaded
-    ? _c("div", { staticClass: "card card-default mb-3" }, [
+    ? _c("div", { staticClass: "card card-header mb-3" }, [
         _c("div", { staticClass: "card-header" }, [
           _vm.parent
             ? _c("span", [
@@ -56748,21 +56747,25 @@ var render = function() {
                 [_vm._v("Submit")]
               ),
               _vm._v(" "),
-              _vm.parent.id
-                ? _c(
-                    "router-link",
-                    {
-                      key: _vm.$route.fullPath,
-                      staticClass: "btn btn-light",
-                      attrs: {
-                        to: {
-                          name: "choice-view",
-                          params: { id: _vm.parent.id }
-                        }
-                      }
-                    },
-                    [_vm._v("\n                ยกเลิก\n            ")]
-                  )
+              _vm.parent
+                ? [
+                    _vm.parent.id
+                      ? _c(
+                          "router-link",
+                          {
+                            key: _vm.$route.fullPath,
+                            staticClass: "btn btn-light",
+                            attrs: {
+                              to: {
+                                name: "choice-view",
+                                params: { id: _vm.parent.id }
+                              }
+                            }
+                          },
+                          [_vm._v("\n                ยกเลิก\n            ")]
+                        )
+                      : _vm._e()
+                  ]
                 : _c(
                     "router-link",
                     {
@@ -56773,7 +56776,7 @@ var render = function() {
                     [_vm._v("\n                ยกเลิก\n            ")]
                   )
             ],
-            1
+            2
           )
         ])
       ])

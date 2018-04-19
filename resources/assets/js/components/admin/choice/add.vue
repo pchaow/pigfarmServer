@@ -1,7 +1,6 @@
 <template>
-    <div class="card card-default mb-3" v-if="isLoaded">
+    <div class="card card-header mb-3" v-if="isLoaded">
         <div class="card-header">
-
             <span v-if="parent">เพิ่มข้อมูลย่อย - {{parent.name}} - {{parent.display_name}}</span>
             <span v-else>เพิ่มข้อมูลพื้นฐาน</span>
         </div>
@@ -108,14 +107,14 @@
                 </fieldset>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
-
+                <template v-if="parent">
                 <router-link v-if="parent.id"
                              :key="$route.fullPath"
                              :to="{ name: 'choice-view', params: { id: parent.id }}"
                              class="btn btn-light">
                     ยกเลิก
                 </router-link>
-
+                </template>
                 <router-link v-else
                              :key="$route.fullPath"
                              :to="{ name: 'choice-home'}"
