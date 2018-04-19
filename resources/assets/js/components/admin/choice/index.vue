@@ -29,6 +29,7 @@
 
                 </div>
             </div>
+            <div class="table-responsive">
             <table class="table table-hover table-striped">
                 <thead class="thead-light">
                 <tr>
@@ -58,6 +59,7 @@
                 </tr>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </template>

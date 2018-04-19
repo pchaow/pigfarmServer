@@ -21,6 +21,7 @@ export function createRouter() {
                 component: require('./components/main.vue'),
                 children: [
                     {
+                        name : 'home-index',
                         path: '/',
                         component: require('./components/example-charts/chart1')
                     },
