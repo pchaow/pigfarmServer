@@ -17,8 +17,12 @@ class Pig extends Model
             'female_breeder_pig_id',
             'left_breast',
             'right_breast',
-            'blood_line',
             'status',
         ];
+
+    public function bloodLine()
+    {
+        return $this->belongsTo(Choice::class, "blood_line", "name");
+    }
 
 }

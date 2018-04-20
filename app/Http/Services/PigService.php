@@ -33,6 +33,9 @@ class PigService extends BaseService
             $query = $this->bindWith($query, $request->get('with'));
         }
 
+        //auto with
+        $query->with('bloodLine');
+
         return $query;
     }
 
@@ -55,7 +58,6 @@ class PigService extends BaseService
         if ($request->has('with')) {
             $query->with($with);
         }
-
 
         if (is_numeric($id)) {
             $query->where('id', $id);

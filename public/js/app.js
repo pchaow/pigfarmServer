@@ -58710,7 +58710,9 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(item.female_breeder_pig_id))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(" XXX ")]),
+                  _c("td", [
+                    _vm._v(_vm._s(item.blood_line.display_name) + " ")
+                  ]),
                   _vm._v(" "),
                   _c("td", [
                     _vm._v(

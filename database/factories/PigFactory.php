@@ -14,8 +14,8 @@ $factory->define(\App\Models\Pig::class, function (Faker $faker) {
         'left_breast' => $faker->numberBetween(1, 10),
         'right_breast' => $faker->numberBetween(1, 10),
         'blood_line' => $faker->randomElement([
-            "GGPL","GGPY","GP","PS",
+            "BREED_001", "BREED_002", "BREED_003", "BREED_004"
         ]),
 
-        'status' => $faker->randomElement($array = array('Normal', 'Died',)),    ];
+        'status' => $faker->randomElement($array = array('Normal', 'Died',)),];
 });

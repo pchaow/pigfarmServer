@@ -46,7 +46,7 @@
                         <td>{{item.source}}</td>
                         <td>{{item.male_breeder_pig_id}}</td>
                         <td>{{item.female_breeder_pig_id}}</td>
-                        <td> XXX </td>
+                        <td>{{item.blood_line.display_name}} </td>
                         <td>{{item.left_breast}} / {{item.right_breast}}</td>
                         <td>{{item.status}}</td>
                         <td>
