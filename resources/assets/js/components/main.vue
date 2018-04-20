@@ -7,7 +7,7 @@
                     <div class="col-lg-3 mb-3">
                         <menus></menus>
                     </div>
-                    <div class="col justify-content-center">
+                    <div class="col-lg-9 justify-content-center">
                         <loading :active.sync="spinnerVisible"></loading>
                         <router-view></router-view>
                     </div>

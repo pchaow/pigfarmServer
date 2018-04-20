@@ -24,6 +24,7 @@ class CreatePigsTable extends Migration
             $table->string('female_breeder_pig_id')->nullable();
             $table->integer('left_breast')->nullable();
             $table->integer('right_breast')->nullable();
+            $table->string('blood_line')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

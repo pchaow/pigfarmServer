@@ -54040,7 +54040,7 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "col justify-content-center" },
+              { staticClass: "col-lg-9 justify-content-center" },
               [
                 _c("loading", {
                   attrs: { active: _vm.spinnerVisible },
@@ -58518,6 +58518,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -58533,9 +58544,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         load: function load() {
+            var _this = this;
+
             __WEBPACK_IMPORTED_MODULE_0__service__["a" /* default */].getPaginate(this.form).then(function (r) {
-                self.paginate = r.data;
-                self.pigs = r.data.data;
+                _this.paginate = r.data;
+                _this.pigs = r.data.data;
             });
         }
     },
@@ -58673,20 +58686,52 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "table-responsive" }, [
-        _c("table", { staticClass: "table table-hover table-striped" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.pigs, function(item) {
-              return _c("tr", [
-                _c("td", [_vm._v(_vm._s(item.name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v("-")])
-              ])
-            })
-          )
-        ])
+        _c(
+          "table",
+          { staticClass: "table table-hover table-striped text-nowrap" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.pigs, function(item) {
+                return _c("tr", [
+                  _c("td", [_vm._v(_vm._s(item.pig_id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.pig_number))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.birth_date))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.entry_date))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.source))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.male_breeder_pig_id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.female_breeder_pig_id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(" XXX ")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      _vm._s(item.left_breast) +
+                        " / " +
+                        _vm._s(item.right_breast)
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(item.status))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n                        Action\n                    "
+                    )
+                  ])
+                ])
+              })
+            )
+          ]
+        )
       ])
     ])
   ])

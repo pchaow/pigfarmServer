@@ -17,6 +17,7 @@ class Pig extends Model
             'female_breeder_pig_id',
             'left_breast',
             'right_breast',
+            'blood_line',
             'status',
         ];
 

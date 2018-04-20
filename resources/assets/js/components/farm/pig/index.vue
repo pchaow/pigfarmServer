@@ -6,7 +6,6 @@
 
         <div class="card-body">
             <div class="d-flex">
-
                 <div class="justify-content-end ml-auto">
                     <form class="form form-inline" v-on:submit.default="">
                         <div class="input-group mb-3">
@@ -22,7 +21,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-hover table-striped">
+                <table class="table table-hover table-striped text-nowrap">
                     <thead class="thead-light">
                     <tr>
                         <th>PigID</th>
@@ -40,8 +39,20 @@
                     </thead>
                     <tbody>
                     <tr v-for="item in pigs">
-                        <td>{{item.name}}</td>
-                        <td>-</td>
+                        <td>{{item.pig_id}}</td>
+                        <td>{{item.pig_number}}</td>
+                        <td>{{item.birth_date}}</td>
+                        <td>{{item.entry_date}}</td>
+                        <td>{{item.source}}</td>
+                        <td>{{item.male_breeder_pig_id}}</td>
+                        <td>{{item.female_breeder_pig_id}}</td>
+                        <td> XXX </td>
+                        <td>{{item.left_breast}} / {{item.right_breast}}</td>
+                        <td>{{item.status}}</td>
+                        <td>
+                            Action
+                        </td>
+
                     </tr>
                     </tbody>
                 </table>
@@ -59,15 +70,15 @@
             return {
                 pigs: [],
                 form: {},
-                paginate : {}
+                paginate: {}
             }
         },
         methods: {
             load: function () {
                 PigService.getPaginate(this.form)
                     .then((r) => {
-                        self.paginate = r.data;
-                        self.pigs = r.data.data;
+                        this.paginate = r.data;
+                        this.pigs = r.data.data;
                     })
             }
         },
