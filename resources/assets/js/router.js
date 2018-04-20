@@ -9,7 +9,7 @@ import route_admin_user from "./routes/users";
 import route_admin_role from "./routes/roles";
 
 import route_admin_choice from "./routes/choices";
-
+import route_farm_pig from "./components/farm/pig/route";
 
 export function createRouter() {
     let router = new Router({
@@ -21,7 +21,7 @@ export function createRouter() {
                 component: require('./components/main.vue'),
                 children: [
                     {
-                        name : 'home-index',
+                        name: 'home-index',
                         path: '/',
                         component: require('./components/example-charts/chart1')
                     },
@@ -33,7 +33,8 @@ export function createRouter() {
             },
             route_admin_user,
             route_admin_role,
-            route_admin_choice
+            route_admin_choice,
+            route_farm_pig
         ]
     })
 

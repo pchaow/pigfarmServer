@@ -43,11 +43,19 @@
                 </div>
             </div>
         </div>
+
+        <pig-menu></pig-menu>
     </div>
 </template>
 
 <script>
+
+    import pigMenu from "../farm/pig/menu";
+
     export default {
+        components : {
+            pigMenu
+        },
         mounted() {
             console.log('Component mounted.')
         }

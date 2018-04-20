@@ -16,13 +16,23 @@ export default {
         })
     },
     store(form) {
-        return axios.post("/api/users", form)
+        let req =axios.post("/api/users", form)
+        req.then((res) => {
+            AlertService.createNotify("User id:" + res.data.id + " has been created", "success")
+        });
+        req.catch( (err) => {
+            AlertService.createNotify("User cannot be created", "danger")
+        });
+        return req
     },
     update(form, id) {
 
         let req = axios.put("/api/users/" + id, form)
-        req.then(res => {
+        req.then((res) => {
             AlertService.createNotify("User id:" + res.data.id + " has been updated", "success")
+        });
+        req.catch( (err) => {
+            AlertService.createNotify("User id:" + err.body.data.id + " cannot be updated", "danger")
         });
 
         return req;

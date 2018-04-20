@@ -29,5 +29,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::resource('/roles', Admin\RoleController::class);
     Route::resource('/users', Admin\UserController::class);
     Route::resource('/choices',Admin\ChoiceController::class);
+
+    Route::resource('/farm/pigs',Farm\PigController::class);
 });
 

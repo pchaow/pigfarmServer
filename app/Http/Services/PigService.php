@@ -1,0 +1,104 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: chaow
+ * Date: 3/29/2018
+ * Time: 10:04 AM
+ */
+
+namespace App\Http\Services;
+
+use App\Models\Choice;
+use App\Models\Pig;
+use App\Models\User;
+use Illuminate\Http\Request;
+
+class PigService extends BaseService
+{
+
+    protected $searchColumns = [
+        'pig_id' => 'like',
+        'pig_number' => 'like',
+    ];
+
+    function getQuery(Request $request)
+    {
+        $query = Pig::query();
+
+        if ($request->has('keyword')) {
+            $keyword = $request->get('keyword');
+            $query = $this->bindQuerySearchColumns($query, $keyword);
+        }
+        if ($request->has('with')) {
+            $query = $this->bindWith($query, $request->get('with'));
+        }
+
+        return $query;
+    }
+
+    public function getPigs(Request $request)
+    {
+        $query = $this->getQuery($request);
+        return $query->get();
+    }
+
+    public function getPaginate(Request $request)
+    {
+        $query = $this->getQuery($request);
+        return $query->paginate();
+    }
+
+    public function getPig(Request $request, $id)
+    {
+        $with = $request->get('with');
+        $query = Pig::query();
+        if ($request->has('with')) {
+            $query->with($with);
+        }
+
+
+        if (is_numeric($id)) {
+            $query->where('id', $id);
+        } else {
+            $query->where('pig_id', $id);
+        }
+
+        $pig = $query->first();
+        return $pig;
+    }
+
+    public function store(Request $request)
+    {
+
+        $pig = new Pig();
+        $pig->fill($request->all());
+        $pig->save();
+        return $pig;
+    }
+
+    public function update(Request $request, $id)
+    {
+        $pig = Pig::find($id);
+        if (!$pig) {
+            return abort(404, "Pig not found");
+        }
+
+        $pig->fill($request->all());
+        $pig->save();
+
+        return $pig;
+    }
+
+    public function destroy($id)
+    {
+        /** @var Pig $pig */
+        $pig = Pig::find($id);
+        if (!$pig) {
+            return abort(404, "Pig not found");
+        }
+        $pig->delete();
+        return [true];
+    }
+
+
+}
