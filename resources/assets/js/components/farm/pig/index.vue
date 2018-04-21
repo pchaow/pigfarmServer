@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-hover table-striped text-nowrap">
+                <table class="table table-hover text-nowrap">
                     <thead class="thead-light">
                     <tr>
                         <th>PigID</th>
@@ -49,7 +49,9 @@
                         <td>{{item.male_breeder_pig_id}}</td>
                         <td>{{item.female_breeder_pig_id}}</td>
                         <td>
-                            {{typeof(item.blood_line) === "object" ?item.blood_line.display_name : item.blood_line}}
+                            <template v-if="item.blood_line">
+                                {{typeof(item.blood_line) === "object" ?item.blood_line.display_name : item.blood_line}}
+                            </template>
                         </td>
                         <td>{{item.left_breast}} / {{item.right_breast}}</td>
                         <td>{{item.status}}</td>

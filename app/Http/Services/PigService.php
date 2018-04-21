@@ -74,7 +74,15 @@ class PigService extends BaseService
 
         $pig = new Pig();
         $pig->fill($request->all());
+
+
+        $blood_line = $request->get('blood_line', 'none');
+        $blood_line = Choice::where('name', $blood_line['name'])->first();
+
+
+        $pig->bloodLine()->associate($blood_line);
         $pig->save();
+
         return $pig;
     }
 
