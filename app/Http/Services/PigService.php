@@ -33,6 +33,8 @@ class PigService extends BaseService
             $query = $this->bindWith($query, $request->get('with'));
         }
 
+        $query->orderBy('created_at','desc');
+
         //auto with
         $query->with('bloodLine');
 
