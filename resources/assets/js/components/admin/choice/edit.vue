@@ -106,7 +106,13 @@
                     </fieldset>
                     <button type="submit" class="btn btn-primary">Submit</button>
 
-                    <router-link v-if="form.parent"
+                    <router-link class="btn btn-light" v-if="$route.params.back_to"
+                                 :to="$route.params.back_to"
+                    >
+                        ยกเลิก
+                    </router-link>
+
+                    <router-link v-else-if="form.parent"
                                  :key="$route.fullPath"
                                  :to="{ name: 'choice-view', params: { id: form.parent.id }}"
                                  class="btn btn-light">
@@ -196,8 +202,10 @@
 
                 ChoiceService.update(this.form, self.$route.params.id)
                     .then((r) => {
-
-                        if (self.parent) {
+                        if (this.$route.params.back_to != null) {
+                            self.$router.push(this.$route.params.back_to);
+                        }
+                        else if (self.parent) {
                             self.$router.push({name: "choice-view", params: {id: self.parent.id}})
                         } else {
                             self.$router.push({name: "choice-home"})
@@ -223,6 +231,8 @@
         },
         mounted() {
             this.load();
+
+            console.log(this.$route.params.back_to)
         }
     }
 </script>

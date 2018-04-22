@@ -27,6 +27,7 @@
                         </tbody>
                     </table>
                 </div>
+                <router-link class="btn btn-primary" :to="{name:'choice-edit', params:{ id: form.id, back_to : $route.fullPath}}">แก้ไข</router-link>
             </div>
         </div>
 
@@ -87,7 +88,9 @@
                             <td>{{item.description}}</td>
                             <template v-for="(value,key) in children_fields">
                                 <th v-if="value.showInTable">
-                                    <template v-if="value.type=='ref'">{{item.values[key].display_name}}</template>
+                                    <template v-if="item.values && item.values[key] && item.values.hasOwnProperty(key) && value.type=='ref'">
+                                        {{item.values[key].display_name}}
+                                    </template>
                                     <template v-else>
                                         <template v-if="item.values && item.values.hasOwnProperty(key)">
                                             {{item.values[key]}}
