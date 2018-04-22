@@ -31,11 +31,14 @@
                         <th>วันเกิด</th>
                         <th>วันเข้าฟาร์ม</th>
                         <th>แหล่งที่มา</th>
+                        <!--
+
                         <th>พ่อพันธ์ุ</th>
                         <th>แม่พันธุ์</th>
                         <th>สายพันธุ์</th>
                         <th>เต้านม</th>
                         <th>สถานะ</th>
+                         -->
                         <th>การกระทำ</th>
                     </tr>
                     </thead>
@@ -46,6 +49,7 @@
                         <td>{{item.birth_date}}</td>
                         <td>{{item.entry_date}}</td>
                         <td>{{item.source}}</td>
+                        <!--
                         <td>{{item.male_breeder_pig_id}}</td>
                         <td>{{item.female_breeder_pig_id}}</td>
                         <td>
@@ -55,8 +59,11 @@
                         </td>
                         <td>{{item.left_breast}} / {{item.right_breast}}</td>
                         <td>{{item.status}}</td>
+                        -->
                         <td>
-                            Action
+                            <router-link :to="{name:'pig-edit',params : { id : item.id}}" class="btn btn-light">
+                                แก้ไข
+                            </router-link>
                         </td>
                     </tr>
                     </tbody>

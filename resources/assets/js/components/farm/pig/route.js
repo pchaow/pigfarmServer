@@ -13,5 +13,10 @@ export default {
             name: 'pig-add',
             component: require('./add'),
         },
+        {
+            path: ':id/edit',
+            name: 'pig-edit',
+            component: require('./edit'),
+        },
     ]
 }

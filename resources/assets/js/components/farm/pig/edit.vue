@@ -1,5 +1,5 @@
 <template>
-    <div class="card card-default mb-3">
+    <div class="card card-default mb-3" v-if="form">
         <div class="card-header">เพิ่มสุกร</div>
 
         <div class="card-body">
@@ -65,10 +65,9 @@
                     </div>
 
                 </fieldset>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">ตกลง</button>
 
                 <router-link :to="{name : 'pig-home'}" class="btn btn-light">ยกเลิก</router-link>
-
             </form>
         </div>
     </div>
@@ -82,22 +81,27 @@
         components: {ChoiceSelect},
         data() {
             return {
-                form: {
-                    blood_line: {},
-                },
+                form: null,
             }
         },
         methods: {
             save: function () {
                 console.log(this.form)
-                PigService.store(this.form)
+                PigService.update(this.form,this.form.id)
                     .then((r) => {
-                        this.$router.push({name : 'pig-index'})
+                        this.$router.push({name : 'pig-home'})
+                    })
+            },
+            load : function () {
+                PigService.getById(this.$route.params.id)
+                    .then((r)=>{
+                        this.form = r.data;
                     })
             }
         },
         mounted() {
-            console.log('Example Component mounted.')
+            this.load();
+
         }
     }
 </script>
