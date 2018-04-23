@@ -57231,6 +57231,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__forms_input_group__ = __webpack_require__(524);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__forms_input_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__forms_input_group__);
 //
 //
 //
@@ -57360,16 +57362,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
+        InputGroup: __WEBPACK_IMPORTED_MODULE_2__forms_input_group___default.a,
         ChoiceSelect: __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect___default.a
     },
     data: function data() {
@@ -57379,7 +57379,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             children_forms: {
                 type: 'text'
             },
-            form: null
+            form: null,
+            error: {}
         };
     },
 
@@ -57432,16 +57433,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var self = this;
 
-            __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].update(this.form, self.$route.params.id).then(function (r) {
+            __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].update(this.form, this.$route.params.id).then(function (r) {
                 if (_this2.$route.params.back_to != null) {
-                    self.$router.push(_this2.$route.params.back_to);
-                } else if (self.parent) {
-                    self.$router.push({ name: "choice-view", params: { id: self.parent.id } });
+                    _this2.$router.push(_this2.$route.params.back_to);
+                } else if (_this2.parent) {
+                    _this2.$router.push({ name: "choice-view", params: { id: _this2.parent.id } });
                 } else {
-                    self.$router.push({ name: "choice-home" });
+                    _this2.$router.push({ name: "choice-home" });
                 }
             }).catch(function (e) {
                 // TODO : handle errors
+                _this2.error = e.response.data.errors;
             });
         },
         destroy: function destroy(item) {
@@ -57509,100 +57511,56 @@ var render = function() {
                   [
                     _c("legend", [_vm._v("รายละเอียด")]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Name")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.name,
-                            expression: "form.name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Choice's name must be unique"
+                    _c("input-group", {
+                      attrs: {
+                        error: _vm.error,
+                        "display-name": "ชื่อตัวเลือก (Unique)",
+                        type: "text",
+                        errorkey: "name",
+                        placeholder: "Enter Name (unique)"
+                      },
+                      model: {
+                        value: _vm.form.name,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "name", $$v)
                         },
-                        domProps: { value: _vm.form.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.form, "name", $event.target.value)
-                          }
-                        }
-                      })
-                    ]),
+                        expression: "form.name"
+                      }
+                    }),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Display Name")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.display_name,
-                            expression: "form.display_name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Enter Display Name"
+                    _c("input-group", {
+                      attrs: {
+                        error: _vm.error,
+                        "display-name": "ชื่อแสดง",
+                        type: "text",
+                        errorkey: "display_name",
+                        placeholder: "Enter Display Name"
+                      },
+                      model: {
+                        value: _vm.form.display_name,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "display_name", $$v)
                         },
-                        domProps: { value: _vm.form.display_name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.form,
-                              "display_name",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
+                        expression: "form.display_name"
+                      }
+                    }),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Description")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.description,
-                            expression: "form.description"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Enter Description"
+                    _c("input-group", {
+                      attrs: {
+                        error: _vm.error,
+                        "display-name": "รายละเอียด",
+                        type: "text",
+                        errorkey: "description",
+                        placeholder: "Enter Description"
+                      },
+                      model: {
+                        value: _vm.form.description,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "description", $$v)
                         },
-                        domProps: { value: _vm.form.description },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.form,
-                              "description",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      })
-                    ]),
+                        expression: "form.description"
+                      }
+                    }),
                     _vm._v(" "),
                     _vm.parent
                       ? [
