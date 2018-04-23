@@ -146,11 +146,7 @@
                 children_forms: {
                     type: 'text'
                 },
-                form: {
-                    children: [],
-                    children_fields: null,
-                    values: {},
-                },
+                form: null,
             }
 
         },
@@ -171,6 +167,7 @@
                 let cf = this.form.children_fields;
                 let form = this.children_forms;
                 console.log(form);
+                console.log(cf);
                 cf[form.key] = {
                     display_name: form.display_name,
                     type: form.type,

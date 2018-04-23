@@ -179,7 +179,7 @@ module.exports = function normalizeComponent (
 "use strict";
 
 
-var bind = __webpack_require__(17);
+var bind = __webpack_require__(18);
 var isBuffer = __webpack_require__(39);
 
 /*global toString:true*/
@@ -11622,17 +11622,26 @@ module.exports = Component.exports
         });
     },
     getById: function getById(id, form) {
-        return axios.get("/api/choices/" + id, {
+        var req = axios.get("/api/choices/" + id, {
             params: form
         });
+        return req;
     },
     getByName: function getByName(name, form) {
-        return axios.get("/api/choices/" + name, {
+        var req = axios.get("/api/choices/" + name, {
             params: form
         });
+
+        return req;
     },
     store: function store(form) {
-        return axios.post("/api/choices", form);
+        var req = axios.post("/api/choices", form);
+
+        req.catch(function (err) {
+            var errorMsg = err.response.data.message;
+            __WEBPACK_IMPORTED_MODULE_0__services_AlertService__["a" /* default */].createNotify(errorMsg, "error");
+        });
+        return req;
     },
     update: function update(form, id) {
 
@@ -11650,6 +11659,57 @@ module.exports = Component.exports
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(113)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(115)
+/* template */
+var __vue_template__ = __webpack_require__(116)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-50114384"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\admin\\choice\\choiceSelect.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-50114384", Component.options)
+  } else {
+    hotAPI.reload("data-v-50114384", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -11877,7 +11937,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11933,57 +11993,6 @@ function applyToTag (styleElement, obj) {
         }
     }
 });
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(113)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(115)
-/* template */
-var __vue_template__ = __webpack_require__(116)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-50114384"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\admin\\choice\\choiceSelect.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-50114384", Component.options)
-  } else {
-    hotAPI.reload("data-v-50114384", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
 
 /***/ }),
 /* 10 */
@@ -22380,10 +22389,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(18);
+    adapter = __webpack_require__(19);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(18);
+    adapter = __webpack_require__(19);
   }
   return adapter;
 }
@@ -22458,7 +22467,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ }),
 /* 12 */
@@ -22513,6 +22522,55 @@ var AlertBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 
 /***/ }),
 /* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_AlertService__ = __webpack_require__(12);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    getPigs: function getPigs() {
+        return axios.get("/api/farm/pigs");
+    },
+    getPaginate: function getPaginate(form) {
+        return axios.get("/api/farm/pigs", {
+            params: form
+        });
+    },
+    getById: function getById(id, form) {
+        return axios.get("/api/farm/pigs/" + id, {
+            params: form
+        });
+    },
+    store: function store(form) {
+        var req = axios.post("/api/farm/pigs", form);
+        req.then(function (res) {
+            __WEBPACK_IMPORTED_MODULE_0__services_AlertService__["a" /* default */].createNotify("Pig id:" + res.data.id + " has been created", "success");
+        });
+        req.catch(function (err) {
+            __WEBPACK_IMPORTED_MODULE_0__services_AlertService__["a" /* default */].createNotify("Pig cannot be created", "danger");
+        });
+        return req;
+    },
+    update: function update(form, id) {
+
+        var req = axios.put("/api/farm/pigs/" + id, form);
+        req.then(function (res) {
+            __WEBPACK_IMPORTED_MODULE_0__services_AlertService__["a" /* default */].createNotify("Pig id:" + res.data.id + " has been updated", "success");
+        });
+        req.catch(function (err) {
+            __WEBPACK_IMPORTED_MODULE_0__services_AlertService__["a" /* default */].createNotify("Pig id:" + err.body.data.id + " cannot be updated", "danger");
+        });
+
+        return req;
+    },
+    destroy: function destroy(id) {
+        return axios.delete('/api/farm/pigs/' + id);
+    }
+});
+
+/***/ }),
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -25032,7 +25090,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -25044,7 +25102,7 @@ Popper.Defaults = Defaults;
 var eventHub = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -25234,7 +25292,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25252,7 +25310,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25263,7 +25321,7 @@ var settle = __webpack_require__(42);
 var buildURL = __webpack_require__(44);
 var parseHeaders = __webpack_require__(45);
 var isURLSameOrigin = __webpack_require__(46);
-var createError = __webpack_require__(19);
+var createError = __webpack_require__(20);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(47);
 
 module.exports = function xhrAdapter(config) {
@@ -25439,7 +25497,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25464,7 +25522,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25476,7 +25534,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25502,7 +25560,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -25515,7 +25573,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -25921,7 +25979,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
 });
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -25952,7 +26010,7 @@ if(false) {
 }
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -26003,7 +26061,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -26050,64 +26108,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 27 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_AlertService__ = __webpack_require__(12);
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    getPigs: function getPigs() {
-        return axios.get("/api/farm/pigs");
-    },
-    getPaginate: function getPaginate(form) {
-        return axios.get("/api/farm/pigs", {
-            params: form
-        });
-    },
-    getById: function getById(id, form) {
-        return axios.get("/api/farm/pigs/" + id, {
-            params: form
-        });
-    },
-    store: function store(form) {
-        var req = axios.post("/api/farm/pigs", form);
-        req.then(function (res) {
-            __WEBPACK_IMPORTED_MODULE_0__services_AlertService__["a" /* default */].createNotify("Pig id:" + res.data.id + " has been created", "success");
-        });
-        req.catch(function (err) {
-            __WEBPACK_IMPORTED_MODULE_0__services_AlertService__["a" /* default */].createNotify("Pig cannot be created", "danger");
-        });
-        return req;
-    },
-    update: function update(form, id) {
-
-        var req = axios.put("/api/farm/pigs/" + id, form);
-        req.then(function (res) {
-            __WEBPACK_IMPORTED_MODULE_0__services_AlertService__["a" /* default */].createNotify("Pig id:" + res.data.id + " has been updated", "success");
-        });
-        req.catch(function (err) {
-            __WEBPACK_IMPORTED_MODULE_0__services_AlertService__["a" /* default */].createNotify("Pig id:" + err.body.data.id + " cannot be updated", "danger");
-        });
-
-        return req;
-    },
-    destroy: function destroy(id) {
-        return axios.delete('/api/farm/pigs/' + id);
-    }
-});
-
-/***/ }),
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(131)
+var __vue_script__ = __webpack_require__(134)
 /* template */
-var __vue_template__ = __webpack_require__(132)
+var __vue_template__ = __webpack_require__(135)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -26150,7 +26159,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(30);
-module.exports = __webpack_require__(133);
+module.exports = __webpack_require__(136);
 
 
 /***/ }),
@@ -26201,9 +26210,9 @@ var app = new Vue({
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__eventhub__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__eventhub__ = __webpack_require__(16);
 window._ = __webpack_require__(32);
-window.Popper = __webpack_require__(14).default;
+window.Popper = __webpack_require__(15).default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -43420,7 +43429,7 @@ module.exports = function(module) {
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-	 true ? factory(exports, __webpack_require__(10), __webpack_require__(14)) :
+	 true ? factory(exports, __webpack_require__(10), __webpack_require__(15)) :
 	typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
 	(factory((global.bootstrap = {}),global.jQuery,global.Popper));
 }(this, (function (exports,$,Popper) { 'use strict';
@@ -47568,7 +47577,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(17)))
 
 /***/ }),
 /* 37 */
@@ -47584,7 +47593,7 @@ module.exports = __webpack_require__(38);
 
 
 var utils = __webpack_require__(1);
-var bind = __webpack_require__(17);
+var bind = __webpack_require__(18);
 var Axios = __webpack_require__(40);
 var defaults = __webpack_require__(11);
 
@@ -47619,9 +47628,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(21);
+axios.Cancel = __webpack_require__(22);
 axios.CancelToken = __webpack_require__(54);
-axios.isCancel = __webpack_require__(20);
+axios.isCancel = __webpack_require__(21);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -47774,7 +47783,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(19);
+var createError = __webpack_require__(20);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -48207,7 +48216,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(1);
 var transformData = __webpack_require__(51);
-var isCancel = __webpack_require__(20);
+var isCancel = __webpack_require__(21);
 var defaults = __webpack_require__(11);
 var isAbsoluteURL = __webpack_require__(52);
 var combineURLs = __webpack_require__(53);
@@ -48367,7 +48376,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(21);
+var Cancel = __webpack_require__(22);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -48465,7 +48474,7 @@ module.exports = function spread(callback) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_highcharts__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_highcharts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_highcharts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constructors_js__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constructors_js__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_js__ = __webpack_require__(58);
 
 
@@ -48888,7 +48897,7 @@ b,l,d){var h;a.objectEach(c,function(a,c){if(!d&&-1<E(c,["series","xAxis","yAxis
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__clone_js__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constructors_js__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constructors_js__ = __webpack_require__(23);
 
 
 
@@ -51859,7 +51868,7 @@ var content = __webpack_require__(66);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("6f46c713", content, false, {});
+var update = __webpack_require__(8)("6f46c713", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -51927,9 +51936,9 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__);
 //
 //
@@ -52698,15 +52707,15 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menus_navbars_vue__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menus_navbars_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__menus_navbars_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menus_menus_vue__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menus_menus_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__menus_menus_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__eventhub__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__eventhub__ = __webpack_require__(16);
 //
 //
 //
@@ -52824,7 +52833,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(9);
 //
 //
 //
@@ -53898,7 +53907,7 @@ var content = __webpack_require__(83);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("7a4b3e32", content, false, {});
+var update = __webpack_require__(8)("7a4b3e32", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -54276,7 +54285,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(9);
 //
 //
 //
@@ -54630,8 +54639,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_RoleService__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_UserService__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__role_checkbox__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_UserService__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__role_checkbox__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__role_checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__role_checkbox__);
 //
 //
@@ -54741,7 +54750,7 @@ var content = __webpack_require__(94);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("7f21aa54", content, false, {});
+var update = __webpack_require__(8)("7f21aa54", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -55161,8 +55170,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__role_checkbox__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__role_checkbox__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__role_checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__role_checkbox__);
 //
 //
@@ -55855,7 +55864,7 @@ if (false) {
     }, {
         path: 'add',
         name: 'choice-add',
-        component: __webpack_require__(26)
+        component: __webpack_require__(27)
     }, {
         path: ':id/edit',
         name: 'choice-edit',
@@ -55867,7 +55876,7 @@ if (false) {
     }, {
         path: ':id/add',
         name: 'choice-children-add',
-        component: __webpack_require__(26)
+        component: __webpack_require__(27)
     }]
 });
 
@@ -56234,8 +56243,10 @@ if (false) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choiceSelect__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choiceSelect__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choiceSelect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__choiceSelect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__forms_input_group__ = __webpack_require__(524);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__forms_input_group___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__forms_input_group__);
 //
 //
 //
@@ -56361,16 +56372,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
+
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { ChoiceSelect: __WEBPACK_IMPORTED_MODULE_1__choiceSelect___default.a },
+    components: { ChoiceSelect: __WEBPACK_IMPORTED_MODULE_1__choiceSelect___default.a, InputGroup: __WEBPACK_IMPORTED_MODULE_2__forms_input_group___default.a },
     data: function data() {
         var self = this;
         var parent_id = self.$route.params.id;
@@ -56383,6 +56392,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 children: [],
                 values: {}
             },
+            error: {},
             children_forms: {
                 type: 'text'
             }
@@ -56413,7 +56423,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         load: function load() {
             var self = this;
             if (self.$route.params.id) {
-                __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].getById(self.$route.params.id, {}).then(function (r) {
+                var req = __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].getById(self.$route.params.id, {});
+                req.then(function (r) {
                     self.parent = r.data;
                     self.form.parent_name = self.parent.name;
                     self.isLoaded = true;
@@ -56423,15 +56434,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         save: function save() {
+            var _this = this;
+
             var self = this;
-            __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].store(self.form).then(function (r) {
-                if (self.parent.id) {
+            this.error = {};
+            var req = __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__["a" /* default */].store(self.form);
+            req.then(function (r) {
+                if (self.parent && self.parent.hasOwnProperty('id')) {
                     self.$router.push({ name: "choice-view", params: { id: self.parent.id } });
                 } else {
                     self.$router.push({ name: "choice-home" });
                 }
-            }).catch(function (e) {
-                // TODO : handle errors
+            });
+            req.catch(function (e) {
+                console.log(e.response);
+                _this.error = e.response.data.errors;
             });
         }
     },
@@ -56452,7 +56469,7 @@ var content = __webpack_require__(114);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("095052f0", content, false, {});
+var update = __webpack_require__(8)("095052f0", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -56627,7 +56644,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.isLoaded
-    ? _c("div", { staticClass: "card card-header mb-3" }, [
+    ? _c("div", { staticClass: "card card-default mb-3" }, [
         _c("div", { staticClass: "card-header" }, [
           _vm.parent
             ? _c("span", [
@@ -56690,93 +56707,56 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("ชื่อตัวเลือก (Unique)")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.name,
-                          expression: "form.name"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Choice's name must be unique"
+                  _c("input-group", {
+                    attrs: {
+                      error: _vm.error,
+                      "display-name": "ชื่อตัวเลือก (Unique)",
+                      type: "text",
+                      errorkey: "name",
+                      placeholder: "Enter Name (unique)"
+                    },
+                    model: {
+                      value: _vm.form.name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "name", $$v)
                       },
-                      domProps: { value: _vm.form.name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "name", $event.target.value)
-                        }
-                      }
-                    })
-                  ]),
+                      expression: "form.name"
+                    }
+                  }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("ชื่อแสดง")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.display_name,
-                          expression: "form.display_name"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Enter Display Name"
+                  _c("input-group", {
+                    attrs: {
+                      error: _vm.error,
+                      "display-name": "ชื่อแสดง",
+                      type: "text",
+                      errorkey: "display_name",
+                      placeholder: "Enter Display Name"
+                    },
+                    model: {
+                      value: _vm.form.display_name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "display_name", $$v)
                       },
-                      domProps: { value: _vm.form.display_name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.form,
-                            "display_name",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]),
+                      expression: "form.display_name"
+                    }
+                  }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("รายละเอียด")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.description,
-                          expression: "form.description"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text", placeholder: "Enter Description" },
-                      domProps: { value: _vm.form.description },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "description", $event.target.value)
-                        }
-                      }
-                    })
-                  ]),
+                  _c("input-group", {
+                    attrs: {
+                      error: _vm.error,
+                      "display-name": "รายละเอียด",
+                      type: "text",
+                      errorkey: "description",
+                      placeholder: "Enter Description"
+                    },
+                    model: {
+                      value: _vm.form.description,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "description", $$v)
+                      },
+                      expression: "form.description"
+                    }
+                  }),
                   _vm._v(" "),
                   _vm.parent
                     ? [
@@ -57140,7 +57120,11 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("\n                ยกเลิก\n            ")]
+                          [
+                            _vm._v(
+                              "\n                    ยกเลิก\n                "
+                            )
+                          ]
                         )
                       : _vm._e()
                   ]
@@ -57245,7 +57229,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect__);
 //
 //
@@ -57395,11 +57379,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             children_forms: {
                 type: 'text'
             },
-            form: {
-                children: [],
-                children_fields: null,
-                values: {}
-            }
+            form: null
         };
     },
 
@@ -57420,6 +57400,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var cf = this.form.children_fields;
             var form = this.children_forms;
             console.log(form);
+            console.log(cf);
             cf[form.key] = {
                 display_name: form.display_name,
                 type: form.type,
@@ -58111,7 +58092,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_ChoiceService__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__choice_choiceSelect__);
 //
 //
@@ -58251,9 +58232,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             children_fields: [],
             parent: null,
-            form: {
-                children: []
-            }
+            form: null
         };
     },
 
@@ -58618,7 +58597,7 @@ if (false) {
     }, {
         path: ':id/edit',
         name: 'pig-edit',
-        component: __webpack_require__(521)
+        component: __webpack_require__(131)
     }]
 });
 
@@ -58675,7 +58654,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__service__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__service__ = __webpack_require__(14);
 //
 //
 //
@@ -59040,9 +59019,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service__ = __webpack_require__(14);
 //
 //
 //
@@ -59504,6 +59483,530 @@ if (false) {
 
 /***/ }),
 /* 131 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(132)
+/* template */
+var __vue_template__ = __webpack_require__(133)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\farm\\pig\\edit.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6d81f892", Component.options)
+  } else {
+    hotAPI.reload("data-v-6d81f892", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 132 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service__ = __webpack_require__(14);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { ChoiceSelect: __WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect___default.a },
+    data: function data() {
+        return {
+            form: null
+        };
+    },
+
+    methods: {
+        save: function save() {
+            var _this = this;
+
+            console.log(this.form);
+            __WEBPACK_IMPORTED_MODULE_1__service__["a" /* default */].update(this.form, this.form.id).then(function (r) {
+                _this.$router.push({ name: 'pig-home' });
+            });
+        },
+        load: function load() {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_1__service__["a" /* default */].getById(this.$route.params.id).then(function (r) {
+                _this2.form = r.data;
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.load();
+    }
+});
+
+/***/ }),
+/* 133 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.form
+    ? _c("div", { staticClass: "card card-default mb-3" }, [
+        _c("div", { staticClass: "card-header" }, [_vm._v("เพิ่มสุกร")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k(
+                      $event.keyCode,
+                      "default",
+                      undefined,
+                      $event.key,
+                      undefined
+                    )
+                  ) {
+                    return null
+                  }
+                  return _vm.save($event)
+                }
+              }
+            },
+            [
+              _c("fieldset", [
+                _c("legend", [_vm._v("ข้อมูลพื้นฐาน")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("PIGID")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.pig_id,
+                        expression: "form.pig_id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "##-####" },
+                    domProps: { value: _vm.form.pig_id },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "pig_id", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("เบอร์แม่พันธุ์")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.pig_number,
+                        expression: "form.pig_number"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "####" },
+                    domProps: { value: _vm.form.pig_number },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "pig_number", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("วันเกิด")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.birth_date,
+                        expression: "form.birth_date"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "date" },
+                    domProps: { value: _vm.form.birth_date },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "birth_date", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("วันที่เข้าฟาร์ม")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.entry_date,
+                        expression: "form.entry_date"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "date" },
+                    domProps: { value: _vm.form.entry_date },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "entry_date", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("แหล่งที่มา")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.source,
+                        expression: "form.source"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "แหล่งที่มา" },
+                    domProps: { value: _vm.form.source },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "source", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("พ่อพันธุ์")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.male_breeder_pig_id,
+                        expression: "form.male_breeder_pig_id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "พ่อพันธุ์" },
+                    domProps: { value: _vm.form.male_breeder_pig_id },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form,
+                          "male_breeder_pig_id",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("แม่พันธุ์")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.female_breeder_pig_id,
+                        expression: "form.female_breeder_pig_id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "แม่พันธุ์" },
+                    domProps: { value: _vm.form.female_breeder_pig_id },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.form,
+                          "female_breeder_pig_id",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
+                    _c("label", [_vm._v("สายพันธุ์")]),
+                    _vm._v(" "),
+                    _c("choice-select", {
+                      attrs: {
+                        type: { to: "BREED" },
+                        value: _vm.form.blood_line
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.form.blood_line = $event
+                        }
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("เต้านม (ซ้าย)")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.left_breast,
+                        expression: "form.left_breast"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number" },
+                    domProps: { value: _vm.form.left_breast },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "left_breast", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("เต้านม (ขวา)")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.right_breast,
+                        expression: "form.right_breast"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number" },
+                    domProps: { value: _vm.form.right_breast },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "right_breast", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("สถานะ (อยู่ระหว่างการพัฒนาตัวเลือก)")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.status,
+                        expression: "form.status"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "สถานะ" },
+                    domProps: { value: _vm.form.status },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "status", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                [_vm._v("ตกลง")]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-light",
+                  attrs: { to: { name: "pig-home" } }
+                },
+                [_vm._v("ยกเลิก")]
+              )
+            ],
+            1
+          )
+        ])
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6d81f892", module.exports)
+  }
+}
+
+/***/ }),
+/* 134 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59593,7 +60096,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 132 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -59622,15 +60125,12 @@ if (false) {
 }
 
 /***/ }),
-/* 133 */
+/* 136 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 134 */,
-/* 135 */,
-/* 136 */,
 /* 137 */,
 /* 138 */,
 /* 139 */,
@@ -60015,21 +60515,28 @@ if (false) {
 /* 518 */,
 /* 519 */,
 /* 520 */,
-/* 521 */
+/* 521 */,
+/* 522 */,
+/* 523 */,
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(525)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(522)
+var __vue_script__ = __webpack_require__(527)
 /* template */
-var __vue_template__ = __webpack_require__(523)
+var __vue_template__ = __webpack_require__(528)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-f1efee70"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -60040,7 +60547,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\farm\\pig\\edit.vue"
+Component.options.__file = "resources\\assets\\js\\components\\forms\\input-group.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -60049,9 +60556,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6d81f892", Component.options)
+    hotAPI.createRecord("data-v-f1efee70", Component.options)
   } else {
-    hotAPI.reload("data-v-6d81f892", Component.options)
+    hotAPI.reload("data-v-f1efee70", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -60062,14 +60569,51 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 522 */
+/* 525 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(526);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(8)("cd923eae", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f1efee70\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./input-group.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f1efee70\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./input-group.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 526 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 527 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service__ = __webpack_require__(27);
 //
 //
 //
@@ -60085,448 +60629,62 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { ChoiceSelect: __WEBPACK_IMPORTED_MODULE_0__admin_choice_choiceSelect___default.a },
-    data: function data() {
-        return {
-            form: null
-        };
-    },
-
-    methods: {
-        save: function save() {
-            var _this = this;
-
-            console.log(this.form);
-            __WEBPACK_IMPORTED_MODULE_1__service__["a" /* default */].update(this.form, this.form.id).then(function (r) {
-                _this.$router.push({ name: 'pig-home' });
-            });
+    name: "input-group",
+    props: {
+        error: {
+            type: [Object],
+            default: function _default() {}
         },
-        load: function load() {
-            var _this2 = this;
-
-            __WEBPACK_IMPORTED_MODULE_1__service__["a" /* default */].getById(this.$route.params.id).then(function (r) {
-                _this2.form = r.data;
-            });
+        value: {
+            type: String,
+            default: function _default() {}
+        },
+        type: {
+            type: String,
+            default: "text"
+        },
+        errorkey: {
+            type: String
+        },
+        displayName: {
+            type: String
+        },
+        placeholder: {
+            type: String,
+            default: ""
         }
-    },
-    mounted: function mounted() {
-        this.load();
     }
 });
 
 /***/ }),
-/* 523 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.form
-    ? _c("div", { staticClass: "card card-default mb-3" }, [
-        _c("div", { staticClass: "card-header" }, [_vm._v("เพิ่มสุกร")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c(
-            "form",
-            {
-              on: {
-                submit: function($event) {
-                  if (
-                    !("button" in $event) &&
-                    _vm._k(
-                      $event.keyCode,
-                      "default",
-                      undefined,
-                      $event.key,
-                      undefined
-                    )
-                  ) {
-                    return null
-                  }
-                  return _vm.save($event)
-                }
-              }
-            },
-            [
-              _c("fieldset", [
-                _c("legend", [_vm._v("ข้อมูลพื้นฐาน")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("PIGID")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.pig_id,
-                        expression: "form.pig_id"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "##-####" },
-                    domProps: { value: _vm.form.pig_id },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "pig_id", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("เบอร์แม่พันธุ์")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.pig_number,
-                        expression: "form.pig_number"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "####" },
-                    domProps: { value: _vm.form.pig_number },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "pig_number", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("วันเกิด")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.birth_date,
-                        expression: "form.birth_date"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "date" },
-                    domProps: { value: _vm.form.birth_date },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "birth_date", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("วันที่เข้าฟาร์ม")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.entry_date,
-                        expression: "form.entry_date"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "date" },
-                    domProps: { value: _vm.form.entry_date },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "entry_date", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("แหล่งที่มา")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.source,
-                        expression: "form.source"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "แหล่งที่มา" },
-                    domProps: { value: _vm.form.source },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "source", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("พ่อพันธุ์")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.male_breeder_pig_id,
-                        expression: "form.male_breeder_pig_id"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "พ่อพันธุ์" },
-                    domProps: { value: _vm.form.male_breeder_pig_id },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.form,
-                          "male_breeder_pig_id",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("แม่พันธุ์")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.female_breeder_pig_id,
-                        expression: "form.female_breeder_pig_id"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "แม่พันธุ์" },
-                    domProps: { value: _vm.form.female_breeder_pig_id },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.form,
-                          "female_breeder_pig_id",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c("label", [_vm._v("สายพันธุ์")]),
-                    _vm._v(" "),
-                    _c("choice-select", {
-                      attrs: {
-                        type: { to: "BREED" },
-                        value: _vm.form.blood_line
-                      },
-                      on: {
-                        change: function($event) {
-                          _vm.form.blood_line = $event
-                        }
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("เต้านม (ซ้าย)")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.left_breast,
-                        expression: "form.left_breast"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "number" },
-                    domProps: { value: _vm.form.left_breast },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "left_breast", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("เต้านม (ขวา)")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.right_breast,
-                        expression: "form.right_breast"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "number" },
-                    domProps: { value: _vm.form.right_breast },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "right_breast", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("สถานะ (อยู่ระหว่างการพัฒนาตัวเลือก)")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.status,
-                        expression: "form.status"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "สถานะ" },
-                    domProps: { value: _vm.form.status },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "status", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                [_vm._v("ตกลง")]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-light",
-                  attrs: { to: { name: "pig-home" } }
-                },
-                [_vm._v("ยกเลิก")]
-              )
-            ],
-            1
-          )
-        ])
-      ])
-    : _vm._e()
+  return _c("div", { staticClass: "form-group" }, [
+    _c("label", [_vm._v(_vm._s(_vm.displayName))]),
+    _vm._v(" "),
+    _c("input", {
+      staticClass: "form-control",
+      class: { "is-invalid": _vm.error.hasOwnProperty(_vm.errorkey) },
+      attrs: { type: "text", placeholder: _vm.placeholder },
+      domProps: { value: _vm.value },
+      on: {
+        input: function($event) {
+          _vm.$emit("input", $event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "invalid-feedback" }, [
+      _vm._v("\n        " + _vm._s(_vm.error[_vm.errorkey]) + "\n    ")
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -60534,7 +60692,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6d81f892", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-f1efee70", module.exports)
   }
 }
 

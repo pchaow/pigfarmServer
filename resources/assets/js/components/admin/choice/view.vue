@@ -136,9 +136,7 @@
             return {
                 children_fields: [],
                 parent: null,
-                form: {
-                    children: [],
-                },
+                form: null,
             }
 
         },
