@@ -11,17 +11,26 @@ export default {
         })
     },
     getById(id, form) {
-        return axios.get("/api/choices/" + id, {
+        let req = axios.get("/api/choices/" + id, {
             params: form
         })
+        return req;
     },
     getByName(name, form) {
-        return axios.get("/api/choices/" + name, {
+        let req = axios.get("/api/choices/" + name, {
             params: form
         })
+
+        return req;
     },
     store(form) {
-        return axios.post("/api/choices", form)
+        let req = axios.post("/api/choices", form);
+
+        req.catch((err) => {
+            let errorMsg = err.response.data.message;
+            AlertService.createNotify(errorMsg,"error")
+        });
+        return req;
     },
     update(form, id) {
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="card card-header mb-3" v-if="isLoaded">
+        <div class="card card-default mb-3" v-if="isLoaded">
         <div class="card-header">
             <span v-if="parent">เพิ่มข้อมูลย่อย - {{parent.name}} - {{parent.display_name}}</span>
             <span v-else>เพิ่มข้อมูลพื้นฐาน</span>
@@ -10,21 +10,19 @@
                 <fieldset>
                     <legend>รายละเอียด</legend>
                     <input type="hidden" v-model="form.parent_id"/>
-                    <div class="form-group">
-                        <label>ชื่อตัวเลือก (Unique)</label>
-                        <input v-model="form.name" type="text" class="form-control"
-                               placeholder="Choice's name must be unique">
-                    </div>
-                    <div class="form-group">
-                        <label>ชื่อแสดง</label>
-                        <input v-model="form.display_name" type="text" class="form-control"
-                               placeholder="Enter Display Name">
-                    </div>
-                    <div class="form-group">
-                        <label>รายละเอียด</label>
-                        <input v-model="form.description" type="text" class="form-control"
-                               placeholder="Enter Description">
-                    </div>
+
+                    <input-group v-model="form.name" :error="error" display-name="ชื่อตัวเลือก (Unique)"
+                                 type="text" errorkey="name" placeholder="Enter Name (unique)">
+                    </input-group>
+
+                    <input-group v-model="form.display_name" :error="error" display-name="ชื่อแสดง"
+                                 type="text" errorkey="display_name" placeholder="Enter Display Name">
+                    </input-group>
+
+                    <input-group v-model="form.description" :error="error" display-name="รายละเอียด"
+                                 type="text" errorkey="description" placeholder="Enter Description">
+                    </input-group>
+
                     <template v-if="parent">
                         <template v-for="(value,key) in parent.children_fields">
                             <div class="form-group">
@@ -39,7 +37,6 @@
 
                                 <choice-select v-if="value.type =='ref'" @change="updateField($event,key)"
                                                :type="value"></choice-select>
-
                             </div>
                         </template>
                     </template>
@@ -108,12 +105,12 @@
 
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <template v-if="parent">
-                <router-link v-if="parent.id"
-                             :key="$route.fullPath"
-                             :to="{ name: 'choice-view', params: { id: parent.id }}"
-                             class="btn btn-light">
-                    ยกเลิก
-                </router-link>
+                    <router-link v-if="parent.id"
+                                 :key="$route.fullPath"
+                                 :to="{ name: 'choice-view', params: { id: parent.id }}"
+                                 class="btn btn-light">
+                        ยกเลิก
+                    </router-link>
                 </template>
                 <router-link v-else
                              :key="$route.fullPath"
@@ -130,9 +127,10 @@
 
     import ChoiceService from "../../../services/ChoiceService"
     import ChoiceSelect from "./choiceSelect";
+    import InputGroup from "../../forms/input-group";
 
     export default {
-        components: {ChoiceSelect},
+        components: {ChoiceSelect, InputGroup},
         data() {
             let self = this;
             let parent_id = self.$route.params.id;
@@ -145,6 +143,7 @@
                     children: [],
                     values: {},
                 },
+                error: {},
                 children_forms: {
                     type: 'text'
                 },
@@ -175,30 +174,32 @@
             load: function () {
                 let self = this
                 if (self.$route.params.id) {
-                    ChoiceService.getById(self.$route.params.id, {})
-                        .then((r) => {
-                            self.parent = r.data;
-                            self.form.parent_name = self.parent.name
-                            self.isLoaded = true;
-                        })
+                    let req = ChoiceService.getById(self.$route.params.id, {});
+                    req.then((r) => {
+                        self.parent = r.data;
+                        self.form.parent_name = self.parent.name
+                        self.isLoaded = true;
+                    })
                 } else {
                     self.isLoaded = true;
                 }
             },
             save: function () {
                 let self = this
-                ChoiceService.store(self.form)
-                    .then((r) => {
-                        if (self.parent.id) {
-                            self.$router.push({name: "choice-view", params: {id: self.parent.id}})
-                        } else {
-                            self.$router.push({name: "choice-home"})
-                        }
+                this.error = {}
+                let req = ChoiceService.store(self.form);
+                req.then((r) => {
+                    if (self.parent && self.parent.hasOwnProperty('id')) {
+                        self.$router.push({name: "choice-view", params: {id: self.parent.id}})
+                    } else {
+                        self.$router.push({name: "choice-home"})
+                    }
 
-                    })
-                    .catch((e) => {
-                        // TODO : handle errors
-                    })
+                })
+                req.catch((e) => {
+                    console.log(e.response)
+                    this.error = e.response.data.errors
+                });
             }
         },
         created() {

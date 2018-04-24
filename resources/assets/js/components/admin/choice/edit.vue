@@ -10,21 +10,17 @@
                 <form v-on:submit.default="save">
                     <fieldset>
                         <legend>รายละเอียด</legend>
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input v-model="form.name" type="text" class="form-control"
-                                   placeholder="Choice's name must be unique">
-                        </div>
-                        <div class="form-group">
-                            <label>Display Name</label>
-                            <input v-model="form.display_name" type="text" class="form-control"
-                                   placeholder="Enter Display Name">
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <input v-model="form.description" type="text" class="form-control"
-                                   placeholder="Enter Description">
-                        </div>
+                        <input-group v-model="form.name" :error="error" display-name="ชื่อตัวเลือก (Unique)"
+                                     type="text" errorkey="name" placeholder="Enter Name (unique)">
+                        </input-group>
+
+                        <input-group v-model="form.display_name" :error="error" display-name="ชื่อแสดง"
+                                     type="text" errorkey="display_name" placeholder="Enter Display Name">
+                        </input-group>
+
+                        <input-group v-model="form.description" :error="error" display-name="รายละเอียด"
+                                     type="text" errorkey="description" placeholder="Enter Description">
+                        </input-group>
 
 
                         <template v-if="parent">
@@ -134,10 +130,12 @@
 <script>
     import ChoiceService from "../../../services/ChoiceService";
     import ChoiceSelect from "../choice/choiceSelect";
+    import InputGroup from "../../forms/input-group";
 
     export default {
         components: {
-            ChoiceSelect
+            InputGroup,
+            ChoiceSelect,
         },
         data() {
             return {
@@ -146,11 +144,8 @@
                 children_forms: {
                     type: 'text'
                 },
-                form: {
-                    children: [],
-                    children_fields: null,
-                    values: {},
-                },
+                form: null,
+                error: {},
             }
 
         },
@@ -171,6 +166,7 @@
                 let cf = this.form.children_fields;
                 let form = this.children_forms;
                 console.log(form);
+                console.log(cf);
                 cf[form.key] = {
                     display_name: form.display_name,
                     type: form.type,
@@ -200,19 +196,20 @@
             save: function () {
                 let self = this
 
-                ChoiceService.update(this.form, self.$route.params.id)
+                ChoiceService.update(this.form, this.$route.params.id)
                     .then((r) => {
                         if (this.$route.params.back_to != null) {
-                            self.$router.push(this.$route.params.back_to);
+                            this.$router.push(this.$route.params.back_to);
                         }
-                        else if (self.parent) {
-                            self.$router.push({name: "choice-view", params: {id: self.parent.id}})
+                        else if (this.parent) {
+                            this.$router.push({name: "choice-view", params: {id: this.parent.id}})
                         } else {
-                            self.$router.push({name: "choice-home"})
+                            this.$router.push({name: "choice-home"})
                         }
                     })
                     .catch((e) => {
                         // TODO : handle errors
+                        this.error = e.response.data.errors
                     })
             },
             destroy: function (item) {

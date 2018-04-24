@@ -71,7 +71,6 @@ class ChoiceService extends BaseService
 
         $choice = $query->first();
         $choice->children;
-        //$choice->children_fields = json_decode($choice->children_fields);
         $choice->parent;
         return $choice;
     }
@@ -82,6 +81,16 @@ class ChoiceService extends BaseService
         $choice = new Choice();
         $choice->fill($request->all());
         $choice->name = strtoupper($choice->name);
+
+        if (empty($choice->children_fields)) {
+            $choice->children_fields = new \stdClass();
+        };
+
+        if (empty($choice->values)) {
+            $choice->values = new \stdClass();
+        };
+
+
         $choice->save();
         return $choice;
     }
@@ -95,6 +104,10 @@ class ChoiceService extends BaseService
 
         $choice->fill($request->all());
         $choice->name = strtoupper($choice->name);
+
+        if (empty($choice->children_fields)) {
+            $choice->children_fields = new \stdClass();
+        };
 
         $choice->save();
 

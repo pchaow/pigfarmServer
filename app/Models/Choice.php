@@ -10,7 +10,7 @@ class Choice extends Model
 
     protected $casts = [
         'children_fields' => 'object',
-        'values' => 'array',
+        'values' => 'object',
     ];
 
     public function children()
