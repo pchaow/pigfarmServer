@@ -18,5 +18,10 @@ export default {
             name: 'pig-edit',
             component: require('./edit'),
         },
+        {
+            path: ':id/view',
+            name: 'pig-view',
+            component: require('./view'),
+        },
     ]
 }
