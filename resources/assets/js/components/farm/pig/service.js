@@ -21,7 +21,7 @@ export default {
             AlertService.createNotify("Pig id:" + res.data.id + " has been created", "success")
         });
         req.catch((err) => {
-            AlertService.createNotify("Pig cannot be created", "danger")
+            AlertService.createNotify("Pig cannot be created", "error")
         });
         return req
     },
@@ -32,7 +32,7 @@ export default {
             AlertService.createNotify("Pig id:" + res.data.id + " has been updated", "success")
         });
         req.catch((err) => {
-            AlertService.createNotify("Pig id:" + err.body.data.id + " cannot be updated", "danger")
+            AlertService.createNotify("Pig id:" + err.body.data.id + " cannot be updated", "error")
         });
 
         return req;

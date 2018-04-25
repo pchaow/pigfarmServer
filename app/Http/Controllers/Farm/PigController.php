@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Farm;
 
-use App\Http\Services\PigService;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PigRequest;
+use App\Http\Services\PigService;
 
 class PigController extends Controller
 {
+
     /**
      * PigController constructor.
      * @param PigService $service
@@ -19,10 +20,10 @@ class PigController extends Controller
 
 
     /**
-     * @param Request $request
+     * @param PigRequest $request
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function index(Request $request)
+    public function index(PigRequest $request)
     {
         return $this->pigService->getPaginate($request);
     }
@@ -30,10 +31,10 @@ class PigController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\PigRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PigRequest $request)
     {
         return $this->pigService->store($request);
 
@@ -41,24 +42,24 @@ class PigController extends Controller
 
 
     /**
-     * @param Request $request
+     * @param PigRequest $request
      * @param $id
      * @return \Illuminate\Database\Eloquent\Model|null|object|static
      */
-    public function show(Request $request, $id)
+    public function show(PigRequest $request, $id)
     {
-        return $this->pigService->getPig($request,$id);
+        return $this->pigService->getPig($request, $id);
     }
 
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\PigRequest $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PigRequest $request, $id)
     {
         return $this->pigService->update($request, $id);
     }

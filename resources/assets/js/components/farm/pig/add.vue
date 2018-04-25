@@ -6,6 +6,10 @@
             <form v-on:submit.default="save">
                 <fieldset>
                     <legend>ข้อมูลพื้นฐาน</legend>
+                    <input-group v-model="form.pig_id" :error="error" display-name="Pig ID"
+                                 type="text" errorkey="pig_id" placeholder="Pig ID">
+                    </input-group>
+
                     <div class="form-group">
                         <label>PIGID</label>
                         <input class="form-control" type="text" v-model="form.pig_id" placeholder="##-####"/>
@@ -77,23 +81,29 @@
 <script>
     import ChoiceSelect from "../../admin/choice/choiceSelect";
     import PigService from "./service";
+    import InputGroup from "../../forms/input-group";
 
     export default {
-        components: {ChoiceSelect},
+        components: {InputGroup, ChoiceSelect},
         data() {
             return {
                 form: {
                     blood_line: {},
                 },
+                error: {}
             }
         },
         methods: {
             save: function () {
-                console.log(this.form)
-                PigService.store(this.form)
-                    .then((r) => {
-                        this.$router.push({name : 'pig-index'})
-                    })
+                // console.log(this.form)
+                let req = PigService.store(this.form)
+                req.then((r) => {
+                    this.$router.push({name: 'pig-index'})
+                });
+                req.catch((err) => {
+                    this.error = err.response.data
+                    console.log(err.response.data);
+                });
             }
         },
         mounted() {
