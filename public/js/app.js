@@ -60311,6 +60311,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -60346,91 +60378,167 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.form
-    ? _c("div", { staticClass: "card card-default mb-3" }, [
-        _c("div", { staticClass: "card-header" }, [_vm._v("รายละเอียดสุกร")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-              _c("h6", [_vm._v("PIGID")]),
+  return _c("div", [
+    _vm.form
+      ? _c("div", { staticClass: "card card-default mb-3" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("รายละเอียดสุกร")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-lg-4 col-md-6" }, [
+                _c("h6", [_vm._v("PIGID")]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.form.pig_id))])
+              ]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.form.pig_id))])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-              _c("h6", [_vm._v("เบอร์แม่พันธ์")]),
+              _c("div", { staticClass: "col-lg-4 col-md-6" }, [
+                _c("h6", [_vm._v("เบอร์แม่พันธ์")]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.form.pig_number))])
+              ]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.form.pig_number))])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-              _c("h6", [_vm._v("วันเกิด")]),
+              _c("div", { staticClass: "col-lg-4 col-md-6" }, [
+                _c("h6", [_vm._v("วันเกิด")]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.form.birth_date))])
+              ]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.form.birth_date))])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-              _c("h6", [_vm._v("วันที่เข้าฟาร์ม")]),
+              _c("div", { staticClass: "col-lg-4 col-md-6" }, [
+                _c("h6", [_vm._v("วันที่เข้าฟาร์ม")]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.form.entry_date))])
+              ]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.form.entry_date))])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-              _c("h6", [_vm._v("แหล่งที่มา")]),
+              _c("div", { staticClass: "col-lg-4 col-md-6" }, [
+                _c("h6", [_vm._v("แหล่งที่มา")]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.form.source))])
+              ]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.form.source))])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-              _c("h6", [_vm._v("พ่อพันธุ์")]),
+              _c("div", { staticClass: "col-lg-4 col-md-6" }, [
+                _c("h6", [_vm._v("พ่อพันธุ์")]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.form.male_breeder_pig_id))])
+              ]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.form.male_breeder_pig_id))])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-              _c("h6", [_vm._v("แม่พันธุ์")]),
+              _c("div", { staticClass: "col-lg-4 col-md-6" }, [
+                _c("h6", [_vm._v("แม่พันธุ์")]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.form.female_breeder_pig_id))])
+              ]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.form.female_breeder_pig_id))])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-              _c("h6", [_vm._v("สายพันธุ์")]),
-              _vm._v(" "),
-              _c(
-                "p",
-                [
-                  typeof _vm.form.blood_line === "object"
-                    ? [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.form.blood_line.display_name) +
-                            "\n                    "
-                        )
-                      ]
-                    : _vm._e()
-                ],
-                2
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-              _c("h6", [_vm._v("เต้านม")]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  _vm._s(_vm.form.left_breast) +
-                    "/" +
-                    _vm._s(_vm.form.right_breast)
+              _c("div", { staticClass: "col-lg-4 col-md-6" }, [
+                _c("h6", [_vm._v("สายพันธุ์")]),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  [
+                    typeof _vm.form.blood_line === "object"
+                      ? [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(_vm.form.blood_line.display_name) +
+                              "\n                        "
+                          )
+                        ]
+                      : _vm._e()
+                  ],
+                  2
                 )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-4 col-md-6" }, [
+                _c("h6", [_vm._v("เต้านม")]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(
+                    _vm._s(_vm.form.left_breast) +
+                      "/" +
+                      _vm._s(_vm.form.right_breast)
+                  )
+                ])
               ])
             ])
           ])
         ])
-      ])
-    : _vm._e()
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.form
+      ? _c("div", { staticClass: "card card-default mb-3" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("ประวัติการให้ยาและการรักษา")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" })
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c(
+      "button",
+      { staticClass: "btn btn-primary mb-3", attrs: { type: "button" } },
+      [_vm._v("การผสมพันธุ์ใหม่")]
+    ),
+    _vm._v(" "),
+    _vm.form
+      ? _c("div", { staticClass: "card card-default mb-3" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n            การผสมครั้งที่ 1\n        ")
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      : _vm._e()
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-9" }, [
+          _c("p", [_vm._v("ข้อมูลการผสม")]),
+          _vm._v(" "),
+          _c("p", [_vm._v("ข้อมูลการคลอด")]),
+          _vm._v(" "),
+          _c("p", [_vm._v("ข้อมูลการหย่านม")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-block btn-info",
+              attrs: { type: "button" }
+            },
+            [_vm._v("บันทึกข้อมูลการคลอด")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-block btn-success",
+              attrs: { type: "button" }
+            },
+            [_vm._v("บันทึกข้อมูลการหย่านม")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-block btn-danger",
+              attrs: { type: "button" }
+            },
+            [_vm._v("ยกเลิกการผสม")]
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
