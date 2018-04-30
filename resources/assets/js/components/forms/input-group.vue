@@ -4,9 +4,12 @@
         <input v-bind:value="value"
                v-on:input="$emit('input', $event.target.value)"
 
-               type="text" class="form-control"
+               :type="type" class="form-control"
                :class="{'is-invalid' : error.hasOwnProperty(errorkey) }"
-               :placeholder="placeholder">
+               :placeholder="placeholder"
+               v-bind:readonly="readonly"
+
+        >
         <div class="invalid-feedback">
             {{error[errorkey]}}
         </div>
@@ -23,13 +26,13 @@
                 }
             },
             value: {
-                type: String,
+                type: [String, Number],
                 default: () => {
                 },
             },
             type: {
                 type: String,
-                default: "text"
+                default: "text",
             },
             errorkey: {
                 type: String,
@@ -40,8 +43,13 @@
             placeholder: {
                 type: String,
                 default: ""
+            },
+            readonly: {
+                type: Boolean,
+                default: false,
             }
-        }
+        },
+
     }
 </script>
 

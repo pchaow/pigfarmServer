@@ -22,11 +22,13 @@
     "dependencies": {
         "highcharts": "^6.0.7",
         "laravel-vue-pagination": "^1.2.0",
+        "moment": "^2.22.1",
         "notifyjs-browser": "^0.4.2",
         "npm": "^5.8.0",
         "tabler-ui": "0.0.32",
         "vue-highcharts": "0.0.10",
         "vue-loading-overlay": "^2.0.4",
+        "vue-moment": "^3.2.0",
         "vue-router": "^3.0.1"
     }
 }

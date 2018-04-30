@@ -23,5 +23,10 @@ export default {
             name: 'pig-view',
             component: require('./view'),
         },
+        {
+            path: ':id/breeder',
+            name: 'pig-breeder',
+            component: require('./breeder'),
+        },
     ]
 }

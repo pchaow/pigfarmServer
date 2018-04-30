@@ -6,34 +6,28 @@
             <form v-on:submit.default="save">
                 <fieldset>
                     <legend>ข้อมูลพื้นฐาน</legend>
+
                     <input-group v-model="form.pig_id" :error="error" display-name="Pig ID"
                                  type="text" errorkey="pig_id" placeholder="Pig ID">
                     </input-group>
 
-                    <div class="form-group">
-                        <label>PIGID</label>
-                        <input class="form-control" type="text" v-model="form.pig_id" placeholder="##-####"/>
-                    </div>
 
-                    <div class="form-group">
-                        <label>เบอร์แม่พันธุ์</label>
-                        <input class="form-control" type="text" v-model="form.pig_number" placeholder="####"/>
-                    </div>
+                    <input-group v-model="form.pig_number" :error="error" display-name="เบอร์แม่พันธุ์"
+                                 type="text" errorkey="pig_number" placeholder="Pig Number">
+                    </input-group>
 
-                    <div class="form-group">
-                        <label>วันเกิด</label>
-                        <input class="form-control" type="date" v-model="form.birth_date"/>
-                    </div>
+                    <input-group v-model="form.birth_date" :error="error" display-name="วันเกิด"
+                                 :type="'date'" errorkey="birth_date" placeholder="Birth Date">
+                    </input-group>
 
-                    <div class="form-group">
-                        <label>วันที่เข้าฟาร์ม</label>
-                        <input class="form-control" type="date" v-model="form.entry_date"/>
-                    </div>
+                    <input-group v-model="form.entry_date" :error="error" display-name="วันที่เข้าฟาร์ม"
+                                 type="date" errorkey="entry_date" placeholder="Entry Date">
+                    </input-group>
 
-                    <div class="form-group">
-                        <label>แหล่งที่มา</label>
-                        <input class="form-control" type="text" v-model="form.source" placeholder="แหล่งที่มา"/>
-                    </div>
+                    <input-group v-model="form.source" :error="error" display-name="แหล่งที่มา"
+                                 type="date" errorkey="source" placeholder="Source">
+                    </input-group>
+
 
                     <div class="form-group">
                         <label>พ่อพันธุ์</label>

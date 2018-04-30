@@ -13,6 +13,7 @@ window.Vue = require('vue');
 import VueHighcharts from 'vue-highcharts';
 
 Vue.use(VueHighcharts);
+Vue.use(require('vue-moment'));
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 
