@@ -17,9 +17,9 @@ class CreatePigbreedTable extends Migration
             $table->increments('id');
             $table->integer('breed_sequence');
             $table->integer('pig_id');
+            $table->date('breed_date');
             $table->integer('breed_week');
             $table->date('delivery_date');
-            $table->date('breed_date');
             $table->string('breeder_1_id')->nullable();
             $table->string('breeder_2_id')->nullable();
             $table->string('breeder_3_id')->nullable();
