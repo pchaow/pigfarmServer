@@ -1,15 +1,17 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+//@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 // Variables
-@import "variables";
+//@import "variables";
 
 
 // Bootstrap
 //@import '~bootstrap/scss/bootstrap';
 
-//tabler-ui
-@import '~tabler-ui/src/assets/scss/bundle';
-
+//vuetify
+@import '~vuetify/dist/vuetify.min.css';
+@import '~material-design-icons-iconfont/dist/material-design-icons';
+@import "~@mdi/font/scss/materialdesignicons";
+/*
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -17,4 +19,4 @@
 
 .header-brand {
   font-weight: 400;
-}
+}*/

@@ -12,23 +12,26 @@
     "devDependencies": {
         "axios": "^0.18",
         "bootstrap": "^4.0.0",
-        "popper.js": "^1.12",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
-        "lodash": "^4.17.4",
+        "lodash": "^4.17.10",
+        "popper.js": "^1.12",
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "@mdi/font": "^2.3.54",
         "highcharts": "^6.0.7",
         "laravel-vue-pagination": "^1.2.0",
+        "material-design-icons-iconfont": "^3.0.3",
         "moment": "^2.22.1",
         "notifyjs-browser": "^0.4.2",
         "npm": "^5.8.0",
-        "tabler-ui": "0.0.32",
         "vue-highcharts": "0.0.10",
         "vue-loading-overlay": "^2.0.4",
+        "vue-lodash": "^2.0.0",
         "vue-moment": "^3.2.0",
-        "vue-router": "^3.0.1"
+        "vue-router": "^3.0.1",
+        "vuetify": "^1.0.17"
     }
 }

@@ -68,10 +68,10 @@
 </template>
 
 <script>
-    import ChoiceSelect from "../../admin/choice/choiceSelect";
-    import PigService from "./service";
-    import PigData from "./pigData";
-    import InputGroup from "../../forms/input-group";
+    import ChoiceSelect from "../../../admin/choice/choiceSelect";
+    import PigService from "../service";
+    import PigData from "../pigData";
+    import InputGroup from "../../../forms/input-group";
 
     export default {
         components: {InputGroup, PigData, ChoiceSelect},

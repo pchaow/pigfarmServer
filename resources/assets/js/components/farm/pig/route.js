@@ -26,7 +26,7 @@ export default {
         {
             path: ':id/breeder',
             name: 'pig-breeder',
-            component: require('./breeder'),
+            component: require('./breeder/add'),
         },
     ]
 }

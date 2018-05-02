@@ -27,6 +27,7 @@ export function createRouter() {
                     },
                     {
                         path: 'chart1',
+                        name : 'home-chart1',
                         component: require('./components/example-charts/chart1')
                     },
                 ]

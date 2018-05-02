@@ -7,6 +7,13 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Vuetify from 'vuetify'
+Vue.use(Vuetify)
+
+window._ = require('lodash');
+Object.defineProperty(Vue.prototype, '_', { value: window._ });
+
+
 
 
 // Vue Highcharts

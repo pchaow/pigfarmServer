@@ -13,7 +13,7 @@
             การผสมพันธุ์ใหม่
         </router-link>
 
-        <template v-if="form" v-for="breeder in form.pig_breeds">
+        <template v-if="form" v-for="breeder in _.orderBy(form.pig_breeds,['created_at','breed_sequence'],['desc','desc'])">
 
             <div class="card card-default mb-3" v-if="form">
                 <div class="card-header">
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-2">
                             <button type="button" class="btn btn-block btn-info">บันทึกข้อมูล<br/>การคลอด</button>
-                            <button type="button" class="btn btn-block btn-success">บันทึกข้อมูล การหย่านม</button>
+                            <button type="button" class="btn btn-block btn-success">บันทึกข้อมูล<br/>   การหย่านม</button>
                             <button type="button" class="btn btn-block btn-danger">ยกเลิกการผสม</button>
                         </div>
                     </div>
