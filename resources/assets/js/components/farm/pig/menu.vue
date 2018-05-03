@@ -1,25 +1,22 @@
 <template>
-    <div class="card mb-3">
-        <div class="card-header">ฟาร์ม</div>
-        <div class="card-body">
-            <div class="list-group list-group-transparent mb-0">
+    <v-list>
+        <v-list-group prepend-icon="account_circle" value="true">
+            <v-list-tile slot="activator">
+                <v-list-tile-title>การจัดการสุกร</v-list-tile-title>
+            </v-list-tile>
 
-                <router-link class="list-group-item list-group-item-action d-flex align-items-center"
-                             :to="{ name : 'pig-home'}"
-                             active-class="active">ค้นหาสุกร
-                </router-link>
+            <v-list-tile :to="{name:'pig-home'}">
+                <v-list-tile-action></v-list-tile-action>
+                <v-list-tile-title>ค้นหาสุกร</v-list-tile-title>
+            </v-list-tile>
 
-                <router-link class="list-group-item list-group-item-action d-flex align-items-center"
-                             :to="{ name : 'pig-add'}" active-class="active">เพิ่มสุกร
+            <v-list-tile :to="{name:'pig-add'}">
+                <v-list-tile-action></v-list-tile-action>
+                <v-list-tile-title>เพิ่มสุกร</v-list-tile-title>
+            </v-list-tile>
 
-                </router-link>
-
-                <a class="list-group-item list-group-item-action d-flex align-items-center" href="#">ค้นหาสุกร</a>
-
-                <a class="list-group-item list-group-item-action d-flex align-items-center disabled" href="#">Disabled</a>
-            </div>
-        </div>
-    </div>
+        </v-list-group>
+    </v-list>
 </template>
 
 <script>

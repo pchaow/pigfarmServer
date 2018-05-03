@@ -1,63 +1,79 @@
 <template>
-    <div>
+    <v-navigation-drawer
+            fixed
+            :clipped="$vuetify.breakpoint.mdAndUp"
+            app
+            v-model="drawer">
+        <v-list>
+            <v-list-tile :to="{name:'home-index'}" exact>
+                <v-list-tile-action>
+                    <v-icon>home</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title>Home</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile :to="{name:'home-chart1'}" exact>
+                <v-list-tile-action>
+                    <v-icon>mdi-chart-bar</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title>Example Chart</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+        </v-list>
+        <v-divider/>
+        <v-list>
+            <v-list-tile :to="{name:'user-home'}" exact>
+                <v-list-tile-action>
+                    <v-icon>mdi-account</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title>การจัดการผู้ใช้</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile :to="{name:'role-home'}" exact>
+                <v-list-tile-action>
+                    <v-icon>mdi-account-group</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title>การจัดการสิทธิ์</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+        </v-list>
+        <pig-menu/>
 
-        <div class="card mb-3">
-            <div class="card-header">ผู้บริหาร</div>
-            <div class="card-body">
-                <div class="list-group list-group-transparent mb-0">
+    </v-navigation-drawer>
 
-                    <router-link class="list-group-item list-group-item-action d-flex align-items-center" to="/home/"
-                                 active-class="active" exact>Home
-                    </router-link>
-
-                    <router-link class="list-group-item list-group-item-action d-flex align-items-center"
-                                 to="/home/chart1" active-class="active" exact="">Chart1
-
-                    </router-link>
-
-                    <a class="list-group-item list-group-item-action d-flex align-items-center" href="#">ค้นหาสุกร</a>
-
-                    <a class="list-group-item list-group-item-action d-flex align-items-center disabled" href="#">Disabled</a>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div class="card-header">ผู้ดูแลระบบ</div>
-            <div class="card-body">
-
-                <div class="list-group list-group-transparent mb-0">
-
-                    <router-link class="list-group-item list-group-item-action d-flex align-items-center" to="/admin/user" active-class="active">
-                        การจัดการผู้ใช้
-                    </router-link>
-
-                    <router-link class="list-group-item list-group-item-action d-flex align-items-center" to="/admin/role" active-class="active">
-                        การจัดการสิทธิ์
-                    </router-link>
-
-                    <router-link class="list-group-item list-group-item-action d-flex align-items-center" to="/admin/choice" active-class="active">
-                        ข้อมูลพื้นฐานระบบ
-                    </router-link>
-                </div>
-            </div>
-        </div>
-
-        <pig-menu></pig-menu>
-    </div>
 </template>
 
 <script>
 
     import pigMenu from "../farm/pig/menu";
+    import {eventHub} from '../../eventhub';
+
 
     export default {
-        components : {
+        components: {
             pigMenu
+        },
+        data: () => ({
+            drawer: true,
+        }),
+        methods: {
+            toggleDrawer : function(){
+                this.drawer = !this.drawer;
+                console.log(this.drawer);
+            }
         },
         mounted() {
             console.log('Component mounted.')
-        }
+            eventHub.$on('toggle-drawer',this.toggleDrawer);
+        },
+        beforeDestroy: function () {
+            eventHub.$off('toggle-drawer',this.toggleDrawer);
+        },
+
+
     }
 </script>

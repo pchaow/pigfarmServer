@@ -23,7 +23,7 @@ export function createRouter() {
                     {
                         name: 'home-index',
                         path: '/',
-                        component: require('./components/example-charts/chart1')
+                        component: require('./components/admin/home/dashboard')
                     },
                     {
                         path: 'chart1',

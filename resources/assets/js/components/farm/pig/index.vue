@@ -93,6 +93,7 @@
         data() {
             return {
                 pigs: [],
+                page : 1,
                 form: {
                     page: 1,
                 },

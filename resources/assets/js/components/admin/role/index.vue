@@ -1,44 +1,45 @@
 <template>
-    <div class="card card-default mb-3">
-        <div class="card-header">
-            รายการสิทธิ์
-        </div>
+    <v-layout column justify-center v-if="roles">
+        <v-flex>
+            <v-card>
+                <v-card-title>
+                    <h1>รายการสิทธิ์</h1>
 
-        <div class="card-body">
-            <div class="d-flex">
+                    <v-spacer></v-spacer>
+                    <v-form v-on:submit.default="load()">
+                        <v-text-field
+                                append-icon="search"
+                                label="ค้นหา"
+                                single-line
+                                hide-details
+                                v-model="form.keyword"
+                        ></v-text-field>
+                    </v-form>
 
-                <div class="justify-content-end ml-auto">
-                    <form class="form form-inline" v-on:submit.default="load">
-                        <div class="input-group mb-3">
+                </v-card-title>
+                <v-data-table
+                        :headers="headers"
+                        :items="roles"
+                        hide-actions
+                >
 
-                            <input v-model="form.keyword" type="text" class="form-control"
-                                   placeholder="ค้นหา">
-                            <div class="input-group-append">
-                                <button v-on:click="load" type="button" class="btn btn-info ">ค้นหา</button>
-                            </div>
+                    <template slot="items" slot-scope="props">
+                        <td>{{ props.item.name }}</td>
+                    </template>
 
-                        </div>
-                    </form>
-                </div>
+                    <template slot="no-data">
+                        <v-alert :value="true" color="error" icon="warning">
+                            Sorry, nothing to display here :(
+                        </v-alert>
+                    </template>
+
+                </v-data-table>
+            </v-card>
+            <div class="text-xs-center pt-2">
+                <v-pagination :length="paginate.last_page" v-model="page"></v-pagination>
             </div>
-            <div class="table-responsive">
-            <table class="table table-hover table-striped">
-                <thead class="thead-light">
-                <tr>
-                    <th>ชื่อ</th>
-                    <th>การกระทำ</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="item in roles">
-                    <td>{{item.name}}</td>
-                    <td> -</td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
-        </div>
-    </div>
+        </v-flex>
+    </v-layout>
 </template>
 
 <script>
@@ -48,20 +49,39 @@
     export default {
         data() {
             return {
-                roles: [],
+                roles: null,
                 paginate: null,
+                headers: [
+                    {
+                        text: 'ชื่อ',
+                        value: 'name'
+                    },
+                ],
                 form: {
                     keyword: null,
-                }
+                    page: 1,
+                },
+                page: 1,
+            }
+        },
+        watch: {
+            page: function (cur, old) {
+                this.changePage(cur);
             }
         },
         methods: {
+            changePage: function (page) {
+                console.log("page", page);
+                this.form.page = page
+                this.load()
+            },
             load: function () {
                 let self = this
                 RoleService.getPaginate(self.form)
                     .then(function (r) {
                         self.roles = r.data.data
                         self.paginate = r.data
+                        console.log(self.paginate)
                     })
             }
         },

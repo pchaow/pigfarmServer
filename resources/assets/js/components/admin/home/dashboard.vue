@@ -1,7 +1,7 @@
 <template>
     <v-layout column justify-center>
         <v-flex>
-            <h1>Example Chart</h1>
+            <h1>Dashboard</h1>
         </v-flex>
         <v-flex>
             <v-card>
@@ -11,21 +11,19 @@
             </v-card>
         </v-flex>
         <v-flex>
-
         </v-flex>
     </v-layout>
 </template>
 
 <script>
     export default {
-        data() {
-            return {
-                options: {},
-            }
-        },
+        name: "dashboard",
+        data: () => ({
+            options: {},
+        }),
         methods: {
             load: function () {
-                setTimeout(() => {
+                setTimeout( () => {
                     this.options = {
                         chart: {
                             type: 'column'
@@ -95,9 +93,11 @@
             }
         },
         mounted() {
-            console.log('Component mounted.')
-
-            this.load()
+            this.load();
         }
     }
 </script>
+
+<style scoped>
+
+</style>
