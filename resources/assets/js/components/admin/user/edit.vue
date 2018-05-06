@@ -3,16 +3,20 @@
         <v-flex>
             <v-card>
                 <v-card-title>
-                    <h1>เพิ่มผู้ใช้</h1>
+                    <div class="headline">แก้ไขผู้ใช้</div>
                 </v-card-title>
                 <v-card-text>
-                    <h2>ข้อมูลทั่วไป</h2>
-                    <v-text-field label="ชื่อ-นามสกุล" v-model="form.name"/>
-                    <v-text-field label="ชื่อผู้ใช้" v-model="form.username"/>
-                    <v-text-field label="อีเมล์" v-model="form.email"/>
-                    <v-text-field label="รหัสผ่าน" v-model="form.password" type="password"/>
+                    <h2 class="title">ข้อมูลทั่วไป</h2>
+                    <v-text-field label="ชื่อ-นามสกุล" v-model="form.name"
+                                  :error-messages="error.errors.name"/>
+                    <v-text-field label="ชื่อผู้ใช้" v-model="form.username"
+                                  :error-messages="error.errors.username"/>
+                    <v-text-field label="อีเมล์" v-model="form.email"
+                                  :error-messages="error.errors.email"/>
+                    <v-text-field label="รหัสผ่าน" v-model="form.password" type="password"
+                                  :error-messages="error.errors.password"/>
                     <v-text-field label="ยืนยันรหัสผ่าน" v-model="form.password_confirmation" type="password"/>
-                    <h2>สิทธิ์การใช้งาน</h2>
+                    <h2 class="title">สิทธิ์การใช้งาน</h2>
                     <role-checkbox
                             v-bind:value="form.roles"
                             @change="updateRoles"
@@ -41,6 +45,10 @@
             return {
                 roles: null,
                 form: null,
+                error: {
+                    errors: {},
+                    message: null,
+                },
             }
 
         },
@@ -69,6 +77,7 @@
                     })
                     .catch((e) => {
                         // TODO : handle errors
+                        this.error = error.response.data
                     })
             }
         },

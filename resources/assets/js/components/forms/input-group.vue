@@ -1,19 +1,8 @@
 <template>
-    <div class="form-group">
-        <label>{{displayName}}</label>
-        <input v-bind:value="value"
-               v-on:input="$emit('input', $event.target.value)"
 
-               :type="type" class="form-control"
-               :class="{'is-invalid' : error.hasOwnProperty(errorkey) }"
-               :placeholder="placeholder"
-               v-bind:readonly="readonly"
+    <v-text-field :label="displayName" v-model="value"
+                  :type="type" :error-messages="error[errorkey]"/>
 
-        >
-        <div class="invalid-feedback">
-            {{error[errorkey]}}
-        </div>
-    </div>
 </template>
 
 <script>

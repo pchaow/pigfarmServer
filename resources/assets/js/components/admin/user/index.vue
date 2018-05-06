@@ -3,7 +3,7 @@
         <v-flex>
             <v-card>
                 <v-card-title>
-                    <h1>รายการผู้ใช้</h1>
+                    <div class="headline">รายการผู้ใช้</div>
                     <v-btn color="primary" fab small dark :to="{name:'user-add'}">
                         <v-icon>mdi-plus</v-icon>
                     </v-btn>
@@ -22,8 +22,7 @@
                 <v-data-table
                         :headers="headers"
                         :items="users"
-                        hide-actions
-                >
+                        hide-actions>
 
                     <template slot="items" slot-scope="props">
 

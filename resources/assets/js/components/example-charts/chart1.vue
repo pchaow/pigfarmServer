@@ -1,7 +1,7 @@
 <template>
     <v-layout column justify-center>
         <v-flex>
-            <h1>Example Chart</h1>
+            <div class="headline">Example Chart</div>
         </v-flex>
         <v-flex>
             <v-card>

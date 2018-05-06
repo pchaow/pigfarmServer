@@ -4574,7 +4574,7 @@
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)(module)))
 
 /***/ }),
 /* 1 */
@@ -4692,7 +4692,7 @@ module.exports = function normalizeComponent (
 "use strict";
 
 
-var bind = __webpack_require__(22);
+var bind = __webpack_require__(21);
 var isBuffer = __webpack_require__(164);
 
 /*global toString:true*/
@@ -27014,10 +27014,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(23);
+    adapter = __webpack_require__(22);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(23);
+    adapter = __webpack_require__(22);
   }
   return adapter;
 }
@@ -27092,7 +27092,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ }),
 /* 16 */
@@ -27125,28 +27125,6 @@ var AlertBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 
 /***/ }),
 /* 17 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    getRoles: function getRoles() {
-        return axios.get("/api/roles?paginate=false");
-    },
-    getPaginate: function getPaginate(form) {
-        return axios.get("/api/roles", {
-            params: form
-        });
-    },
-    getById: function getById(id) {
-        return axios.get("/api/roles/" + id);
-    },
-    store: function store(form) {},
-    update: function update(form, id) {},
-    destroy: function destroy(id) {}
-});
-
-/***/ }),
-/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -44256,10 +44234,10 @@ var AlertBus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(19)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(18)(module)))
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -44287,7 +44265,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46807,7 +46785,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(6)))
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -46997,7 +46975,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47015,7 +46993,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47026,7 +47004,7 @@ var settle = __webpack_require__(167);
 var buildURL = __webpack_require__(169);
 var parseHeaders = __webpack_require__(170);
 var isURLSameOrigin = __webpack_require__(171);
-var createError = __webpack_require__(24);
+var createError = __webpack_require__(23);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(172);
 
 module.exports = function xhrAdapter(config) {
@@ -47202,7 +47180,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47227,7 +47205,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47239,7 +47217,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47265,7 +47243,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47278,7 +47256,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -47355,7 +47333,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -47494,7 +47472,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -47557,7 +47535,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -47620,7 +47598,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -47746,7 +47724,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -47809,7 +47787,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -47917,7 +47895,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -47980,7 +47958,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -48089,7 +48067,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -48225,7 +48203,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -48319,7 +48297,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -48381,7 +48359,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -48504,7 +48482,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -48627,7 +48605,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -48739,7 +48717,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -48894,7 +48872,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -48986,7 +48964,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -49169,7 +49147,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -49236,7 +49214,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -49320,7 +49298,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -49384,7 +49362,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -49464,7 +49442,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -49544,7 +49522,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -49624,7 +49602,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -49727,7 +49705,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -49831,7 +49809,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -49902,7 +49880,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -49969,7 +49947,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50040,7 +50018,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50111,7 +50089,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50177,7 +50155,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50248,7 +50226,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50323,7 +50301,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50419,7 +50397,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50515,7 +50493,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50602,7 +50580,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 64 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50686,7 +50664,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 65 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50756,7 +50734,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 66 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50866,7 +50844,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 67 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -50979,7 +50957,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -51043,7 +51021,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -51130,7 +51108,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -51208,7 +51186,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -51290,7 +51268,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -51369,7 +51347,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -51449,7 +51427,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -51530,7 +51508,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -51657,7 +51635,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -51785,7 +51763,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -51886,7 +51864,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -52014,7 +51992,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -52172,7 +52150,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -52286,7 +52264,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -52385,7 +52363,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -52471,7 +52449,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -52607,7 +52585,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -52680,7 +52658,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -52776,7 +52754,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -52862,7 +52840,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -52955,7 +52933,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 88 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -53046,7 +53024,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 89 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -53160,7 +53138,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 90 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -53290,7 +53268,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 91 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -53375,7 +53353,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 92 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -53466,7 +53444,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 93 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -53606,7 +53584,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 94 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -53680,7 +53658,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 95 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -53802,7 +53780,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 96 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -53903,7 +53881,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 97 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -54019,7 +53997,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 98 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -54087,7 +54065,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 99 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -54181,7 +54159,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 100 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -54266,7 +54244,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 101 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -54374,7 +54352,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 102 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -54538,7 +54516,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 103 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -54624,7 +54602,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 104 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -54710,7 +54688,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 105 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -54774,7 +54752,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 106 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -54871,7 +54849,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 107 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -54937,7 +54915,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 108 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -55064,7 +55042,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 109 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -55155,7 +55133,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 110 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -55246,7 +55224,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 111 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -55310,7 +55288,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 112 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -55438,7 +55416,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 113 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -55568,7 +55546,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 114 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -55637,7 +55615,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 115 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -55702,7 +55680,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 116 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -55781,7 +55759,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 117 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -55967,7 +55945,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 118 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -56069,7 +56047,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 119 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -56133,7 +56111,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 120 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -56208,7 +56186,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 121 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -56368,7 +56346,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 122 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -56545,7 +56523,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 123 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -56617,7 +56595,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 124 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -56732,7 +56710,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 125 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -56847,7 +56825,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 126 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -56939,7 +56917,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 127 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -57012,7 +56990,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 128 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -57075,7 +57053,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 129 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -57208,7 +57186,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 130 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -57301,7 +57279,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 131 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -57372,7 +57350,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 132 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -57492,7 +57470,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 133 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -57563,7 +57541,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 134 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -57629,7 +57607,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 135 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -57755,7 +57733,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 136 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -57853,7 +57831,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 137 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -57948,7 +57926,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 138 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -58010,7 +57988,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 139 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -58072,7 +58050,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 140 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js language configuration
@@ -58195,7 +58173,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 141 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -58350,7 +58328,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 142 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -58452,7 +58430,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 143 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -58514,7 +58492,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 144 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -58576,7 +58554,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 145 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -58659,7 +58637,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 146 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -58731,7 +58709,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 147 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -58795,7 +58773,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 148 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -58909,7 +58887,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 149 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -59016,7 +58994,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 150 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -59123,7 +59101,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 151 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -59529,7 +59507,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
 });
 
 /***/ }),
-/* 152 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -59560,7 +59538,7 @@ if(false) {
 }
 
 /***/ }),
-/* 153 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -59609,6 +59587,28 @@ if (false) {(function () {
 
 module.exports = Component.exports
 
+
+/***/ }),
+/* 153 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    getRoles: function getRoles() {
+        return axios.get("/api/roles?paginate=false");
+    },
+    getPaginate: function getPaginate(form) {
+        return axios.get("/api/roles", {
+            params: form
+        });
+    },
+    getById: function getById(id) {
+        return axios.get("/api/roles/" + id);
+    },
+    store: function store(form) {},
+    update: function update(form, id) {},
+    destroy: function destroy(id) {}
+});
 
 /***/ }),
 /* 154 */
@@ -59734,7 +59734,7 @@ window.Vue = __webpack_require__(7);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vuetify___default.a);
 
-window._ = __webpack_require__(18);
+window._ = __webpack_require__(17);
 Object.defineProperty(Vue.prototype, '_', { value: window._ });
 
 // Vue Highcharts
@@ -59769,8 +59769,8 @@ var app = new Vue({
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__eventhub__ = __webpack_require__(14);
-window._ = __webpack_require__(18);
-window.Popper = __webpack_require__(20).default;
+window._ = __webpack_require__(17);
+window.Popper = __webpack_require__(19).default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -59854,7 +59854,7 @@ if (localStorage.key('accessToken') != null) {
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-	 true ? factory(exports, __webpack_require__(13), __webpack_require__(20)) :
+	 true ? factory(exports, __webpack_require__(13), __webpack_require__(19)) :
 	typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
 	(factory((global.bootstrap = {}),global.jQuery,global.Popper));
 }(this, (function (exports,$,Popper) { 'use strict';
@@ -64002,7 +64002,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(21)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(20)))
 
 /***/ }),
 /* 162 */
@@ -64018,7 +64018,7 @@ module.exports = __webpack_require__(163);
 
 
 var utils = __webpack_require__(2);
-var bind = __webpack_require__(22);
+var bind = __webpack_require__(21);
 var Axios = __webpack_require__(165);
 var defaults = __webpack_require__(15);
 
@@ -64053,9 +64053,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(26);
+axios.Cancel = __webpack_require__(25);
 axios.CancelToken = __webpack_require__(179);
-axios.isCancel = __webpack_require__(25);
+axios.isCancel = __webpack_require__(24);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -64208,7 +64208,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(24);
+var createError = __webpack_require__(23);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -64641,7 +64641,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(2);
 var transformData = __webpack_require__(176);
-var isCancel = __webpack_require__(25);
+var isCancel = __webpack_require__(24);
 var defaults = __webpack_require__(15);
 var isAbsoluteURL = __webpack_require__(177);
 var combineURLs = __webpack_require__(178);
@@ -64801,7 +64801,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(26);
+var Cancel = __webpack_require__(25);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -82568,7 +82568,7 @@ function install(Vue) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_highcharts__ = __webpack_require__(183);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_highcharts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_highcharts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constructors_js__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constructors_js__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_js__ = __webpack_require__(184);
 
 
@@ -82991,7 +82991,7 @@ b,l,d){var h;a.objectEach(c,function(a,c){if(!d&&-1<E(c,["series","xAxis","yAxis
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__clone_js__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constructors_js__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constructors_js__ = __webpack_require__(26);
 
 
 
@@ -83275,252 +83275,252 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 28,
-	"./af.js": 28,
-	"./ar": 29,
-	"./ar-dz": 30,
-	"./ar-dz.js": 30,
-	"./ar-kw": 31,
-	"./ar-kw.js": 31,
-	"./ar-ly": 32,
-	"./ar-ly.js": 32,
-	"./ar-ma": 33,
-	"./ar-ma.js": 33,
-	"./ar-sa": 34,
-	"./ar-sa.js": 34,
-	"./ar-tn": 35,
-	"./ar-tn.js": 35,
-	"./ar.js": 29,
-	"./az": 36,
-	"./az.js": 36,
-	"./be": 37,
-	"./be.js": 37,
-	"./bg": 38,
-	"./bg.js": 38,
-	"./bm": 39,
-	"./bm.js": 39,
-	"./bn": 40,
-	"./bn.js": 40,
-	"./bo": 41,
-	"./bo.js": 41,
-	"./br": 42,
-	"./br.js": 42,
-	"./bs": 43,
-	"./bs.js": 43,
-	"./ca": 44,
-	"./ca.js": 44,
-	"./cs": 45,
-	"./cs.js": 45,
-	"./cv": 46,
-	"./cv.js": 46,
-	"./cy": 47,
-	"./cy.js": 47,
-	"./da": 48,
-	"./da.js": 48,
-	"./de": 49,
-	"./de-at": 50,
-	"./de-at.js": 50,
-	"./de-ch": 51,
-	"./de-ch.js": 51,
-	"./de.js": 49,
-	"./dv": 52,
-	"./dv.js": 52,
-	"./el": 53,
-	"./el.js": 53,
-	"./en-au": 54,
-	"./en-au.js": 54,
-	"./en-ca": 55,
-	"./en-ca.js": 55,
-	"./en-gb": 56,
-	"./en-gb.js": 56,
-	"./en-ie": 57,
-	"./en-ie.js": 57,
-	"./en-il": 58,
-	"./en-il.js": 58,
-	"./en-nz": 59,
-	"./en-nz.js": 59,
-	"./eo": 60,
-	"./eo.js": 60,
-	"./es": 61,
-	"./es-do": 62,
-	"./es-do.js": 62,
-	"./es-us": 63,
-	"./es-us.js": 63,
-	"./es.js": 61,
-	"./et": 64,
-	"./et.js": 64,
-	"./eu": 65,
-	"./eu.js": 65,
-	"./fa": 66,
-	"./fa.js": 66,
-	"./fi": 67,
-	"./fi.js": 67,
-	"./fo": 68,
-	"./fo.js": 68,
-	"./fr": 69,
-	"./fr-ca": 70,
-	"./fr-ca.js": 70,
-	"./fr-ch": 71,
-	"./fr-ch.js": 71,
-	"./fr.js": 69,
-	"./fy": 72,
-	"./fy.js": 72,
-	"./gd": 73,
-	"./gd.js": 73,
-	"./gl": 74,
-	"./gl.js": 74,
-	"./gom-latn": 75,
-	"./gom-latn.js": 75,
-	"./gu": 76,
-	"./gu.js": 76,
-	"./he": 77,
-	"./he.js": 77,
-	"./hi": 78,
-	"./hi.js": 78,
-	"./hr": 79,
-	"./hr.js": 79,
-	"./hu": 80,
-	"./hu.js": 80,
-	"./hy-am": 81,
-	"./hy-am.js": 81,
-	"./id": 82,
-	"./id.js": 82,
-	"./is": 83,
-	"./is.js": 83,
-	"./it": 84,
-	"./it.js": 84,
-	"./ja": 85,
-	"./ja.js": 85,
-	"./jv": 86,
-	"./jv.js": 86,
-	"./ka": 87,
-	"./ka.js": 87,
-	"./kk": 88,
-	"./kk.js": 88,
-	"./km": 89,
-	"./km.js": 89,
-	"./kn": 90,
-	"./kn.js": 90,
-	"./ko": 91,
-	"./ko.js": 91,
-	"./ky": 92,
-	"./ky.js": 92,
-	"./lb": 93,
-	"./lb.js": 93,
-	"./lo": 94,
-	"./lo.js": 94,
-	"./lt": 95,
-	"./lt.js": 95,
-	"./lv": 96,
-	"./lv.js": 96,
-	"./me": 97,
-	"./me.js": 97,
-	"./mi": 98,
-	"./mi.js": 98,
-	"./mk": 99,
-	"./mk.js": 99,
-	"./ml": 100,
-	"./ml.js": 100,
-	"./mn": 101,
-	"./mn.js": 101,
-	"./mr": 102,
-	"./mr.js": 102,
-	"./ms": 103,
-	"./ms-my": 104,
-	"./ms-my.js": 104,
-	"./ms.js": 103,
-	"./mt": 105,
-	"./mt.js": 105,
-	"./my": 106,
-	"./my.js": 106,
-	"./nb": 107,
-	"./nb.js": 107,
-	"./ne": 108,
-	"./ne.js": 108,
-	"./nl": 109,
-	"./nl-be": 110,
-	"./nl-be.js": 110,
-	"./nl.js": 109,
-	"./nn": 111,
-	"./nn.js": 111,
-	"./pa-in": 112,
-	"./pa-in.js": 112,
-	"./pl": 113,
-	"./pl.js": 113,
-	"./pt": 114,
-	"./pt-br": 115,
-	"./pt-br.js": 115,
-	"./pt.js": 114,
-	"./ro": 116,
-	"./ro.js": 116,
-	"./ru": 117,
-	"./ru.js": 117,
-	"./sd": 118,
-	"./sd.js": 118,
-	"./se": 119,
-	"./se.js": 119,
-	"./si": 120,
-	"./si.js": 120,
-	"./sk": 121,
-	"./sk.js": 121,
-	"./sl": 122,
-	"./sl.js": 122,
-	"./sq": 123,
-	"./sq.js": 123,
-	"./sr": 124,
-	"./sr-cyrl": 125,
-	"./sr-cyrl.js": 125,
-	"./sr.js": 124,
-	"./ss": 126,
-	"./ss.js": 126,
-	"./sv": 127,
-	"./sv.js": 127,
-	"./sw": 128,
-	"./sw.js": 128,
-	"./ta": 129,
-	"./ta.js": 129,
-	"./te": 130,
-	"./te.js": 130,
-	"./tet": 131,
-	"./tet.js": 131,
-	"./tg": 132,
-	"./tg.js": 132,
-	"./th": 133,
-	"./th.js": 133,
-	"./tl-ph": 134,
-	"./tl-ph.js": 134,
-	"./tlh": 135,
-	"./tlh.js": 135,
-	"./tr": 136,
-	"./tr.js": 136,
-	"./tzl": 137,
-	"./tzl.js": 137,
-	"./tzm": 138,
-	"./tzm-latn": 139,
-	"./tzm-latn.js": 139,
-	"./tzm.js": 138,
-	"./ug-cn": 140,
-	"./ug-cn.js": 140,
-	"./uk": 141,
-	"./uk.js": 141,
-	"./ur": 142,
-	"./ur.js": 142,
-	"./uz": 143,
-	"./uz-latn": 144,
-	"./uz-latn.js": 144,
-	"./uz.js": 143,
-	"./vi": 145,
-	"./vi.js": 145,
-	"./x-pseudo": 146,
-	"./x-pseudo.js": 146,
-	"./yo": 147,
-	"./yo.js": 147,
-	"./zh-cn": 148,
-	"./zh-cn.js": 148,
-	"./zh-hk": 149,
-	"./zh-hk.js": 149,
-	"./zh-tw": 150,
-	"./zh-tw.js": 150
+	"./af": 27,
+	"./af.js": 27,
+	"./ar": 28,
+	"./ar-dz": 29,
+	"./ar-dz.js": 29,
+	"./ar-kw": 30,
+	"./ar-kw.js": 30,
+	"./ar-ly": 31,
+	"./ar-ly.js": 31,
+	"./ar-ma": 32,
+	"./ar-ma.js": 32,
+	"./ar-sa": 33,
+	"./ar-sa.js": 33,
+	"./ar-tn": 34,
+	"./ar-tn.js": 34,
+	"./ar.js": 28,
+	"./az": 35,
+	"./az.js": 35,
+	"./be": 36,
+	"./be.js": 36,
+	"./bg": 37,
+	"./bg.js": 37,
+	"./bm": 38,
+	"./bm.js": 38,
+	"./bn": 39,
+	"./bn.js": 39,
+	"./bo": 40,
+	"./bo.js": 40,
+	"./br": 41,
+	"./br.js": 41,
+	"./bs": 42,
+	"./bs.js": 42,
+	"./ca": 43,
+	"./ca.js": 43,
+	"./cs": 44,
+	"./cs.js": 44,
+	"./cv": 45,
+	"./cv.js": 45,
+	"./cy": 46,
+	"./cy.js": 46,
+	"./da": 47,
+	"./da.js": 47,
+	"./de": 48,
+	"./de-at": 49,
+	"./de-at.js": 49,
+	"./de-ch": 50,
+	"./de-ch.js": 50,
+	"./de.js": 48,
+	"./dv": 51,
+	"./dv.js": 51,
+	"./el": 52,
+	"./el.js": 52,
+	"./en-au": 53,
+	"./en-au.js": 53,
+	"./en-ca": 54,
+	"./en-ca.js": 54,
+	"./en-gb": 55,
+	"./en-gb.js": 55,
+	"./en-ie": 56,
+	"./en-ie.js": 56,
+	"./en-il": 57,
+	"./en-il.js": 57,
+	"./en-nz": 58,
+	"./en-nz.js": 58,
+	"./eo": 59,
+	"./eo.js": 59,
+	"./es": 60,
+	"./es-do": 61,
+	"./es-do.js": 61,
+	"./es-us": 62,
+	"./es-us.js": 62,
+	"./es.js": 60,
+	"./et": 63,
+	"./et.js": 63,
+	"./eu": 64,
+	"./eu.js": 64,
+	"./fa": 65,
+	"./fa.js": 65,
+	"./fi": 66,
+	"./fi.js": 66,
+	"./fo": 67,
+	"./fo.js": 67,
+	"./fr": 68,
+	"./fr-ca": 69,
+	"./fr-ca.js": 69,
+	"./fr-ch": 70,
+	"./fr-ch.js": 70,
+	"./fr.js": 68,
+	"./fy": 71,
+	"./fy.js": 71,
+	"./gd": 72,
+	"./gd.js": 72,
+	"./gl": 73,
+	"./gl.js": 73,
+	"./gom-latn": 74,
+	"./gom-latn.js": 74,
+	"./gu": 75,
+	"./gu.js": 75,
+	"./he": 76,
+	"./he.js": 76,
+	"./hi": 77,
+	"./hi.js": 77,
+	"./hr": 78,
+	"./hr.js": 78,
+	"./hu": 79,
+	"./hu.js": 79,
+	"./hy-am": 80,
+	"./hy-am.js": 80,
+	"./id": 81,
+	"./id.js": 81,
+	"./is": 82,
+	"./is.js": 82,
+	"./it": 83,
+	"./it.js": 83,
+	"./ja": 84,
+	"./ja.js": 84,
+	"./jv": 85,
+	"./jv.js": 85,
+	"./ka": 86,
+	"./ka.js": 86,
+	"./kk": 87,
+	"./kk.js": 87,
+	"./km": 88,
+	"./km.js": 88,
+	"./kn": 89,
+	"./kn.js": 89,
+	"./ko": 90,
+	"./ko.js": 90,
+	"./ky": 91,
+	"./ky.js": 91,
+	"./lb": 92,
+	"./lb.js": 92,
+	"./lo": 93,
+	"./lo.js": 93,
+	"./lt": 94,
+	"./lt.js": 94,
+	"./lv": 95,
+	"./lv.js": 95,
+	"./me": 96,
+	"./me.js": 96,
+	"./mi": 97,
+	"./mi.js": 97,
+	"./mk": 98,
+	"./mk.js": 98,
+	"./ml": 99,
+	"./ml.js": 99,
+	"./mn": 100,
+	"./mn.js": 100,
+	"./mr": 101,
+	"./mr.js": 101,
+	"./ms": 102,
+	"./ms-my": 103,
+	"./ms-my.js": 103,
+	"./ms.js": 102,
+	"./mt": 104,
+	"./mt.js": 104,
+	"./my": 105,
+	"./my.js": 105,
+	"./nb": 106,
+	"./nb.js": 106,
+	"./ne": 107,
+	"./ne.js": 107,
+	"./nl": 108,
+	"./nl-be": 109,
+	"./nl-be.js": 109,
+	"./nl.js": 108,
+	"./nn": 110,
+	"./nn.js": 110,
+	"./pa-in": 111,
+	"./pa-in.js": 111,
+	"./pl": 112,
+	"./pl.js": 112,
+	"./pt": 113,
+	"./pt-br": 114,
+	"./pt-br.js": 114,
+	"./pt.js": 113,
+	"./ro": 115,
+	"./ro.js": 115,
+	"./ru": 116,
+	"./ru.js": 116,
+	"./sd": 117,
+	"./sd.js": 117,
+	"./se": 118,
+	"./se.js": 118,
+	"./si": 119,
+	"./si.js": 119,
+	"./sk": 120,
+	"./sk.js": 120,
+	"./sl": 121,
+	"./sl.js": 121,
+	"./sq": 122,
+	"./sq.js": 122,
+	"./sr": 123,
+	"./sr-cyrl": 124,
+	"./sr-cyrl.js": 124,
+	"./sr.js": 123,
+	"./ss": 125,
+	"./ss.js": 125,
+	"./sv": 126,
+	"./sv.js": 126,
+	"./sw": 127,
+	"./sw.js": 127,
+	"./ta": 128,
+	"./ta.js": 128,
+	"./te": 129,
+	"./te.js": 129,
+	"./tet": 130,
+	"./tet.js": 130,
+	"./tg": 131,
+	"./tg.js": 131,
+	"./th": 132,
+	"./th.js": 132,
+	"./tl-ph": 133,
+	"./tl-ph.js": 133,
+	"./tlh": 134,
+	"./tlh.js": 134,
+	"./tr": 135,
+	"./tr.js": 135,
+	"./tzl": 136,
+	"./tzl.js": 136,
+	"./tzm": 137,
+	"./tzm-latn": 138,
+	"./tzm-latn.js": 138,
+	"./tzm.js": 137,
+	"./ug-cn": 139,
+	"./ug-cn.js": 139,
+	"./uk": 140,
+	"./uk.js": 140,
+	"./ur": 141,
+	"./ur.js": 141,
+	"./uz": 142,
+	"./uz-latn": 143,
+	"./uz-latn.js": 143,
+	"./uz.js": 142,
+	"./vi": 144,
+	"./vi.js": 144,
+	"./x-pseudo": 145,
+	"./x-pseudo.js": 145,
+	"./yo": 146,
+	"./yo.js": 146,
+	"./zh-cn": 147,
+	"./zh-cn.js": 147,
+	"./zh-hk": 148,
+	"./zh-hk.js": 148,
+	"./zh-tw": 149,
+	"./zh-tw.js": 149
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -86396,9 +86396,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__ = __webpack_require__(151);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__);
 //
 //
@@ -87190,9 +87190,9 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_loading_overlay__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__ = __webpack_require__(151);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_loading_overlay_dist_vue_loading_min_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menus_navbars_vue__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menus_navbars_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__menus_navbars_vue__);
@@ -88324,6 +88324,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -88673,6 +88684,25 @@ var render = function() {
               )
             ],
             1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-list-tile",
+            { attrs: { to: { name: "choice-home" }, exact: "" } },
+            [
+              _c(
+                "v-list-tile-action",
+                [_c("v-icon", [_vm._v("mdi-view-list")])],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-tile-content",
+                [_c("v-list-tile-title", [_vm._v("การจัดการตัวเลือก")])],
+                1
+              )
+            ],
+            1
           )
         ],
         1
@@ -88738,7 +88768,9 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("v-toolbar-title", [_vm._v("สระบุรีฟาร์ม")])
+          _c("v-toolbar-title", { staticClass: "headline" }, [
+            _vm._v("สระบุรีฟาร์ม")
+          ])
         ],
         1
       ),
@@ -88884,7 +88916,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -88955,7 +88986,9 @@ var render = function() {
                   _c(
                     "v-card-title",
                     [
-                      _c("h1", [_vm._v("รายการผู้ใช้")]),
+                      _c("div", { staticClass: "headline" }, [
+                        _vm._v("รายการผู้ใช้")
+                      ]),
                       _vm._v(" "),
                       _c(
                         "v-btn",
@@ -89224,10 +89257,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_RoleService__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_UserService__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__role_checkbox__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__role_checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__role_checkbox__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__role_checkbox__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__role_checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__role_checkbox__);
 //
 //
 //
@@ -89258,21 +89290,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
-
+//
+//
+//
+//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
-        RoleCheckbox: __WEBPACK_IMPORTED_MODULE_2__role_checkbox___default.a
+        RoleCheckbox: __WEBPACK_IMPORTED_MODULE_1__role_checkbox___default.a
     },
     data: function data() {
         return {
             roles: [],
             form: {
                 roles: []
+            },
+            error: {
+                errors: {},
+                message: null
             }
         };
     },
@@ -89292,7 +89330,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         save: function save() {
             var self = this;
-            __WEBPACK_IMPORTED_MODULE_1__services_UserService__["a" /* default */].store(this.form).then(function (r) {
+            __WEBPACK_IMPORTED_MODULE_0__services_UserService__["a" /* default */].store(this.form).then(function (r) {
                 self.$router.push("/admin/user");
             }).catch(function (e) {
                 // TODO : handle errors
@@ -89353,7 +89391,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_RoleService__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_RoleService__ = __webpack_require__(153);
 //
 //
 //
@@ -89481,15 +89519,24 @@ var render = function() {
               _c(
                 "v-card",
                 [
-                  _c("v-card-title", [_c("h1", [_vm._v("เพิ่มผู้ใช้")])]),
+                  _c("v-card-title", [
+                    _c("div", { staticClass: "headline" }, [
+                      _vm._v("เพิ่มผู้ใช้")
+                    ])
+                  ]),
                   _vm._v(" "),
                   _c(
                     "v-card-text",
                     [
-                      _c("h2", [_vm._v("ข้อมูลทั่วไป")]),
+                      _c("h2", { staticClass: "title" }, [
+                        _vm._v("ข้อมูลทั่วไป")
+                      ]),
                       _vm._v(" "),
                       _c("v-text-field", {
-                        attrs: { label: "ชื่อ-นามสกุล" },
+                        attrs: {
+                          label: "ชื่อ-นามสกุล",
+                          "error-messages": _vm.error.errors.name
+                        },
                         model: {
                           value: _vm.form.name,
                           callback: function($$v) {
@@ -89500,7 +89547,10 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("v-text-field", {
-                        attrs: { label: "ชื่อผู้ใช้" },
+                        attrs: {
+                          label: "ชื่อผู้ใช้",
+                          "error-messages": _vm.error.errors.username
+                        },
                         model: {
                           value: _vm.form.username,
                           callback: function($$v) {
@@ -89511,7 +89561,10 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("v-text-field", {
-                        attrs: { label: "อีเมล์" },
+                        attrs: {
+                          label: "อีเมล์",
+                          "error-messages": _vm.error.errors.email
+                        },
                         model: {
                           value: _vm.form.email,
                           callback: function($$v) {
@@ -89522,7 +89575,11 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("v-text-field", {
-                        attrs: { label: "รหัสผ่าน", type: "password" },
+                        attrs: {
+                          label: "รหัสผ่าน",
+                          type: "password",
+                          "error-messages": _vm.error.errors.password
+                        },
                         model: {
                           value: _vm.form.password,
                           callback: function($$v) {
@@ -89543,7 +89600,9 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("h2", [_vm._v("สิทธิ์การใช้งาน")]),
+                      _c("h2", { staticClass: "title" }, [
+                        _vm._v("สิทธิ์การใช้งาน")
+                      ]),
                       _vm._v(" "),
                       _c("role-checkbox", {
                         attrs: { value: _vm.form.roles },
@@ -89648,8 +89707,12 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_UserService__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__role_checkbox__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__role_checkbox__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__role_checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__role_checkbox__);
+//
+//
+//
+//
 //
 //
 //
@@ -89692,7 +89755,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             roles: null,
-            form: null
+            form: null,
+            error: {
+                errors: {},
+                message: null
+            }
         };
     },
 
@@ -89713,11 +89780,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         save: function save() {
+            var _this = this;
+
             var self = this;
             __WEBPACK_IMPORTED_MODULE_0__services_UserService__["a" /* default */].update(this.form, self.$route.params.id).then(function (r) {
                 self.$router.push("/admin/user");
             }).catch(function (e) {
                 // TODO : handle errors
+                _this.error = error.response.data;
             });
         }
     },
@@ -89746,15 +89816,24 @@ var render = function() {
               _c(
                 "v-card",
                 [
-                  _c("v-card-title", [_c("h1", [_vm._v("เพิ่มผู้ใช้")])]),
+                  _c("v-card-title", [
+                    _c("div", { staticClass: "headline" }, [
+                      _vm._v("แก้ไขผู้ใช้")
+                    ])
+                  ]),
                   _vm._v(" "),
                   _c(
                     "v-card-text",
                     [
-                      _c("h2", [_vm._v("ข้อมูลทั่วไป")]),
+                      _c("h2", { staticClass: "title" }, [
+                        _vm._v("ข้อมูลทั่วไป")
+                      ]),
                       _vm._v(" "),
                       _c("v-text-field", {
-                        attrs: { label: "ชื่อ-นามสกุล" },
+                        attrs: {
+                          label: "ชื่อ-นามสกุล",
+                          "error-messages": _vm.error.errors.name
+                        },
                         model: {
                           value: _vm.form.name,
                           callback: function($$v) {
@@ -89765,7 +89844,10 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("v-text-field", {
-                        attrs: { label: "ชื่อผู้ใช้" },
+                        attrs: {
+                          label: "ชื่อผู้ใช้",
+                          "error-messages": _vm.error.errors.username
+                        },
                         model: {
                           value: _vm.form.username,
                           callback: function($$v) {
@@ -89776,7 +89858,10 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("v-text-field", {
-                        attrs: { label: "อีเมล์" },
+                        attrs: {
+                          label: "อีเมล์",
+                          "error-messages": _vm.error.errors.email
+                        },
                         model: {
                           value: _vm.form.email,
                           callback: function($$v) {
@@ -89787,7 +89872,11 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("v-text-field", {
-                        attrs: { label: "รหัสผ่าน", type: "password" },
+                        attrs: {
+                          label: "รหัสผ่าน",
+                          type: "password",
+                          "error-messages": _vm.error.errors.password
+                        },
                         model: {
                           value: _vm.form.password,
                           callback: function($$v) {
@@ -89808,7 +89897,9 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("h2", [_vm._v("สิทธิ์การใช้งาน")]),
+                      _c("h2", { staticClass: "title" }, [
+                        _vm._v("สิทธิ์การใช้งาน")
+                      ]),
                       _vm._v(" "),
                       _c("role-checkbox", {
                         attrs: { value: _vm.form.roles },
@@ -89931,7 +90022,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_RoleService__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_RoleService__ = __webpack_require__(153);
 //
 //
 //
@@ -90052,7 +90143,9 @@ var render = function() {
                   _c(
                     "v-card-title",
                     [
-                      _c("h1", [_vm._v("รายการสิทธิ์")]),
+                      _c("div", { staticClass: "headline" }, [
+                        _vm._v("รายการสิทธิ์")
+                      ]),
                       _vm._v(" "),
                       _c("v-spacer"),
                       _vm._v(" "),
@@ -90475,9 +90568,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 
@@ -90485,6 +90575,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
+            headers: [{ text: 'ชื่อตัวเลือก (Unique)', value: 'name' }, { text: 'ชื่อแสดง', value: 'display_name' }, { text: 'รายละเอียด', value: 'description' }, { text: 'การกระทำ', value: 'name', sortable: false }],
             choices: [],
             paginate: null,
             form: {
@@ -90525,186 +90616,223 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card card-default mb-3" }, [
-    _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n        รายการข้อมูลพื้นฐานและตัวเลือก\n    ")
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "d-flex" }, [
-        _c(
-          "div",
-          { staticClass: "mr-auto" },
-          [
-            _c(
-              "router-link",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { to: { name: "choice-add" } }
-              },
-              [_vm._v("\n                    เพิ่มรายการ\n                ")]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", {}, [
-          _c("div", { staticClass: "float-lg-right float-sm-left" }, [
-            _c(
-              "form",
-              {
-                staticClass: "form form-inline",
-                on: {
-                  submit: function($event) {
-                    if (
-                      !("button" in $event) &&
-                      _vm._k(
-                        $event.keyCode,
-                        "default",
-                        undefined,
-                        $event.key,
-                        undefined
-                      )
-                    ) {
-                      return null
-                    }
-                    return _vm.load($event)
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "input-group mb-3" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.keyword,
-                        expression: "form.keyword"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "ค้นหา" },
-                    domProps: { value: _vm.form.keyword },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "keyword", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group-append" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-info ",
-                        attrs: { type: "button" },
-                        on: { click: _vm.load }
-                      },
-                      [_vm._v("ค้นหา")]
-                    )
-                  ])
-                ])
-              ]
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "table-responsive" }, [
-        _c("table", { staticClass: "table table-hover table-striped" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.choices, function(item) {
-              return _c("tr", [
-                _c("td", [_vm._v(_vm._s(item.name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(item.display_name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(item.description))]),
-                _vm._v(" "),
-                _c("td", [
+  return _c(
+    "div",
+    [
+      _vm.choices
+        ? _c(
+            "v-layout",
+            { attrs: { column: "", "justify-center": "" } },
+            [
+              _c(
+                "v-flex",
+                [
                   _c(
-                    "div",
-                    { staticClass: "btn-group" },
+                    "v-card",
                     [
                       _c(
-                        "router-link",
-                        {
-                          staticClass: "btn btn-info",
-                          attrs: {
-                            to: { name: "choice-view", params: { id: item.id } }
-                          }
-                        },
+                        "v-card-title",
                         [
-                          _vm._v(
-                            "\n                            รายละเอียด\n                        "
+                          _c("div", { staticClass: "headline" }, [
+                            _vm._v("รายการตัวเลือก")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                color: "primary",
+                                fab: "",
+                                small: "",
+                                dark: "",
+                                to: { name: "choice-add" }
+                              }
+                            },
+                            [_c("v-icon", [_vm._v("mdi-plus")])],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("v-spacer"),
+                          _vm._v(" "),
+                          _c(
+                            "v-form",
+                            {
+                              on: {
+                                submit: function($event) {
+                                  if (
+                                    !("button" in $event) &&
+                                    _vm._k(
+                                      $event.keyCode,
+                                      "default",
+                                      undefined,
+                                      $event.key,
+                                      undefined
+                                    )
+                                  ) {
+                                    return null
+                                  }
+                                  _vm.load()
+                                }
+                              }
+                            },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  "append-icon": "search",
+                                  label: "ค้นหา",
+                                  "single-line": "",
+                                  "hide-details": ""
+                                },
+                                model: {
+                                  value: _vm.form.keyword,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "keyword", $$v)
+                                  },
+                                  expression: "form.keyword"
+                                }
+                              })
+                            ],
+                            1
                           )
-                        ]
+                        ],
+                        1
                       ),
                       _vm._v(" "),
                       _c(
-                        "router-link",
+                        "v-data-table",
                         {
-                          staticClass: "btn btn-light",
                           attrs: {
-                            to: { name: "choice-edit", params: { id: item.id } }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            แก้ไข\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger",
-                          on: {
-                            click: function($event) {
-                              _vm.destroy(item)
+                            headers: _vm.headers,
+                            items: _vm.choices,
+                            "hide-actions": ""
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "items",
+                              fn: function(props) {
+                                return [
+                                  _c("td", [_vm._v(_vm._s(props.item.name))]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(props.item.display_name))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _vm._v(_vm._s(props.item.description))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          staticClass: "mx-0",
+                                          attrs: {
+                                            icon: "",
+                                            to: {
+                                              name: "choice-edit",
+                                              params: { id: props.item.id }
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "v-icon",
+                                            { attrs: { color: "teal" } },
+                                            [_vm._v("edit")]
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          staticClass: "mx-0",
+                                          attrs: { icon: "" },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.destroy(props.item)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "v-icon",
+                                            { attrs: { color: "pink" } },
+                                            [_vm._v("delete")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ]
+                              }
                             }
-                          }
+                          ])
                         },
-                        [_vm._v("ลบ")]
+                        [
+                          _c(
+                            "template",
+                            { slot: "no-data" },
+                            [
+                              _c(
+                                "v-alert",
+                                {
+                                  attrs: {
+                                    value: true,
+                                    color: "error",
+                                    icon: "warning"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                            Sorry, nothing to display here :(\n                        "
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        2
                       )
                     ],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "text-xs-center pt-2" },
+                    [
+                      _c("v-pagination", {
+                        attrs: { length: _vm.paginate.last_page },
+                        model: {
+                          value: _vm.page,
+                          callback: function($$v) {
+                            _vm.page = $$v
+                          },
+                          expression: "page"
+                        }
+                      })
+                    ],
+                    1
                   )
-                ])
-              ])
-            })
+                ],
+                1
+              )
+            ],
+            1
           )
-        ])
-      ])
-    ])
-  ])
+        : _vm._e()
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "thead-light" }, [
-      _c("tr", [
-        _c("th", [_vm._v("ชื่อตัวเลือก (Unique)")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("ขื่อแสดง")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("รายละเอียด")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("การกระทำ")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -91148,7 +91276,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -91159,17 +91287,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -91219,29 +91336,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-group" }, [
-    _c("label", [_vm._v(_vm._s(_vm.displayName))]),
-    _vm._v(" "),
-    _c("input", {
-      staticClass: "form-control",
-      class: { "is-invalid": _vm.error.hasOwnProperty(_vm.errorkey) },
-      attrs: {
-        type: _vm.type,
-        placeholder: _vm.placeholder,
-        readonly: _vm.readonly
+  return _c("v-text-field", {
+    attrs: {
+      label: _vm.displayName,
+      type: _vm.type,
+      "error-messages": _vm.error[_vm.errorkey]
+    },
+    model: {
+      value: _vm.value,
+      callback: function($$v) {
+        _vm.value = $$v
       },
-      domProps: { value: _vm.value },
-      on: {
-        input: function($event) {
-          _vm.$emit("input", $event.target.value)
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("div", { staticClass: "invalid-feedback" }, [
-      _vm._v("\n        " + _vm._s(_vm.error[_vm.errorkey]) + "\n    ")
-    ])
-  ])
+      expression: "value"
+    }
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -91964,22 +92072,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -92090,521 +92182,438 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.form
-      ? _c("div", { staticClass: "card card-default mb-3" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("\n            แก้ไขตัวเลือก\n            "),
-            _vm.parent
-              ? _c("span", [_vm._v(_vm._s(_vm.parent.name) + " \\ ")])
-              : _vm._e(),
-            _vm._v("\n            " + _vm._s(_vm.form.name) + "\n        ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function($event) {
-                    if (
-                      !("button" in $event) &&
-                      _vm._k(
-                        $event.keyCode,
-                        "default",
-                        undefined,
-                        $event.key,
-                        undefined
-                      )
-                    ) {
-                      return null
-                    }
-                    return _vm.save($event)
-                  }
-                }
-              },
-              [
-                _c(
-                  "fieldset",
-                  [
-                    _c("legend", [_vm._v("รายละเอียด")]),
-                    _vm._v(" "),
-                    _c("input-group", {
-                      attrs: {
-                        error: _vm.error,
-                        "display-name": "ชื่อตัวเลือก (Unique)",
-                        type: "text",
-                        errorkey: "name",
-                        placeholder: "Enter Name (unique)"
-                      },
-                      model: {
-                        value: _vm.form.name,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "name", $$v)
-                        },
-                        expression: "form.name"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("input-group", {
-                      attrs: {
-                        error: _vm.error,
-                        "display-name": "ชื่อแสดง",
-                        type: "text",
-                        errorkey: "display_name",
-                        placeholder: "Enter Display Name"
-                      },
-                      model: {
-                        value: _vm.form.display_name,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "display_name", $$v)
-                        },
-                        expression: "form.display_name"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("input-group", {
-                      attrs: {
-                        error: _vm.error,
-                        "display-name": "รายละเอียด",
-                        type: "text",
-                        errorkey: "description",
-                        placeholder: "Enter Description"
-                      },
-                      model: {
-                        value: _vm.form.description,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "description", $$v)
-                        },
-                        expression: "form.description"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.parent
-                      ? [
-                          _vm._l(_vm.parent.children_fields, function(
-                            value,
-                            key
-                          ) {
-                            return [
-                              _c(
-                                "div",
-                                { staticClass: "form-group" },
-                                [
-                                  _c("label", [
-                                    _vm._v(_vm._s(value.display_name))
-                                  ]),
-                                  _vm._v(" "),
-                                  value.type == "text"
-                                    ? _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.form.values[key],
-                                            expression: "form.values[key]"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "text",
-                                          placeholder: "Placeholder"
-                                        },
-                                        domProps: {
-                                          value: _vm.form.values[key]
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.form.values,
-                                              key,
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  value.type == "number"
-                                    ? _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.form.values[key],
-                                            expression: "form.values[key]"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        attrs: {
-                                          type: "number",
-                                          placeholder: "Placeholder"
-                                        },
-                                        domProps: {
-                                          value: _vm.form.values[key]
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.form.values,
-                                              key,
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  value.type == "ref"
-                                    ? _c("choice-select", {
-                                        attrs: {
-                                          type: value,
-                                          value: _vm.form.values[key]
-                                        },
-                                        on: {
-                                          change: function($event) {
-                                            _vm.updateField($event, key)
-                                          }
-                                        }
-                                      })
-                                    : _vm._e()
-                                ],
-                                1
-                              )
-                            ]
-                          })
-                        ]
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Children Field")]),
+  return _c(
+    "div",
+    [
+      _vm.form
+        ? _c(
+            "v-layout",
+            { attrs: { column: "", "justify-center": "" } },
+            [
+              _c(
+                "v-flex",
+                [
+                  _c(
+                    "v-card",
+                    [
+                      _c("v-card-title", [
+                        _c("div", { staticClass: "headline" }, [
+                          _vm._v("เพิ่มตัวเลือก\n                        "),
+                          _vm.parent
+                            ? _c("span", [
+                                _vm._v(_vm._s(_vm.parent.name) + " \\ ")
+                              ])
+                            : _vm._e(),
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(_vm.form.name) +
+                              "\n                    "
+                          )
+                        ])
+                      ]),
                       _vm._v(" "),
-                      _c("table", { staticClass: "table table-bordered" }, [
-                        _vm._m(0),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          [
-                            _vm._l(_vm.form.children_fields, function(
-                              value,
-                              key
-                            ) {
-                              return _c("tr", [
-                                _c("td", [_vm._v(_vm._s(key))]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(value.display_name))]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(value.type))]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(value.to))]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(value.showInTable))]),
-                                _vm._v(" "),
-                                _c("td", [
-                                  _c("div", { staticClass: "btn-group" }, [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-danger",
-                                        attrs: { type: "button" },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.removeChildren(key)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                            ลบ\n                                        "
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ])
-                              ])
-                            }),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.children_forms.key,
-                                      expression: "children_forms.key"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: { type: "text" },
-                                  domProps: { value: _vm.children_forms.key },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.children_forms,
-                                        "key",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.children_forms.display_name,
-                                      expression: "children_forms.display_name"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: { type: "text" },
-                                  domProps: {
-                                    value: _vm.children_forms.display_name
-                                  },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.children_forms,
-                                        "display_name",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticStyle: { width: "100px" } }, [
-                                _c(
-                                  "select",
-                                  {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.children_forms.type,
-                                        expression: "children_forms.type"
-                                      }
-                                    ],
-                                    staticClass: "form-control",
-                                    on: {
-                                      change: function($event) {
-                                        var $$selectedVal = Array.prototype.filter
-                                          .call($event.target.options, function(
-                                            o
-                                          ) {
-                                            return o.selected
-                                          })
-                                          .map(function(o) {
-                                            var val =
-                                              "_value" in o ? o._value : o.value
-                                            return val
-                                          })
-                                        _vm.$set(
-                                          _vm.children_forms,
-                                          "type",
-                                          $event.target.multiple
-                                            ? $$selectedVal
-                                            : $$selectedVal[0]
-                                        )
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "option",
-                                      { attrs: { disabled: "", value: "" } },
-                                      [_vm._v("Please select one")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("option", { attrs: { selected: "" } }, [
-                                      _vm._v("text")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("option", [_vm._v("number")]),
-                                    _vm._v(" "),
-                                    _c("option", [_vm._v("ref")])
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.children_forms.to,
-                                      expression: "children_forms.to"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: { type: "text" },
-                                  domProps: { value: _vm.children_forms.to },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.children_forms,
-                                        "to",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.children_forms.showInTable,
-                                      expression: "children_forms.showInTable"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: { type: "text" },
-                                  domProps: {
-                                    value: _vm.children_forms.showInTable
-                                  },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.children_forms,
-                                        "showInTable",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c("div", { staticClass: "btn-group" }, [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-primary",
-                                      attrs: { type: "button" },
-                                      on: { click: _vm.addChildrenFields }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                            เพิ่ม\n                                        "
-                                      )
-                                    ]
-                                  )
-                                ])
-                              ])
-                            ])
-                          ],
-                          2
-                        )
-                      ])
-                    ])
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                  [_vm._v("Submit")]
-                ),
-                _vm._v(" "),
-                _vm.$route.params.back_to
-                  ? _c(
-                      "router-link",
-                      {
-                        staticClass: "btn btn-light",
-                        attrs: { to: _vm.$route.params.back_to }
-                      },
-                      [_vm._v("\n                    ยกเลิก\n                ")]
-                    )
-                  : _vm.form.parent
-                    ? _c(
-                        "router-link",
-                        {
-                          key: _vm.$route.fullPath,
-                          staticClass: "btn btn-light",
-                          attrs: {
-                            to: {
-                              name: "choice-view",
-                              params: { id: _vm.form.parent.id }
+                      _c(
+                        "v-card-text",
+                        [
+                          _c("h2", { staticClass: "title" }, [
+                            _vm._v("รายละเอียด")
+                          ]),
+                          _vm._v(" "),
+                          _c("input-group", {
+                            attrs: {
+                              error: _vm.error,
+                              "display-name": "ชื่อตัวเลือก (Unique)",
+                              type: "text",
+                              errorkey: "name",
+                              placeholder: "Enter Name (unique)"
+                            },
+                            model: {
+                              value: _vm.form.name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "name", $$v)
+                              },
+                              expression: "form.name"
                             }
-                          }
-                        },
+                          }),
+                          _vm._v(" "),
+                          _c("input-group", {
+                            attrs: {
+                              error: _vm.error,
+                              "display-name": "ชื่อแสดง",
+                              type: "text",
+                              errorkey: "display_name",
+                              placeholder: "Enter Display Name"
+                            },
+                            model: {
+                              value: _vm.form.display_name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "display_name", $$v)
+                              },
+                              expression: "form.display_name"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("input-group", {
+                            attrs: {
+                              error: _vm.error,
+                              "display-name": "รายละเอียด",
+                              type: "text",
+                              errorkey: "description",
+                              placeholder: "Enter Description"
+                            },
+                            model: {
+                              value: _vm.form.description,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "description", $$v)
+                              },
+                              expression: "form.description"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.parent
+                            ? [
+                                _vm._l(_vm.parent.children_fields, function(
+                                  value,
+                                  key
+                                ) {
+                                  return [
+                                    _c(
+                                      "div",
+                                      { staticClass: "form-group" },
+                                      [
+                                        _c("label", [
+                                          _vm._v(_vm._s(value.display_name))
+                                        ]),
+                                        _vm._v(" "),
+                                        value.type == "text"
+                                          ? _c("v-text-field", {
+                                              attrs: {
+                                                label: value.display_name,
+                                                type: "text"
+                                              },
+                                              model: {
+                                                value: _vm.form.values[key],
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.form.values,
+                                                    key,
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "form.values[key]"
+                                              }
+                                            })
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        value.type == "number"
+                                          ? _c("v-text-field", {
+                                              attrs: {
+                                                label: value.display_name,
+                                                type: "number"
+                                              },
+                                              model: {
+                                                value: _vm.form.values[key],
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.form.values,
+                                                    key,
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "form.values[key]"
+                                              }
+                                            })
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        value.type == "ref"
+                                          ? _c("choice-select", {
+                                              attrs: {
+                                                type: value,
+                                                value: _vm.form.values[key]
+                                              },
+                                              on: {
+                                                change: function($event) {
+                                                  _vm.updateField($event, key)
+                                                }
+                                              }
+                                            })
+                                          : _vm._e()
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                })
+                              ]
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("h2", { staticClass: "title pb-3" }, [
+                            _vm._v("ข้อมูลเพิ่มเติมตัวเลือกลูก")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", {}, [
+                            _c(
+                              "table",
+                              { staticClass: "table table-striped" },
+                              [
+                                _c("thead", [
+                                  _c("tr", [
+                                    _c("th", [_vm._v("Key")]),
+                                    _vm._v(" "),
+                                    _c("th", [_vm._v("Display Name")]),
+                                    _vm._v(" "),
+                                    _c("th", [_vm._v("Type")]),
+                                    _vm._v(" "),
+                                    _c("th", [_vm._v("To")]),
+                                    _vm._v(" "),
+                                    _c("th", [_vm._v("Show in Table")]),
+                                    _vm._v(" "),
+                                    _c("th", [_vm._v("Action")])
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "tbody",
+                                  [
+                                    _vm._l(_vm.form.children_fields, function(
+                                      value,
+                                      key
+                                    ) {
+                                      return _c("tr", [
+                                        _c("td", [_vm._v(_vm._s(key))]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(_vm._s(value.display_name))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(value.type))]),
+                                        _vm._v(" "),
+                                        _c("td", [_vm._v(_vm._s(value.to))]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _vm._v(_vm._s(value.showInTable))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("td", [
+                                          _c(
+                                            "div",
+                                            { staticClass: "btn-group" },
+                                            [
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass: "btn btn-danger",
+                                                  attrs: { type: "button" },
+                                                  on: {
+                                                    click: function($event) {
+                                                      _vm.removeChildren(key)
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                        ลบ\n                                    "
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ])
+                                      ])
+                                    }),
+                                    _vm._v(" "),
+                                    _c("tr", [
+                                      _c(
+                                        "td",
+                                        [
+                                          _c("v-text-field", {
+                                            attrs: {
+                                              label: "Key",
+                                              type: "text"
+                                            },
+                                            model: {
+                                              value: _vm.children_forms.key,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.children_forms,
+                                                  "key",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "children_forms.key"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        [
+                                          _c("v-text-field", {
+                                            attrs: {
+                                              label: "Display Name",
+                                              type: "text"
+                                            },
+                                            model: {
+                                              value:
+                                                _vm.children_forms.display_name,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.children_forms,
+                                                  "display_name",
+                                                  $$v
+                                                )
+                                              },
+                                              expression:
+                                                "children_forms.display_name"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        [
+                                          _c("v-select", {
+                                            attrs: {
+                                              items: ["text", "number", "ref"],
+                                              label: "Type",
+                                              "single-line": ""
+                                            },
+                                            model: {
+                                              value: _vm.children_forms.type,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.children_forms,
+                                                  "type",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "children_forms.type"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        [
+                                          _c("v-text-field", {
+                                            attrs: {
+                                              disabled:
+                                                _vm.children_forms.type !=
+                                                "ref",
+                                              type: "text"
+                                            },
+                                            model: {
+                                              value: _vm.children_forms.to,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.children_forms,
+                                                  "to",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "children_forms.to"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        [
+                                          _c("v-switch", {
+                                            model: {
+                                              value:
+                                                _vm.children_forms.showInTable,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.children_forms,
+                                                  "showInTable",
+                                                  $$v
+                                                )
+                                              },
+                                              expression:
+                                                "children_forms.showInTable"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        [
+                                          _c(
+                                            "v-btn",
+                                            {
+                                              attrs: {
+                                                color: "primary",
+                                                type: "button"
+                                              },
+                                              on: {
+                                                click: _vm.addChildrenFields
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                        เพิ่ม\n                                    "
+                                              )
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ])
+                                  ],
+                                  2
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("v-divider")
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-actions",
                         [
-                          _vm._v(
-                            "\n                    ยกเลิก\n                "
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { color: "primary" },
+                              on: {
+                                click: function($event) {
+                                  _vm.save()
+                                }
+                              }
+                            },
+                            [_vm._v("Submit")]
                           )
-                        ]
+                        ],
+                        1
                       )
-                    : _c(
-                        "router-link",
-                        {
-                          key: _vm.$route.fullPath,
-                          staticClass: "btn btn-light",
-                          attrs: { to: { name: "choice-home" } }
-                        },
-                        [
-                          _vm._v(
-                            "\n                    ยกเลิก\n                "
-                          )
-                        ]
-                      )
-              ],
-              1
-            )
-          ])
-        ])
-      : _vm._e()
-  ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        : _vm._e()
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Key")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Display Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Type")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("To")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Show in Table")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Action")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -95682,7 +95691,9 @@ var render = function() {
     "v-layout",
     { attrs: { column: "", "justify-center": "" } },
     [
-      _c("v-flex", [_c("h1", [_vm._v("Dashboard")])]),
+      _c("v-flex", [
+        _c("div", { staticClass: "headline" }, [_vm._v("Dashboard")])
+      ]),
       _vm._v(" "),
       _c(
         "v-flex",
@@ -95874,7 +95885,9 @@ var render = function() {
     "v-layout",
     { attrs: { column: "", "justify-center": "" } },
     [
-      _c("v-flex", [_c("h1", [_vm._v("Example Chart")])]),
+      _c("v-flex", [
+        _c("div", { staticClass: "headline" }, [_vm._v("Example Chart")])
+      ]),
       _vm._v(" "),
       _c(
         "v-flex",

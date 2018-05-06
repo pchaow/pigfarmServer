@@ -3,7 +3,7 @@
         <v-flex>
             <v-card>
                 <v-card-title>
-                    <h1>รายการสิทธิ์</h1>
+                    <div class="headline">รายการสิทธิ์</div>
 
                     <v-spacer></v-spacer>
                     <v-form v-on:submit.default="load()">

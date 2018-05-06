@@ -8,7 +8,7 @@
                    fixed
         >
             <v-toolbar-side-icon @click.stop="toggleDrawer()"></v-toolbar-side-icon>
-            <v-toolbar-title>สระบุรีฟาร์ม</v-toolbar-title>
+            <v-toolbar-title class="headline">สระบุรีฟาร์ม</v-toolbar-title>
         </v-toolbar>
         <v-content>
             <v-container fluid>
