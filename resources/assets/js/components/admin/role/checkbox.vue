@@ -1,16 +1,12 @@
 <template>
     <div>
-        <div class="form-group">
-            <label class="control-label">Roles : </label>
-            <div class="checkbox" v-for="role in roles">
-                <label>
-                    <input type="checkbox" v-bind:value="role"
-                           v-on:change="$emit('change', role)"
-                           v-bind:checked="value.indexOf(role) != -1"
-                    >
-                    {{role.name}}
-                </label>
-            </div>
+        <div class="checkbox" v-for="role in roles">
+            <v-checkbox :label="role.name"
+                        v-bind:value="role"
+                        v-on:change="$emit('change', role)"
+                        :input-value="value"
+            >
+            </v-checkbox>
         </div>
     </div>
 </template>
@@ -28,7 +24,8 @@
         },
         data() {
             return {
-                roles: []
+                roles: [],
+                selected: [],
             }
         },
         methods: {

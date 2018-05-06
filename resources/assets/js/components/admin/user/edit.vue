@@ -1,49 +1,31 @@
 <template>
-    <div class="card card-default mb-3" v-if="form">
-        <div class="card-header">แก้ไขผู้ใช้</div>
-
-        <div class="card-body">
-            <form v-on:submit.default="save">
-                <fieldset>
-                    <legend>ข้อมูลพื้นฐาน</legend>
-                    <div class="form-group">
-                        <label>ชื่อ-นามสกุล</label>
-                        <input v-model="form.name" type="text" class="form-control" placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label>ชื่อผู้ใช้</label>
-                        <input v-model="form.username" type="text" class="form-control" placeholder="Enter Username">
-                    </div>
-                    <div class="form-group">
-                        <label>อีเมล์</label>
-                        <input v-model="form.email" type="email" class="form-control" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label>รหัสผ่าน</label>
-                        <input v-model="form.password" type="password" class="form-control" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label>ยืนยันรหัสผ่าน </label>
-                        <input v-model="form.password_confirmation" type="password" class="form-control"
-                               placeholder="Password Confirmation">
-                    </div>
-
-                </fieldset>
-
-                <fieldset>
-                    <legend>สิทธิ์การใช้งาน</legend>
-
+    <v-layout column justify-center v-if="form">
+        <v-flex>
+            <v-card>
+                <v-card-title>
+                    <h1>เพิ่มผู้ใช้</h1>
+                </v-card-title>
+                <v-card-text>
+                    <h2>ข้อมูลทั่วไป</h2>
+                    <v-text-field label="ชื่อ-นามสกุล" v-model="form.name"/>
+                    <v-text-field label="ชื่อผู้ใช้" v-model="form.username"/>
+                    <v-text-field label="อีเมล์" v-model="form.email"/>
+                    <v-text-field label="รหัสผ่าน" v-model="form.password" type="password"/>
+                    <v-text-field label="ยืนยันรหัสผ่าน" v-model="form.password_confirmation" type="password"/>
+                    <h2>สิทธิ์การใช้งาน</h2>
                     <role-checkbox
-                            :value="form.roles"
+                            v-bind:value="form.roles"
                             @change="updateRoles"
                     ></role-checkbox>
+                    <v-divider/>
 
-                </fieldset>
-                <button type="submit" class="btn btn-primary">Submit</button>
-
-            </form>
-        </div>
-    </div>
+                </v-card-text>
+                <v-card-actions>
+                    <v-btn @click="save()" color="primary">Submit</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-flex>
+    </v-layout>
 </template>
 
 <script>
@@ -57,7 +39,7 @@
         },
         data() {
             return {
-                roles: [],
+                roles: null,
                 form: null,
             }
 
