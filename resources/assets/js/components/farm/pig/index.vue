@@ -1,88 +1,63 @@
 <template>
-    <div class="card card-default mb-3">
-        <div class="card-header">
-            รายการสุกร
-        </div>
+    <v-layout column justify-center v-if="pigs">
+        <v-flex>
+            <v-card>
+                <v-card-title>
+                    <div class="headline">รายการสุกรแม่พันธุ์</div>
+                    <v-btn color="primary" fab small dark :to="{name:'pig-add'}">
+                        <v-icon>mdi-plus</v-icon>
+                    </v-btn>
+                    <v-spacer></v-spacer>
+                    <v-form v-on:submit.default="load()">
+                        <v-text-field
+                                append-icon="search"
+                                label="ค้นหา"
+                                single-line
+                                hide-details
+                                v-model="form.keyword"
+                        ></v-text-field>
+                    </v-form>
+                </v-card-title>
 
-        <div class="card-body">
-            <div class="d-flex">
-                <div class="mr-auto">
-                    <router-link class="btn btn-primary" :to="{name:'pig-add'}">เพิ่มสุกร</router-link>
-                </div>
-                <div class="justify-content-end ml-auto">
-                    <form class="form form-inline" v-on:submit.default="search">
-                        <div class="input-group mb-3">
-                            <input v-model="form.keyword" type="text" class="form-control"
-                                   placeholder="ค้นหา">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-info">ค้นหา</button>
-                            </div>
+                <v-data-table
+                        :headers="headers"
+                        :items="pigs"
+                        hide-actions>
 
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-hover text-nowrap">
-                    <thead class="thead-light">
-                    <tr>
-                        <th>PigID</th>
-                        <th>เบอร์แม่พันธุ์</th>
-                        <th>วันเกิด</th>
-                        <th>วันเข้าฟาร์ม</th>
-                        <th>แหล่งที่มา</th>
-                        <!--
+                    <template slot="items" slot-scope="props">
 
-                        <th>พ่อพันธ์ุ</th>
-                        <th>แม่พันธุ์</th>
-                        <th>สายพันธุ์</th>
-                        <th>เต้านม</th>
-                        <th>สถานะ</th>
-                         -->
-                        <th>การกระทำ</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="item in pigs">
-                        <td>{{item.pig_id}}</td>
-                        <td>{{item.pig_number}}</td>
-                        <td>{{item.birth_date}}</td>
-                        <td>{{item.entry_date}}</td>
-                        <td>{{item.source}}</td>
-                        <!--
-                        <td>{{item.male_breeder_pig_id}}</td>
-                        <td>{{item.female_breeder_pig_id}}</td>
-                        <td>
-                            <template v-if="item.blood_line">
-                                {{typeof(item.blood_line) === "object" ?item.blood_line.display_name : item.blood_line}}
-                            </template>
-                        </td>
-                        <td>{{item.left_breast}} / {{item.right_breast}}</td>
-                        <td>{{item.status}}</td>
-                        -->
+                        <td>{{props.item.pig_id}}</td>
+                        <td>{{props.item.pig_number}}</td>
+                        <td>{{props.item.birth_date}}</td>
+                        <td>{{props.item.entry_date}}</td>
+                        <td>{{props.item.source}}</td>
+
                         <td>
 
-                            <router-link :to="{name:'pig-view',params : { id : item.id}}" class="btn btn-info">
-                                รายละเอียด
-                            </router-link>
-                            <router-link :to="{name:'pig-edit',params : { id : item.id}}" class="btn btn-light">
-                                แก้ไข
-                            </router-link>
+                            <v-btn icon class="mx-0" :to="{ name: 'pig-edit', params: { id: props.item.id }}">
+                                <v-icon color="teal">edit</v-icon>
+                            </v-btn>
+                            <v-btn icon class="mx-0" v-on:click="destroy(props.item)">
+                                <v-icon color="pink">delete</v-icon>
+                            </v-btn>
                         </td>
-                    </tr>
-                    </tbody>
-                    <tfoot>
-                    </tfoot>
-                </table>
-            </div>
+                    </template>
 
-            <div class="d-flex mt-3">
-                <div class="mr-auto">
-                    <pagination :data="paginate" v-on:pagination-change-page="changePage"></pagination>
-                </div>
+                    <template slot="no-data">
+                        <v-alert :value="true" color="error" icon="warning">
+                            Sorry, nothing to display here :(
+                        </v-alert>
+                    </template>
+
+                </v-data-table>
+            </v-card>
+
+            <div class="text-xs-center pt-2">
+                <v-pagination :length="paginate.last_page" v-model="page"></v-pagination>
             </div>
-        </div>
-    </div>
+        </v-flex>
+    </v-layout>
+
 </template>
 
 <script>
@@ -92,6 +67,14 @@
     export default {
         data() {
             return {
+                headers: [
+                    {text: 'PigID', value: 'pig_id'},
+                    {text: 'เบอร์แม่พันธุ์', value: 'pig_number'},
+                    {text: 'วันเกิด', value: 'birth_date'},
+                    {text: 'วันเข้าฟาร์ม', value: 'entry_date'},
+                    {text: 'แหล่งที่มา', value: 'source'},
+                    {text: 'การกระทำ', value: 'name', sortable: false},
+                ],
                 pigs: [],
                 page : 1,
                 form: {

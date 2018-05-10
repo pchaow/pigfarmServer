@@ -1,6 +1,8 @@
 <template>
 
-    <v-text-field :label="displayName" v-model="value"
+    <v-text-field :label="displayName"
+                  v-bind:value="value"
+                  v-on:input="$emit('input', value)"
                   :type="type" :error-messages="error[errorkey]"/>
 
 </template>

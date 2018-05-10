@@ -1,7 +1,6 @@
 <template>
-    <div>
-
-        <v-layout column justify-center v-if="choices">
+    <div v-if="choices">
+        <v-layout column justify-center>
             <v-flex>
                 <v-card>
                     <v-card-title>
@@ -26,13 +25,17 @@
                             :items="choices"
                             hide-actions>
 
-                        <template slot="items" slot-scope="props">
+                        <template slot="items" slot-scope="props" >
 
                             <td>{{props.item.name}}</td>
                             <td>{{props.item.display_name}}</td>
                             <td>{{props.item.description}}</td>
 
                             <td>
+
+                                <v-btn icon class="mx-0" :to="{ name: 'choice-view', params: { id: props.item.id }}">
+                                    <v-icon color="primary">mdi-eye</v-icon>
+                                </v-btn>
 
                                 <v-btn icon class="mx-0" :to="{ name: 'choice-edit', params: { id: props.item.id }}">
                                     <v-icon color="teal">edit</v-icon>
@@ -74,13 +77,23 @@
                     {text: 'รายละเอียด', value: 'description'},
                     {text: 'การกระทำ', value: 'name', sortable: false},
                 ],
-                choices: [],
+                choices: null,
                 paginate: null,
+                page : 1,
                 form: {
                     keyword: null,
                     parent_id: null,
                 }
             }
+        },
+        watch: {
+            page: function (cur, old) {
+                this.changePage(cur);
+            }
+        },
+        changePage: function (page) {
+            this.form.page = page
+            this.load()
         },
         methods: {
             load: function () {

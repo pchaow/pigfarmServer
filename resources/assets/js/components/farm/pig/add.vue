@@ -1,75 +1,45 @@
 <template>
-    <div class="card card-default mb-3">
-        <div class="card-header">เพิ่มสุกร</div>
+    <v-layout column justify-center v-if="form">
+        <v-flex>
+            <v-card>
+                <v-card-title>
+                    <div class="headline">แก้ไขสุกร</div>
+                </v-card-title>
+                <v-card-text>
+                    <h2 class="title">ข้อมูลทั่วไป</h2>
+                    <v-text-field label="PIGID" v-model="form.pig_id"
+                                  :error-messages="error.errors.pig_id"/>
+                    <v-text-field label="เบอร์แม่พันธุ์" v-model="form.pig_number"
+                                  :error-messages="error.errors.pig_number"/>
 
-        <div class="card-body">
-            <form v-on:submit.default="save">
-                <fieldset>
-                    <legend>ข้อมูลพื้นฐาน</legend>
+                    <v-text-field label="วันเกิด" v-model="form.birth_date"
+                                  :error-messages="error.errors.birth_date"/>
 
-                    <input-group v-model="form.pig_id" :error="error" display-name="Pig ID"
-                                 type="text" errorkey="pig_id" placeholder="Pig ID">
-                    </input-group>
+                    <v-text-field label="วันเข้าฟาร์ม" v-model="form.entry_date"
+                                  :error-messages="error.errors.entry_date"/>
 
+                    <v-text-field label="หมายเลขพ่อพันธุ์" v-model="form.male_breeder_pig_id"
+                                  :error-messages="error.errors.male_breeder_pig_id"/>
+                    <v-text-field label="หมายเลขแม่พันธุ์" v-model="form.female_breeder_pig_id"
+                                  :error-messages="error.errors.female_breeder_pig_id"/>
 
-                    <input-group v-model="form.pig_number" :error="error" display-name="เบอร์แม่พันธุ์"
-                                 type="text" errorkey="pig_number" placeholder="Pig Number">
-                    </input-group>
+                    <choice-select :type="{to:'BREED'}" :value="form.blood_line"
+                                   @change="form.blood_line = $event"></choice-select>
 
-                    <input-group v-model="form.birth_date" :error="error" display-name="วันเกิด"
-                                 :type="'date'" errorkey="birth_date" placeholder="Birth Date">
-                    </input-group>
+                    <v-text-field label="เต้านม (ซ้าย)" v-model="form.left_breast"
+                                  :error-messages="error.errors.left_breast"/>
+                    <v-text-field label="เต้านม (ขวา)" v-model="form.right_breast"
+                                  :error-messages="error.errors.right_breast"/>
+                    <v-text-field label="สถานะ" v-model="form.status"
+                                  :error-messages="error.errors.status"/>
 
-                    <input-group v-model="form.entry_date" :error="error" display-name="วันที่เข้าฟาร์ม"
-                                 type="date" errorkey="entry_date" placeholder="Entry Date">
-                    </input-group>
-
-                    <input-group v-model="form.source" :error="error" display-name="แหล่งที่มา"
-                                 type="date" errorkey="source" placeholder="Source">
-                    </input-group>
-
-
-                    <div class="form-group">
-                        <label>พ่อพันธุ์</label>
-                        <input class="form-control" type="text" v-model="form.male_breeder_pig_id"
-                               placeholder="พ่อพันธุ์"/>
-                    </div>
-                    <div class="form-group">
-                        <label>แม่พันธุ์</label>
-                        <input class="form-control" type="text" v-model="form.female_breeder_pig_id"
-                               placeholder="แม่พันธุ์"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>สายพันธุ์</label>
-                        <choice-select :type="{to:'BREED'}" :value="form.blood_line"
-                                       @change="form.blood_line = $event"></choice-select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>เต้านม (ซ้าย)</label>
-                        <input class="form-control" type="number" v-model="form.left_breast"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>เต้านม (ขวา)</label>
-                        <input class="form-control" type="number" v-model="form.right_breast"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label>สถานะ (อยู่ระหว่างการพัฒนาตัวเลือก)</label>
-                        <input class="form-control" type="text" v-model="form.status"
-                               placeholder="สถานะ"/>
-                    </div>
-
-                </fieldset>
-                <button type="submit" class="btn btn-primary">Submit</button>
-
-                <router-link :to="{name : 'pig-home'}" class="btn btn-light">ยกเลิก</router-link>
-
-            </form>
-        </div>
-    </div>
+                </v-card-text>
+                <v-card-actions>
+                    <v-btn @click="save()" color="primary">Submit</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-flex>
+    </v-layout>
 </template>
 
 <script>
@@ -84,7 +54,10 @@
                 form: {
                     blood_line: {},
                 },
-                error: {}
+                error: {
+                    errors: {},
+                    message: null,
+                },
             }
         },
         methods: {

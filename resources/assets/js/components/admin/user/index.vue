@@ -92,6 +92,10 @@
         },
 
         methods: {
+            changePage: function (page) {
+                this.form.page = page
+                this.load()
+            },
             load: function () {
                 let self = this
                 UserService.getPaginate(self.form)

@@ -1,125 +1,119 @@
 <template>
-        <div class="card card-default mb-3" v-if="isLoaded">
-        <div class="card-header">
-            <span v-if="parent">เพิ่มข้อมูลย่อย - {{parent.name}} - {{parent.display_name}}</span>
-            <span v-else>เพิ่มข้อมูลพื้นฐาน</span>
+    <div v-if="isLoaded">
+        <div class="headline pb-3">เพิ่มตัวเลือก
         </div>
 
-        <div class="card-body">
-            <form v-on:submit.default="save">
-                <fieldset>
-                    <legend>รายละเอียด</legend>
-                    <input type="hidden" v-model="form.parent_id"/>
+        <v-layout column justify-center>
+            <v-flex>
+                <v-card class="mb-3">
+                    <v-card-title>
+                        <h2 class="title">รายละเอียด</h2>
+                    </v-card-title>
+                    <v-card-text>
 
-                    <input-group v-model="form.name" :error="error" display-name="ชื่อตัวเลือก (Unique)"
-                                 type="text" errorkey="name" placeholder="Enter Name (unique)">
-                    </input-group>
+                        <v-text-field label="ชื่อตัวเลือก (Unique)" v-model="form.name"
+                                      :error-messages="error.errors.name"/>
 
-                    <input-group v-model="form.display_name" :error="error" display-name="ชื่อแสดง"
-                                 type="text" errorkey="display_name" placeholder="Enter Display Name">
-                    </input-group>
+                        <v-text-field label="ชื่อแสดง" v-model="form.display_name"
+                                      :error-messages="error.errors.display_name"/>
 
-                    <input-group v-model="form.description" :error="error" display-name="รายละเอียด"
-                                 type="text" errorkey="description" placeholder="Enter Description">
-                    </input-group>
+                        <v-text-field label="รายละเอียด" v-model="form.description"
+                                      :error-messages="error.errors.description"/>
 
-                    <template v-if="parent">
-                        <template v-for="(value,key) in parent.children_fields">
-                            <div class="form-group">
-                                <label>{{value.display_name}}</label>
 
-                                <input v-if="value.type == 'text'" v-model="form.values[key]" type="text"
-                                       class="form-control"
-                                       placeholder="Placeholder">
-                                <input v-if="value.type == 'number'" v-model="form.values[key]" type="number"
-                                       class="form-control"
-                                       :placeholder="value.display_name">
+                        <template v-if="parent">
+                            <template v-for="(value,key) in parent.children_fields">
+                                <v-text-field :label="value.display_name" v-if="value.type == 'text'"
+                                              v-model="form.values[key]" type="text"/>
+                                <v-text-field :label="value.display_name" v-if="value.type == 'number'"
+                                              v-model="form.values[key]" type="number"/>
 
-                                <choice-select v-if="value.type =='ref'" @change="updateField($event,key)"
-                                               :type="value"></choice-select>
-                            </div>
+                                <choice-select v-if="value.type == 'ref'" @change="updateField($event,key)"
+                                               :type="value"
+                                               :value="form.values[key]"></choice-select>
+                            </template>
                         </template>
-                    </template>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-btn @click="save()" color="primary">Submit</v-btn>
+                    </v-card-actions>
+                </v-card>
+                <v-card>
+                    <v-card-title>
+                        <h2 class="title">ข้อมูลเพิ่มเติมตัวเลือกลูก</h2>
+                    </v-card-title>
+                    <v-card-text>
+                        <div class="">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Key</th>
+                                    <th>Display Name</th>
+                                    <th>Type</th>
+                                    <th>To</th>
+                                    <th>Show in Table</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="(value,key) in form.children_fields">
+                                    <td>{{key}}</td>
+                                    <td>{{value.display_name}}</td>
+                                    <td>{{value.type}}</td>
+                                    <td>{{value.to}}</td>
+                                    <td>{{value.showInTable}}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" @click="removeChildren(key)" class="btn btn-danger">
+                                                ลบ
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <v-text-field v-model="children_forms.key" label="Key" type="text"/>
+                                    </td>
+                                    <td>
+                                        <v-text-field v-model="children_forms.display_name" label="Display Name"
+                                                      type="text"/>
+                                    </td>
+                                    <td>
+                                        <v-select
+                                                :items="['text','number','ref']"
+                                                v-model="children_forms.type"
+                                                label="Type"
+                                                single-line
+                                        ></v-select>
+                                    </td>
+                                    <td>
 
-                    <div class="form-group">
-                        <label>Children Field</label>
-
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Key</th>
-                                <th>Display Name</th>
-                                <th>Type</th>
-                                <th>To</th>
-                                <th>Show in Table</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr v-for="(value,key) in form.children_fields">
-                                <td>{{key}}</td>
-                                <td>{{value.display_name}}</td>
-                                <td>{{value.type}}</td>
-                                <td>{{value.to}}</td>
-                                <td>{{value.showInTable}}</td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button type="button" @click="removeChildren(key)" class="btn btn-danger">
-                                            ลบ
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input v-model="children_forms.key" class="form-control" type="text"/></td>
-                                <td><input v-model="children_forms.display_name" class="form-control" type="text"/>
-                                </td>
-                                <td style="width:100px;">
-                                    <select v-model="children_forms.type" class="form-control">
-                                        <option disabled value="">Please select one</option>
-                                        <option selected>text</option>
-                                        <option>number</option>
-                                        <option>ref</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <input v-model="children_forms.to" class="form-control" type="text"/>
-                                </td>
-                                <td>
-                                    <input v-model="children_forms.showInTable" class="form-control" type="text"/>
-                                </td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-primary" @click="addChildrenFields">
+                                        <v-text-field :disabled="children_forms.type != 'ref'"
+                                                      v-model="children_forms.to" type="text"/>
+                                    </td>
+                                    <td>
+                                        <v-switch
+                                                v-model="children_forms.showInTable"
+                                        ></v-switch>
+                                    </td>
+                                    <td>
+                                        <v-btn color="primary" type="button" @click="addChildrenFields">
                                             เพิ่ม
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                        </v-btn>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <v-divider/>
 
-
-                </fieldset>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <template v-if="parent">
-                    <router-link v-if="parent.id"
-                                 :key="$route.fullPath"
-                                 :to="{ name: 'choice-view', params: { id: parent.id }}"
-                                 class="btn btn-light">
-                        ยกเลิก
-                    </router-link>
-                </template>
-                <router-link v-else
-                             :key="$route.fullPath"
-                             :to="{ name: 'choice-home'}"
-                             class="btn btn-light">
-                    ยกเลิก
-                </router-link>
-            </form>
-        </div>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-btn @click="save()" color="primary">Submit</v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-flex>
+        </v-layout>
     </div>
 </template>
 
@@ -143,7 +137,10 @@
                     children: [],
                     values: {},
                 },
-                error: {},
+                error: {
+                    errors: {},
+                    message: null,
+                },
                 children_forms: {
                     type: 'text'
                 },
@@ -172,33 +169,35 @@
                 this.form.values[key] = $event;
             },
             load: function () {
-                let self = this
-                if (self.$route.params.id) {
-                    let req = ChoiceService.getById(self.$route.params.id, {});
+                if (this.$route.params.id) {
+                    let req = ChoiceService.getById(this.$route.params.id, {});
                     req.then((r) => {
-                        self.parent = r.data;
-                        self.form.parent_name = self.parent.name
-                        self.isLoaded = true;
+                        this.parent = r.data;
+                        this.form.parent_name = this.parent.name
+                        this.isLoaded = true;
                     })
                 } else {
-                    self.isLoaded = true;
+                    this.isLoaded = true;
                 }
             },
             save: function () {
-                let self = this
-                this.error = {}
-                let req = ChoiceService.store(self.form);
+                console.log(this.form)
+                this.error = {
+                    errors: {},
+                    message: null,
+                }
+                let req = ChoiceService.store(this.form);
                 req.then((r) => {
-                    if (self.parent && self.parent.hasOwnProperty('id')) {
-                        self.$router.push({name: "choice-view", params: {id: self.parent.id}})
+                    if (this.parent && this.parent.hasOwnProperty('id')) {
+                        this.$router.push({name: "choice-view", params: {id: this.parent.id}})
                     } else {
-                        self.$router.push({name: "choice-home"})
+                        this.$router.push({name: "choice-home"})
                     }
 
                 })
                 req.catch((e) => {
                     console.log(e.response)
-                    this.error = e.response.data.errors
+                    this.error = e.response.data
                 });
             }
         },

@@ -1,29 +1,27 @@
 <template>
-    <div>
+    <div v-if="form">
+        <div class="headline pb-3">แก้ไข
+            <span v-if="parent">{{parent.name}} \ </span>
+            {{form.name}}
+        </div>
 
-        <v-layout column justify-center v-if="form">
+        <v-layout column justify-center >
             <v-flex>
-                <v-card>
+                <v-card class="mb-3">
                     <v-card-title>
-                        <div class="headline">เพิ่มตัวเลือก
-                            <span v-if="parent">{{parent.name}} \ </span>
-                            {{form.name}}
-                        </div>
+                        <h2 class="title">รายละเอียด</h2>
                     </v-card-title>
                     <v-card-text>
-                        <h2 class="title">รายละเอียด</h2>
 
-                        <input-group v-model="form.name" :error="error" display-name="ชื่อตัวเลือก (Unique)"
-                                     type="text" errorkey="name" placeholder="Enter Name (unique)">
-                        </input-group>
+                        <v-text-field label="ชื่อตัวเลือก (Unique)" v-model="form.name"
+                                      :error-messages="error.errors.name"/>
 
-                        <input-group v-model="form.display_name" :error="error" display-name="ชื่อแสดง"
-                                     type="text" errorkey="display_name" placeholder="Enter Display Name">
-                        </input-group>
+                        <v-text-field label="ชื่อแสดง" v-model="form.display_name"
+                                      :error-messages="error.errors.display_name"/>
 
-                        <input-group v-model="form.description" :error="error" display-name="รายละเอียด"
-                                     type="text" errorkey="description" placeholder="Enter Description">
-                        </input-group>
+                        <v-text-field label="รายละเอียด" v-model="form.description"
+                                      :error-messages="error.errors.description"/>
+
 
                         <template v-if="parent">
                             <template v-for="(value,key) in parent.children_fields">
@@ -38,10 +36,16 @@
                                 </div>
                             </template>
                         </template>
-
-
-
-                        <h2 class="title pb-3" >ข้อมูลเพิ่มเติมตัวเลือกลูก</h2>
+                    </v-card-text>
+                    <v-card-actions>
+                        <v-btn @click="save()" color="primary">Submit</v-btn>
+                    </v-card-actions>
+                </v-card>
+                <v-card>
+                    <v-card-title>
+                        <h2 class="title">ข้อมูลเพิ่มเติมตัวเลือกลูก</h2>
+                    </v-card-title>
+                    <v-card-text>
                         <div class="">
                         <table class="table table-striped">
                             <thead>
@@ -129,7 +133,10 @@
                     type: 'text'
                 },
                 form: null,
-                error: {},
+                error: {
+                    errors: {},
+                    message: null,
+                },
             }
 
         },
@@ -193,7 +200,7 @@
                     })
                     .catch((e) => {
                         // TODO : handle errors
-                        this.error = e.response.data.errors
+                        this.error = e.response.data
                     })
             },
             destroy: function (item) {
