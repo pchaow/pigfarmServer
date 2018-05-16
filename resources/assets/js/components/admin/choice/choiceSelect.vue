@@ -1,9 +1,14 @@
 <template>
-    <select class="form-control" v-model="select" v-on:change="$emit('change',select)">
-        <option selected :value="null">กรุณาเลือก</option>
-        <option v-for="item in options" v-bind:value="item">{{item.display_name}}
-        </option>
-    </select>
+    <div v-if="options">
+        <v-select
+                :items="options"
+                v-model="select"
+                label="Select"
+                single-line
+                @change="$emit('change',select)"
+                item-text="display_name">
+        </v-select>
+    </div>
 </template>
 
 <script>
@@ -11,8 +16,12 @@
     import ChoiceService from "../../../services/ChoiceService"
 
     export default {
-        name: "choiceSelect",
+        name: "choice-select",
         props: {
+            label: {
+                type: String,
+                default: "ตัวเลือก"
+            },
             type: {
                 type: [Object],
                 default: () => []
@@ -35,9 +44,7 @@
                 for (let i = 0; i < self.options.length; i++) {
                     if (self.options[i].id === self.value.id) {
                         self.select = self.options[i];
-
                         self.$emit('change', self.select);
-
                     }
                 }
             },
@@ -51,8 +58,6 @@
                         if (self.value) {
                             self.sync();
                         }
-
-
                     })
 
             }
