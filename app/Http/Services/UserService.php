@@ -10,6 +10,7 @@ namespace App\Http\Services;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserService extends BaseService
 {
@@ -61,7 +62,7 @@ class UserService extends BaseService
 
         $user = new User();
         $user->fill($request->all());
-        $user->password = \Hash::make($request->get('password'));
+        $user->password = Hash::make($request->get('password'));
         $user->save();
 
         $roles = $request->get('roles');

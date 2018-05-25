@@ -112,7 +112,6 @@
                     .catch((e) => {
                         // TODO : Show error message
                     })
-
             }
         },
         mounted() {

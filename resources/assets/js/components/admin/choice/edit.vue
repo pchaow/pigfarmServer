@@ -163,7 +163,7 @@
                     type: form.type,
                     to: form.to,
                     showInTable: form.showInTable,
-                }
+                };
 
                 this.children_forms = {}
             },
@@ -219,7 +219,6 @@
         },
         mounted() {
             this.load();
-
             console.log(this.$route.params.back_to)
         }
     }
