@@ -69,6 +69,7 @@ class PigService extends BaseService
     public function getPaginate(Request $request)
     {
         $query = $this->getQuery($request);
+        $query->orderBy('created_at','desc');
         return $query->paginate();
     }
 
