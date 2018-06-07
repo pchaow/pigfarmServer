@@ -7,6 +7,7 @@ use App\Http\Requests\PigRequest;
 use App\Http\Services\PigService;
 use App\Models\Pig;
 use App\Models\PigCycle;
+use Illuminate\Http\Request;
 
 class PigCycleController extends Controller
 {
@@ -71,16 +72,9 @@ class PigCycleController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\PigRequest $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(PigRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        return $this->pigService->update($request, $id);
+        //Save a Cycle
     }
 
     /**
