@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePigCyclesTables extends Migration
+class CreatePigBreedersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePigCyclesTables extends Migration
      */
     public function up()
     {
-        Schema::create('pigCycles', function (Blueprint $table) {
+        Schema::create('pig_breeders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cycle_sequence');
-            $table->integer('pig_id');
-            $table->boolean('complete')->nullable();
-            $table->text("remark")->nullable();
+            $table->bigInteger('pig_cycle_id');
+            $table->date('breed_date')->nullable();
+            $table->integer('breed_week')->nullable();
+            $table->string('breeder_id')->nullable();
+            $table->date('delivery_date')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +31,6 @@ class CreatePigCyclesTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pigCycles');
+        Schema::dropIfExists('pig_breeders');
     }
 }
