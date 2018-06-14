@@ -15,9 +15,6 @@ class PigSeeder extends Seeder
     public function run()
     {
 
-        \App\Models\PigBreed::unguard();
-        \App\Models\PigBreed::truncate();
-
         \App\Models\Pig::unguard();
         \App\Models\Pig::truncate();
 
@@ -29,6 +26,5 @@ class PigSeeder extends Seeder
             });
 
         \App\Models\Pig::reguard();
-        \App\Models\PigBreed::reguard();
     }
 }
