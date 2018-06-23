@@ -7,6 +7,8 @@ use App\Http\Requests\PigRequest;
 use App\Http\Services\PigService;
 use App\Models\Pig;
 use App\Models\PigCycle;
+use App\Models\PigBreeder;
+
 use Illuminate\Http\Request;
 
 class PigCycleController extends Controller
@@ -26,9 +28,9 @@ class PigCycleController extends Controller
      * @param PigRequest $request
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function index(PigRequest $request,$id)
+    public function index(PigRequest $request, $id)
     {
-       return Pig::find($id)->cycles;
+        return Pig::find($id)->cycles;
     }
 
     /**
@@ -37,18 +39,18 @@ class PigCycleController extends Controller
      * @param  \Illuminate\Http\PigRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PigRequest $request,$id)
+    public function store(PigRequest $request, $id)
     {
-        $pig =  Pig::with(['cycles'])->where('id',$id)->first();
+        $pig =  Pig::with(['cycles'])->where('id', $id)->first();
         $lastCycle = $pig->cycles->last();
 
         $pigCycle = new PigCycle();
 
-        if($lastCycle){
+        if ($lastCycle) {
             $pigCycle->cycle_sequence = $lastCycle->cycle_sequence + 1;
             $pigCycle->complete = false;
             $pigCycle->remark = "";
-        }else {
+        } else {
             $pigCycle->cycle_sequence = 1;
             $pigCycle->complete = false;
             $pigCycle->remark = "";
@@ -57,7 +59,17 @@ class PigCycleController extends Controller
         $pig->cycles()->save($pigCycle);
 
         return $pigCycle;
+    }
 
+    public function storeBreeder(Request $request)
+    {
+        $pigBreeder = new PigBreeder;
+        $pigBreeder->pig_cycle_id = $request->pig_cycle_id ;
+        $pigBreeder->breed_date = $request->breed_date ;
+        $pigBreeder->breed_week = $request->breed_week ;
+        $pigBreeder->breeder_id = $request->breeder_id ;
+        $pigBreeder->delivery_date = $request->delivery_date ;
+        $pigBreeder->save();
     }
 
 

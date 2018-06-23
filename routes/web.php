@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/s', function () {
+    return view('s');
+});
+
+Route::post('/api/save.breeder', Farm\PigCycleController::class. '@storeBreeder');
