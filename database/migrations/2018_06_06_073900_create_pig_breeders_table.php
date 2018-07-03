@@ -15,11 +15,12 @@ class CreatePigBreedersTable extends Migration
     {
         Schema::create('pig_breeders', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('pig_cycle_id');
-            $table->date('breed_date')->nullable();
+            $table->bigInteger('pig_cycle_id'); //รอบ
+            $table->string('pig_id')->nullable(); //ไอดีหมู
+              $table->string('breeder_id')->nullable();//พ่อพันธ์ุ
+            $table->date('breed_date')->nullable();//วันผสม
+            $table->date('delivery_date')->nullable();//วันคลอด
             $table->integer('breed_week')->nullable();
-            $table->string('breeder_id')->nullable();
-            $table->date('delivery_date')->nullable();
             $table->timestamps();
         });
     }

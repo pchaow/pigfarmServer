@@ -8,6 +8,10 @@ use App\Http\Services\PigService;
 use App\Models\Pig;
 use App\Models\PigCycle;
 use App\Models\PigBreeder;
+use App\Models\Choice;
+use App\Models\Vaccine;
+use App\Models\PigBirth;
+use App\Models\PigMilk;
 
 use Illuminate\Http\Request;
 
@@ -63,15 +67,61 @@ class PigCycleController extends Controller
 
     public function storeBreeder(Request $request)
     {
-        $pigBreeder = new PigBreeder;
-        $pigBreeder->pig_cycle_id = $request->pig_cycle_id ;
-        $pigBreeder->breed_date = $request->breed_date ;
-        $pigBreeder->breed_week = $request->breed_week ;
-        $pigBreeder->breeder_id = $request->breeder_id ;
-        $pigBreeder->delivery_date = $request->delivery_date ;
+        $pigBreeder = new PigBreeder();
+        $pigBreeder->pig_cycle_id = $request->cy ;
+        $pigBreeder->pig_id = $request->id ;
+        $pigBreeder->breeder_id = $request->male ;
+        $pigBreeder->breed_date = $request->dateStart ;
+        $pigBreeder->delivery_date = $request->dateEnd ;
+        $pigBreeder->breed_week = $request->set ;
         $pigBreeder->save();
     }
 
+    public function storeBirth(Request $request)
+    {
+        $pigBirth = new PigBirth();
+        $pigBirth->pig_id = $request->id ;
+        $pigBirth->pig_sequence = $request->cy ;
+        $pigBirth->date = $request->date ;
+        $pigBirth->all = $request->all ;
+        $pigBirth->life = $request->life ;
+        $pigBirth->dead = $request->dead ;
+        $pigBirth->mummy = $request->mummy ;
+        $pigBirth->deformed = $request->deformed ;
+        $pigBirth->avg = $request->weight ;
+        $pigBirth->save();
+    }
+
+    public function storeMilk(Request $request)
+    {
+        $pigMilk = new PigMilk();
+        $pigMilk->pig_id = $request->id ;
+        $pigMilk->pig_sequence = $request->cy ;
+        $pigMilk->date = $request->date ;
+        $pigMilk->all = $request->all ;
+        $pigMilk->avg = $request->weight ;
+        $pigMilk->save();
+    }
+
+    public function storeVaccine(Request $request){
+        $vaccine = new Vaccine();
+        $vaccine->date = $request->date;
+        $vaccine->name = $request->name;
+        $vaccine->display = $request->display;
+        $vaccine->pig_id = $request->id;
+        $vaccine->cycle_sequence = $request->cy;
+        $vaccine->cycle_type = $request->ct;
+        $vaccine->save();
+    }
+
+
+
+
+    public function getChoice(){
+      $parent = $_GET['parent'];
+      $choice = Choice::where('parent_name', $parent)->get();
+      print_r($choice->toJson());
+    }
 
     /**
      * @param PigRequest $request
@@ -99,4 +149,41 @@ class PigCycleController extends Controller
     {
         return $this->pigService->destroy($id);
     }
+
+
+
+
+
+    //breeder
+    public function getBreederData(){
+      $pid = $_GET['pid'];
+      $pcy = $_GET['pcy'];
+      $pigBreeder = PigBreeder::where('pig_id', $pid)->where('pig_cycle_id', $pcy)->get();
+      print_r($pigBreeder->toJson());
+    }
+
+    //Birth
+    public function getBirthData(){
+      $pid = $_GET['pid'];
+      $pcy = $_GET['pcy'];
+      $pigBirth = PigBirth::where('pig_id', $pid)->where('pig_sequence', $pcy)->get();
+      print_r($pigBirth->toJson());
+    }
+
+    //Milk
+    public function getMilkData(){
+      $pid = $_GET['pid'];
+      $pcy = $_GET['pcy'];
+      $pigMilk = PigMilk::where('pig_id', $pid)->where('pig_sequence', $pcy)->get();
+      print_r($pigMilk->toJson());
+    }
+
+    //Vaccine
+    public function getVaccineData(){
+      $pid = $_GET['pid'];
+      $pcy = $_GET['pcy'];
+      $vaccine= Vaccine::where('pig_id', $pid)->where('cycle_sequence', $pcy)->get();
+      print_r($vaccine->toJson());
+    }
+
 }

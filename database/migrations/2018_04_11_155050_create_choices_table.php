@@ -19,8 +19,8 @@ class CreateChoicesTable extends Migration
             $table->string('name')->unique();
             $table->string('display_name');
             $table->text('description')->nullable();
-            $table->json('children_fields')->nullable();
-            $table->json('values')->nullable();
+            $table->text('children_fields')->nullable();
+            $table->text('values')->nullable();
             $table->timestamps();
         });
     }
