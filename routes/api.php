@@ -32,6 +32,7 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::resource('/farm/pigs', Farm\PigController::class);
     Route::resource('/farm/pigs.cycles', Farm\PigCycleController::class);
+
     Route::get('/pigcycle',Farm\PigCycleController::class.'@getCycleID');
 
     Route::get('/breederData',Farm\PigCycleController::class.'@getBreederData');

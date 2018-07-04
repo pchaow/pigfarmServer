@@ -11,19 +11,23 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('static/css/app.319de3653bd71744db78a9ce2a48df03.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
     <router-view></router-view>
 </div>
+
+<script src="{{ asset('static/js/manifest.3f16dd889e8c85dce632.js') }}" defer></script>
+<script src="{{ asset('static/js/vendor.e0423f40b9712e2b9c86.js') }}" defer></script>
+<script src="{{ asset('static/js/app.c6a7abed3f9a91a90259.js') }}" defer></script>
+
 
 </body>
 </html>
