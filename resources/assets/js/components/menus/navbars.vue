@@ -1,5 +1,6 @@
 <template>
     <div class="header py-4">
+
         <div class="container">
             <div class="d-flex">
                 <router-link :to="{ name : 'home-index'}" class="header-brand" href="./index.html">
@@ -8,7 +9,7 @@
                 <div class="d-flex order-lg-2 ml-auto">
 
 
-                    <div class="dropdown" v-if="currentUser">
+                    <div class="dropdown">
                         <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                             <span class="avatar" style="background-image: url(/images/demo.png)"></span>
                             <span class="ml-2 d-none d-lg-block">
@@ -40,7 +41,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+                <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse"
+                   data-target="#headerMenuCollapse">
                     <span class="header-toggler-icon"></span>
                 </a>
             </div>
