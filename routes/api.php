@@ -39,6 +39,8 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('/birthData',Farm\PigCycleController::class.'@getBirthData');
     Route::get('/milkData',Farm\PigCycleController::class.'@getMilkData');
     Route::get('/getVaccineData',Farm\PigCycleController::class.'@getVaccineData');
+    Route::get('/getchoice',Farm\PigCycleController::class.'@getChoice');
+    Route::get('/vaccine',Farm\PigCycleController::class.'@getVaccineRecent');
 
     Route::post('/save.breeder', Farm\PigCycleController::class. '@storeBreeder');
     Route::post('/save.birth', Farm\PigCycleController::class. '@storeBirth');
@@ -46,7 +48,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('/save.vaccine', Farm\PigCycleController::class. '@storeVaccine');
 
 
-    Route::get('/choice',Farm\PigCycleController::class.'@getChoice');
-    Route::get('/vaccine',Farm\PigCycleController::class.'@getVaccineRecent');
+
+
 
 });
