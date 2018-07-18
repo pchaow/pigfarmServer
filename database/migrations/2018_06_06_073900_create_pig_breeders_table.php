@@ -18,8 +18,8 @@ class CreatePigBreedersTable extends Migration
             $table->bigInteger('pig_cycle_id'); //รอบ
             $table->string('pig_id')->nullable(); //ไอดีหมู
               $table->string('breeder_id')->nullable();//พ่อพันธ์ุ
-            $table->date('breed_date')->nullable();//วันผสม
-            $table->date('delivery_date')->nullable();//วันคลอด
+            $table->string('breed_date')->nullable();//วันผสม
+            $table->string('delivery_date')->nullable();//วันคลอด
             $table->integer('breed_week')->nullable();
             $table->timestamps();
         });

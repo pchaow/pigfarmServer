@@ -41,6 +41,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('/getVaccineData',Farm\PigCycleController::class.'@getVaccineData');
     Route::get('/getchoice',Farm\PigCycleController::class.'@getChoice');
     Route::get('/vaccine',Farm\PigCycleController::class.'@getVaccineRecent');
+    Route::get('/getcycledata',Farm\PigCycleController::class.'@getCycleData');
 
     Route::post('/save.breeder', Farm\PigCycleController::class. '@storeBreeder');
     Route::post('/save.birth', Farm\PigCycleController::class. '@storeBirth');

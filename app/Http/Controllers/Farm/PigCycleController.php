@@ -75,6 +75,10 @@ class PigCycleController extends Controller
         $pigBreeder->delivery_date = $request->dateEnd ;
         $pigBreeder->breed_week = $request->set ;
         $pigBreeder->save();
+        $pigCycle = PigCycle::where('pig_id',$request->id )
+          ->where('cycle_sequence', $request->cy)
+          ->update(['complete' => 2]);
+
     }
 
     public function storeBirth(Request $request)
@@ -90,6 +94,9 @@ class PigCycleController extends Controller
         $pigBirth->deformed = $request->deformed ;
         $pigBirth->avg = $request->weight ;
         $pigBirth->save();
+        $pigCycle = PigCycle::where('pig_id',$request->id )
+          ->where('cycle_sequence', $request->cy)
+          ->update(['complete' => 3]);
     }
 
     public function storeMilk(Request $request)
@@ -150,7 +157,12 @@ class PigCycleController extends Controller
         return $this->pigService->destroy($id);
     }
 
-
+    public function getCycleData(){
+      $pid = $_GET['pid'];
+      $pcy = $_GET['pcy'];
+      $pigCycle = PigCycle::where('pig_id', $pid)->where('cycle_sequence', $pcy)->get();
+      print_r($pigCycle->toJson());
+    }
 
 
 
