@@ -48,7 +48,14 @@ class PigController extends Controller
      */
     public function show(PigRequest $request, $id)
     {
-        return $this->pigService->getPig($request, $id);
+        $pig = $this->pigService->getPig($request, $id);
+
+        if ($pig) {
+            return $pig;
+        } else {
+            abort(404, "Pig ID is invalid");
+        }
+
     }
 
 
