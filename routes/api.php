@@ -48,6 +48,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('/save.milk', Farm\PigCycleController::class. '@storeMilk');
     Route::post('/save.vaccine', Farm\PigCycleController::class. '@storeVaccine');
 
+    Route::get('/deleteData',Farm\PigCycleController::class.'@deleteData');
 
 
 

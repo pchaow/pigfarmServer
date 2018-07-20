@@ -20,6 +20,7 @@ class CreatePigMilk extends Migration
           $table->string('date');
           $table->integer('all');
           $table->string('avg');
+          $table->string('weight');
           $table->timestamps();
       });
     }

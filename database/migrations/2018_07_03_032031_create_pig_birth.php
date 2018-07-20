@@ -21,8 +21,9 @@ class CreatePigBirth extends Migration
           $table->integer('all');
           $table->integer('life');
           $table->integer('dead');
-          $table->integer('mummy');
+          $table->integer('mummy');255
           $table->integer('deformed');
+          $table->string('weight');
           $table->string('avg');
           $table->timestamps();
       });

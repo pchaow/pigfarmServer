@@ -43,6 +43,9 @@ class PigCycleController extends Controller
      * @param  \Illuminate\Http\PigRequest $request
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function store(PigRequest $request, $id)
     {
         $pig =  Pig::with(['cycles'])->where('id', $id)->first();
@@ -83,8 +86,10 @@ class PigCycleController extends Controller
 
     public function storeBirth(Request $request)
     {
+
+
         $pigBirth = new PigBirth();
-        $pigBirth->pig_id = $request->id ;
+       $pigBirth->pig_id = $request->id ;
         $pigBirth->pig_sequence = $request->cy ;
         $pigBirth->date = $request->date ;
         $pigBirth->all = $request->all ;
@@ -92,6 +97,7 @@ class PigCycleController extends Controller
         $pigBirth->dead = $request->dead ;
         $pigBirth->mummy = $request->mummy ;
         $pigBirth->deformed = $request->deformed ;
+        $pigBirth->weight = $request->weightTmp ;
         $pigBirth->avg = $request->weight ;
         $pigBirth->save();
         $pigCycle = PigCycle::where('pig_id',$request->id )
@@ -107,6 +113,7 @@ class PigCycleController extends Controller
         $pigMilk->date = $request->date ;
         $pigMilk->all = $request->all ;
         $pigMilk->avg = $request->weight ;
+        $pigMilk->weight = $request->weightTmp ;
         $pigMilk->save();
     }
 
@@ -196,6 +203,24 @@ class PigCycleController extends Controller
       $pcy = $_GET['pcy'];
       $vaccine= Vaccine::where('pig_id', $pid)->where('cycle_sequence', $pcy)->get();
       print_r($vaccine->toJson());
+    }
+
+    //delete
+    public function deleteData(){
+      $type = $_GET['type'];
+      $id = $_GET['id'];
+     if($type == 'breeder'){
+       $data = PigBreeder::where('id',$id)->delete();
+     }else if($type == 'milk'){
+       echo "pig";
+       $data = PigMilk::where('id',$id)->delete();
+     }else if($type == 'birth'){
+       $data = PigBirth::where('id',$id)->delete();
+     }else if($type == 'vaccine'){
+       $data = Vaccine::where('id',$id)->delete();
+     }
+
+
     }
 
 }
