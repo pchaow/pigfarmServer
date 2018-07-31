@@ -55,11 +55,11 @@ class PigCycleController extends Controller
 
         if ($lastCycle) {
             $pigCycle->cycle_sequence = $lastCycle->cycle_sequence + 1;
-            $pigCycle->complete = false;
+            $pigCycle->complete = 1;
             $pigCycle->remark = "";
         } else {
             $pigCycle->cycle_sequence = 1;
-            $pigCycle->complete = false;
+            $pigCycle->complete = 1;
             $pigCycle->remark = "";
         }
 
@@ -70,7 +70,7 @@ class PigCycleController extends Controller
 
     public function storeBreeder(Request $request)
     {
-        $pigBreeder = new PigBreeder();
+      /*  $pigBreeder = new PigBreeder();
         $pigBreeder->pig_cycle_id = $request->cy ;
         $pigBreeder->pig_id = $request->id ;
         $pigBreeder->breeder_id = $request->male ;
@@ -80,7 +80,8 @@ class PigCycleController extends Controller
         $pigBreeder->save();
         $pigCycle = PigCycle::where('pig_id',$request->id )
           ->where('cycle_sequence', $request->cy)
-          ->update(['complete' => 2]);
+          ->update(['complete' => 2]);*/
+         
 
     }
 

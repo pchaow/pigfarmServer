@@ -16,15 +16,15 @@ class CreatePigBirth extends Migration
       Schema::create('pig_birth', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('pig_id');
-          $table->integer('pig_sequence');
-          $table->string('date');
-          $table->integer('all');
+          $table->integer('pig_cycle_id');
+          $table->string('birth_date');
+          $table->integer('pig_count');
           $table->integer('life');
           $table->integer('dead');
-          $table->integer('mummy');255
+          $table->integer('mummy');
           $table->integer('deformed');
-          $table->string('weight');
-          $table->string('avg');
+          $table->string('pig_weight');
+          $table->string('pig_weight_avg');
           $table->timestamps();
       });
     }

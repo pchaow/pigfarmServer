@@ -11,6 +11,7 @@ namespace App\Http\Services;
 use App\Models\Choice;
 use App\Models\Pig;
 use App\Models\User;
+use App\Models\PigCycle;
 use Illuminate\Http\Request;
 
 class PigService extends BaseService
@@ -38,6 +39,11 @@ class PigService extends BaseService
         $query->with('bloodLine');
         $query->with('cycles');
         $query->with('cycles.breeders');
+        $query->with('cycles.birth');
+        $query->with('cycles.milk');
+        $query->with('cycles.vaccine'); 
+        $query->with('cycles.feed'); 
+        $query->with('cycles.feedOut'); 
 
         return $query;
     }
@@ -132,6 +138,13 @@ class PigService extends BaseService
         }
         $pig->delete();
         return [true];
+    }
+
+    public function changeStepCycle($id,$step)
+    {
+        $pigCycle = PigCycle::find($id);
+        $pigCycle->complete = $step;
+        $pigCycle->save();
     }
 
 

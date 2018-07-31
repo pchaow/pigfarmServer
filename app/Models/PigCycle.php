@@ -22,4 +22,26 @@ class PigCycle extends Model
     {
         return $this->hasMany(PigBreeder::class);
     }
+
+    function birth()
+    {
+        return $this->hasMany(PigBirth::class);
+    }
+
+    function milk()
+    {
+        return $this->hasMany(PigMilk::class);
+    }
+    function vaccine()
+    {
+        return $this->hasMany(Vaccine::class);
+    }
+    function feed()
+    {
+        return $this->hasMany(PigFeed::class);
+    }
+    function feedOut()
+    {
+        return $this->hasMany(PigFeedOut::class);
+    }
 }

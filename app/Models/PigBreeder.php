@@ -11,6 +11,6 @@ class PigBreeder extends Model
     const UPDATED_AT = 'updated_at';
 
     protected $fillable = [
-        'cycle_sequence', 'pig_id', 'complete', "remark"
+        "pig_cycle_id","pig_id","breeder_a","breeder_b","breeder_c","breed_date","delivery_date","breed_week"
     ];
 }

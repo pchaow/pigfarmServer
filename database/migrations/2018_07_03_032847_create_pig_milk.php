@@ -16,11 +16,11 @@ class CreatePigMilk extends Migration
       Schema::create('pig_Milk', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('pig_id');
-          $table->integer('pig_sequence');
-          $table->string('date');
-          $table->integer('all');
-          $table->string('avg');
-          $table->string('weight');
+          $table->integer('pig_cycle_id');
+          $table->string('milk_date');
+          $table->integer('pig_count');
+          $table->string('pig_weight_avg');
+          $table->string('pig_weight');
           $table->timestamps();
       });
     }
