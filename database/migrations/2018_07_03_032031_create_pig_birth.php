@@ -36,6 +36,7 @@ class CreatePigBirth extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('pig_birth');
+
     }
 }

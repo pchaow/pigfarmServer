@@ -32,6 +32,7 @@ class CreatePigMilk extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('pig_Milk');
+
     }
 }
