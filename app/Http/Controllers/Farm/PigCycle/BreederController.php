@@ -86,6 +86,15 @@ class BreederController extends Controller
          $pigBreeder->save();  
     }
 
+    public function gravid(Request $request){ 
+        $pigBreeder = PigBreeder::find($request->gravid_id);
+        $pigBreeder->gravid = $request->gravid;
+        $pigBreeder->gravid_date = $request->gravid_date;
+        $pigBreeder->gravid_remark = $request->gravid_remark;
+        $pigBreeder->save();  
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *

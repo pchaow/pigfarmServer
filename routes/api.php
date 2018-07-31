@@ -41,6 +41,6 @@ Route::middleware(['auth:api'])->group(function () {
     Route::resource('/farm/pigs/feed', Farm\Pigcycle\FeedController::class); 
     Route::resource('/farm/pigs/feedout', Farm\Pigcycle\FeedOutController::class); 
     Route::resource('/farm/pigs/milk', Farm\Pigcycle\MilkController::class); 
-    Route::resource('/farm/pigs/vaccine', Farm\Pigcycle\VaccineController::class); 
-
+    Route::resource('/farm/pigs/vaccine', Farm\Pigcycle\VaccineController::class);  
+    Route::post('/farm/pigs/gravid',Farm\Pigcycle\BreederController::class.'@gravid');
 });

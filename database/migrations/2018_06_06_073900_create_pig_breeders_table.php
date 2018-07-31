@@ -23,6 +23,9 @@ class CreatePigBreedersTable extends Migration
             $table->string('breed_date')->nullable();//วันผสม
             $table->string('delivery_date')->nullable();//วันคลอด
             $table->integer('breed_week')->nullable();
+            $table->integer('gravid')->nullable()->default(0);
+            $table->string('gravid_date')->nullable();
+            $table->string('gravid_remark')->nullable();
             $table->timestamps();
         });
     }
