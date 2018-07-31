@@ -29,8 +29,14 @@ class Pig extends Model
         return $this->belongsTo(Choice::class, "blood_line", "name");
     }
 
-    public function cycles() {
-        return $this->hasMany(PigCycle::class,"pig_id","id");
+    public function status()
+    {
+        return $this->belongsTo(Choice::class, "status", "name");
+    }
+
+    public function cycles()
+    {
+        return $this->hasMany(PigCycle::class, "pig_id", "id");
     }
 
 }

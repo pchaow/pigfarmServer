@@ -37,6 +37,7 @@ class PigService extends BaseService
     function autoWith($query)
     {
         $query->with('bloodLine');
+        $query->with('status');
         $query->with('cycles');
         $query->with('cycles.breeders');
         $query->with('cycles.birth');
