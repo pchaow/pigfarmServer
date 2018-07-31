@@ -39,6 +39,9 @@ class FeedController extends Controller
         $pigFeed= new PigFeed(); 
         $pigFeed->fill($request->all());  
         $pigFeed->save();
+
+        $service = new PigService();
+        $service->changeStepCycle($request->pig_cycle_id,4);
     }
 
     /**
@@ -76,8 +79,7 @@ class FeedController extends Controller
         $feed->fill($request->all());  
         $feed->save();
 
-        $service = new PigService();
-        $service->changeStepCycle($request->pig_cycle_id,4);
+      
     }
 
     /**
