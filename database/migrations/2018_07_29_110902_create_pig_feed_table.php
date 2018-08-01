@@ -22,7 +22,8 @@ class CreatePigFeedTable extends Migration
             $table->string('pig_id_old')->nullable(); 
             $table->string('pig_id_new')->nullable(); 
             $table->string('pig_count');
-            $table->string('pig_weight');
+            $table->string('pig_weight')->nullable();
+            $table->string('pig_remark')->nullable();
             $table->string('pig_weight_avg');
             $table->timestamps();
         });

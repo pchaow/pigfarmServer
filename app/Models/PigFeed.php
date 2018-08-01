@@ -17,6 +17,7 @@ class PigFeed extends Model
         "pig_id_new",
         "pig_count",
         "pig_weight",
+        "pig_remark",
         "pig_weight_avg"
         
 
