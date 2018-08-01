@@ -17,16 +17,16 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('static/css/app.5c468f34f9603abf3403a98e16dac4be.css') }}" rel="stylesheet">
+    <link href="{{ asset('static/css/app.7fe19f6bfdd60ec28af3f4c7d8e24f2a.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
     <router-view></router-view>
 </div>
 
-<script src="{{ asset('static/js/manifest.5464f82ab29b9d9d7459.js') }}" defer></script>
-<script src="{{ asset('static/js/vendor.e0423f40b9712e2b9c86.js') }}" defer></script>
-<script src="{{ asset('static/js/app.1608e6724ccfb1a20ff3.js') }}" defer></script>
+<script src="{{ asset('static/js/manifest.a17c9f8da1856b9d06cd.js') }}" defer></script>
+<script src="{{ asset('static/js/vendor.b514092e71c5d6930cb8.js') }}" defer></script>
+<script src="{{ asset('static/js/app.d88f11b672e1d23b14ea.js') }}" defer></script>
 
 
 </body>
