@@ -71,7 +71,7 @@ class VaccineController extends Controller
      * @param  \App\Models\Vaccine  $vaccine
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vaccine $vaccine)
+    public function update(Request $request,$id)
     {
         $vaccine = Vaccine::find($id);
         $vaccine->fill($request->all());  

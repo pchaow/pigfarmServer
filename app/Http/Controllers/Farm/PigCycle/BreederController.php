@@ -90,6 +90,7 @@ class BreederController extends Controller
         $pigBreeder = PigBreeder::find($request->gravid_id);
         $pigBreeder->gravid = $request->gravid;
         $pigBreeder->gravid_date = $request->gravid_date;
+        $pigBreeder->gravid_out = $request->gravid_out;
         $pigBreeder->gravid_remark = $request->gravid_remark;
         $pigBreeder->save();  
 

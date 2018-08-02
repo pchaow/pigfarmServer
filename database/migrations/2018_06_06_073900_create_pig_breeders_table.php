@@ -25,6 +25,7 @@ class CreatePigBreedersTable extends Migration
             $table->integer('breed_week')->nullable();
             $table->integer('gravid')->nullable()->default(0);
             $table->string('gravid_date')->nullable();
+            $table->string('gravid_out')->nullable();
             $table->string('gravid_remark')->nullable();
             $table->timestamps();
         });
