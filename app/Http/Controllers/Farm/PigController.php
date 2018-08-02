@@ -58,6 +58,18 @@ class PigController extends Controller
 
     }
 
+    public function edit(PigRequest $request, $id)
+    {
+        $pig = $this->pigService->getPig($request, $id, $with = false);
+
+        if ($pig) {
+            return $pig;
+        } else {
+            abort(404, "Pig ID is invalid");
+        }
+
+    }
+
 
     /**
      * Update the specified resource in storage.

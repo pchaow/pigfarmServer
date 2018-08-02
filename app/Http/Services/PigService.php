@@ -25,8 +25,8 @@ class PigService extends BaseService
     function sync(Request $request, $pig)
     {
         if ($request->has('blood_line')) {
-            $blood_line = $request->get('blood_line', 'none');
-            $blood_line = Choice::where('name', $blood_line['name'])->first();
+            $bloodLine = $request->get('blood_line', 'none');
+            $blood_line = Choice::where('name', $bloodLine)->first();
             $pig->bloodLine()->associate($blood_line);
         }
 
@@ -82,7 +82,7 @@ class PigService extends BaseService
         return $query->paginate();
     }
 
-    public function getPig(Request $request, $id)
+    public function getPig(Request $request, $id,$with = true)
     {
         $with = $request->get('with');
         $query = Pig::query();
@@ -96,7 +96,9 @@ class PigService extends BaseService
             $query->where('pig_id', $id);
         }
 
-        $query = $this->autoWith($query);
+        if($with){
+            $query = $this->autoWith($query);
+        }
         $pig = $query->first();
         return $pig;
     }
