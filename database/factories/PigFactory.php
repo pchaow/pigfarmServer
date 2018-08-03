@@ -17,5 +17,7 @@ $factory->define(\App\Models\Pig::class, function (Faker $faker) {
             "BREED_001", "BREED_002", "BREED_003", "BREED_004"
         ]),
 
-        'status' => $faker->randomElement($array = array('Normal', 'Died',)),];
+        'status' => $faker->randomElement([
+        "PIGSTATUS_001", "PIGSTATUS_002", "PIGSTATUS_003"]),
+    ];
 });

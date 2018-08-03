@@ -42,9 +42,9 @@ class PigService extends BaseService
         $query->with('cycles.breeders');
         $query->with('cycles.birth');
         $query->with('cycles.milk');
-        $query->with('cycles.vaccine'); 
-        $query->with('cycles.feed'); 
-        $query->with('cycles.feedOut'); 
+        $query->with('cycles.vaccine');
+        $query->with('cycles.feed');
+        $query->with('cycles.feedOut');
 
         return $query;
     }
@@ -57,8 +57,32 @@ class PigService extends BaseService
             $keyword = $request->get('keyword');
             $query = $this->bindQuerySearchColumns($query, $keyword);
         }
+
+        if ($request->has('blood_line')) {
+            $bloodLine = $request->get('blood_line');
+            $query->where('blood_line', $bloodLine);
+        }
+
         if ($request->has('with')) {
             $query = $this->bindWith($query, $request->get('with'));
+        }
+
+        if ($request->has('all')) {
+            $all = $request->get('all');
+            if ($all == true || $all == 'true') {
+
+            } else {
+                $query->where(function ($q) {
+                    $q->orWhere('status', 'PIGSTATUS_001');
+                    $q->orWhereNull('status');
+                });
+
+            }
+        } else {
+            $query->where(function ($q) {
+                $q->orWhere('status', 'PIGSTATUS_001');
+                $q->orWhere('status', 'is', null);
+            });
         }
 
         $query->orderBy('created_at', 'desc');
@@ -78,11 +102,11 @@ class PigService extends BaseService
     public function getPaginate(Request $request)
     {
         $query = $this->getQuery($request);
-        $query->orderBy('created_at','desc');
+        $query->orderBy('created_at', 'desc');
         return $query->paginate();
     }
 
-    public function getPig(Request $request, $id,$with = true)
+    public function getPig(Request $request, $id, $with = true)
     {
         $with = $request->get('with');
         $query = Pig::query();
@@ -96,7 +120,7 @@ class PigService extends BaseService
             $query->where('pig_id', $id);
         }
 
-        if($with){
+        if ($with) {
             $query = $this->autoWith($query);
         }
         $pig = $query->first();
@@ -109,7 +133,7 @@ class PigService extends BaseService
         $pig = new Pig();
         $pig->fill($request->all());
 
-        $pig = $this->sync($request,$pig);
+        $pig = $this->sync($request, $pig);
 
         $pig->save();
 
@@ -125,7 +149,7 @@ class PigService extends BaseService
 
         $pig->fill($request->all());
 
-        $pig = $this->sync($request,$pig);
+        $pig = $this->sync($request, $pig);
 
         $pig->save();
 
@@ -143,7 +167,7 @@ class PigService extends BaseService
         return [true];
     }
 
-    public function changeStepCycle($id,$step)
+    public function changeStepCycle($id, $step)
     {
         $pigCycle = PigCycle::find($id);
         $pigCycle->complete = $step;
