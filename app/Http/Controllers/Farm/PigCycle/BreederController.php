@@ -91,6 +91,7 @@ class BreederController extends Controller
         $pigBreeder->gravid = $request->gravid;
         $pigBreeder->gravid_date = $request->gravid_date;
         $pigBreeder->gravid_out = $request->gravid_out;
+        $pigBreeder->gravid_out_remark = $request->gravid_out_remark;
         $pigBreeder->gravid_remark = $request->gravid_remark;
         $pigBreeder->save();  
 
