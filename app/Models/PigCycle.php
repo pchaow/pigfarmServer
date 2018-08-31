@@ -10,7 +10,7 @@ class PigCycle extends Model
     protected $table = "PigCycles";
 
     protected $fillable = [
-        'cycle_sequencce', 'pig_id', 'complete', "remark"
+        'cycle_sequence', 'pig_id', 'complete', "remark"
     ];
 
     function pig()
