@@ -37,9 +37,9 @@ class VaccineController extends Controller
      */
     public function store(Request $request)
     {
-        $vaccine = new Vaccine(); 
-        $vaccine->fill($request->all());  
-        $vaccine->save(); 
+        $vaccine = new Vaccine();
+        $vaccine->fill($request->all());
+        $vaccine->save();
     }
 
     /**
@@ -90,8 +90,8 @@ class VaccineController extends Controller
     }
 
      /**
-     * Get Data to Vue Web api for insert;
-     **/
+ * Get Data to Vue Web api for insert;
+ **/
     public function getDataForWeb($id){
         $type = ($id==1)?'VACCINE':'MEDICINE';
         $data = Choice::where('parent_name',$type)->get();
