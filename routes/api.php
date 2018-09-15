@@ -33,6 +33,18 @@ Route::middleware(['auth:api'])->group(function () {
     Route::resource('/farm/pigs', Farm\PigController::class);
     Route::resource('/farm/pigs.cycles', Farm\PigCycleController::class);
 
+    // TODO : please re implemement reosurce api and controller
+    /*
+    Route::resource('/farm/pigs.breeder', "YOURCONTROLLER");
+    Route::resource('/farm/pigs.birth', "YOURCONTROLLER");
+    Route::resource('/farm/pigs.feed', "YOURCONTROLLER");
+    Route::resource('/farm/pigs.feedout', "YOURCONTROLLER");
+    Route::resource('/farm/pigs.milk', "YOURCONTROLLER");
+    Route::resource('/farm/pigs.vaccine', "YOURCONTROLLER");
+    Route::resource('/farm/pigs.gravid', "YOURCONTROLLER");
+
+     */
+
     Route::get('/pigcycle',Farm\PigCycleController::class.'@getCycleID');
     Route::get('/farm/pigs/preVaccine/{id}', Farm\Pigcycle\VaccineController::class.'@getDataForWeb'); 
 
