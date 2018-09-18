@@ -32,9 +32,9 @@ class PigCycleController extends Controller
      * @param PigRequest $request
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function index(PigRequest $request, $id)
+    public function index( $id)
     {
-        return Pig::find($id)->cycles;
+   
     }
 
     /**
@@ -68,66 +68,7 @@ class PigCycleController extends Controller
         return $pigCycle;
     }
 
-    public function storeBreeder(Request $request)
-    {
-      /*  $pigBreeder = new PigBreeder();
-        $pigBreeder->pig_cycle_id = $request->cy ;
-        $pigBreeder->pig_id = $request->id ;
-        $pigBreeder->breeder_id = $request->male ;
-        $pigBreeder->breed_date = $request->dateStart ;
-        $pigBreeder->delivery_date = $request->dateEnd ;
-        $pigBreeder->breed_week = $request->set ;
-        $pigBreeder->save();
-        $pigCycle = PigCycle::where('pig_id',$request->id )
-          ->where('cycle_sequence', $request->cy)
-          ->update(['complete' => 2]);*/
-         
-
-    }
-
-    public function storeBirth(Request $request)
-    {
-
-
-        $pigBirth = new PigBirth();
-       $pigBirth->pig_id = $request->id ;
-        $pigBirth->pig_sequence = $request->cy ;
-        $pigBirth->date = $request->date ;
-        $pigBirth->all = $request->all ;
-        $pigBirth->life = $request->life ;
-        $pigBirth->dead = $request->dead ;
-        $pigBirth->mummy = $request->mummy ;
-        $pigBirth->deformed = $request->deformed ;
-        $pigBirth->weight = $request->weightTmp ;
-        $pigBirth->avg = $request->weight ;
-        $pigBirth->save();
-        $pigCycle = PigCycle::where('pig_id',$request->id )
-          ->where('cycle_sequence', $request->cy)
-          ->update(['complete' => 3]);
-    }
-
-    public function storeMilk(Request $request)
-    {
-        $pigMilk = new PigMilk();
-        $pigMilk->pig_id = $request->id ;
-        $pigMilk->pig_sequence = $request->cy ;
-        $pigMilk->date = $request->date ;
-        $pigMilk->all = $request->all ;
-        $pigMilk->avg = $request->weight ;
-        $pigMilk->weight = $request->weightTmp ;
-        $pigMilk->save();
-    }
-
-    public function storeVaccine(Request $request){
-        $vaccine = new Vaccine();
-        $vaccine->date = $request->date;
-        $vaccine->name = $request->name;
-        $vaccine->display = $request->display;
-        $vaccine->pig_id = $request->id;
-        $vaccine->cycle_sequence = $request->cy;
-        $vaccine->cycle_type = $request->ct;
-        $vaccine->save();
-    }
+      
 
 
 

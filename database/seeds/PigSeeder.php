@@ -57,6 +57,7 @@ class PigSeeder extends Seeder
 
             $pig->save();
             $pig->cycles()->save($pigCycle);
+            $pigBreeder->pig_id = $pig->id;
             $pigCycle->breeders()->save($pigBreeder);
 
             //echo $pig->id;

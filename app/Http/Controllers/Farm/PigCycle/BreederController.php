@@ -15,9 +15,10 @@ class BreederController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $pigBreeder = PigBreeder::find($id);
+        return $pigBreeder;
     }
 
     /**
@@ -56,9 +57,10 @@ class BreederController extends Controller
      * @param  \App\Models\PigBreeder  $pigBreeder
      * @return \Illuminate\Http\Response
      */
-    public function show(PigBreeder $pigBreeder)
+    public function show($id)
     {
-        echo "show";
+        $pigBreeder = PigBreeder::find($id); 
+        return $pigBreeder;
     }
 
     /**
@@ -67,9 +69,10 @@ class BreederController extends Controller
      * @param  \App\Models\PigBreeder  $pigBreeder
      * @return \Illuminate\Http\Response
      */
-    public function edit(PigBreeder $pigBreeder)
+    public function edit(Request $request,$id)
     {
-        echo "edit";
+        $pigBreeder = PigBreeder::find($id);
+        return $pigBreeder;
     }
 
     /**
