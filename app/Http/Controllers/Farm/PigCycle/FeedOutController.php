@@ -13,9 +13,10 @@ class FeedOutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index($id,$cycle_id) {
+
+        return PigFeedOut::where('pig_id',$id)->where('pig_cycle_id',$cycle_id)->get();
+
     }
 
     /**
@@ -47,9 +48,9 @@ class FeedOutController extends Controller
      * @param  \App\Models\PigFeedOut  $pigFeedOut
      * @return \Illuminate\Http\Response
      */
-    public function show(PigFeedOut $pigFeedOut)
+    public function show($id,$cycle_id,$feedout_id)
     {
-        //
+        return PigFeedOut::where('id',$feedout_id)->where('pig_cycle_id',$cycle_id)->where('pig_id',$id)->get();
     }
 
     /**

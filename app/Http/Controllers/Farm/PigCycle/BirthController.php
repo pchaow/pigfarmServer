@@ -53,9 +53,9 @@ class BirthController extends Controller
      * @param  \App\Models\PigBirth  $pigBirth
      * @return \Illuminate\Http\Response
      */
-    public function show(PigBirth $pigBirth)
+    public function show($id,$cycle_id,$breder_id)
     {
-        //
+        return PigBirth::where('id',$breder_id)->where('pig_cycle_id',$cycle_id)->where('pig_id',$id)->get();
     }
 
     /**

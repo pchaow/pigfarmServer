@@ -14,9 +14,10 @@ class VaccineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index($id,$cycle_id) {
+
+        return Vaccine::where('pig_id',$id)->where('pig_cycle_id',$cycle_id)->get();
+
     }
 
     /**
@@ -48,10 +49,11 @@ class VaccineController extends Controller
      * @param  \App\Models\Vaccine  $vaccine
      * @return \Illuminate\Http\Response
      */
-    public function show(Vaccine $vaccine)
+    public function show($id,$cycle_id,$vaccine_id)
     {
-        //
+        return Vaccine::where('id',$vaccine_id)->where('pig_cycle_id',$cycle_id)->where('pig_id',$id)->get();
     }
+
 
     /**
      * Show the form for editing the specified resource.

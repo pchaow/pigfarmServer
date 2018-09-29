@@ -13,10 +13,12 @@ class FeedController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index($id,$cycle_id) {
+
+        return PigFeed::where('pig_id',$id)->where('pig_cycle_id',$cycle_id)->get();
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -50,9 +52,9 @@ class FeedController extends Controller
      * @param  \App\Models\PigFeed  $pigFeed
      * @return \Illuminate\Http\Response
      */
-    public function show(PigFeed $pigFeed)
+    public function show($id,$cycle_id,$feed_id)
     {
-        //
+        return PigFeed::where('id',$feed_id)->where('pig_cycle_id',$cycle_id)->where('pig_id',$id)->get();
     }
 
     /**

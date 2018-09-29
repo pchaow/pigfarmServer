@@ -16,9 +16,7 @@ class BreederController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($id,$cycle_id) {
-
-        $pigBreeder = PigBreeder::where('pig_id',$id)->where('pig_cycle_id',$cycle_id)->get();
-        return $pigBreeder;
+        return PigBreeder::where('pig_cycle_id',$cycle_id)->where('pig_id',$id)->get();
     }
 
     /**
@@ -57,10 +55,9 @@ class BreederController extends Controller
      * @param  \App\Models\PigBreeder  $pigBreeder
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$cycle_id,$breder_id)
     {
-        $pigBreeder = PigBreeder::find($id); 
-        return $pigBreeder;
+        return PigBreeder::where('id',$breder_id)->where('pig_cycle_id',$cycle_id)->where('pig_id',$id)->get();
     }
 
     /**

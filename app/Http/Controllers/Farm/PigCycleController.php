@@ -84,10 +84,11 @@ class PigCycleController extends Controller
      * @param $id
      * @return \Illuminate\Database\Eloquent\Model|null|object|static
      */
-    public function show(PigRequest $request, $id)
+    public function show(  $id,$cycle_id)
     {
+        return PigCycle::with(['breeders','birth','feed','feedout','milk'])->where('id',$cycle_id)->where('pig_id',$id)->get();
 
-        return $this->pigService->getPig($request, $id);
+       // return $this->pigService->getPig($request, $id);
     }
 
 

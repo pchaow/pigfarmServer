@@ -13,11 +13,11 @@ class MilkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+    public function index($id,$cycle_id) {
 
+        return PigMilk::where('pig_id',$id)->where('pig_cycle_id',$cycle_id)->get();
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -47,10 +47,11 @@ class MilkController extends Controller
      * @param  \App\Models\PigMilk  $pigMilk
      * @return \Illuminate\Http\Response
      */
-    public function show(PigMilk $pigMilk)
+    public function show($id,$cycle_id,$milk_id)
     {
-
+        return PigMilk::where('id',$milk_id)->where('pig_cycle_id',$cycle_id)->where('pig_id',$id)->get();
     }
+
 
     /**
      * Show the form for editing the specified resource.
