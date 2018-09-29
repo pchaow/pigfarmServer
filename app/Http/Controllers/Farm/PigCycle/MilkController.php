@@ -70,9 +70,9 @@ class MilkController extends Controller
      * @param  \App\Models\PigMilk  $pigMilk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
-        $pigMilk = PigMilk::find($id);
+        $pigMilk = PigMilk::find($request->id);
         $pigMilk->fill($request->all());  
         $pigMilk->save();
     }
@@ -83,8 +83,8 @@ class MilkController extends Controller
      * @param  \App\Models\PigMilk  $pigMilk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PigMilk $pigMilk,$id)
+    public function destroy($id,$cycle_id,$milk_id)
     {
-        return $pigMilk->destroy($id);
+        return PigMilk::destroy($milk_id);
     }
 }

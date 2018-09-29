@@ -32,9 +32,9 @@ class PigCycleController extends Controller
      * @param PigRequest $request
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function index( $id)
+    public function index($id)
     {
-   
+        return PigCycle::with(['breeders','birth','feed','feedout','milk'])->where('pig_id',$id)->get();
     }
 
     /**
@@ -86,6 +86,7 @@ class PigCycleController extends Controller
      */
     public function show(PigRequest $request, $id)
     {
+
         return $this->pigService->getPig($request, $id);
     }
 

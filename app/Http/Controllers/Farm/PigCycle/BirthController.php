@@ -14,10 +14,12 @@ class BirthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index($id,$cycle_id) {
+
+        $pigBreeder = PigBirth::where('pig_id',$id)->where('pig_cycle_id',$cycle_id)->get();
+        return $pigBreeder;
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -74,9 +76,9 @@ class BirthController extends Controller
      * @param  \App\Models\PigBirth  $pigBirth
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
-        $pigBirth = PigBirth::find($id);
+        $pigBirth = PigBirth::find($request->id);
         $pigBirth->fill($request->all());  
         $pigBirth->save();
     }
@@ -87,8 +89,8 @@ class BirthController extends Controller
      * @param  \App\Models\PigBirth  $pigBirth
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PigBirth $pigBirth,$id)
+    public function destroy($id,$cycle_id,$birth_id)
     {
-        return $pigBirth->destroy($id);
+        return PigBirth::destroy($birth_id);
     }
 }

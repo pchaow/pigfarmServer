@@ -71,9 +71,9 @@ class VaccineController extends Controller
      * @param  \App\Models\Vaccine  $vaccine
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
-        $vaccine = Vaccine::find($id);
+        $vaccine = Vaccine::find($request->id);
         $vaccine->fill($request->all());  
         $vaccine->save();
     }
@@ -84,9 +84,9 @@ class VaccineController extends Controller
      * @param  \App\Models\Vaccine  $vaccine
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        return Vaccine::destroy($id);
+    public function destroy($id,$cycle_id,$vaccine_id){
+
+        return Vaccine::destroy($vaccine_id);
     }
 
      /**

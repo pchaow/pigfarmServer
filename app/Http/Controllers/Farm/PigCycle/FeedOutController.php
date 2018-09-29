@@ -70,9 +70,9 @@ class FeedOutController extends Controller
      * @param  \App\Models\PigFeedOut  $pigFeedOut
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
-        $pigFeedOut = PigFeedOut::find($id);
+        $pigFeedOut = PigFeedOut::find($request->id);
         $pigFeedOut->fill($request->all());  
         $pigFeedOut->save();
     }
@@ -83,8 +83,8 @@ class FeedOutController extends Controller
      * @param  \App\Models\PigFeedOut  $pigFeedOut
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PigFeedOut $pigFeedOut,$id)
+    public function destroy($id,$cycle_id,$feedout_id)
     {
-        return $pigFeedOut->destroy($id);
+        return PigFeedOut::destroy($feedout_id);
     }
 }

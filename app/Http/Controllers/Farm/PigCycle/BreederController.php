@@ -15,9 +15,9 @@ class BreederController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
-    {
-        $pigBreeder = PigBreeder::find($id);
+    public function index($id,$cycle_id) {
+
+        $pigBreeder = PigBreeder::where('pig_id',$id)->where('pig_cycle_id',$cycle_id)->get();
         return $pigBreeder;
     }
 
@@ -82,21 +82,21 @@ class BreederController extends Controller
      * @param  \App\Models\PigBreeder  $pigBreeder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
-         $pigBreeder = PigBreeder::find($id);
+         $pigBreeder = PigBreeder::find($request->id);
          $pigBreeder->fill($request->all());  
-         $pigBreeder->save();  
+         $pigBreeder->save();
     }
 
-    public function gravid(Request $request){ 
+    public function gravid(Request $request){
         $pigBreeder = PigBreeder::find($request->gravid_id);
         $pigBreeder->gravid = $request->gravid;
         $pigBreeder->gravid_date = $request->gravid_date;
         $pigBreeder->gravid_out = $request->gravid_out;
         $pigBreeder->gravid_out_remark = $request->gravid_out_remark;
         $pigBreeder->gravid_remark = $request->gravid_remark;
-        $pigBreeder->save();  
+        $pigBreeder->save();
 
     }
 
@@ -106,8 +106,9 @@ class BreederController extends Controller
      * @param  \App\Models\PigBreeder  $pigBreeder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PigBreeder $pigBreeder,$id)
-    {    
-        return $pigBreeder->destroy($id);
+    public function destroy($id,$cycle_id,$breeder_id)
+    {
+        return PigBreeder::destroy($breeder_id);
+
     }
 }

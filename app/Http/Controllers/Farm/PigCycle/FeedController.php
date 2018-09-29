@@ -73,12 +73,11 @@ class FeedController extends Controller
      * @param  \App\Models\PigFeed  $pigFeed
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $feed = PigFeed::find($id);
+        $feed = PigFeed::find($request->id);
         $feed->fill($request->all());  
         $feed->save();
-
       
     }
 
@@ -88,8 +87,8 @@ class FeedController extends Controller
      * @param  \App\Models\PigFeed  $pigFeed
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PigFeed $pigFeed,$id)
+    public function destroy($id,$cycle_id,$feed_id)
     {
-        return $pigFeed->destroy($id);
+        return PigFeed::destroy($feed_id);
     }
 }
