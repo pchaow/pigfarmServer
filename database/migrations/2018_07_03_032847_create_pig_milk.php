@@ -13,7 +13,7 @@ class CreatePigMilk extends Migration
      */
     public function up()
     {
-      Schema::create('pig_Milk', function (Blueprint $table) {
+      Schema::create('pig_milk', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('pig_id');
           $table->integer('pig_cycle_id');
@@ -32,7 +32,7 @@ class CreatePigMilk extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pig_Milk');
+        Schema::dropIfExists('pig_milk');
 
     }
 }

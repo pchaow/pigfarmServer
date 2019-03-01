@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PigCycle extends Model
 {
-    protected $table = "PigCycles";
+    protected $table = "pigcycles";
 
     protected $fillable = [
         'cycle_sequence', 'pig_id', 'complete', "remark"
