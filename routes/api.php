@@ -27,13 +27,14 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('/auth/logout', Auth\LoginController::class . "@logout");
 
     Route::resource('/roles', Admin\RoleController::class);
+    Route::resource('/goals', Admin\ReportGoalController::class);
+
     Route::resource('/users', Admin\UserController::class);
     Route::resource('/choices', Admin\ChoiceController::class);
 
     Route::resource('/farm/pigs', Farm\PigController::class);
     Route::resource('/farm/pigs.cycles', Farm\PigCycleController::class);
 
-    // TODO : please re implemement reosurce api and controller
 
     //Route::get('/pigcycle',Farm\PigCycleController::class.'@getCycleID');
 
