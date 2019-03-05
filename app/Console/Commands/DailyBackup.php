@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Http\Services\DailyReportService;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class DailyBackup extends Command
@@ -12,7 +13,7 @@ class DailyBackup extends Command
      *
      * @var string
      */
-    protected $signature = 'report:daily';
+    protected $signature = 'report:daily {{--date=}}';
 
     /**
      * The console command description.
@@ -39,6 +40,11 @@ class DailyBackup extends Command
      */
     public function handle()
     {
-        $this->service->generateDailyReport(now());
+        if($this->option('date')){
+            $date = Carbon::createFromFormat("Y-m-d",$this->option('date'));
+        }else {
+            $date = Carbon::now();
+        }
+        $this->service->generateDailyReport($date);
     }
 }
