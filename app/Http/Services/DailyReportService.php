@@ -15,16 +15,17 @@ use Illuminate\Support\Facades\Hash;
 
 class DailyReportService extends BaseService
 {
-    function generateDailyReport($currentDate){
+    function generateDailyReport($currentDate)
+    {
 
         $query = Pig::query();
-        $query->where('status','=','PIGSTATUS_001');
+        $query->where('status', '=', 'PIGSTATUS_001');
         $countPigId = $query->count('id');
 
-        return [
+        print_r([
             'report_date' => $currentDate,
             'active_breeder' => $countPigId,
-        ];
+        ]);
 
 
     }
