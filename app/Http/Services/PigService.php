@@ -85,7 +85,7 @@ class PigService extends BaseService
             });
         }
 
-        $query->orderBy('created_at', 'desc');
+        $query->orderBy('updated_at', 'desc');
 
         //auto with
         $query = $this->autoWith($query);
@@ -102,7 +102,7 @@ class PigService extends BaseService
     public function getPaginate(Request $request)
     {
         $query = $this->getQuery($request);
-        $query->orderBy('created_at', 'desc');
+        $query->orderBy('updated_at', 'desc');
         return $query->paginate();
     }
 
