@@ -17,7 +17,7 @@ class CreatePigBirth extends Migration
           $table->increments('id');
           $table->integer('pig_id');
           $table->integer('pig_cycle_id');
-          $table->string('birth_date');
+          $table->date('birth_date');
           $table->integer('pig_count');
           $table->integer('life');
           $table->integer('dead');
