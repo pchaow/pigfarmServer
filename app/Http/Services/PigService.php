@@ -13,6 +13,7 @@ use App\Models\Pig;
 use App\Models\User;
 use App\Models\PigCycle;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PigService extends BaseService
 {
@@ -147,7 +148,16 @@ class PigService extends BaseService
             return abort(404, "Pig not found");
         }
 
+
         $pig->fill($request->all());
+
+        
+        if($request->status != 'PIGSTATUS_001'){
+            $pig->deleted_at  = Carbon::now();
+        }else{
+            $pig->deleted_at = null;
+        } 
+
 
         $pig = $this->sync($request, $pig);
 
