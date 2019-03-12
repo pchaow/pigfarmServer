@@ -50,6 +50,7 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::resource('/farm/pigs.cycles.vaccine', Farm\Pigcycle\VaccineController::class);
 
-    Route::resource('/card', Farm\PigCardController::class);
+  
 
 });
+Route::resource('/card', Farm\PigCardController::class);

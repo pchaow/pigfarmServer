@@ -4,7 +4,15 @@ namespace App\Http\Controllers\Farm;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Pig;
+use App\Models\Pig; 
+use App\Models\PigCycle;
+use App\Models\PigBreeder;
+use App\Models\Choice;
+use App\Models\Vaccine;
+use App\Models\PigBirth;
+use App\Models\PigMilk;
+
+
 class PigCardController extends Controller
 {
     /**
@@ -14,7 +22,9 @@ class PigCardController extends Controller
      */
     public function index()
     {
-        echo "sad";
+        $data =  PigCycle::with(['breeders','birth','feed','feedout','milk'])->where('pig_id',$id)->get();
+       /* $pdf = \PDF::loadView('card.pig', ['pig'=>$data]); */
+        return  $data;   
     }
 
     /**
@@ -46,7 +56,18 @@ class PigCardController extends Controller
      */
     public function show($id)
     {
-       return Pig::where('pig_id',$id)->first();
+         $pig = Pig::where('id',$id)->with(['bloodLine','status','cycles'])->first();
+        $cycle =  PigCycle::with(['breeders','birth','feed','feedout','milk'])->where('pig_id',$id)->first();
+        $pdf = \PDF::setOptions(['dpi' => 150, 'defaultFont' => 'tahoma']);
+        $pdf = \PDF::loadView('card.pig', ['pig'=>$pig,'cycle'=>$cycle]);
+        
+
+         return $pdf->stream('card.pdf'); 
+
+       // return view('card.pig',['pig'=>$pig,'cycle'=>$cycle]);
+
+       
+
     }
 
     /**
@@ -57,7 +78,12 @@ class PigCardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pig = Pig::with(['bloodLine','status','cycles'])->find($id);
+        $data =  PigCycle::with(['pig','breeders','birth','feed','feedout','milk'])->where('pig_id',$id)->first();
+     /*   $pdf = \PDF::loadView('card.pig', ['pig'=>$data]);
+        return $pdf->download('invoice.pdf'); */
+
+        return $data;
     }
 
     /**
