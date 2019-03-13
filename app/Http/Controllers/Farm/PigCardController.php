@@ -59,12 +59,12 @@ class PigCardController extends Controller
          $pig = Pig::where('id',$id)->with(['bloodLine','status','cycles'])->first();
         $cycle =  PigCycle::with(['breeders','birth','feed','feedout','milk'])->where('pig_id',$id)->first();
         $pdf = \PDF::setOptions(['dpi' => 150, 'defaultFont' => 'tahoma']);
-        $pdf = \PDF::loadView('card.pig', ['pig'=>$pig,'cycle'=>$cycle]);
+        $pdf = \PDF::loadView('card.pig', ['pig'=>$pig,'cycle'=>$cycle])->setPaper('a4');
         
 
-         return $pdf->stream('card.pdf'); 
+        return $pdf->stream(); 
 
-       // return view('card.pig',['pig'=>$pig,'cycle'=>$cycle]);
+       //return view('card.pig',['pig'=>$pig,'cycle'=>$cycle]);
 
        
 

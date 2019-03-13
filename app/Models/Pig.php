@@ -22,6 +22,7 @@ class Pig extends Model
             'left_breast',
             'right_breast',
             'status',
+           
         ];
 
     public function bloodLine()

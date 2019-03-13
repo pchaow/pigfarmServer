@@ -24,3 +24,4 @@ Route::get('/s', function () {
  
  
 Route::get('/farm/pigs/preVaccine/{id}', Farm\Pigcycle\VaccineController::class.'@getDataForWeb'); 
+Route::resource('/card', Farm\PigCardController::class);
