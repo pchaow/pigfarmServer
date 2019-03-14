@@ -13,25 +13,25 @@
             font-family: 'THSarabunNew';
             font-style: normal;
             font-weight: normal;
-            src: url("{{ public_path('fonts/THSarabunNew.ttf') }}") format('truetype');
+            src: url("{{ public_path()}}/fonts/THSarabunNew.ttf") format('truetype');
         }
         @font-face {
             font-family: 'THSarabunNew';
             font-style: normal;
             font-weight: bold;
-            src: url("{{ public_path('fonts/THSarabunNew Bold.ttf') }}") format('truetype');
+            src: url("{{ public_path()}}/fonts/THSarabunNew Bold.ttf") format('truetype');
         }
         @font-face {
             font-family: 'THSarabunNew';
             font-style: italic;
             font-weight: normal;
-            src: url("{{ public_path('fonts/THSarabunNew Italic.ttf') }}") format('truetype');
+            src: url("{{ public_path()}}/fonts/THSarabunNew Italic.ttf") format('truetype');
         }
         @font-face {
             font-family: 'THSarabunNew';
             font-style: italic;
             font-weight: bold;
-            src: url("{{ public_path('fonts/THSarabunNew BoldItalic.ttf') }}") format('truetype');
+            src: url("{{ public_path()}}/fonts/THSarabunNew BoldItalic.ttf") format('truetype');
         }
 
         body, .fs {
@@ -46,6 +46,7 @@
 
 </head>
 <body>
+    <div class="w3-container">
         <div class="w3-row">
           
             <div class="w3-col m12">
@@ -54,7 +55,7 @@
             </center>
             </div>
         </div>
-        <center>
+      
         <div class="w3-row">
             <div class="w3-col m4">
               <h4 class="fs">เบอร์แม่พันธ์ุ : {{$pig->pig_id}} </h4>
@@ -72,8 +73,9 @@
               <h4 class="fs">แหล่งที่มา : {{$pig->source}}</h4>
             </div>  
         </div>
-        </center>
-         <div class="w3-container">
+      
+
+         
           <table border="1">
              <tr> 
                     <th>การผสมพันธ์ุ</th> 
