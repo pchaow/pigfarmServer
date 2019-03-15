@@ -37,9 +37,17 @@
         body, .fs {
             font-family: "THSarabunNew";
         } 
+
+        .hg{
+          height:60px!important;
+        }
        
   
  table td, table th{ border:1px solid black; } 
+
+ .br{
+  border-collapse:collapse;
+ }
 
 </style>
    
@@ -76,7 +84,7 @@
       
 
          
-          <table border="1">
+          <table border="1" class="br">
              <tr> 
                     <th>การผสมพันธ์ุ</th> 
                     <th>การคลอด</th>
@@ -84,8 +92,8 @@
                   </tr>
                
                   <tr> 
-                          <th>
-                                  <table  border="1" style="height:auto;" >
+                          <th valign="top" >
+                                  <table border="1"   class="br">
                                   <tr>
                                             <th>ชุดผสม</th>
                                             <th>วันที่ผสม</th> 
@@ -107,8 +115,8 @@
                                         </table>
                           </th>
       
-                          <th>
-                                      <table  border="1"  style="height:auto;"  >
+                          <th valign="top">
+                                      <table   border="1"  class="br"  >
                                             <tr>
                                                         <th> วันที่</th>  
                                                         <th>ตาย</th>
@@ -132,8 +140,8 @@
       
                           </th>
       
-                          <th>
-                              <table  border="1" >
+                          <th valign="top" >
+                              <table  border="1" class="br">
                                    <tr style="height:auto;">
                                         <th> วันที่หย่านม</th> 
                                         <th>จำนวนหมู</th>
@@ -162,4 +170,5 @@
                 
 </body>
 </html>
+
 
