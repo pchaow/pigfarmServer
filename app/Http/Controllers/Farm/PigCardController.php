@@ -58,12 +58,15 @@ class PigCardController extends Controller
     {
          $pig = Pig::where('id',$id)->with(['bloodLine','status','cycles'])->first();
         $cycle =  PigCycle::with(['breeders','birth','feed','feedout','milk'])->where('pig_id',$id)->first();
-        $pdf = \PDF::setOptions(['dpi' => 150, 'defaultFont' => 'tahoma']);
-        $pdf = \PDF::loadView('card.pig', ['pig'=>$pig,'cycle'=>$cycle])->setPaper('a4');
-        
+       
+        $table=[count($cycle->breeders),count($cycle->birth),count($cycle->milk)];
+        rsort($table);
 
+
+        $pdf = \PDF::setOptions(['dpi' => 150]); 
+        $pdf = \PDF::loadView('card.pig', ['pig'=>$pig,'cycle'=>$cycle,'count'=>4])->setPaper('A4');
         return $pdf->stream(); 
-
+       // print_r($table);
        //return view('card.pig',['pig'=>$pig,'cycle'=>$cycle]);
 
        
@@ -78,12 +81,13 @@ class PigCardController extends Controller
      */
     public function edit($id)
     {
-        $pig = Pig::with(['bloodLine','status','cycles'])->find($id);
-        $data =  PigCycle::with(['pig','breeders','birth','feed','feedout','milk'])->where('pig_id',$id)->first();
+      $pig = Pig::where('id',$id)->with(['bloodLine','status','cycles'])->first();
+        $cycle =  PigCycle::with(['breeders','birth','feed','feedout','milk'])->where('pig_id',$id)->first();
      /*   $pdf = \PDF::loadView('card.pig', ['pig'=>$data]);
         return $pdf->download('invoice.pdf'); */
-
-        return $data;
+        
+        return view('card.pig', ['pig'=>$pig,'cycle'=>$cycle]);
+      //  return $data;
     }
 
     /**

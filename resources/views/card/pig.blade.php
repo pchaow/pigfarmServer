@@ -41,7 +41,17 @@
         .hg{
           height:60px!important;
         }
-       
+       .center{
+        text-align: center;
+       }
+
+       .hidden{
+          border-color: white;
+          color:white;
+       }
+       .wh{
+        color:white;
+       }
   
  table td, table th{ border:1px solid black; } 
 
@@ -64,7 +74,7 @@
             </div>
         </div>
       
-        <div class="w3-row">
+        <div class="w3-row" style="margin-left:40px;">
             <div class="w3-col m4">
               <h4 class="fs">เบอร์แม่พันธ์ุ : {{$pig->pig_id}} </h4>
               <h4 class="fs">สายพันธ์ุ : {{$pig->blood_line}}</h4>
@@ -73,7 +83,7 @@
             <div class="w3-col m4">
               <h4 class="fs">ฟาร์ม : {{$pig->pig_id}}</h4>
               <h4 class="fs">วันที่เข้าฟาร์ม :{{$pig->entry_date}} </h4>
-              <h4 class="fs">เต้านม : {{$pig->left_breast+$pig->right_breast}}</h4>  
+              <h4 class="fs">เต้านม : {{$pig->left_breast.'/'.$pig->right_breast}}</h4>  
             </div> 
             <div class="w3-col m4">
               <h4 class="fs">พ่อพันธ์ุ : {{$pig->male_breeder_pig_id}}</h4>
@@ -81,87 +91,86 @@
               <h4 class="fs">แหล่งที่มา : {{$pig->source}}</h4>
             </div>  
         </div>
-      
 
-         
-          <table border="1" class="br">
-             <tr> 
-                    <th>การผสมพันธ์ุ</th> 
-                    <th>การคลอด</th>
-                    <th>หย่านม</th> 
-                  </tr>
-               
-                  <tr> 
-                          <th valign="top" >
-                                  <table border="1"   class="br">
-                                  <tr>
-                                            <th>ชุดผสม</th>
-                                            <th>วันที่ผสม</th> 
-                                            <th>พ่อพันธุ์ 1</th>
-                                            <th>พ่อพันธุ์ 2</th>
-                                            <th>พ่อพันธุ์ 3</th>
-                                          </tr>
-                                       
-                                    @foreach ($cycle->breeders as $breeder)
-                                    <tr>
-                                          <td>{{$breeder->breed_week}}</td>
-                                          <td>{{$breeder->breed_date}}</td> 
-                                          <td>{{$breeder->breeder_a}}</td>
-                                          <td>{{$breeder->breeder_b}}</td>
-                                          <td>{{$breeder->breeder_c}}</td>
-                                        </tr> 
-                                  @endforeach 
-                                        
-                                        </table>
-                          </th>
-      
-                          <th valign="top">
-                                      <table   border="1"  class="br"  >
-                                            <tr>
-                                                        <th> วันที่</th>  
-                                                        <th>ตาย</th>
-                                                        <th>พิการ</th>
-                                                        <th>มัมมี่</th>
-                                                        <th>มีชีวิต</th>
-                                                        <th>น้ำหนักเฉลี่ย</th> 
-                                                      </tr>
-                                              
-                                                    @foreach ($cycle->birth as $birth)
-                                                      <tr>
-                                                              <td>{{$birth->birth_date}}</td>
-                                                              <td>{{$birth->dead}}</td> 
-                                                              <td>{{$birth->deformed}}</td> 
-                                                              <td>{{$birth->mummy}}</td>
-                                                              <td>{{$birth->life}}</td> 
-                                                              <td>{{$birth->pig_weight_avg}}</td> 
-                                                            </tr> 
-                                                      @endforeach  
-                                      </table>
-      
-                          </th>
-      
-                          <th valign="top" >
-                              <table  border="1" class="br">
-                                   <tr style="height:auto;">
-                                        <th> วันที่หย่านม</th> 
-                                        <th>จำนวนหมู</th>
-                                        <th>น้ำหนักเฉลี่ย</th> 
-                                      </tr>
-                                  
-                                   @foreach ($cycle->milk as $milk)
-                                      <tr>
-                                              <td>{{$milk->milk_date}}</td>
-                                              <td>{{$milk->pig_count}}</td> 
-                                              <td>{{$milk->pig_weight_avg}}</td> 
-                                            </tr> 
-                                      @endforeach  
+        
+    <div class="w3-container">
+        <style type="text/css">
+          .tg  {border-collapse:collapse;border-spacing:0;}
+          .tg td{font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+          .tg th{font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+          .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+          .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+          </style>
+          <table class="tg">
+            <tr>
+              <th class="tg-0pky" colspan="5">การผสม</th>
+              <th class="tg-0pky" colspan="6">การคลอด</th>
+              <th class="tg-0pky" colspan="3">การอย่านม</th>
+            </tr>
+            <tr>
+              <td class="tg-c3ow">ชุดผสม</td>
+              <td class="tg-c3ow">วันที่ผสม</td>
+              <td class="tg-c3ow">พ่อพันธุ์ 1</td>
+              <td class="tg-c3ow">พ่อพันธุ์ 2</td>
+              <td class="tg-c3ow">พ่อพันธุ์ 3</td>
+              <td class="tg-c3ow">วันที่คลอด</td>
+              <td class="tg-c3ow">ตาย</td>
+              <td class="tg-c3ow">พิการ</td>
+              <td class="tg-c3ow">มันมี่</td>
+              <td class="tg-c3ow">มีชีวิต</td>
+              <td class="tg-c3ow">น้ำหนักเฉลี่ย</td>
+              <td class="tg-0pky">วันที่อย่านม</td>
+              <td class="tg-0pky">จำนวนหมู</td>
+              <td class="tg-0pky">น้ำหนักเฉลี่ย</td>
+            </tr>
 
-                              </table>
-                          </th>
-                  
-                        </tr>
-                 
-                </table>
+            @for ($i = 0; $i < $count; $i++)
+            
+            <tr>
+              <td class="tg-0pky">{{ (count($cycle->breeders)>$i)?$cycle->breeders[$i]->breed_week:''}}</td>
+              <td class="tg-0pky">{{ (count($cycle->breeders)>$i)?$cycle->breeders[$i]->breed_date:''}}</td>
+              <td class="tg-0pky">{{ (count($cycle->breeders)>$i)?$cycle->breeders[$i]->breeder_a:'' }}</td>
+              <td class="tg-0pky">{{ (count($cycle->breeders)>$i)?$cycle->breeders[$i]->breeder_b:'' }}</td>
+              <td class="tg-0pky">{{ (count($cycle->breeders)>$i)?$cycle->breeders[$i]->breeder_c:'' }}</td>
+
+
+
+               <td class="tg-0pky">{{ (count($cycle->birth)>$i)?$cycle->birth[$i]->birth_date:''}}</td>
+              <td class="tg-0pky">{{ (count($cycle->birth)>$i)?$cycle->birth[$i]->dead:''}}</td>
+              <td class="tg-0pky">{{ (count($cycle->birth)>$i)?$cycle->birth[$i]->deformed:'' }}</td>
+              <td class="tg-0pky">{{ (count($cycle->birth)>$i)?$cycle->birth[$i]->mummy:'' }}</td>
+              <td class="tg-0pky">{{ (count($cycle->birth)>$i)?$cycle->birth[$i]->life:'' }}</td>
+              <td class="tg-0pky">{{ (count($cycle->birth)>$i)?$cycle->birth[$i]->pig_weight_avg:'' }}</td>
+
+              <td class="tg-0pky">{{ (count($cycle->milk)>$i)?$cycle->milk[$i]->milk_date:'' }}</td>
+              <td class="tg-0pky">{{ (count($cycle->milk)>$i)?$cycle->milk[$i]->pig_count:'' }}</td>
+              <td class="tg-0pky">{{ (count($cycle->milk)>$i)?$cycle->milk[$i]->pig_weight_avg:'' }}</td>
+
+            </tr>
+                
+            @endfor
+
+            @for ($j = $count; $i < 20; $i++)
+                
+            <tr>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+              <td class="tg-0pky"></td>
+            </tr>
+           
+            @endfor
+          </table>
          
          </div>
                 
