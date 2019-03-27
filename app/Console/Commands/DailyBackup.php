@@ -41,7 +41,7 @@ class DailyBackup extends Command
     public function handle()
     {
         if($this->option('date')){
-            $date = Carbon::createFromFormat("Y-m-d",$this->option('date'));
+            $date = Carbon::createFromFormat("Y-m-d",$this->option('date'))->toDateString();
         }else {
             $date = Carbon::now();
         }
