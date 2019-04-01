@@ -56,3 +56,8 @@ Route::middleware(['auth:api'])->group(function () {
 	Route::resource('/card', Farm\PigCardController::class);
 
 });
+
+Route::resource('/export/report', Export\ExportReportController::class);
+Route::resource('/tester', Tester\TesterController::class);
+
+

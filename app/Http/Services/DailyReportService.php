@@ -20,50 +20,53 @@ class DailyReportService extends BaseService
 
     public function generateDailyReport($currentDate)
     {
-
-        $query = Pig::query();
-        $query->where('status', '=', 'PIGSTATUS_001');
-        $countPigId = $query->count('id');
-
-        $birth = PigBirth::whereDate('birth_date', $currentDate);
-        $pigDeliveredRate = $this->fixDivisionZero($this->pigDeliveredRate($currentDate, 'pig_count'));
-
-        $milk = PigMilk::whereDate('milk_date', $currentDate);
-        $avgMilk = $this->fixDivisionZero($milk->avg('pig_count'));
-        $ween = $this->birthCount($currentDate) / $avgMilk;
-
-        $report_daily = new ReportDaily();
-        $report_data = [
-            'report_date' => $currentDate,
-            'active_breeder' => $countPigId,
-            'breeded_breeder' => $this->breederCount($currentDate),
-            'delivery_breeder' => $this->birthCount($currentDate),
-            'delivery_ratio' => ($this->breederCount($currentDate) / $this->fixDivisionZero($this->birthCount($currentDate))) * 100,
-            'pig_delivered_rate' => $pigDeliveredRate,
-
-            'pig_delivered_died_percent' => round(($this->birthDeadCount($currentDate) / $this->fixDivisionZero($pigDeliveredRate)) * 100, 2),
-
-            'pig_delivered_success_avg' => $this->notNull($this->pigDeliveredRate($currentDate, 'life')),
-            'pig_delivered_weight' => $this->notNull($birth->avg('pig_weight_avg')),
-
-            'pig_raising_failed_perent' => $this->birthWeightPercent($currentDate),
-
-            'ween_breeder' => round((($birth->avg('pig_weight_avg') - $this->milkCount($currentDate)) / $this->fixDivisionZero($birth->avg('pig_weight_avg'))) * 100, 2),
-            'pig_ween_number' => $avgMilk,
-            'pig_ween_rate' => $this->milkCount($currentDate),
-
-            'pig_ween_weight_avg' => round($ween, 2),
-            'delivered_breeder_rate' => $this->pigCircleYear(null),
-            'pig_ween_breeder_rate' => $this->pigCircleYear('psy'),
-            'pig_khun_breeder_rate' => 0.00,
-            'breeder_replace_number' => $this->pigCreateCount($currentDate),
-            'breeder_drop_percent' => round(($this->pigDeleteCount($currentDate) / $this->fixDivisionZero($countPigId)) * 100, 2),
-            'breeder_replace_drop_sum' => $this->pigCreateCount($currentDate) - round(($this->pigDeleteCount($currentDate) / $countPigId) * 100, 2),
-
-        ];
-        $report_daily->fill($report_data);
-        $report_daily->save();
-        return $report_data;
+        $checkDaily = ReportDaily::where('report_date',$currentDate)->first();
+        if(!$checkDaily){
+            $query = Pig::query();
+            $query->where('status', '=', 'PIGSTATUS_001');
+            $countPigId = $query->count('id');
+    
+            $birth = PigBirth::whereDate('birth_date', $currentDate);
+            $pigDeliveredRate = $this->fixDivisionZero($this->pigDeliveredRate($currentDate, 'pig_count'));
+    
+            $milk = PigMilk::whereDate('milk_date', $currentDate);
+            $avgMilk = $this->fixDivisionZero($milk->avg('pig_count'));
+            $ween = $this->birthCount($currentDate) / $avgMilk;
+    
+            $report_daily = new ReportDaily();
+            $report_data = [
+                'report_date' => $currentDate,
+                'active_breeder' => $countPigId,
+                'breeded_breeder' => $this->breederCount($currentDate),
+                'delivery_breeder' => $this->birthCount($currentDate),
+                'delivery_ratio' => ($this->breederCount($currentDate) / $this->fixDivisionZero($this->birthCount($currentDate))) * 100,
+                'pig_delivered_rate' => $pigDeliveredRate,
+    
+                'pig_delivered_died_percent' => round(($this->birthDeadCount($currentDate) / $this->fixDivisionZero($pigDeliveredRate)) * 100, 2),
+    
+                'pig_delivered_success_avg' => $this->notNull($this->pigDeliveredRate($currentDate, 'life')),
+                'pig_delivered_weight' => $this->notNull($birth->avg('pig_weight_avg')),
+    
+                'pig_raising_failed_perent' => $this->birthWeightPercent($currentDate),
+    
+                'ween_breeder' => round((($birth->avg('pig_weight_avg') - $this->milkCount($currentDate)) / $this->fixDivisionZero($birth->avg('pig_weight_avg'))) * 100, 2),
+                'pig_ween_number' => $avgMilk,
+                'pig_ween_rate' => $this->milkCount($currentDate),
+    
+                'pig_ween_weight_avg' => round($ween, 2),
+                'delivered_breeder_rate' => $this->pigCircleYear(null),
+                'pig_ween_breeder_rate' => $this->pigCircleYear('psy'),
+                'pig_khun_breeder_rate' => 0.00,
+                'breeder_replace_number' => $this->pigCreateCount($currentDate),
+                'breeder_drop_percent' => round(($this->pigDeleteCount($currentDate) / $this->fixDivisionZero($countPigId)) * 100, 2),
+                'breeder_replace_drop_sum' => $this->pigCreateCount($currentDate) - round(($this->pigDeleteCount($currentDate) / $countPigId) * 100, 2),
+    
+            ];
+            $report_daily->fill($report_data);
+            $report_daily->save();
+            return $report_data;
+        }
+       
     }
 
     private function pigDeliveredRate($date, $type)
