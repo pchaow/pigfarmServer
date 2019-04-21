@@ -15,7 +15,8 @@ use App\Models\PigBirth;
 use App\Models\PigBreed;
 use App\Models\PigMilk; 
 use App\Models\ReportQuater; 
-class QuaterReportService extends BaseService
+
+class YearReportService extends BaseService
 {
 
     private $quater = [];
@@ -24,10 +25,10 @@ class QuaterReportService extends BaseService
 
     public function __construct()
     {
-        $this->getQuater();
+        $this->getYear();
     }
 
-    public function generateQuaterReport()
+    public function generateYearReport()
     {
 
         $checkQuater = ReportQuater::where('report_year',$this->year)->where('report_quater',$this->dateReport)->first();
@@ -201,28 +202,15 @@ class QuaterReportService extends BaseService
 
 
 
-    private function getQuater()
+    private function getYear()
     {
         $calendar = \Carbon\Carbon::now();
         $month = $calendar->month;
-        // $month = 4;
-        if ($month <= 3) {
-            $this->dateReport = 1;
+      
+            $this->dateReport = 5;
             $this->quater[0] = '01';
-            $this->quater[1] = '03';
-        } else if ($month <= 6) {
-            $this->dateReport = 2;
-            $this->quater[0] = '03';
-            $this->quater[1] = '06';
-        } else if ($month <= 9) {
-            $this->dateReport = 3;
-            $this->quater[0] = '06';
-            $this->quater[1] = '09';
-        } else {
-            $this->dateReport = 4;
-            $this->quater[0] = '09';
             $this->quater[1] = '12';
-        }
+        
         $this->year = $calendar->year;
     }
 

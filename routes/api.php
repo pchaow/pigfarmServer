@@ -57,7 +57,10 @@ Route::middleware(['auth:api'])->group(function () {
 
 });
 
-Route::resource('/export/report', Export\ExportReportController::class);
+Route::resource('/export/report', Export\ExportReportController::class); //ShowClientReportController
+Route::resource('/show/report', Export\ShowClientReportController::class);
+
+Route::get('/exporttest', Export\ExportReportController::class.'@index');
 Route::resource('/tester', Tester\TesterController::class);
 
 

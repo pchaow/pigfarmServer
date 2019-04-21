@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Export;
 
-use App\Models\ReportGoal;
-use App\Models\ReportQuater;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Exports\reportQuaterExport;
-use Maatwebsite\Excel\Facades\Excel;
-
-class ExportReportController extends Controller
+use App\Http\Services\ShowReportService;
+class ShowClientReportController extends Controller
 {
+    private $report;  
+     
+
     /**
      * Display a listing of the resource.
      *
@@ -18,13 +17,7 @@ class ExportReportController extends Controller
      */
     public function index()
     {
-       return view('exports.quater' ,[
-        'quaters' => ReportQuater::all(),
-            'goalQ1'=>ReportGoal::where('report_type','quater1')->first(),
-            'goalQ2'=>ReportGoal::where('report_type','quater2')->first(),
-            'goalQ3'=>ReportGoal::where('report_type','quater3')->first(),
-            'goalQ4'=>ReportGoal::where('report_type','quater3')->first(),
-        ]);
+        //
     }
 
     /**
@@ -56,8 +49,22 @@ class ExportReportController extends Controller
      */
     public function show($id)
     {
-        if($id='quater'){
-            return Excel::download(new reportQuaterExport, 'quater.xlsx');
+        $this->report = new ShowReportService();
+        $year = (isset($_GET['year']))?$_GET['year']:''; 
+        switch ($id) {
+            //getQuaterByYear
+            case 'year': 
+                return $this->report->getYear();
+                break;
+
+            case 'quater': 
+
+                return $this->report->getQuaterByYear($year);
+                break;
+            
+            default:
+                # code...
+                break;
         }
     }
 
@@ -69,10 +76,7 @@ class ExportReportController extends Controller
      */
     public function edit($id)
     {
-        return view('exports.quater' ,[
-            'quaters' => ReportQuater::all()
-        ]);
-
+        //
     }
 
     /**
