@@ -75,7 +75,7 @@ class ShowReportService extends BaseService
         return array_values($year);
     }
     public function getGoalYear(){
-        $years = ReportGoal::select('report_year')->pluck('report_year')->toArray();
+        $years = ReportGoal::select('report_year')->orderBy('report_year')->pluck('report_year')->toArray();
         $year =  array_unique($years);
         return array_values($year);
     }
