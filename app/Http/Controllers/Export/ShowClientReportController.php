@@ -61,6 +61,10 @@ class ShowClientReportController extends Controller
 
                 return $this->report->getQuaterByYear($year);
                 break;
+
+                case 'goal':  
+                return $this->report->getGoalYear($year);
+                break;
             
             default:
                 # code...

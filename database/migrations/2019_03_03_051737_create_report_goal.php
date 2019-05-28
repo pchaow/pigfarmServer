@@ -17,6 +17,7 @@ class CreateReportGoal extends Migration
             $table->increments('id');
             $table->enum('report_type',['month','quater1','quater2','quater3','quater4','year']);
             $table->date('report_date');
+            $table->year('report_year');
             $table->float('active_breeder');
             $table->float('breeded_breeder');
             $table->float('delivery_breeder');

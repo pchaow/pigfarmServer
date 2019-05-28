@@ -10,7 +10,8 @@ class ReportGoal extends Model
 
     protected $fillable = [
         'report_type'
-        , 'report_date'
+        , 'report_date',
+        'report_year'
         , 'active_breeder'
         , 'breeded_breeder'
         , 'delivery_breeder'
