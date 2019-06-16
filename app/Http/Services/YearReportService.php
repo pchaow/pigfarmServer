@@ -59,17 +59,17 @@ class YearReportService extends BaseService
 
             'delivery_breeder' => $this->year->avg('delivery_breeder'), //จำนวนแม่คลอด
 
-            'delivery_ratio' => $this->year->avg('delivery_ratio'), //เปอร์เซ็นต์เข้าคลอด
+            'delivery_ratio' => $this->year->avg('delivery_ratio')/100, //เปอร์เซ็นต์เข้าคลอด
 
             'pig_delivered_rate' => $this->year->avg('pig_delivered_rate'), //จำนวนลูกแรกคลอดทั้งหมดต่อครอก
 
-            'pig_delivered_died_percent' => $this->year->avg('pig_delivered_died_percent'), //เปอร์เซ็นต์สูญเสียลูกสุกรแรกคลอด+ลูกกรอก(%)
+            'pig_delivered_died_percent' => $this->year->avg('pig_delivered_died_percent')/100, //เปอร์เซ็นต์สูญเสียลูกสุกรแรกคลอด+ลูกกรอก(%)
 
             'pig_delivered_success_avg' => $this->year->avg('pig_delivered_success_avg'), //จำนวนลูกแรกคลอดมีชีวิตต่อครอก
 
             'pig_delivered_weight' => '0',
 
-            'pig_raising_failed_perent' => $this->year->avg('pig_raising_failed_perent'), ////เปอร์เซ็นต์สูญเสียลูกสุกรก่อนหย่านม(%)
+            'pig_raising_failed_perent' => $this->year->avg('pig_raising_failed_perent')/100, ////เปอร์เซ็นต์สูญเสียลูกสุกรก่อนหย่านม(%)
 
             'ween_breeder' => $this->year->avg('ween_breeder'), //จำนวนแม่หย่านม
 
@@ -85,8 +85,8 @@ class YearReportService extends BaseService
 
             'pig_khun_breeder_rate' => '0.00', //จำนวนสุกรขุนต่อแม่ต่อปี(9%) (MSY)
 
-            'breeder_replace_number' => $this->year->avg('breeder_replace_number'), //% สุกรสาวทดแทน
-            'breeder_drop_percent' => $this->year->avg('breeder_drop_percent'), //% แม่สุกรคัดทิ้ง
+            'breeder_replace_number' => $this->year->avg('breeder_replace_number')/100, //% สุกรสาวทดแทน
+            'breeder_drop_percent' => $this->year->avg('breeder_drop_percent')/100, //% แม่สุกรคัดทิ้ง
             'breeder_replace_drop_sum' => $this->year->avg('breeder_replace_drop_sum'), //'+/- แม่ทดแทนกับแม่คัดทิ้ง
 
         ];
