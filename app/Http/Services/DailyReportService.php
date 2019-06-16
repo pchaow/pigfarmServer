@@ -44,6 +44,8 @@ class DailyReportService extends BaseService
 
             $report_data = $this->generateReport($currentDate);
             return $this->storeToReport($report_data, $currentDate);
+        }else{
+            echo 'บันทึกข้อมูลนี้แล้ว (This data is  already recorded)';
         }
 
     }
