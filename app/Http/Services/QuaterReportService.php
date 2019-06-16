@@ -15,231 +15,103 @@ use App\Models\PigBirth;
 use App\Models\PigBreed;
 use App\Models\PigMilk; 
 use App\Models\ReportQuater; 
+use App\Models\ReportDaily;
 class QuaterReportService extends BaseService
 {
 
-    private $quater = [];
-    private $year;
-    private $dateReport;
+    private $quater; 
 
-    public function __construct()
+    private function storeToReport($report_data)
     {
-        $this->getQuater();
+             $report_year = new ReportQuater();
+            $report_year->fill($report_data);
+            $report_year->save();
+            return $report_data;
+       
+    }
+    
+    public function generateQuaterReport($currentYear,$currentQuater)
+    {
+        echo 'Year: '.$currentYear.' /Quater: '.$currentQuater;
+        $checkYear = ReportQuater::where('report_year', $currentYear)->where('report_quater', $currentQuater)->first();
+        if (!$checkYear) {
+            if($currentQuater == 1){
+                $this->quater = ReportDaily::whereYear('report_date',$currentYear)
+                ->whereMonth('report_date','>=','01')
+                ->whereMonth('report_date','<=','03');
+            }else  if($currentQuater == 2){
+                $this->quater = ReportDaily::whereYear('report_date',$currentYear)
+                ->whereMonth('report_date','>=','04')
+                ->whereMonth('report_date','<=','06');
+            }else  if($currentQuater == 3){
+                $this->quater = ReportDaily::whereYear('report_date',$currentYear)
+                ->whereMonth('report_date','>=','07')
+                ->whereMonth('report_date','<=','09');
+            }else{
+                $this->quater = ReportDaily::whereYear('report_date',$currentYear)
+                ->whereMonth('report_date','>=','10')
+                ->whereMonth('report_date','<=','12');
+            }
+             
+          if($this->quater->count() > 0 ){ 
+                $this->storeToReport($this->generateReport($currentYear,$currentQuater));
+            }else{
+                echo  'ไม่มีข้อมูลปีนี้ (No data for this year)'; 
+            } 
+             
+        }else{
+            echo 'บันทึกข้อมูลปีนี้แล้ว (This year is  already recorded)';
+        } 
     }
 
-    public function generateQuaterReport()
+    
+
+    public function generateReport($currentYear,$currentQuater)
     {
-
-        $checkQuater = ReportQuater::where('report_year',$this->year)->where('report_quater',$this->dateReport)->first();
-        if(!$checkQuater ){
-        $query = Pig::query();
-        $query->where('status', '=', 'PIGSTATUS_001');
-        $query->whereMonth('created_at', '>', $this->quater[0]);
-        $query->whereMonth('created_at', '<=', $this->quater[1]);
-        $query->whereYear('created_at', $this->year);
-        $countPigId = $query->count('id'); 
-        $ween = $this->birthCount() / $this->fixDivisionZero($this->milkAvg());
-
         $report_data = [
-            'report_quater' =>  $this->dateReport,
-            'report_year' =>  $this->year,
-            'active_breeder' =>   $countPigId,
-            'breeded_breeder' =>   $this->breederCount(),
-            'delivery_breeder' =>    $this->birthCount(),
-            'delivery_ratio' =>   $this->deliveryRatio($this->breederCount(),$this->birthCount()),
-            'pig_delivered_rate' =>  $this->pigDeliveredRate('pig_count'),
+            'report_year' => $currentYear,
+            'report_quater' => $currentQuater,
+            'active_breeder' => $this->quater->avg('active_breeder'), //แม่พันธุ์ใช้งาน
 
-            'pig_delivered_died_percent' =>   $this->pigDeliveredDiedPercent($this->pigDeliveredRate('pig_count')),
+            'breeded_breeder' => $this->quater->avg('breeded_breeder'), //จำนวนแม่ผสม
 
-            'pig_delivered_success_avg' =>   $this->pigDeliveredRate('life'),
-            'pig_delivered_weight' =>   ($this->birthWeightAvg())?$this->birthWeightAvg():0,
+            'delivery_breeder' => $this->quater->avg('delivery_breeder'), //จำนวนแม่คลอด
 
-            'pig_raising_failed_perent' =>   $this->birthWeightPercent(),
+            'delivery_ratio' => $this->quater->avg('delivery_ratio'), //เปอร์เซ็นต์เข้าคลอด
 
-            'ween_breeder' =>   $this->pigWeen(),
-            'pig_ween_number' =>   $this->milkAvg(),
-            'pig_ween_rate' =>  $this->milkCount(),
- 
-            'pig_ween_weight_avg' =>  round($ween,2)  ,
-            'delivered_breeder_rate' =>   $this->pigCircleYear(null),
-            'pig_ween_breeder_rate' =>   $this->pigCircleYear('psy'),
-            'pig_khun_breeder_rate' =>    0.00,
-            'breeder_replace_number' =>   $this->pigCreateCount(),
-            'breeder_drop_percent' =>   $this->breederDropPercent($countPigId),
-            'breeder_replace_drop_sum' =>   $this->breederReplaceDropSum($countPigId),
+            'pig_delivered_rate' => $this->quater->avg('pig_delivered_rate'), //จำนวนลูกแรกคลอดทั้งหมดต่อครอก
+
+            'pig_delivered_died_percent' => $this->quater->avg('pig_delivered_died_percent'), //เปอร์เซ็นต์สูญเสียลูกสุกรแรกคลอด+ลูกกรอก(%)
+
+            'pig_delivered_success_avg' => $this->quater->avg('pig_delivered_success_avg'), //จำนวนลูกแรกคลอดมีชีวิตต่อครอก
+
+            'pig_delivered_weight' => '0',
+
+            'pig_raising_failed_perent' => $this->quater->avg('pig_raising_failed_perent'), ////เปอร์เซ็นต์สูญเสียลูกสุกรก่อนหย่านม(%)
+
+            'ween_breeder' => $this->quater->avg('ween_breeder'), //จำนวนแม่หย่านม
+
+            'pig_ween_number' => $this->quater->avg('pig_ween_number'), //จำจำนวนลูกหย่านมทั้งหมด
+
+            'pig_ween_rate' => $this->quater->avg('pig_ween_rate'), //จำนวนลูกหย่านม/ครอก
+
+            'pig_ween_weight_avg' => '0',
+
+            'delivered_breeder_rate' => $this->quater->avg('delivered_breeder_rate'), //จำจำนวนครอก/แม่/ปี
+
+            'pig_ween_breeder_rate' => $this->quater->avg('pig_ween_breeder_rate'), //จำนวนลูกลูกหย่านม/แม่/ปี (PSY)
+
+            'pig_khun_breeder_rate' => '0.00', //จำนวนสุกรขุนต่อแม่ต่อปี(9%) (MSY)
+
+            'breeder_replace_number' => $this->quater->avg('breeder_replace_number'), //% สุกรสาวทดแทน
+            'breeder_drop_percent' => $this->quater->avg('breeder_drop_percent'), //% แม่สุกรคัดทิ้ง
+            'breeder_replace_drop_sum' => $this->quater->avg('breeder_replace_drop_sum'), //'+/- แม่ทดแทนกับแม่คัดทิ้ง
 
         ];
-        $reportQuater = new ReportQuater();
-        $reportQuater->fill($report_data);
-        $reportQuater->save(); 
+        print_r($report_data);
+        return $report_data;
     }
-      // return $this->birthCount();
-    }
+ 
 
-    private function pigCreateCount()
-    {
-        $query = new Pig();
-        $query = $this->queryQuater($query);
-        $query = $query->where('deleted_at', null)->count();
-        return $query;
-    }
-    public function pigDeleteCount()
-    {
-        $query = new Pig();
-        $query = $this->queryQuater($query);
-        $query = $query->where('deleted_at','!=', null)->count();
-        return $query; 
-    }
-   
-    private function breederReplaceDropSum($countPigId){
-
-        return  $this->pigCreateCount() - round(($this->pigDeleteCount() / $countPigId) * 100, 2);
-
-    }
-
-    private function breederDropPercent($countPigId){
-
-        return round(($this->pigDeleteCount() / $this->fixDivisionZero($countPigId)) * 100, 2);
-    }
-
-    private function pigDeliveredRate($type)
-    {
-        $query = new PigBirth();
-        $query = $this->queryQuater($query);
-        $query = $query->avg($type);
-        return  $this->fixDivisionZero($query);
-    }
-     
-    private function deliveryRatio($breed,$birth){ 
-       return ($breed / $this->fixDivisionZero($birth)) * 100;
-    }
-    private function pigDeliveredDiedPercent($devery){
-        $query = new PigBirth();
-        $query = $this->queryQuater($query);
-        $query = $query->select(\DB::raw('dead + mummy as deads'))->pluck('deads');
-        $dead = collect($query)->sum();
-        return round(($dead / $this->fixDivisionZero($devery)) * 100, 2);
-    }
-    private function birthDeadCount()
-    {
-        $query = PigBirth::whereDate('birth_date', $date)->select(\DB::raw('dead + mummy as deads'))->pluck('deads');
-        return collect($birth)->sum();
-    }
-
-    private function breederCount(){
-        $query = new PigBreed();
-        $query = $this->queryQuater($query);
-        $breeder = collect($query->get())->unique('pig_id');
-        return count($breeder->values()->all());
-    }
-
-    private function birthCount(){
-        $query = new PigBirth();
-        $query = $this->queryQuater($query);
-        $birth = collect($query->get())->unique('pig_id');
-        return count($birth->values()->all());
-    }
-    private function birthWeightAvg(){
-        $query = new PigBirth();
-        $query = $this->queryQuater($query); 
-        return $query->avg('pig_weight_avg');
-    }
-
-    private function milkAvg(){
-        $query = new PigMilk();
-        $query = $this->queryQuater($query); 
-        return $this->fixDivisionZero($query->avg('pig_count'));
-    }
-    private function birthWeightPercent()
-    {
-        $query = new PigBirth();
-        $query = $this->queryQuater($query); 
-        $query = $query->select(
-            \DB::raw('sum(pig_count) as count'), \DB::raw('sum(pig_weight_avg) as weight'))->first();
-        return round($query->weight / $this->fixDivisionZero($query->count), 2);
-    }
-    private function pigWeen(){
-        $milk = new PigMilk();
-        $birth = new PigBirth();
-        $birth = $this->queryQuater($birth);
-        return round((($birth->avg('pig_weight_avg') - $this->milkCount()) / $this->fixDivisionZero($birth->avg('pig_weight_avg'))) * 100, 2);
-    }
-
-    private function milkCount(){
-        $query = new PigMilk();
-        $query = $this->queryQuater($query);
-        $query = $query ->select('pig_count')->sum('pig_count');
-        return $query;
-
-    }
-
-
-    public function pigCircleYear($type)
-    {
-        $days = 117;
-        $reBreedsDays = 7;
-        $outDays = 14;
-
-        $births = PigBirth::select('pig_id');
-        $births = $this->queryQuater($births);
-        $birth = collect($births->get())->unique('pig_id');
-        $birthId = collect($birth)->pluck('pig_id');
-        $milkCount = PigMilk::whereIn('pig_milk.pig_id', $birthId)->sum('pig_count');
-        $milk = PigMilk::whereIn('pig_milk.pig_id', $birthId)
-            ->join('pig_birth', 'pig_birth.pig_id', 'pig_milk.pig_id')
-            ->select(
-                \DB::raw('DATEDIFF(pig_milk.milk_date,pig_birth.birth_date)  as dateCount')
-            )
-            ->pluck('dateCount');
-        if ($type == 'psy') {
-            return $milkCount;
-        } else {
-            return round(365 / $this->fixDivisionZero(($days + $reBreedsDays + $outDays + collect($milk)->sum())), 2);
-        }
-
-    }
-
-
-
-    private function getQuater()
-    {
-        $calendar = \Carbon\Carbon::now();
-        $month = $calendar->month;
-        // $month = 4;
-        if ($month <= 3) {
-            $this->dateReport = 1;
-            $this->quater[0] = '01';
-            $this->quater[1] = '03';
-        } else if ($month <= 6) {
-            $this->dateReport = 2;
-            $this->quater[0] = '03';
-            $this->quater[1] = '06';
-        } else if ($month <= 9) {
-            $this->dateReport = 3;
-            $this->quater[0] = '06';
-            $this->quater[1] = '09';
-        } else {
-            $this->dateReport = 4;
-            $this->quater[0] = '09';
-            $this->quater[1] = '12';
-        }
-        $this->year = $calendar->year;
-    }
-
-    private function fixDivisionZero($number)
-    {
-        return ($number > 0) ? $number : 1;
-    }
-    private function notNull($number)
-    {
-        return ($number) ? $number : 0;
-    }
-
-    private function queryQuater($query){
-        $query=   $query->whereMonth('created_at', '>', $this->quater[0]);
-        $query=   $query->whereMonth('created_at', '<=', $this->quater[1]);
-        $query=   $query->whereYear('created_at', $this->year);
-        return $query;
-    }
 
 }

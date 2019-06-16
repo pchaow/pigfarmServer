@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Http\Services\QuaterReportService;
+use Illuminate\Console\Command;
+
 class QuaterBackup extends Command
 {
     /**
@@ -11,7 +12,7 @@ class QuaterBackup extends Command
      *
      * @var string
      */
-    protected $signature = 'report:quater';
+    protected $signature = 'report:quater {{--year=}} {{--quater=}}';
 
     /**
      * The console command description.
@@ -31,7 +32,6 @@ class QuaterBackup extends Command
         $this->service = $service;
     }
 
-
     /**
      * Execute the console command.
      *
@@ -39,6 +39,40 @@ class QuaterBackup extends Command
      */
     public function handle()
     {
-        $this->service->generateQuaterReport();
+        if ($this->option('year')) {
+            $year = $this->option('year');
+        } else {
+            $year = date('Y');
+        }
+
+        if ($this->option('year')) {
+            $quater = $this->option('quater');
+        } else {
+            $quater = $this->getQuater();
+        }
+
+    
+        
+        $this->service->generateQuaterReport($year, $quater);
     }
+
+    private function getQuater()
+    {
+        $calendar = \Carbon\Carbon::now();
+        $month = $calendar->month;
+       
+            if ($month <= 3) {
+                $quaterNumber = 1;
+            } else if ($month <= 6) {
+                $quaterNumber = 2;
+            } else if ($month <= 9) {
+                $quaterNumber = 3;
+            } else {
+                $quaterNumber = 4;
+            }
+
+            return $quaterNumber;
+      
+    }
+
 }

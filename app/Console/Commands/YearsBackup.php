@@ -12,7 +12,7 @@ class YearsBackup extends Command
      *
      * @var string
      */
-    protected $signature = 'report:year';
+    protected $signature = 'report:year {{--year=}}';
 
     /**
      * The console command description.
@@ -39,6 +39,11 @@ class YearsBackup extends Command
      */
     public function handle()
     {
-        $this->service->generateYearReport();
+        if($this->option('year')){
+            $year = $this->option('year');
+        }else {
+            $year = date('Y');
+        }
+        $this->service->generateYearReport( $year);
     }
 }
